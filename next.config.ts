@@ -15,51 +15,6 @@ const nextConfig: NextConfig = {
   // Strict mode pre lepší vývoj
   reactStrictMode: true,
 
-  // Redirecty pre domény → správna jazyková verzia
-  async redirects() {
-    return [
-      // vassweb.cz → česká verzia
-      {
-        source: '/:path*',
-        has: [{ type: 'host', value: 'vassweb.cz' }],
-        destination: 'https://vassweb.sk/cs/:path*',
-        permanent: true,
-      },
-      // vassweb.com → anglická verzia
-      {
-        source: '/:path*',
-        has: [{ type: 'host', value: 'vassweb.com' }],
-        destination: 'https://vassweb.sk/en/:path*',
-        permanent: true,
-      },
-      // vassweb.hu → maďarská verzia
-      {
-        source: '/:path*',
-        has: [{ type: 'host', value: 'vassweb.hu' }],
-        destination: 'https://vassweb.sk/hu/:path*',
-        permanent: true,
-      },
-      // www verzie → bez www
-      {
-        source: '/:path*',
-        has: [{ type: 'host', value: 'www.vassweb.cz' }],
-        destination: 'https://vassweb.sk/cs/:path*',
-        permanent: true,
-      },
-      {
-        source: '/:path*',
-        has: [{ type: 'host', value: 'www.vassweb.com' }],
-        destination: 'https://vassweb.sk/en/:path*',
-        permanent: true,
-      },
-      {
-        source: '/:path*',
-        has: [{ type: 'host', value: 'www.vassweb.hu' }],
-        destination: 'https://vassweb.sk/hu/:path*',
-        permanent: true,
-      },
-    ];
-  },
 };
 
 export default nextConfig;
