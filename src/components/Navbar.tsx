@@ -13,6 +13,7 @@ function getLocaleFromPath(path: string): Locale {
 }
 
 const body = 'var(--font-inter), Inter, system-ui, sans-serif';
+const localeLabel: Record<Locale, string> = { sk: 'SK', en: 'EN', cs: 'CZ', hu: 'HU' };
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -160,7 +161,7 @@ export default function Navbar() {
                     onMouseEnter={e => { if (loc !== locale) e.currentTarget.style.backgroundColor = 'rgba(212,168,67,0.04)'; e.currentTarget.style.color = '#d4a843'; }}
                     onMouseLeave={e => { if (loc !== locale) { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = 'rgba(212,168,67,0.4)'; } }}
                     >
-                      {loc.toUpperCase()}
+                      {localeLabel[loc]}
                     </a>
                   ))}
                 </div>
@@ -221,7 +222,7 @@ export default function Navbar() {
                   fontFamily: body, letterSpacing: '0.08em',
                   backgroundColor: loc === locale ? 'rgba(212,168,67,0.06)' : 'transparent',
                 }}>
-                  {loc.toUpperCase()}
+                  {localeLabel[loc]}
                 </a>
               ))}
             </div>
