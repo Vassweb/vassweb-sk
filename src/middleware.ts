@@ -80,6 +80,13 @@ export function middleware(request: NextRequest) {
   const host = request.headers.get('host') || '';
   const locale = getLocaleForHost(host, request);
 
+  // SK routes live at root — no rewrite needed for default locale
+  if (locale === DEFAULT_LOCALE) {
+    const response = NextResponse.next();
+    response.cookies.set('locale', locale, { path: '/', sameSite: 'lax' });
+    return response;
+  }
+
   // Rewrite (not redirect) to locale-prefixed path to keep clean URLs
   const url = request.nextUrl.clone();
   url.pathname = `/${locale}${pathname}`;
