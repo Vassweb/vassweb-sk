@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     description: 'Tvoríme weby, automatizácie a AI riešenia pre firmy na Slovensku.',
     url: 'https://vassweb.sk',
     siteName: 'Vassweb',
-    images: [{ url: '/images/og-image.png', width: 1200, height: 630 }],
+    images: [{ url: '/opengraph-image', width: 1200, height: 630 }],
     type: 'website',
     locale: 'sk_SK',
   },
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Vassweb | Menej práce. Viac výsledkov.',
     description: 'Tvoríme weby, automatizácie a AI riešenia pre firmy na Slovensku.',
-    images: ['/images/og-image.png'],
+    images: ['/opengraph-image'],
   },
   robots: {
     index: true,
