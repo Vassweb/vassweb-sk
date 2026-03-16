@@ -73,33 +73,62 @@ export const metadata: Metadata = {
 };
 
 // JSON-LD structured data — pomáha Googlu pochopiť čo je tvoja firma
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
-  name: 'Vassweb',
-  description: 'Tvoríme weby, automatizácie a AI riešenia, ktoré šetria čas a zarábajú peniaze.',
-  url: 'https://vassweb.sk',
-  logo: 'https://vassweb.sk/images/logo-horizontal.png',
-  image: 'https://vassweb.sk/images/og-image.png',
-  telephone: '+421918668728',
-  email: 'info@vassweb.sk',
-  address: {
-    '@type': 'PostalAddress',
-    addressCountry: 'SK',
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Vassweb',
+    legalName: 'Vassweb s.r.o.',
+    url: 'https://vassweb.sk',
+    logo: 'https://vassweb.sk/images/logo-horizontal.png',
+    image: 'https://vassweb.sk/images/og-image.png',
+    email: 'info@vassweb.sk',
+    telephone: '+421918668728',
+    address: {
+      '@type': 'PostalAddress',
+      addressCountry: 'SK',
+    },
+    sameAs: [],
   },
-  areaServed: {
-    '@type': 'Country',
-    name: 'Slovakia',
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ProfessionalService',
+    name: 'Vassweb',
+    description: 'Tvoríme weby, automatizácie a AI riešenia, ktoré šetria čas a zarábajú peniaze.',
+    url: 'https://vassweb.sk',
+    logo: 'https://vassweb.sk/images/logo-horizontal.png',
+    image: 'https://vassweb.sk/images/og-image.png',
+    telephone: '+421918668728',
+    email: 'info@vassweb.sk',
+    address: {
+      '@type': 'PostalAddress',
+      addressCountry: 'SK',
+    },
+    areaServed: [
+      { '@type': 'Country', name: 'Slovakia' },
+      { '@type': 'Country', name: 'Czech Republic' },
+      { '@type': 'Country', name: 'Hungary' },
+    ],
+    serviceType: ['Web Development', 'AI Solutions', 'Business Automation', 'Digitalization'],
+    priceRange: '€€',
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Web Development Services',
+      itemListElement: [
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Starter Website', description: 'Responsive website up to 5 pages' }, price: '1500', priceCurrency: 'EUR' },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Business Website', description: 'Website with CMS, AI chatbot, analytics' }, price: '3500', priceCurrency: 'EUR' },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Premium Solution', description: 'Custom application with AI integration' }, price: '6000', priceCurrency: 'EUR' },
+      ],
+    },
   },
-  serviceType: ['Web Development', 'AI Solutions', 'Business Automation', 'Digitalization'],
-  priceRange: '€€',
-  sameAs: [
-    // Sem pridaj linky na sociálne siete keď ich budeš mať:
-    // 'https://www.facebook.com/vassweb',
-    // 'https://www.instagram.com/vassweb',
-    // 'https://www.linkedin.com/company/vassweb',
-  ],
-};
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Vassweb',
+    url: 'https://vassweb.sk',
+    inLanguage: ['sk', 'en', 'cs', 'hu'],
+  },
+];
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
