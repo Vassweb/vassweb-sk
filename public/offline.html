@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0a0908">
+  <title>Offline | Vassweb</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      background: #0a0908;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Inter, system-ui, -apple-system, sans-serif;
+      padding: 40px 24px;
+    }
+    .container { text-align: center; max-width: 480px; }
+    .icon {
+      width: 64px; height: 64px; border-radius: 50%;
+      border: 2px solid rgba(212,168,67,0.2);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 32px;
+      color: rgba(212,168,67,0.4); font-size: 28px;
+    }
+    h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(28px, 5vw, 40px);
+      font-weight: 400;
+      margin-bottom: 16px;
+    }
+    .gold {
+      background: linear-gradient(135deg, #ffeebb, #d4a843);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.35);
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 32px;
+      background: linear-gradient(135deg, #ffeebb, #d4a843, #8a6a1e);
+      color: #0a0908;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 13px;
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="icon">&#x26A0;</div>
+    <h1><span class="gold">Ste offline</span></h1>
+    <p>Zdá sa, že nemáte pripojenie na internet. Skontrolujte pripojenie a skúste to znova.</p>
+    <button class="btn" onclick="window.location.reload()">Skúsiť znova</button>
+  </div>
+</body>
+</html>
