@@ -51,6 +51,12 @@ export default function Navbar() {
     return () => document.removeEventListener('click', close);
   }, [langOpen]);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [isOpen]);
+
   const ctaText = locale === 'en' ? 'Free consultation' : locale === 'cs' ? 'Konzultace zdarma' : locale === 'hu' ? 'Ingyenes konzultáció' : 'Konzultácia zdarma';
 
   return (
@@ -185,9 +191,11 @@ export default function Navbar() {
           </div>
 
           {/* Mobile hamburger */}
-          <button onClick={() => setIsOpen(!isOpen)} className="mobile-only" aria-label={isOpen ? 'Close menu' : 'Open menu'} style={{
+          <button onClick={() => setIsOpen(!isOpen)} className="mobile-only" aria-label={isOpen ? 'Close menu' : 'Open menu'} aria-expanded={isOpen} style={{
             background: 'none', border: 'none', color: '#d4a843',
             fontSize: 26, cursor: 'pointer', padding: 8,
+            transition: 'transform 0.3s ease',
+            transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)',
           }}>{isOpen ? '\u2715' : '\u2630'}</button>
         </div>
 
@@ -198,6 +206,7 @@ export default function Navbar() {
             backgroundColor: 'rgba(10,9,8,0.97)', backdropFilter: 'blur(24px)',
             padding: '24px 32px', borderBottom: '1px solid rgba(212,168,67,0.08)',
             display: 'flex', flexDirection: 'column', gap: 20,
+            animation: 'mobileMenuSlideIn 0.3s ease-out',
           }}>
             {navLinks.map(l => {
               const isActive = activeSection === l.href.replace('#', '');
@@ -243,6 +252,10 @@ export default function Navbar() {
         .mobile-only { display: none !important; }
         .mobile-menu { display: none !important; }
         .desktop-nav { display: flex !important; }
+        @keyframes mobileMenuSlideIn {
+          from { opacity: 0; transform: translateY(-12px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
         @media (max-width: 768px) {
           .mobile-only { display: block !important; }
           .mobile-menu { display: flex !important; flex-direction: column !important; gap: 20px !important; }
