@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { DemoProvider, ThemeSwitcher, PoweredByVassweb, useTheme } from '@/components/DemoTheme';
+import { DemoProvider, ThemeSwitcher, PoweredByVassweb, BackToVassweb, useTheme } from '@/components/DemoTheme';
 
 const font = 'Inter, system-ui, sans-serif';
 
@@ -502,6 +502,7 @@ function PageContent() {
 export default function Page() {
   return (
     <DemoProvider>
+      <BackToVassweb />
       <ThemeSwitcher />
       <PageContent />
       <PoweredByVassweb />

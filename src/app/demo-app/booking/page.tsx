@@ -1,6 +1,6 @@
 'use client';
 import { useState, useMemo } from 'react';
-import { DemoProvider, ThemeSwitcher, PoweredByVassweb, useTheme } from '@/components/DemoTheme';
+import { DemoProvider, ThemeSwitcher, PoweredByVassweb, BackToVassweb, useTheme } from '@/components/DemoTheme';
 
 /* ── Types ── */
 interface Service { id: string; name: string; duration: string; price: number; priceLabel: string; icon: string; desc: string }
@@ -40,6 +40,7 @@ const DEMO_BOOKINGS: Booking[] = [
 export default function BookingPage() {
   return (
     <DemoProvider defaultTheme="elegance">
+      <BackToVassweb />
       <BookingApp />
     </DemoProvider>
   );

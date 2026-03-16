@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef, CSSProperties } from 'react';
-import { DemoProvider, ThemeSwitcher, PoweredByVassweb, useTheme } from '@/components/DemoTheme';
+import { DemoProvider, ThemeSwitcher, PoweredByVassweb, BackToVassweb, useTheme } from '@/components/DemoTheme';
 
 function useFadeIn() {
   const ref = useRef<HTMLDivElement>(null);
@@ -323,6 +323,7 @@ function PageContent() {
 export default function Page() {
   return (
     <DemoProvider>
+      <BackToVassweb />
       <ThemeSwitcher />
       <PageContent />
       <PoweredByVassweb />

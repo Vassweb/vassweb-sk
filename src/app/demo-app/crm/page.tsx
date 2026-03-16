@@ -1,6 +1,6 @@
 'use client';
 import { useState, useMemo } from 'react';
-import { DemoProvider, ThemeSwitcher, PoweredByVassweb, useTheme } from '@/components/DemoTheme';
+import { DemoProvider, ThemeSwitcher, PoweredByVassweb, BackToVassweb, useTheme } from '@/components/DemoTheme';
 
 /* ── Demo Data ──────────────────────────────────────────────── */
 const clients = [
@@ -184,7 +184,7 @@ function CRMInner() {
             </div>
 
             {/* Chart + top deals */}
-            <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 16, marginBottom: 24 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 16, marginBottom: 24 }}>
               <div style={s.card}>
                 <div style={{ fontSize: 14, fontWeight: 600, marginBottom: 12 }}>Mesačný príjem</div>
                 <RevenueChart accent={t.accent} accentLight={t.accentLight} border={t.border} textMuted={t.textMuted} />
@@ -222,7 +222,7 @@ function CRMInner() {
 
         {/* ── PIPELINE ── */}
         {tab === 'Pipeline' && (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 14, animation: 'crmFade 0.3s ease', overflowX: 'auto' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 14, animation: 'crmFade 0.3s ease' }}>
             {pipelineColumns.map(col => (
               <div key={col.stage} style={{ ...s.card, padding: 14 }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
@@ -397,11 +397,8 @@ function CRMInner() {
         @keyframes crmFade { from { opacity: 0; } to { opacity: 1; } }
         @keyframes crmSlideUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
         @media (max-width: 768px) {
-          main > div > div[style*="grid-template-columns: 2fr"] { grid-template-columns: 1fr !important; }
-          main > div > div[style*="repeat(4"] { grid-template-columns: 1fr 1fr !important; }
-        }
-        @media (max-width: 480px) {
-          main > div > div[style*="repeat(4"] { grid-template-columns: 1fr !important; }
+          table { font-size: 12px !important; }
+          th, td { padding: 8px 6px !important; }
         }
       `}</style>
     </div>
@@ -411,6 +408,7 @@ function CRMInner() {
 export default function CRMPage() {
   return (
     <DemoProvider>
+      <BackToVassweb />
       <CRMInner />
     </DemoProvider>
   );

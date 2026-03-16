@@ -1,6 +1,6 @@
 'use client';
 import { useState, useMemo } from 'react';
-import { DemoProvider, ThemeSwitcher, PoweredByVassweb, useTheme } from '@/components/DemoTheme';
+import { DemoProvider, ThemeSwitcher, PoweredByVassweb, BackToVassweb, useTheme } from '@/components/DemoTheme';
 
 const font = 'Inter, system-ui, sans-serif';
 
@@ -471,6 +471,7 @@ function AdminContent() {
 export default function Page() {
   return (
     <DemoProvider>
+      <BackToVassweb />
       <AdminContent />
     </DemoProvider>
   );

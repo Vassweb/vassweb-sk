@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { DemoProvider, ThemeSwitcher, PoweredByVassweb, useTheme } from '@/components/DemoTheme';
+import { DemoProvider, ThemeSwitcher, PoweredByVassweb, BackToVassweb, useTheme } from '@/components/DemoTheme';
 
 /* ═══ HELPERS ═══ */
 const wait = (ms: number) => new Promise(r => setTimeout(r, ms));
@@ -623,6 +623,7 @@ function PageContent() {
 export default function AIAutomationPage() {
   return (
     <DemoProvider>
+      <BackToVassweb />
       <ThemeSwitcher />
       <PageContent />
       <PoweredByVassweb />

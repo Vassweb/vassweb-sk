@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { DemoProvider, ThemeSwitcher, PoweredByVassweb, useTheme } from '@/components/DemoTheme';
+import { DemoProvider, ThemeSwitcher, PoweredByVassweb, BackToVassweb, useTheme } from '@/components/DemoTheme';
 
 const font = 'Inter, system-ui, sans-serif';
 
@@ -185,7 +185,7 @@ function Projects() {
           Vyber z nasich najlepsich realizacii za posledne roky.
         </p>
         <div style={{
-          display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
+          display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
           gap: 24,
         }}>
           {projectsData.map((p, i) => (
@@ -337,7 +337,7 @@ function Contact() {
           Mate otazku alebo chcete bezplatnu konzultaciu? Napisite nam.
         </p>
         <div style={{
-          display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+          display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
           gap: 48,
         }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
@@ -443,6 +443,7 @@ function PageContent() {
 export default function Page() {
   return (
     <DemoProvider>
+      <BackToVassweb />
       <ThemeSwitcher />
       <PageContent />
       <PoweredByVassweb />

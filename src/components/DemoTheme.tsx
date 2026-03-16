@@ -79,6 +79,29 @@ export function ThemeSwitcher() {
   );
 }
 
+export function BackToVassweb() {
+  const { t } = useTheme();
+  return (
+    <a href="/"
+      style={{
+        position: 'fixed', top: 20, left: 20, zIndex: 999,
+        display: 'inline-flex', alignItems: 'center', gap: 8, textDecoration: 'none',
+        padding: '8px 16px', borderRadius: 10,
+        background: t.isLight ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.06)',
+        border: `1px solid ${t.border}`,
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
+        transition: 'all 0.3s',
+        fontSize: 12, fontWeight: 600, color: t.textMuted,
+        fontFamily: 'Inter, system-ui, sans-serif',
+      }}
+    >
+      <span style={{ fontSize: 14 }}>←</span>
+      <span>vassweb.sk</span>
+    </a>
+  );
+}
+
 export function PoweredByVassweb() {
   const { t } = useTheme();
   return (
