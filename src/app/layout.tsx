@@ -82,8 +82,8 @@ const jsonLd = [
     name: 'Vassweb',
     legalName: 'Vassweb s.r.o.',
     url: 'https://vassweb.sk',
-    logo: 'https://vassweb.sk/images/logo-horizontal.png',
-    image: 'https://vassweb.sk/images/og-image.png',
+    logo: 'https://vassweb.sk/images/logo-horizontal.webp',
+    image: 'https://vassweb.sk/images/og-image.webp',
     email: 'info@vassweb.sk',
     telephone: '+421918668728',
     address: {
@@ -98,8 +98,8 @@ const jsonLd = [
     name: 'Vassweb',
     description: 'Tvoríme weby, automatizácie a AI riešenia, ktoré šetria čas a zarábajú peniaze.',
     url: 'https://vassweb.sk',
-    logo: 'https://vassweb.sk/images/logo-horizontal.png',
-    image: 'https://vassweb.sk/images/og-image.png',
+    logo: 'https://vassweb.sk/images/logo-horizontal.webp',
+    image: 'https://vassweb.sk/images/og-image.webp',
     telephone: '+421918668728',
     email: 'info@vassweb.sk',
     address: {
