@@ -1,49 +1,69 @@
 'use client';
 
+import Image from 'next/image';
+
 const heading = 'var(--font-heading), Playfair Display, Georgia, serif';
 const body = 'var(--font-inter), Inter, system-ui, sans-serif';
 
 export default function Error({ reset }: { error: Error & { digest?: string }; reset: () => void }) {
   return (
-    <main style={{
+    <main id="main-content" style={{
       minHeight: '100vh',
       background: '#0a0908',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       padding: '40px 24px',
+      position: 'relative',
+      overflow: 'hidden',
     }}>
-      <div style={{ textAlign: 'center', maxWidth: 480 }}>
-        <div style={{
-          width: 48,
-          height: 48,
-          borderRadius: '50%',
-          border: '2px solid rgba(212,168,67,0.2)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          margin: '0 auto 32px',
-          color: 'rgba(212,168,67,0.4)',
-          fontSize: 20,
-          fontFamily: body,
-        }}>
-          !
-        </div>
+      {/* Radial glow */}
+      <div style={{
+        position: 'absolute',
+        top: '30%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 600,
+        height: 600,
+        background: 'radial-gradient(circle, rgba(212,168,67,0.06) 0%, transparent 70%)',
+        pointerEvents: 'none',
+      }} />
+
+      <div style={{ textAlign: 'center', maxWidth: 480, position: 'relative', zIndex: 1 }}>
+        <Image
+          src="/images/logo-vw.webp"
+          alt="Vassweb"
+          width={800}
+          height={377}
+          style={{ height: 40, width: 'auto', margin: '0 auto 32px', display: 'block', opacity: 0.6 }}
+        />
         <h1 style={{
           fontFamily: heading,
-          fontSize: 'clamp(28px, 5vw, 40px)',
+          fontSize: 'clamp(56px, 10vw, 96px)',
           fontWeight: 400,
-          color: '#fff',
+          background: 'linear-gradient(135deg, #ffeebb, #d4a843)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
           marginBottom: 16,
+          lineHeight: 1,
         }}>
-          Niečo sa pokazilo
+          500
         </h1>
         <p style={{
           fontFamily: body,
+          fontSize: 18,
+          color: 'rgba(255,255,255,0.5)',
+          marginBottom: 8,
+          fontWeight: 300,
+        }}>
+          Niečo sa pokazilo
+        </p>
+        <p style={{
+          fontFamily: body,
           fontSize: 14,
-          color: 'rgba(255,255,255,0.35)',
+          color: 'rgba(255,255,255,0.25)',
           marginBottom: 40,
-          lineHeight: 1.7,
+          lineHeight: 1.6,
         }}>
           Nastala neočakávaná chyba. Skúste to znova alebo sa vráťte na hlavnú stránku.
         </p>
@@ -51,7 +71,7 @@ export default function Error({ reset }: { error: Error & { digest?: string }; r
           <button
             onClick={reset}
             style={{
-              padding: '12px 32px',
+              padding: '14px 36px',
               background: 'linear-gradient(135deg, #ffeebb, #d4a843, #8a6a1e)',
               color: '#0a0908',
               borderRadius: 999,
@@ -62,14 +82,13 @@ export default function Error({ reset }: { error: Error & { digest?: string }; r
               fontFamily: body,
               letterSpacing: '0.08em',
               textTransform: 'uppercase' as const,
-              transition: 'transform 0.2s, box-shadow 0.2s',
             }}
           >
             Skúsiť znova
           </button>
           <a href="/" style={{
             display: 'inline-block',
-            padding: '12px 32px',
+            padding: '14px 36px',
             border: '1px solid rgba(212,168,67,0.2)',
             color: 'rgba(212,168,67,0.6)',
             borderRadius: 999,
@@ -79,7 +98,6 @@ export default function Error({ reset }: { error: Error & { digest?: string }; r
             fontFamily: body,
             letterSpacing: '0.08em',
             textTransform: 'uppercase' as const,
-            transition: 'all 0.2s',
           }}>
             Hlavná stránka
           </a>
