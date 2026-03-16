@@ -106,7 +106,7 @@ export default function CookieConsent() {
             >
               {tr.cookieBanner.text}{' '}
               <a
-                href="/ochrana-udajov"
+                href={locale === 'en' ? '/en/privacy-policy' : locale === 'cs' ? '/cs/ochrana-udaju' : locale === 'hu' ? '/hu/adatvedelmi-iranyelvek' : '/ochrana-udajov'}
                 style={{
                   color: '#d4a843',
                   textDecoration: 'underline',
