@@ -53,7 +53,18 @@ export default function Navbar() {
   const ctaText = locale === 'en' ? 'Free consultation' : locale === 'cs' ? 'Konzultace zdarma' : locale === 'hu' ? 'Ingyenes konzultáció' : 'Konzultácia zdarma';
 
   return (
-    <nav style={{
+    <>
+    {/* Skip to content — a11y */}
+    <a href="#main-content" style={{
+      position: 'fixed', top: -100, left: 16, zIndex: 100,
+      padding: '12px 24px', background: '#d4a843', color: '#0a0908',
+      borderRadius: 8, fontWeight: 600, fontSize: 14, fontFamily: body,
+      textDecoration: 'none', transition: 'top 0.2s',
+    }} onFocus={e => { e.currentTarget.style.top = '16px'; }}
+       onBlur={e => { e.currentTarget.style.top = '-100px'; }}>
+      {locale === 'en' ? 'Skip to content' : locale === 'cs' ? 'Přeskočit na obsah' : locale === 'hu' ? 'Ugrás a tartalomra' : 'Preskočiť na obsah'}
+    </a>
+    <nav aria-label={locale === 'en' ? 'Main navigation' : locale === 'cs' ? 'Hlavní navigace' : locale === 'hu' ? 'Fő navigáció' : 'Hlavná navigácia'} style={{
       position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
       transition: 'all 0.4s ease',
       backgroundColor: isScrolled ? 'rgba(10,9,8,0.95)' : 'transparent',
@@ -108,6 +119,9 @@ export default function Navbar() {
             <div style={{ position: 'relative' }}>
               <button
                 onClick={e => { e.stopPropagation(); setLangOpen(!langOpen); }}
+                aria-expanded={langOpen}
+                aria-haspopup="true"
+                aria-label={locale === 'en' ? 'Change language' : locale === 'cs' ? 'Změnit jazyk' : locale === 'hu' ? 'Nyelv váltása' : 'Zmeniť jazyk'}
                 style={{
                   background: 'none',
                   border: '1px solid rgba(212,168,67,0.15)',
@@ -127,7 +141,7 @@ export default function Navbar() {
                 {tr.navbar.langLabel}
               </button>
               {langOpen && (
-                <div style={{
+                <div role="menu" style={{
                   position: 'absolute', top: '100%', right: 0, marginTop: 8,
                   background: 'rgba(10,9,8,0.97)', backdropFilter: 'blur(24px)',
                   border: '1px solid rgba(212,168,67,0.12)', borderRadius: 10,
@@ -135,7 +149,7 @@ export default function Navbar() {
                   boxShadow: '0 12px 40px rgba(0,0,0,0.5)',
                 }}>
                   {locales.map(loc => (
-                    <a key={loc} href={loc === 'sk' ? '/' : `/${loc}`} style={{
+                    <a key={loc} href={loc === 'sk' ? '/' : `/${loc}`} role="menuitem" aria-current={loc === locale ? 'true' : undefined} style={{
                       display: 'block', padding: '8px 14px', borderRadius: 6,
                       color: loc === locale ? '#d4a843' : 'rgba(212,168,67,0.4)',
                       textDecoration: 'none', fontSize: 12, fontWeight: loc === locale ? 600 : 400,
@@ -235,5 +249,6 @@ export default function Navbar() {
         }
       `}</style>
     </nav>
+    </>
   );
 }

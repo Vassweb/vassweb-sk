@@ -617,7 +617,7 @@ export default function Home({ locale = 'sk' }: { locale?: Locale }) {
   }, []);
 
   return (
-    <main style={{
+    <main id="main-content" style={{
       overflow: 'hidden',
       opacity: pageReady ? 1 : 0,
       transition: 'opacity 0.6s ease',

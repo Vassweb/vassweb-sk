@@ -67,6 +67,8 @@ export default function CookieConsent() {
       {/* Cookie consent banner */}
       {visible && (
         <div
+          role="dialog"
+          aria-label="Cookie consent"
           style={{
             position: 'fixed',
             bottom: 0,
