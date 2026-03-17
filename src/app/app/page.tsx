@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
-import { db, isSupabaseConfigured } from '@/lib/supabase';
+import { auth, db, isSupabaseConfigured } from '@/lib/supabase';
 
 /* ═══════════════════════════════════════════════════════════════
    VASSWEB BUSINESS APP v2.0
@@ -233,34 +233,22 @@ function LoginScreen({ onLogin }: { onLogin: (email: string) => void }) {
     e.preventDefault();
     setError('');
 
-    // Check if Supabase is configured
-    const supaUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    if (!supaUrl) {
-      // No Supabase — use demo mode
+    if (!isSupabaseConfigured()) {
       onLogin(email || 'demo@vassweb.sk');
       return;
     }
 
     setLoading(true);
     try {
-      const endpoint = isSignUp ? '/auth/v1/signup' : '/auth/v1/token?grant_type=password';
-      const res = await fetch(`${supaUrl}${endpoint}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'apikey': process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '',
-        },
-        body: JSON.stringify({ email, password }),
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        setError(data.error_description || data.message || 'Chyba prihlásenia');
-      } else if (data.access_token) {
-        localStorage.setItem('vw-access-token', data.access_token);
-        localStorage.setItem('vw-refresh-token', data.refresh_token);
+      const result = isSignUp
+        ? await auth.signUp(email, password)
+        : await auth.signIn(email, password);
+
+      if (result.error) {
+        setError(result.error);
+      } else if (result.data?.access_token) {
         onLogin(email);
       } else if (isSignUp) {
-        setError('');
         setIsSignUp(false);
         alert('Registrácia úspešná! Skontrolujte email pre overenie.');
       }
@@ -353,10 +341,10 @@ export default function VasswebApp() {
   const [globalSearchOpen, setGlobalSearchOpen] = useState(false);
   const [globalSearchQuery, setGlobalSearchQuery] = useState('');
 
-  // Data state
-  const [clients, setClients] = useState<Client[]>(demoClients);
-  const [projects, setProjects] = useState<Project[]>(demoProjects);
-  const [invoices, setInvoices] = useState<Invoice[]>(demoInvoices);
+  // Data state — start empty if Supabase configured, demo otherwise
+  const [clients, setClients] = useState<Client[]>(isSupabaseConfigured() ? [] : demoClients);
+  const [projects, setProjects] = useState<Project[]>(isSupabaseConfigured() ? [] : demoProjects);
+  const [invoices, setInvoices] = useState<Invoice[]>(isSupabaseConfigured() ? [] : demoInvoices);
   const [loaded, setLoaded] = useState(false);
 
   // Check auth on mount
@@ -382,9 +370,9 @@ export default function VasswebApp() {
             db.invoices.getAll(),
           ]);
           if (cancelled) return;
-          if (cRes.data && cRes.data.length > 0) setClients(cRes.data.map(c => ({ id: c.id, name: c.name, company: c.company, email: c.email, phone: c.phone, notes: c.notes, created_at: c.created_at, tags: c.tags || [] })));
-          if (pRes.data && pRes.data.length > 0) setProjects(pRes.data.map(p => ({ id: p.id, name: p.name, client_id: p.client_id || '', status: p.status, budget: p.budget, spent: p.spent, start_date: p.start_date || '', deadline: p.deadline || '', description: p.description, progress: p.progress })));
-          if (iRes.data && iRes.data.length > 0) setInvoices(iRes.data.map(i => ({ id: i.id, number: i.number, client_id: i.client_id || '', project_id: i.project_id || '', amount: i.amount, status: i.status as InvoiceStatus, issued: i.issued, due: i.due || '', items: [] })));
+          if (cRes.data) setClients(cRes.data.map(c => ({ id: c.id, name: c.name, company: c.company, email: c.email, phone: c.phone, notes: c.notes, created_at: c.created_at, tags: c.tags || [] })));
+          if (pRes.data) setProjects(pRes.data.map(p => ({ id: p.id, name: p.name, client_id: p.client_id || '', status: p.status, budget: p.budget, spent: p.spent, start_date: p.start_date || '', deadline: p.deadline || '', description: p.description, progress: p.progress })));
+          if (iRes.data) setInvoices(iRes.data.map(i => ({ id: i.id, number: i.number, client_id: i.client_id || '', project_id: i.project_id || '', amount: i.amount, status: i.status as InvoiceStatus, issued: i.issued, due: i.due || '', items: [] })));
           setSyncStatus('synced');
         } catch {
           setSyncStatus('local');
@@ -533,11 +521,13 @@ export default function VasswebApp() {
     localStorage.setItem('vw-user-email', email);
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    await auth.signOut();
     setUser(null);
     localStorage.removeItem('vw-user-email');
-    localStorage.removeItem('vw-access-token');
-    localStorage.removeItem('vw-refresh-token');
+    setClients(demoClients);
+    setProjects(demoProjects);
+    setInvoices(demoInvoices);
   };
 
   const handleInstall = async () => {
