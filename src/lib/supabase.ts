@@ -104,6 +104,85 @@ export interface UserSettings {
   notifications_enabled: boolean;
 }
 
+// ─── Etapa 4 Types ──────────────────────────────────────────
+export interface Notification {
+  id: string;
+  user_id: string | null;
+  type: string;
+  title: string;
+  message: string;
+  is_read: boolean;
+  created_at: string;
+}
+
+// ─── Etapa 3 Types ──────────────────────────────────────────
+export type TaskStatus = 'nova' | 'v_procese' | 'hotova' | 'zrusena';
+export type TaskPriority = 'nizka' | 'stredna' | 'vysoka' | 'urgentna';
+export type QuoteStatus = 'draft' | 'sent' | 'accepted' | 'rejected' | 'invoiced';
+export type CalendarEventType = 'meeting' | 'deadline' | 'followup' | 'reminder';
+
+export interface Task {
+  id: string;
+  user_id: string;
+  title: string;
+  description: string;
+  status: TaskStatus;
+  priority: TaskPriority;
+  client_id: string | null;
+  project_id: string | null;
+  due_date: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Quote {
+  id: string;
+  user_id: string;
+  number: string;
+  client_id: string | null;
+  project_id: string | null;
+  status: QuoteStatus;
+  amount: number;
+  valid_until: string | null;
+  notes: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface QuoteItem {
+  id: string;
+  quote_id: string;
+  description: string;
+  quantity: number;
+  unit_price: number;
+  sort_order: number;
+}
+
+export interface CalendarEvent {
+  id: string;
+  user_id: string;
+  title: string;
+  description: string;
+  type: CalendarEventType;
+  date: string;
+  time: string | null;
+  client_id: string | null;
+  project_id: string | null;
+  created_at: string;
+}
+
+export interface Document {
+  id: string;
+  user_id: string;
+  name: string;
+  file_url: string;
+  file_size: number;
+  category: string;
+  client_id: string | null;
+  project_id: string | null;
+  created_at: string;
+}
+
 // ─── Auth Session Management ─────────────────────────────────
 let accessToken: string | null = null;
 let refreshToken: string | null = null;
@@ -154,6 +233,12 @@ async function supaFetch<T>(
     ...headers,
   };
 
+  // Required for new sb_publishable_ key format
+  if (!isAuth) {
+    reqHeaders['Accept-Profile'] = 'public';
+    reqHeaders['Content-Profile'] = 'public';
+  }
+
   if (session.accessToken && !isAuth) {
     reqHeaders['Authorization'] = `Bearer ${session.accessToken}`;
   }
@@ -169,6 +254,34 @@ async function supaFetch<T>(
       headers: reqHeaders,
       body: body ? JSON.stringify(body) : undefined,
     });
+
+    // Auto-refresh token on 401 and retry once
+    if (res.status === 401 && !isAuth && session.refreshToken) {
+      const refreshResult = await auth.refreshSession();
+      if (refreshResult.data?.access_token) {
+        reqHeaders['Authorization'] = `Bearer ${refreshResult.data.access_token}`;
+        const retryRes = await fetch(`${baseUrl}${path}`, {
+          method,
+          headers: reqHeaders,
+          body: body ? JSON.stringify(body) : undefined,
+        });
+        if (!retryRes.ok) {
+          const errBody = await retryRes.json().catch(() => ({}));
+          return { data: null, error: errBody.message || errBody.error_description || errBody.msg || `Error ${retryRes.status}` };
+        }
+        if (retryRes.status === 204) return { data: null, error: null };
+        const retryData = await retryRes.json();
+        return { data: retryData, error: null };
+      } else {
+        // Refresh failed — clear session and redirect to login
+        clearSession();
+        if (typeof window !== 'undefined') {
+          document.cookie = 'sb-access-token=; path=/; max-age=0';
+          window.location.href = '/login';
+        }
+        return { data: null, error: 'Session expired' };
+      }
+    }
 
     if (!res.ok) {
       const errBody = await res.json().catch(() => ({}));
@@ -187,10 +300,10 @@ async function supaFetch<T>(
 
 // ─── Auth ────────────────────────────────────────────────────
 export const auth = {
-  async signUp(email: string, password: string) {
+  async signUp(email: string, password: string, redirectTo?: string) {
     const result = await supaFetch<{ access_token: string; refresh_token: string; user: { id: string; email: string } }>('/signup', {
       method: 'POST',
-      body: { email, password },
+      body: { email, password, ...(redirectTo ? { options: { email_redirect_to: redirectTo } } : {}) },
       isAuth: true,
     });
     if (result.data?.access_token) {
@@ -291,6 +404,12 @@ export const db = {
   invoiceItems: createTable<InvoiceItem>('invoice_items'),
   activities: createTable<Activity>('activities'),
   aiConversations: createTable<AIConversation>('ai_conversations'),
+  tasks: createTable<Task>('tasks'),
+  quotes: createTable<Quote>('quotes'),
+  quoteItems: createTable<QuoteItem>('quote_items'),
+  calendarEvents: createTable<CalendarEvent>('calendar_events'),
+  documents: createTable<Document>('documents'),
+  notifications: createTable<Notification>('notifications'),
 
   settings: {
     async get(): Promise<{ data: UserSettings | null; error: string | null }> {
