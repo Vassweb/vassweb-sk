@@ -150,7 +150,7 @@ export async function POST(request: NextRequest) {
       const fallbackError = await fallbackResponse.json().catch(() => ({}));
       console.error('Resend fallback error:', JSON.stringify(fallbackError));
       return NextResponse.json(
-        { error: 'Nepodarilo sa odoslať správu. Skúste to znova alebo nás kontaktujte na info@vassweb.sk.', debug: { primary: errorData, fallback: fallbackError } },
+        { error: 'Nepodarilo sa odoslať správu. Skúste to znova alebo nás kontaktujte na info@vassweb.sk.' },
         { status: 500 }
       );
     }
