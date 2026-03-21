@@ -330,7 +330,7 @@ function SectionDivider() {
 
 /* ═══ PRICING CARD WITH SELECTION ═══ */
 function PricingCard({ plan, isSelected, onSelect, tPricing }: {
-  plan: { name: string; price: string; featured: boolean; features: string[] };
+  plan: { name: string; price: string; originalPrice?: string; featured: boolean; features: string[] };
   isSelected: boolean;
   onSelect: () => void;
   tPricing: ReturnType<typeof getT>['pricing'];
@@ -362,8 +362,23 @@ function PricingCard({ plan, isSelected, onSelect, tPricing }: {
         }}>{plan.featured ? tPricing.popular : tPricing.selected}</div>
       )}
 
+      {plan.originalPrice && tPricing.launchBadge && (
+        <div style={{
+          display: 'inline-block', marginBottom: 10,
+          padding: '3px 10px', borderRadius: 4,
+          background: 'rgba(212,168,67,0.15)', border: '1px solid rgba(212,168,67,0.3)',
+          fontSize: 9, fontWeight: 700, fontFamily: body,
+          color: '#d4a843', letterSpacing: '0.05em',
+        }}>{tPricing.launchBadge}</div>
+      )}
+
       <h3 style={{ fontFamily: heading, fontWeight: 500, fontSize: 22, color: '#fff', marginBottom: 6 }}>{plan.name}</h3>
-      <div style={{ marginBottom: 28 }}>
+      <div style={{ marginBottom: 8 }}>
+        {plan.originalPrice && (
+          <div style={{ marginBottom: 4 }}>
+            <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: 15, fontFamily: body, textDecoration: 'line-through' }}>€{plan.originalPrice}</span>
+          </div>
+        )}
         <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: 13, fontFamily: body }}>{tPricing.from} </span>
         <span className={isHighlighted ? 'gold-shimmer' : ''} style={{
           fontFamily: body, fontWeight: 300, fontSize: 'clamp(32px, 3.5vw, 40px)',
@@ -371,6 +386,11 @@ function PricingCard({ plan, isSelected, onSelect, tPricing }: {
           ...goldGradient,
         }}>€{plan.price}</span>
       </div>
+      {plan.originalPrice && tPricing.saving && (
+        <div style={{
+          marginBottom: 20, fontSize: 11, fontFamily: body, color: '#6abf69',
+        }}>{tPricing.saving}: €{(parseInt(plan.originalPrice.replace(/[^0-9]/g, '')) - parseInt(plan.price.replace(/[^0-9]/g, ''))).toLocaleString('de-DE')}</div>
+      )}
 
       <ul style={{ listStyle: 'none', padding: 0, marginBottom: 28 }}>
         {plan.features.map((f, j) => (

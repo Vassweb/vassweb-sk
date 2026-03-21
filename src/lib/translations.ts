@@ -38,7 +38,10 @@ export interface Translations {
     selected: string;
     from: string;
     cta: string;
-    plans: Array<{ name: string; price: string; featured: boolean; features: string[] }>;
+    plans: Array<{ name: string; price: string; originalPrice?: string; featured: boolean; features: string[] }>;
+    launchBadge?: string;
+    launchNote?: string;
+    saving?: string;
   };
   contact: {
     label: string;
@@ -151,16 +154,19 @@ const sk: Translations = {
   },
   pricing: {
     label: 'Cenník',
-    heading: 'Transparentné ceny',
-    note: 'Všetky ceny sú bez DPH. Konečná cena závisí od rozsahu projektu.',
+    heading: 'Launch ceny — limitovaná ponuka',
+    note: 'Platí do 30. 6. 2026 alebo pre prvých 5 klientov. Ceny sú bez DPH.',
     popular: 'Najobľúbenejší',
     selected: 'Vybraný',
     from: 'od',
     cta: 'Kontaktovať',
+    launchBadge: 'LAUNCH CENA',
+    launchNote: 'Zavádzacia cena — platí do 30. júna 2026',
+    saving: 'Ušetríte',
     plans: [
-      { name: 'Starter', price: '1 500', featured: false, features: ['Responzívna webstránka', 'Až 5 podstránok', 'Kontaktný formulár', 'SEO optimalizácia', 'SSL certifikát'] },
-      { name: 'Business', price: '3 500', featured: true, features: ['Všetko zo Starter', 'Až 15 podstránok', 'CMS systém', 'AI chatbot integrácia', 'Analytika a reporting', 'E-mail automatizácia'] },
-      { name: 'Premium', price: '6 000+', featured: false, features: ['Všetko z Business', 'Vlastná aplikácia', 'Pokročilá AI integrácia', 'Workflow automatizácia', 'Prioritná podpora', 'Individuálny vývoj'] },
+      { name: 'Starter', price: '890', originalPrice: '1 500', featured: false, features: ['Responzívna webstránka (Next.js)', 'Až 5 podstránok', 'Kontaktný formulár', 'SEO optimalizácia', 'SSL certifikát', 'Hosting Vercel (1. rok v cene)', 'Google Analytics nastavenie'] },
+      { name: 'Business', price: '1 990', originalPrice: '3 500', featured: true, features: ['Všetko zo Starter', 'Až 15 podstránok', 'CMS systém', 'AI chatbot integrácia', 'Analytika a reporting', 'E-mail automatizácia', 'Blog modul', 'Napojenie na soc. siete'] },
+      { name: 'Premium', price: '3 990', originalPrice: '6 000+', featured: false, features: ['Všetko z Business', 'Vlastná web/mobilná aplikácia', 'Pokročilá AI integrácia', 'Workflow automatizácia', 'Prioritná podpora', 'Individuálny vývoj', 'Neobmedzený počet stránok'] },
     ],
   },
   contact: {
@@ -213,7 +219,7 @@ const sk: Translations = {
     heading: 'Časté otázky',
     items: [
       { question: 'Ako dlho trvá vytvorenie webstránky?', answer: 'Štandardný web trvá 2–4 týždne od schválenia návrhu. Zložitejšie projekty s vlastnou aplikáciou alebo AI integráciou môžu trvať 4–8 týždňov.' },
-      { question: 'Koľko stojí web?', answer: 'Ceny začínajú od 1 500 € za jednoduchý responzívny web. Konečná cena závisí od rozsahu — po bezplatnej konzultácii vám pripravíme presnú cenovú ponuku.' },
+      { question: 'Koľko stojí web?', answer: 'Aktuálne máme launch ceny — weby od 890 € (bežne od 1 500 €). Ponuka platí do 30. 6. 2026 alebo pre prvých 5 klientov. Po bezplatnej konzultácii vám pripravíme presnú ponuku.' },
       { question: 'Čo ak potrebujem zmeny po spustení?', answer: 'Poskytujeme ongoing podporu a údržbu. Menšie úpravy sú často zahrnuté v balíku, väčšie zmeny nacením individuálne.' },
       { question: 'Pracujete aj s firmami mimo Slovenska?', answer: 'Áno! Pracujeme s klientmi z celej Európy. Komunikujeme v slovenčine, češtine, maďarčine a angličtine.' },
       { question: 'Ako funguje AI integrácia?', answer: 'Podľa vašich potrieb implementujeme AI chatboty, automatické analýzy dát, smart formuláre alebo workflow automatizácie. Všetko prispôsobíme vašim procesom.' },
@@ -306,16 +312,19 @@ const en: Translations = {
   },
   pricing: {
     label: 'Pricing',
-    heading: 'Transparent Pricing',
-    note: 'All prices exclude VAT. Final price depends on project scope.',
+    heading: 'Launch Pricing — Limited Offer',
+    note: 'Valid until 30 June 2026 or for the first 5 clients. Prices exclude VAT.',
     popular: 'Most Popular',
     selected: 'Selected',
     from: 'from',
     cta: 'Get in touch',
+    launchBadge: 'LAUNCH PRICE',
+    launchNote: 'Launch pricing — valid until 30 June 2026',
+    saving: 'You save',
     plans: [
-      { name: 'Starter', price: '1 500', featured: false, features: ['Responsive website', 'Up to 5 sub-pages', 'Contact form', 'SEO optimisation', 'SSL certificate'] },
-      { name: 'Business', price: '3 500', featured: true, features: ['Everything in Starter', 'Up to 15 sub-pages', 'CMS system', 'AI chatbot integration', 'Analytics & reporting', 'Email automation'] },
-      { name: 'Premium', price: '6 000+', featured: false, features: ['Everything in Business', 'Custom application', 'Advanced AI integration', 'Workflow automation', 'Priority support', 'Custom development'] },
+      { name: 'Starter', price: '890', originalPrice: '1 500', featured: false, features: ['Responsive website (Next.js)', 'Up to 5 sub-pages', 'Contact form', 'SEO optimisation', 'SSL certificate', 'Vercel hosting (1st year included)', 'Google Analytics setup'] },
+      { name: 'Business', price: '1 990', originalPrice: '3 500', featured: true, features: ['Everything in Starter', 'Up to 15 sub-pages', 'CMS system', 'AI chatbot integration', 'Analytics & reporting', 'Email automation', 'Blog module', 'Social media integration'] },
+      { name: 'Premium', price: '3 990', originalPrice: '6 000+', featured: false, features: ['Everything in Business', 'Custom web/mobile app', 'Advanced AI integration', 'Workflow automation', 'Priority support', 'Custom development', 'Unlimited pages'] },
     ],
   },
   contact: {
@@ -368,7 +377,7 @@ const en: Translations = {
     heading: 'Frequently Asked Questions',
     items: [
       { question: 'How long does it take to build a website?', answer: 'A standard website takes 2–4 weeks from design approval. More complex projects with custom apps or AI integration may take 4–8 weeks.' },
-      { question: 'How much does a website cost?', answer: 'Prices start from €1,500 for a simple responsive website. The final price depends on scope — after a free consultation we will prepare an exact quote.' },
+      { question: 'How much does a website cost?', answer: 'We currently offer launch pricing — websites from €890 (normally from €1,500). Offer valid until 30 June 2026 or for the first 5 clients. After a free consultation we will prepare an exact quote.' },
       { question: 'What if I need changes after launch?', answer: 'We provide ongoing support and maintenance. Minor tweaks are often included in the package, larger changes are quoted individually.' },
       { question: 'Do you work with companies outside Slovakia?', answer: 'Yes! We work with clients across Europe. We communicate in Slovak, Czech, Hungarian and English.' },
       { question: 'How does AI integration work?', answer: 'Based on your needs, we implement AI chatbots, automated data analysis, smart forms or workflow automations. Everything is tailored to your processes.' },
@@ -461,16 +470,19 @@ const cs: Translations = {
   },
   pricing: {
     label: 'Ceník',
-    heading: 'Transparentní ceny',
-    note: 'Všechny ceny jsou bez DPH. Konečná cena závisí na rozsahu projektu.',
+    heading: 'Launch ceny — limitovaná nabídka',
+    note: 'Platí do 30. 6. 2026 nebo pro prvních 5 klientů. Ceny jsou bez DPH.',
     popular: 'Nejoblíbenější',
     selected: 'Vybraný',
     from: 'od',
     cta: 'Kontaktovat',
+    launchBadge: 'LAUNCH CENA',
+    launchNote: 'Zaváděcí cena — platí do 30. června 2026',
+    saving: 'Ušetříte',
     plans: [
-      { name: 'Starter', price: '1 500', featured: false, features: ['Responzivní webstránka', 'Až 5 podstránek', 'Kontaktní formulář', 'SEO optimalizace', 'SSL certifikát'] },
-      { name: 'Business', price: '3 500', featured: true, features: ['Vše ze Starter', 'Až 15 podstránek', 'CMS systém', 'AI chatbot integrace', 'Analytika a reporting', 'E-mail automatizace'] },
-      { name: 'Premium', price: '6 000+', featured: false, features: ['Vše z Business', 'Vlastní aplikace', 'Pokročilá AI integrace', 'Workflow automatizace', 'Prioritní podpora', 'Individuální vývoj'] },
+      { name: 'Starter', price: '890', originalPrice: '1 500', featured: false, features: ['Responzivní webstránka (Next.js)', 'Až 5 podstránek', 'Kontaktní formulář', 'SEO optimalizace', 'SSL certifikát', 'Hosting Vercel (1. rok v ceně)', 'Google Analytics nastavení'] },
+      { name: 'Business', price: '1 990', originalPrice: '3 500', featured: true, features: ['Vše ze Starter', 'Až 15 podstránek', 'CMS systém', 'AI chatbot integrace', 'Analytika a reporting', 'E-mail automatizace', 'Blog modul', 'Napojení na soc. sítě'] },
+      { name: 'Premium', price: '3 990', originalPrice: '6 000+', featured: false, features: ['Vše z Business', 'Vlastní web/mobilní aplikace', 'Pokročilá AI integrace', 'Workflow automatizace', 'Prioritní podpora', 'Individuální vývoj', 'Neomezený počet stránek'] },
     ],
   },
   contact: {
@@ -523,7 +535,7 @@ const cs: Translations = {
     heading: 'Časté dotazy',
     items: [
       { question: 'Jak dlouho trvá vytvoření webu?', answer: 'Standardní web trvá 2–4 týdny od schválení návrhu. Složitější projekty s vlastní aplikací nebo AI integrací mohou trvat 4–8 týdnů.' },
-      { question: 'Kolik stojí web?', answer: 'Ceny začínají od 1 500 € za jednoduchý responzivní web. Konečná cena závisí na rozsahu — po bezplatné konzultaci vám připravíme přesnou cenovou nabídku.' },
+      { question: 'Kolik stojí web?', answer: 'Aktuálně máme launch ceny — weby od 890 € (běžně od 1 500 €). Nabídka platí do 30. 6. 2026 nebo pro prvních 5 klientů. Po bezplatné konzultaci vám připravíme přesnou nabídku.' },
       { question: 'Co když potřebuji změny po spuštění?', answer: 'Poskytujeme ongoing podporu a údržbu. Menší úpravy jsou často zahrnuty v balíčku, větší změny oceníme individuálně.' },
       { question: 'Pracujete i s firmami mimo Slovenska?', answer: 'Ano! Pracujeme s klienty z celé Evropy. Komunikujeme slovensky, česky, maďarsky a anglicky.' },
       { question: 'Jak funguje AI integrace?', answer: 'Podle vašich potřeb implementujeme AI chatboty, automatické analýzy dat, smart formuláře nebo workflow automatizace. Vše přizpůsobíme vašim procesům.' },
@@ -616,16 +628,19 @@ const hu: Translations = {
   },
   pricing: {
     label: 'Árak',
-    heading: 'Átlátható árak',
-    note: 'Az árak ÁFA nélkül értendők. A végső ár a projekt terjedelmétől függ.',
+    heading: 'Launch árak — korlátozott ajánlat',
+    note: '2026. június 30-ig vagy az első 5 ügyfél számára érvényes. Az árak ÁFA nélkül értendők.',
     popular: 'Legnépszerűbb',
     selected: 'Kiválasztott',
     from: 'tól',
     cta: 'Kapcsolat',
+    launchBadge: 'LAUNCH ÁR',
+    launchNote: 'Bevezető ár — 2026. június 30-ig érvényes',
+    saving: 'Megtakarítás',
     plans: [
-      { name: 'Starter', price: '1 500', featured: false, features: ['Reszponzív weboldal', 'Legfeljebb 5 aloldal', 'Kapcsolatfelvételi űrlap', 'SEO optimalizáció', 'SSL tanúsítvány'] },
-      { name: 'Business', price: '3 500', featured: true, features: ['Minden a Starterből', 'Legfeljebb 15 aloldal', 'CMS rendszer', 'AI chatbot integráció', 'Analitika és riportálás', 'E-mail automatizáció'] },
-      { name: 'Premium', price: '6 000+', featured: false, features: ['Minden a Businessből', 'Egyéni alkalmazás', 'Fejlett AI integráció', 'Workflow automatizáció', 'Elsőbbségi támogatás', 'Egyedi fejlesztés'] },
+      { name: 'Starter', price: '890', originalPrice: '1 500', featured: false, features: ['Reszponzív weboldal (Next.js)', 'Legfeljebb 5 aloldal', 'Kapcsolatfelvételi űrlap', 'SEO optimalizáció', 'SSL tanúsítvány', 'Vercel hosting (1. év az árban)', 'Google Analytics beállítás'] },
+      { name: 'Business', price: '1 990', originalPrice: '3 500', featured: true, features: ['Minden a Starterből', 'Legfeljebb 15 aloldal', 'CMS rendszer', 'AI chatbot integráció', 'Analitika és riportálás', 'E-mail automatizáció', 'Blog modul', 'Közösségi média integráció'] },
+      { name: 'Premium', price: '3 990', originalPrice: '6 000+', featured: false, features: ['Minden a Businessből', 'Egyéni web/mobil alkalmazás', 'Fejlett AI integráció', 'Workflow automatizáció', 'Elsőbbségi támogatás', 'Egyedi fejlesztés', 'Korlátlan oldalszám'] },
     ],
   },
   contact: {
@@ -678,7 +693,7 @@ const hu: Translations = {
     heading: 'Gyakran ismételt kérdések',
     items: [
       { question: 'Mennyi idő alatt készül el egy weboldal?', answer: 'Egy standard weboldal 2–4 hét alatt készül el a terv jóváhagyásától. Összetettebb projektek egyedi alkalmazással vagy AI integrációval 4–8 hetet vehetnek igénybe.' },
-      { question: 'Mennyibe kerül egy weboldal?', answer: 'Az árak 1 500 €-tól indulnak egy egyszerű reszponzív weboldalért. A végső ár a terjedelmétől függ — egy ingyenes konzultáció után pontos árajánlatot készítünk.' },
+      { question: 'Mennyibe kerül egy weboldal?', answer: 'Jelenleg launch áraink vannak — weboldalak 890 €-tól (normál ár 1 500 €-tól). Az ajánlat 2026. június 30-ig vagy az első 5 ügyfél számára érvényes. Ingyenes konzultáció után pontos árajánlatot készítünk.' },
       { question: 'Mi van, ha az indítás után változtatásokra van szükségem?', answer: 'Folyamatos támogatást és karbantartást biztosítunk. A kisebb módosítások gyakran a csomagban szerepelnek, a nagyobb változtatásokat egyénileg árazzuk.' },
       { question: 'Dolgoznak Szlovákián kívüli cégekkel is?', answer: 'Igen! Egész Európából dolgozunk ügyfelekkel. Szlovák, cseh, magyar és angol nyelven kommunikálunk.' },
       { question: 'Hogyan működik az AI integráció?', answer: 'Az igényeid alapján AI chatbotokat, automatikus adatelemzést, smart űrlapokat vagy workflow automatizációkat implementálunk. Mindent a te folyamataidhoz igazítunk.' },
