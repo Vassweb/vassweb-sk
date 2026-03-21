@@ -389,7 +389,7 @@ function PricingCard({ plan, isSelected, onSelect, tPricing }: {
       {plan.originalPrice && tPricing.saving && (
         <div style={{
           marginBottom: 20, fontSize: 11, fontFamily: body, color: '#6abf69',
-        }}>{tPricing.saving}: €{(parseInt(plan.originalPrice.replace(/[^0-9]/g, '')) - parseInt(plan.price.replace(/[^0-9]/g, ''))).toLocaleString('de-DE')}</div>
+        }}>{tPricing.saving}: €{(parseInt(plan.originalPrice.replace(/[^0-9]/g, '')) - parseInt(plan.price.replace(/[^0-9]/g, ''))).toLocaleString('sk-SK')}</div>
       )}
 
       <ul style={{ listStyle: 'none', padding: 0, marginBottom: 28 }}>
