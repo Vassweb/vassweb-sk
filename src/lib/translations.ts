@@ -125,7 +125,7 @@ const sk: Translations = {
     heading: 'Prečo Vassweb?',
     stats: [
       { num: '3', lbl: 'konverzia', desc: 'Naši klienti majú v priemere 3× viac dopytov po spustení nového webu', suffix: '×' },
-      { num: 'AI', lbl: 'native', desc: 'AI nie je doplnok — je základ všetkého, čo robíme', suffix: '' },
+      { num: 'AI', lbl: 'natívne', desc: 'AI nie je doplnok — je základ všetkého, čo robíme', suffix: '' },
       { num: '100', lbl: 'spokojnosť', desc: 'Žiadny projekt neopúšťame, kým nie ste nadšení z výsledku', suffix: '%' },
     ],
     tagline: 'Veríme, že technológia nemá byť zložitá. Preto ju robíme jednoducho — tak, aby fungovala pre vás, nie naopak.',
@@ -273,7 +273,7 @@ const en: Translations = {
     heading: 'Our Services',
     items: [
       { title: 'Websites', desc: 'A site that sells — fast, optimised and designed to turn visitors into customers.' },
-      { title: 'AI Solutions', desc: 'A chatbot that answers for you. AI that analyses data. We save you hours of work every day.' },
+      { title: 'AI Solutions', desc: 'A chatbot that answers for you. AI that analyzes data. We save you hours of work every day.' },
       { title: 'Automation', desc: 'Invoices, emails, reports — let us handle the routine work so you can focus on what you do best.' },
       { title: 'Applications', desc: 'Web and mobile applications tailored to your needs — from simple tools to complex systems.' },
     ],
