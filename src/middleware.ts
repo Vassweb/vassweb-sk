@@ -55,6 +55,24 @@ function getLocaleForHost(host: string, request: NextRequest): Locale {
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const host = request.headers.get('host') || '';
+  const hostname = host.split(':')[0];
+
+  // app.vassweb.sk → rewrite to /app (business app, not landing page)
+  if (hostname === 'app.vassweb.sk') {
+    // Skip static files and API routes
+    if (pathname.startsWith('/_next') || pathname.startsWith('/api') || pathname.includes('.')) {
+      return NextResponse.next();
+    }
+    // Root of app.vassweb.sk → show /app
+    if (pathname === '/' || pathname === '') {
+      const url = request.nextUrl.clone();
+      url.pathname = '/app';
+      return NextResponse.rewrite(url);
+    }
+    // Everything else on app.vassweb.sk passes through
+    return NextResponse.next();
+  }
 
   // Skip static files, API routes, app routes, and Next.js internals
   if (
@@ -80,8 +98,8 @@ export function middleware(request: NextRequest) {
   }
 
   // Determine locale from domain
-  const host = request.headers.get('host') || '';
-  const locale = getLocaleForHost(host, request);
+  const localeHost = request.headers.get('host') || '';
+  const locale = getLocaleForHost(localeHost, request);
 
   // SK routes live at root — no rewrite needed for default locale
   if (locale === DEFAULT_LOCALE) {
