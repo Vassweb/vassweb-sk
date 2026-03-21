@@ -1,0 +1,4372 @@
+<!DOCTYPE html>
+<html lang="sk" data-theme="gold">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Euphoria Nightclub | Šamorín — Luxusný nočný klub</title>
+  <meta name="description" content="Euphoria Nightclub Šamorín — luxusný nočný bar s výnimočnou atmosférou, kvalitnými nápojmi a nezabudnuteľnou zábavou. Rezervujte si VIP separé online.">
+  <meta name="keywords" content="nightclub, nočný klub, Šamorín, bar, koktaily, VIP, party, eventy, Euphoria, nočný bar, jacuzzi, spoločníčky">
+  <meta name="author" content="VassWeb — vassweb.sk">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#050505">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Euphoria Nightclub | Šamorín">
+  <meta property="og:description" content="Vstúpte do sveta nekonečného potešenia. Luxusný nočný klub v Šamoríne.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://euphorianightclub.sk">
+  <meta property="og:locale" content="sk_SK">
+  <meta property="og:site_name" content="Euphoria Nightclub">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Euphoria Nightclub | Šamorín">
+  <meta name="twitter:description" content="Luxusný nočný bar v Šamoríne — VIP izby s jacuzzi, prémiové nápoje, okúzľujúce spoločníčky.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <!-- No-cache for demo -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NightClub",
+    "name": "Euphoria Nightclub",
+    "description": "Luxusný nočný bar v Šamoríne s výnimočnou atmosférou, kvalitnými nápojmi a VIP službami.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Bratislavská 11",
+      "addressLocality": "Šamorín",
+      "postalCode": "931 01",
+      "addressCountry": "SK"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "48.0257",
+      "longitude": "17.3114"
+    },
+    "telephone": "+421950480799",
+    "email": "euphorianightclub11@gmail.com",
+    "openingHours": "Mo-Su 19:00-06:00",
+    "url": "https://euphorianightclub.sk",
+    "priceRange": "€€",
+    "image": "https://euphorianightclub.sk/og-image.jpg",
+    "sameAs": [
+      "https://facebook.com/euphorianightclub",
+      "https://instagram.com/euphoria_nightclub_samorin"
+    ]
+  }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Styles -->
+  <style>
+/* ==========================================================================
+   EUPHORIA NIGHTCLUB — Complete Stylesheet
+   Luxury nightclub website: Black + Gold + Red theme
+   Author: VassWeb (vassco.sk)
+   ========================================================================== */
+
+/* ==========================================================================
+   1. CSS VARIABLES & THEME SYSTEM
+   ========================================================================== */
+
+:root {
+  /* Core palette */
+  --black: #050505;
+  --dark-bg: #0d0507;
+  --deep-red-bg: #1a0a0e;
+  --gold: #d4af37;
+  --light-gold: #f5d77a;
+  --bright-gold: #ffd700;
+  --red: #c41e2a;
+  --crimson: #dc143c;
+  --dark-red: #8b0000;
+  --deep-red: #4a0011;
+  --white: #ffffff;
+  --cream: #faf0d7;
+  --light-gray: #c0b8b0;
+
+  /* Glass & glow */
+  --glass-bg: rgba(180, 20, 40, 0.04);
+  --glass-border: rgba(212, 175, 55, 0.18);
+  --glass-red: rgba(196, 30, 42, 0.08);
+  --glow-gold: rgba(212, 175, 55, 0.5);
+  --glow-red: rgba(196, 30, 42, 0.4);
+
+  /* Transition speeds */
+  --transition-fast: 0.3s;
+  --transition-med: 0.5s;
+  --transition-slow: 0.8s;
+  --ease-luxury: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Gold Theme (default) --- */
+[data-theme="gold"] {
+  --gold: #d4af37;
+  --light-gold: #f5d77a;
+  --bright-gold: #ffd700;
+  --red: #c41e2a;
+  --crimson: #dc143c;
+  --dark-red: #8b0000;
+  --deep-red: #4a0011;
+  --deep-red-bg: #1a0a0e;
+  --dark-bg: #0d0507;
+  --cream: #faf0d7;
+  --glass-bg: rgba(180, 20, 40, 0.04);
+  --glass-border: rgba(212, 175, 55, 0.18);
+  --glass-red: rgba(196, 30, 42, 0.08);
+  --glow-gold: rgba(212, 175, 55, 0.5);
+  --glow-red: rgba(196, 30, 42, 0.4);
+}
+
+/* --- Neon Theme --- */
+[data-theme="neon"] {
+  --gold: #9b59b6;
+  --light-gold: #c39bd3;
+  --bright-gold: #bb6bd9;
+  --red: #e91e8c;
+  --crimson: #ff2d9b;
+  --dark-red: #8e1560;
+  --deep-red: #3d0a26;
+  --deep-red-bg: #150018;
+  --dark-bg: #0a0012;
+  --cream: #e8d5f5;
+  --glass-bg: rgba(155, 89, 182, 0.06);
+  --glass-border: rgba(155, 89, 182, 0.22);
+  --glass-red: rgba(233, 30, 140, 0.1);
+  --glow-gold: rgba(155, 89, 182, 0.5);
+  --glow-red: rgba(233, 30, 140, 0.45);
+}
+
+/* --- Ice Theme --- */
+[data-theme="ice"] {
+  --gold: #00d4ff;
+  --light-gold: #66e3ff;
+  --bright-gold: #33dbff;
+  --red: #c0c0c0;
+  --crimson: #d0d0d0;
+  --dark-red: #707070;
+  --deep-red: #1a2a3a;
+  --deep-red-bg: #080e18;
+  --dark-bg: #050520;
+  --cream: #d8f0ff;
+  --glass-bg: rgba(0, 212, 255, 0.04);
+  --glass-border: rgba(0, 212, 255, 0.18);
+  --glass-red: rgba(192, 192, 192, 0.08);
+  --glow-gold: rgba(0, 212, 255, 0.5);
+  --glow-red: rgba(192, 192, 192, 0.35);
+}
+
+/* --- Crimson Theme --- */
+[data-theme="crimson"] {
+  --gold: #ffd700;
+  --light-gold: #ffe44d;
+  --bright-gold: #ffea00;
+  --red: #dc143c;
+  --crimson: #ff1744;
+  --dark-red: #9b0023;
+  --deep-red: #4a0011;
+  --deep-red-bg: #1a0508;
+  --dark-bg: #0a0a0a;
+  --cream: #fff3d4;
+  --glass-bg: rgba(220, 20, 60, 0.06);
+  --glass-border: rgba(255, 215, 0, 0.2);
+  --glass-red: rgba(220, 20, 60, 0.1);
+  --glow-gold: rgba(255, 215, 0, 0.5);
+  --glow-red: rgba(220, 20, 60, 0.5);
+}
+
+/* --- Emerald Theme --- */
+[data-theme="emerald"] {
+  --gold: #00c853;
+  --light-gold: #69f0ae;
+  --bright-gold: #00e676;
+  --red: #d4af37;
+  --crimson: #f5d77a;
+  --dark-red: #6d5a1e;
+  --deep-red: #1a2e0a;
+  --deep-red-bg: #061a08;
+  --dark-bg: #001a0a;
+  --cream: #d4f5d8;
+  --glass-bg: rgba(0, 200, 83, 0.05);
+  --glass-border: rgba(0, 200, 83, 0.2);
+  --glass-red: rgba(212, 175, 55, 0.08);
+  --glow-gold: rgba(0, 200, 83, 0.5);
+  --glow-red: rgba(212, 175, 55, 0.4);
+}
+
+/* ==========================================================================
+   2. RESET & BASE
+   ========================================================================== */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  background: var(--black);
+  color: var(--white);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+input, select, textarea, button {
+  font-family: 'Lato', sans-serif;
+}
+
+/* Selective user-select protection (not global) */
+.nav-logo,
+.hero-logo-text,
+.hero-subtitle,
+.age-gate-logo,
+.age-gate-18,
+#vass-watermark,
+.demo-badge,
+.watermark-text {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Allow selection on content areas */
+.about-text,
+.menu-item,
+.event-info,
+.contact-info-item,
+.form-group input,
+.form-group textarea,
+.form-group select,
+.footer-col {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+/* ==========================================================================
+   3. SCROLLBAR
+   ========================================================================== */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--red), var(--gold));
+  border-radius: 3px;
+}
+
+/* ==========================================================================
+   4. KEYFRAME ANIMATIONS
+   ========================================================================== */
+
+@keyframes subtleGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(196, 30, 42, 0.1), 0 0 40px rgba(212, 175, 55, 0.05); }
+  50% { box-shadow: 0 0 30px rgba(196, 30, 42, 0.2), 0 0 60px rgba(212, 175, 55, 0.1); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes borderGlow {
+  0%, 100% { border-color: rgba(212, 175, 55, 0.15); }
+  50% { border-color: rgba(212, 175, 55, 0.35); }
+}
+
+@keyframes pulse-red {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes float-particle {
+  0% { opacity: 0; transform: translateY(100vh) scale(0); }
+  15% { opacity: 0.7; }
+  85% { opacity: 0.2; }
+  100% { opacity: 0; transform: translateY(-10vh) scale(1.2); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(10px); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes spinPulse {
+  0% { transform: rotate(0deg); opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { transform: rotate(360deg); opacity: 0.6; }
+}
+
+@keyframes logoShimmer {
+  0% { background-position: -300% center; }
+  100% { background-position: 300% center; }
+}
+
+@keyframes countdownPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes musicPulse {
+  0%, 100% { box-shadow: 0 0 10px var(--glow-gold); }
+  50% { box-shadow: 0 0 25px var(--glow-gold), 0 0 40px var(--glow-red); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ==========================================================================
+   5. LOADING SCREEN
+   ========================================================================== */
+
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 200000;
+  background: var(--black);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.loading-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loading-screen-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  letter-spacing: 0.3em;
+  background: linear-gradient(
+    135deg,
+    var(--light-gold) 0%,
+    var(--gold) 25%,
+    var(--bright-gold) 50%,
+    var(--gold) 75%,
+    var(--light-gold) 100%
+  );
+  background-size: 400% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: logoShimmer 3s linear infinite;
+  margin-bottom: 2.5rem;
+  text-shadow: none;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 2px solid transparent;
+  border-top-color: var(--gold);
+  border-right-color: var(--crimson);
+  border-radius: 50%;
+  animation: spinPulse 1.2s linear infinite;
+}
+
+.loading-text {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--light-gray);
+  margin-top: 1.5rem;
+  opacity: 0.6;
+}
+
+/* ==========================================================================
+   6. NAVIGATION
+   ========================================================================== */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 1.2rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all var(--transition-med) var(--ease-luxury);
+  background: transparent;
+}
+
+.navbar.scrolled {
+  background: rgba(5, 5, 5, 0.97);
+  backdrop-filter: blur(30px) saturate(1.2);
+  padding: 0.7rem 2.5rem;
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(196, 30, 42, 0.15);
+}
+
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: var(--gold);
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+.nav-logo span {
+  color: var(--white);
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--light-gray);
+  transition: color var(--transition-fast), text-shadow var(--transition-fast);
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width var(--transition-fast);
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+  text-shadow: 0 0 15px var(--glow-gold);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Nav CTA Button */
+.nav-cta {
+  padding: 0.5rem 1.5rem !important;
+  background: linear-gradient(135deg, var(--crimson), var(--red), var(--dark-red)) !important;
+  color: var(--white) !important;
+  border-radius: 2px;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em !important;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast) !important;
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.nav-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 25px var(--glow-red), 0 0 15px rgba(212, 175, 55, 0.2);
+}
+
+.nav-cta::after {
+  display: none !important;
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 5px;
+}
+
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background: var(--gold);
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ==========================================================================
+   7. HERO SECTION
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 750px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 80%, rgba(139, 0, 0, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(196, 30, 42, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(74, 0, 17, 0.3) 0%, transparent 70%),
+    linear-gradient(160deg, var(--black) 0%, var(--deep-red-bg) 30%, #120408 60%, var(--black) 100%);
+  z-index: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 25%, rgba(212, 175, 55, 0.1) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 75%, rgba(196, 30, 42, 0.06) 0%, transparent 50%);
+  z-index: 1;
+}
+
+/* Vignette effect */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(5, 5, 5, 0.7) 100%);
+  pointer-events: none;
+}
+
+/* Particles */
+.particles {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  opacity: 0;
+  animation: float-particle 8s ease-in-out infinite;
+}
+
+.particle:nth-child(odd) { background: var(--gold); }
+.particle:nth-child(even) { background: var(--crimson); }
+.particle:nth-child(3n) { width: 2px; height: 2px; background: rgba(255, 255, 255, 0.6); }
+
+/* Hero Content */
+.hero-content {
+  position: relative;
+  z-index: 3;
+  max-width: 850px;
+  padding: 0 2rem;
+}
+
+.hero-content::before {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), var(--crimson), var(--gold), transparent);
+  margin: 0 auto 2rem;
+  animation: fadeInUp 1.2s ease-out 0.1s both;
+}
+
+.hero-logo-text {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  color: var(--gold);
+  letter-spacing: 0.25em;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 60px rgba(212, 175, 55, 0.3), 0 0 120px rgba(196, 30, 42, 0.15), 0 2px 4px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(135deg, var(--light-gold), var(--gold), #c9a227, var(--light-gold));
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: fadeInDown 1.4s ease-out, shimmer 6s linear infinite;
+}
+
+.hero-subtitle {
+  font-family: 'Raleway', sans-serif;
+  font-size: clamp(0.7rem, 1.5vw, 0.95rem);
+  text-transform: uppercase;
+  letter-spacing: 0.6em;
+  color: var(--light-gray);
+  margin-bottom: 2.5rem;
+  animation: fadeInUp 1.2s ease-out 0.4s both;
+}
+
+.hero-slogan {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  font-style: italic;
+  color: var(--cream);
+  margin-bottom: 3.5rem;
+  opacity: 0.95;
+  text-shadow: 0 0 30px rgba(196, 30, 42, 0.2);
+  animation: fadeInUp 1.2s ease-out 0.7s both;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeInUp 1.2s ease-out 1s both;
+}
+
+/* Primary & Secondary Buttons */
+.btn-primary {
+  display: inline-block;
+  padding: 1rem 2.8rem;
+  background: linear-gradient(135deg, var(--crimson), var(--red), var(--dark-red));
+  color: var(--white);
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.4s var(--ease-luxury);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 35px var(--glow-red), 0 0 20px rgba(212, 175, 55, 0.15);
+  border-color: rgba(212, 175, 55, 0.5);
+}
+
+.btn-secondary {
+  display: inline-block;
+  padding: 1rem 2.8rem;
+  background: transparent;
+  color: var(--gold);
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  border: 1px solid var(--gold);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.4s var(--ease-luxury);
+  position: relative;
+}
+
+.btn-secondary:hover {
+  background: rgba(212, 175, 55, 0.08);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(212, 175, 55, 0.25);
+  color: var(--light-gold);
+}
+
+/* Hero Scroll Indicator */
+.hero-scroll {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.hero-scroll i {
+  color: var(--gold);
+  font-size: 1.5rem;
+}
+
+/* ==========================================================================
+   8. SECTIONS — General
+   ========================================================================== */
+
+section {
+  padding: 7rem 2rem;
+  position: relative;
+}
+
+section + section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--crimson), var(--gold), var(--crimson), transparent);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4.5rem;
+}
+
+.section-header h2 {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  color: var(--gold);
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+  text-shadow: 0 0 30px rgba(212, 175, 55, 0.15);
+}
+
+.section-header h2::before {
+  content: '\2726';
+  display: block;
+  font-size: 0.8rem;
+  color: var(--crimson);
+  margin-bottom: 1rem;
+  letter-spacing: 0.5em;
+  opacity: 0.7;
+}
+
+.section-header h2::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--crimson), var(--gold), var(--crimson), transparent);
+  margin: 1.2rem auto 0;
+}
+
+.section-header p {
+  color: var(--light-gray);
+  font-size: 1.05rem;
+  max-width: 600px;
+  margin: 0 auto;
+  font-style: italic;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   9. ABOUT SECTION
+   ========================================================================== */
+
+#about {
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(139, 0, 0, 0.08) 0%, transparent 60%),
+    linear-gradient(180deg, var(--black) 0%, var(--deep-red-bg) 50%, var(--black) 100%);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.about-image {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  background: linear-gradient(135deg, var(--deep-red-bg), var(--deep-red), var(--deep-red-bg));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--glass-border);
+  animation: borderGlow 4s ease-in-out infinite;
+}
+
+.about-image::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(135deg, rgba(196, 30, 42, 0.2), transparent, rgba(212, 175, 55, 0.2));
+  border-radius: 4px;
+  z-index: -1;
+}
+
+.about-image-placeholder {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: var(--gold);
+  opacity: 0.5;
+  text-align: center;
+  padding: 2rem;
+}
+
+.about-image-placeholder i {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1rem;
+  color: var(--crimson);
+}
+
+.about-text h3 {
+  font-size: 1.8rem;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+}
+
+.about-text p {
+  color: var(--light-gray);
+  margin-bottom: 1.2rem;
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+.about-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem;
+  border-radius: 4px;
+  background: linear-gradient(135deg, var(--glass-bg), rgba(196, 30, 42, 0.04));
+  border: 1px solid var(--glass-border);
+  transition: all var(--transition-fast);
+}
+
+.feature-item:hover {
+  border-color: rgba(196, 30, 42, 0.4);
+  background: linear-gradient(135deg, rgba(196, 30, 42, 0.08), rgba(212, 175, 55, 0.04));
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px var(--glow-red);
+}
+
+.feature-item i {
+  color: var(--crimson);
+  font-size: 1.3rem;
+  text-shadow: 0 0 10px var(--glow-red);
+}
+
+.feature-item span {
+  font-size: 0.85rem;
+  color: var(--light-gray);
+}
+
+/* ==========================================================================
+   10. MENU SECTION
+   ========================================================================== */
+
+#menu {
+  background:
+    radial-gradient(ellipse at 70% 40%, rgba(74, 0, 17, 0.1) 0%, transparent 60%),
+    var(--black);
+}
+
+.menu-categories {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.menu-tab {
+  padding: 0.6rem 1.5rem;
+  background: transparent;
+  color: var(--light-gray);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 2px;
+  cursor: pointer;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  transition: all var(--transition-fast);
+}
+
+.menu-tab:hover,
+.menu-tab.active {
+  background: linear-gradient(135deg, rgba(196, 30, 42, 0.15), rgba(212, 175, 55, 0.1));
+  color: var(--gold);
+  border-color: var(--crimson);
+  box-shadow: 0 0 15px rgba(196, 30, 42, 0.15);
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5rem;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1.2rem 1.5rem;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 4px;
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.menu-item:hover {
+  transform: translateY(-3px) scale(1.01);
+  border-color: var(--crimson);
+  box-shadow: 0 6px 25px rgba(196, 30, 42, 0.15), 0 0 15px var(--glow-gold);
+  background: linear-gradient(135deg, var(--glass-bg), var(--glass-red));
+}
+
+.menu-item-info h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  color: var(--white);
+  margin-bottom: 0.3rem;
+}
+
+.menu-item-info p {
+  font-size: 0.8rem;
+  color: var(--light-gray);
+}
+
+.menu-item-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--gold);
+  white-space: nowrap;
+  margin-left: 1rem;
+}
+
+/* ==========================================================================
+   11. GALLERY SECTION
+   ========================================================================== */
+
+#gallery {
+  background:
+    radial-gradient(ellipse at 40% 60%, rgba(196, 30, 42, 0.06) 0%, transparent 60%),
+    linear-gradient(180deg, var(--black) 0%, var(--deep-red-bg) 50%, var(--black) 100%);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8rem;
+}
+
+.gallery-item {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s var(--ease-luxury);
+}
+
+/* Unique gradient backgrounds per gallery item */
+.gallery-item:nth-child(1) {
+  grid-column: span 2;
+  grid-row: span 2;
+  background: linear-gradient(135deg, #1a0508 0%, var(--deep-red) 40%, #2a0a12 70%, #120305 100%);
+}
+
+.gallery-item:nth-child(2) {
+  background: linear-gradient(160deg, #0d0507 0%, #2d0a10 50%, #1a0810 100%);
+}
+
+.gallery-item:nth-child(3) {
+  background: linear-gradient(200deg, #120408 0%, #3a0f18 50%, #0d0406 100%);
+}
+
+.gallery-item:nth-child(4) {
+  background: linear-gradient(135deg, #1a0a0e 0%, #4a1122 50%, #0d0507 100%);
+}
+
+.gallery-item:nth-child(5) {
+  background: linear-gradient(180deg, #0a0305 0%, #2a0810 50%, #150609 100%);
+}
+
+.gallery-item:nth-child(6) {
+  background: linear-gradient(225deg, #150609 0%, #3d1020 50%, #0d0405 100%);
+}
+
+.gallery-item:nth-child(7) {
+  background: linear-gradient(145deg, #0d0406 0%, #1a0a0e 40%, #2a0e15 100%);
+}
+
+.gallery-item:nth-child(8) {
+  background: linear-gradient(170deg, #1a0508 0%, #2d0d14 50%, #120408 100%);
+}
+
+.gallery-item:nth-child(n+9) {
+  background: linear-gradient(135deg, var(--deep-red-bg), var(--deep-red), #1a0508);
+}
+
+.gallery-item:hover {
+  transform: scale(1.03);
+  border-color: var(--crimson);
+  box-shadow: 0 8px 30px rgba(196, 30, 42, 0.2), 0 0 20px var(--glow-gold);
+}
+
+.gallery-item i {
+  font-size: 2rem;
+  color: rgba(212, 175, 55, 0.3);
+}
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.gallery-overlay i {
+  font-size: 1.5rem;
+  color: var(--gold);
+}
+
+/* ==========================================================================
+   12. LIGHTBOX (with prev/next navigation)
+   ========================================================================== */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(0, 0, 0, 0.95);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background: none;
+  border: none;
+  color: var(--gold);
+  font-size: 2rem;
+  cursor: pointer;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+  z-index: 10001;
+}
+
+.lightbox-close:hover {
+  color: var(--light-gold);
+  transform: rotate(90deg);
+}
+
+.lightbox-content {
+  max-width: 80vw;
+  max-height: 80vh;
+  background: linear-gradient(135deg, var(--deep-red-bg), var(--deep-red));
+  border: 1px solid rgba(196, 30, 42, 0.3);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 6rem;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 40px rgba(196, 30, 42, 0.1);
+  animation: scaleIn 0.3s ease-out;
+}
+
+.lightbox-content img {
+  max-width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+}
+
+.lightbox-content p {
+  font-family: 'Playfair Display', serif;
+  color: var(--gold);
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+/* Lightbox Navigation */
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(5, 5, 5, 0.7);
+  border: 1px solid var(--glass-border);
+  color: var(--gold);
+  font-size: 1.5rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  z-index: 10001;
+  backdrop-filter: blur(10px);
+}
+
+.lightbox-nav:hover {
+  background: rgba(196, 30, 42, 0.3);
+  border-color: var(--crimson);
+  color: var(--light-gold);
+  box-shadow: 0 0 20px var(--glow-red);
+}
+
+.lightbox-nav.lightbox-prev {
+  left: 2rem;
+}
+
+.lightbox-nav.lightbox-next {
+  right: 2rem;
+}
+
+.lightbox-counter {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.85rem;
+  color: var(--light-gray);
+  letter-spacing: 0.15em;
+}
+
+/* ==========================================================================
+   13. EVENTS SECTION
+   ========================================================================== */
+
+#events {
+  background: var(--black);
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.event-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.event-card:hover {
+  transform: translateY(-5px) scale(1.01);
+  border-color: var(--crimson);
+  box-shadow: 0 12px 40px rgba(196, 30, 42, 0.2), 0 0 20px var(--glow-gold);
+}
+
+.event-image {
+  height: 200px;
+  background: linear-gradient(135deg, var(--deep-red-bg), var(--deep-red), #1a0508);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.event-image i {
+  font-size: 3rem;
+  color: rgba(212, 175, 55, 0.3);
+}
+
+.event-date-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(5, 5, 5, 0.92);
+  border: 1px solid var(--crimson);
+  padding: 0.5rem 1rem;
+  text-align: center;
+  border-radius: 2px;
+  box-shadow: 0 4px 15px rgba(196, 30, 42, 0.2);
+}
+
+.event-date-badge .day {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: var(--gold);
+  display: block;
+}
+
+.event-date-badge .month {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--light-gray);
+}
+
+.event-info {
+  padding: 1.5rem;
+}
+
+.event-info h3 {
+  font-size: 1.3rem;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+
+.event-info p {
+  font-size: 0.9rem;
+  color: var(--light-gray);
+  margin-bottom: 1rem;
+}
+
+.event-meta {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.8rem;
+  color: var(--light-gray);
+}
+
+.event-meta i {
+  color: var(--gold);
+  margin-right: 0.3rem;
+}
+
+.events-more {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+/* Event Countdown Timer */
+.event-countdown {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.event-countdown .countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 70px;
+  padding: 1rem 0.8rem;
+  background: linear-gradient(135deg, rgba(5, 5, 5, 0.9), rgba(26, 10, 14, 0.8));
+  border: 1px solid var(--glass-border);
+  border-radius: 4px;
+  animation: countdownPulse 3s ease-in-out infinite;
+}
+
+.event-countdown .countdown-item:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.event-countdown .countdown-item:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.event-countdown .countdown-item:nth-child(4) {
+  animation-delay: 0.9s;
+}
+
+.event-countdown .countdown-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  text-shadow: 0 0 20px var(--glow-gold);
+}
+
+.event-countdown .countdown-label {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--light-gray);
+  margin-top: 0.4rem;
+}
+
+.event-countdown .countdown-separator {
+  display: flex;
+  align-items: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: var(--crimson);
+  opacity: 0.6;
+  animation: pulse-red 2s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   14. RESERVATION SECTION
+   ========================================================================== */
+
+#reservation {
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(196, 30, 42, 0.06) 0%, transparent 60%),
+    linear-gradient(180deg, var(--black) 0%, var(--deep-red-bg) 50%, var(--black) 100%);
+}
+
+.reservation-wrapper {
+  max-width: 700px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, rgba(10, 5, 7, 0.9), rgba(26, 10, 14, 0.8));
+  border: 1px solid var(--glass-border);
+  border-radius: 4px;
+  padding: 3.5rem;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(212, 175, 55, 0.1);
+  position: relative;
+}
+
+.reservation-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 20%;
+  right: 20%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--crimson), var(--gold), var(--crimson), transparent);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.full {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 2px;
+  padding: 0.8rem 1rem;
+  color: var(--white);
+  font-size: 0.95rem;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
+}
+
+.form-group select {
+  cursor: pointer;
+}
+
+.form-group select option {
+  background: var(--black);
+  color: var(--white);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+  margin-top: 0.5rem;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: var(--gold);
+  cursor: pointer;
+}
+
+.checkbox-group label {
+  font-size: 0.85rem;
+  color: var(--light-gray);
+  cursor: pointer;
+}
+
+.checkbox-group a {
+  color: var(--gold);
+  text-decoration: underline;
+}
+
+.form-submit {
+  text-align: center;
+}
+
+.form-submit .btn-primary {
+  width: 100%;
+  max-width: 300px;
+  padding: 1rem 2rem;
+}
+
+.form-error {
+  color: #ff6b6b;
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
+  display: none;
+}
+
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 3rem;
+}
+
+.form-success i {
+  font-size: 4rem;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.form-success h3 {
+  font-size: 1.5rem;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.form-success p {
+  color: var(--light-gray);
+}
+
+/* ==========================================================================
+   15. CONTACT SECTION
+   ========================================================================== */
+
+#contact {
+  background:
+    radial-gradient(ellipse at 60% 50%, rgba(74, 0, 17, 0.06) 0%, transparent 60%),
+    var(--black);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+.contact-info-list {
+  list-style: none;
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.contact-info-item i {
+  color: var(--gold);
+  font-size: 1.2rem;
+  width: 24px;
+  text-align: center;
+  margin-top: 3px;
+}
+
+.contact-info-item h4 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-bottom: 0.3rem;
+}
+
+.contact-info-item p,
+.contact-info-item a {
+  font-size: 0.95rem;
+  color: var(--light-gray);
+}
+
+.contact-info-item a:hover {
+  color: var(--gold);
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.social-link {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  transition: all var(--transition-fast);
+}
+
+.social-link:hover {
+  background: linear-gradient(135deg, var(--crimson), var(--red));
+  color: var(--white);
+  border-color: var(--crimson);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px var(--glow-red);
+}
+
+.contact-map {
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  height: 100%;
+  min-height: 350px;
+}
+
+.contact-map iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  filter: grayscale(0.7) contrast(1.1) brightness(0.7);
+}
+
+/* ==========================================================================
+   16. JOBS SECTION
+   ========================================================================== */
+
+#jobs {
+  background:
+    radial-gradient(ellipse at 50% 60%, rgba(139, 0, 0, 0.06) 0%, transparent 50%),
+    linear-gradient(180deg, var(--black) 0%, var(--deep-red-bg) 50%, var(--black) 100%);
+}
+
+.jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.job-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 4px;
+  padding: 2rem;
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.job-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--crimson);
+  box-shadow: 0 6px 25px rgba(196, 30, 42, 0.15), 0 0 12px var(--glow-gold);
+}
+
+.job-card h3 {
+  font-size: 1.2rem;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.job-card .job-type {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--light-gray);
+  margin-bottom: 1rem;
+  display: inline-block;
+  padding: 0.2rem 0.8rem;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 2px;
+}
+
+.job-card p {
+  font-size: 0.9rem;
+  color: var(--light-gray);
+  margin-bottom: 1.5rem;
+}
+
+/* ==========================================================================
+   17. FOOTER
+   ========================================================================== */
+
+.footer {
+  background: var(--black);
+  border-top: none;
+  padding: 4rem 2rem 2rem;
+  position: relative;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--crimson), var(--gold), var(--crimson), transparent);
+}
+
+.footer-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.footer-brand .nav-logo {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+.footer-brand p {
+  color: var(--light-gray);
+  font-size: 0.9rem;
+  max-width: 300px;
+}
+
+.footer-col h4 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col li {
+  margin-bottom: 0.7rem;
+}
+
+.footer-col a {
+  font-size: 0.9rem;
+  color: var(--light-gray);
+  transition: color var(--transition-fast);
+}
+
+.footer-col a:hover {
+  color: var(--gold);
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  border-top: 1px solid var(--glass-border);
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-bottom p {
+  font-size: 0.8rem;
+  color: var(--light-gray);
+}
+
+.footer-bottom a {
+  color: var(--gold);
+}
+
+/* ==========================================================================
+   18. GDPR COOKIE BANNER
+   ========================================================================== */
+
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(10, 10, 10, 0.97);
+  border-top: 1px solid var(--glass-border);
+  padding: 1.5rem 2rem;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  transform: translateY(100%);
+  transition: transform var(--transition-med) ease;
+}
+
+.cookie-banner.visible {
+  transform: translateY(0);
+}
+
+.cookie-text {
+  font-size: 0.85rem;
+  color: var(--light-gray);
+  max-width: 700px;
+}
+
+.cookie-text a {
+  color: var(--gold);
+  text-decoration: underline;
+}
+
+.cookie-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.cookie-btn {
+  padding: 0.5rem 1.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-radius: 2px;
+  cursor: pointer;
+  border: none;
+  transition: all var(--transition-fast);
+}
+
+.cookie-accept {
+  background: linear-gradient(135deg, var(--crimson), var(--red));
+  color: var(--white);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.cookie-accept:hover {
+  box-shadow: 0 4px 15px var(--glow-red);
+  transform: translateY(-1px);
+}
+
+.cookie-decline {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.cookie-decline:hover {
+  border-color: var(--gold);
+  box-shadow: 0 0 10px var(--glow-gold);
+}
+
+/* ==========================================================================
+   19. DEMO WATERMARK & BADGE
+   ========================================================================== */
+
+#vass-watermark {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 99999;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 200px,
+    rgba(212, 175, 55, 0.04) 200px,
+    rgba(212, 175, 55, 0.04) 201px
+  );
+  overflow: hidden;
+}
+
+#vass-watermark::before {
+  content: 'DEMO \2022 VASSWEB \2022 DEMO \2022 VASSWEB \2022 DEMO \2022 VASSWEB';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-30deg);
+  font-size: 3.5rem;
+  font-family: 'Playfair Display', serif;
+  color: rgba(212, 175, 55, 0.06);
+  white-space: nowrap;
+  letter-spacing: 0.3em;
+  pointer-events: none;
+}
+
+#vass-watermark::after {
+  content: 'DEMO \2022 VASSWEB \2022 DEMO \2022 VASSWEB \2022 DEMO \2022 VASSWEB';
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-30deg);
+  font-size: 3.5rem;
+  font-family: 'Playfair Display', serif;
+  color: rgba(212, 175, 55, 0.04);
+  white-space: nowrap;
+  letter-spacing: 0.3em;
+  pointer-events: none;
+}
+
+.demo-badge {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(10, 10, 10, 0.92);
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  padding: 10px 18px;
+  font-size: 12px;
+  font-family: 'Lato', sans-serif;
+  z-index: 99998;
+  border-radius: 4px;
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ==========================================================================
+   20. SCROLL ANIMATIONS
+   ========================================================================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity var(--transition-slow) ease, transform var(--transition-slow) ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Smooth section fade transitions */
+section {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* ==========================================================================
+   21. MOBILE NAV OVERLAY
+   ========================================================================== */
+
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(10, 10, 10, 0.98);
+  backdrop-filter: blur(20px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s;
+}
+
+.mobile-menu.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.mobile-menu a {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: var(--white);
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.mobile-menu a:hover {
+  color: var(--gold);
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+/* ==========================================================================
+   22. 18+ AGE GATE
+   ========================================================================== */
+
+.age-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  background: rgba(5, 5, 5, 0.98);
+  backdrop-filter: blur(30px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: opacity 0.6s, visibility 0.6s;
+}
+
+.age-gate.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.age-gate-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--gold);
+  letter-spacing: 0.2em;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+}
+
+.age-gate-18 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(4rem, 10vw, 7rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--crimson), var(--red));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.age-gate p {
+  font-family: 'Raleway', sans-serif;
+  color: var(--light-gray);
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 2.5rem;
+  max-width: 400px;
+}
+
+.age-gate-buttons {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.age-gate-yes {
+  padding: 1rem 3rem;
+  background: linear-gradient(135deg, var(--crimson), var(--dark-red));
+  color: var(--white);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.age-gate-yes:hover {
+  box-shadow: 0 8px 30px var(--glow-red);
+  transform: translateY(-2px);
+}
+
+.age-gate-no {
+  padding: 1rem 3rem;
+  background: transparent;
+  color: var(--light-gray);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.age-gate-no:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ==========================================================================
+   23. THEME SWITCHER
+   ========================================================================== */
+
+.theme-switcher {
+  position: fixed;
+  bottom: 55px;
+  right: 10px;
+  z-index: 99997;
+}
+
+.theme-switcher-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--glass-border);
+  background: conic-gradient(
+    #d4af37 0deg 72deg,
+    #9b59b6 72deg 144deg,
+    #00d4ff 144deg 216deg,
+    #dc143c 216deg 288deg,
+    #00c853 288deg 360deg
+  );
+  cursor: pointer;
+  position: relative;
+  transition: all var(--transition-fast);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-switcher-btn::after {
+  content: '';
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--black);
+  border: 1px solid var(--glass-border);
+}
+
+.theme-switcher-btn:hover {
+  transform: scale(1.1) rotate(30deg);
+  border-color: var(--gold);
+  box-shadow: 0 4px 20px var(--glow-gold);
+}
+
+.theme-dropdown {
+  position: absolute;
+  bottom: 54px;
+  right: 0;
+  background: rgba(10, 10, 10, 0.97);
+  border: 1px solid var(--glass-border);
+  border-radius: 4px;
+  padding: 0.5rem 0;
+  min-width: 160px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all var(--transition-fast);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+}
+
+.theme-switcher.active .theme-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.theme-option {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--light-gray);
+  transition: all var(--transition-fast);
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+}
+
+.theme-option:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--white);
+}
+
+.theme-option.active {
+  color: var(--gold);
+}
+
+.theme-option-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
+}
+
+.theme-option[data-theme="gold"] .theme-option-swatch {
+  background: #d4af37;
+}
+
+.theme-option[data-theme="neon"] .theme-option-swatch {
+  background: #9b59b6;
+}
+
+.theme-option[data-theme="ice"] .theme-option-swatch {
+  background: #00d4ff;
+}
+
+.theme-option[data-theme="crimson"] .theme-option-swatch {
+  background: #dc143c;
+}
+
+.theme-option[data-theme="emerald"] .theme-option-swatch {
+  background: #00c853;
+}
+
+/* ==========================================================================
+   24. BACK TO TOP BUTTON
+   ========================================================================== */
+
+.back-to-top {
+  position: fixed;
+  bottom: 110px;
+  right: 13px;
+  z-index: 99997;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  background: rgba(5, 5, 5, 0.85);
+  color: var(--gold);
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all var(--transition-fast);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: rgba(212, 175, 55, 0.15);
+  border-color: var(--light-gold);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px var(--glow-gold);
+  color: var(--light-gold);
+}
+
+/* ==========================================================================
+   25. MUSIC TOGGLE BUTTON
+   ========================================================================== */
+
+.music-toggle {
+  position: fixed;
+  bottom: 160px;
+  right: 13px;
+  z-index: 99997;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border);
+  background: rgba(5, 5, 5, 0.85);
+  color: var(--gold);
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.music-toggle:hover {
+  border-color: var(--gold);
+  background: rgba(212, 175, 55, 0.1);
+  transform: scale(1.1);
+}
+
+.music-toggle.playing {
+  animation: musicPulse 2s ease-in-out infinite;
+  border-color: var(--gold);
+}
+
+.music-toggle .music-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 14px;
+}
+
+.music-toggle .music-bar {
+  width: 3px;
+  background: var(--gold);
+  border-radius: 1px;
+  transition: height var(--transition-fast);
+}
+
+.music-toggle .music-bar:nth-child(1) { height: 6px; }
+.music-toggle .music-bar:nth-child(2) { height: 10px; }
+.music-toggle .music-bar:nth-child(3) { height: 4px; }
+.music-toggle .music-bar:nth-child(4) { height: 8px; }
+
+.music-toggle.playing .music-bar:nth-child(1) {
+  animation: musicBarAnim 0.8s ease-in-out infinite alternate;
+}
+
+.music-toggle.playing .music-bar:nth-child(2) {
+  animation: musicBarAnim 0.6s ease-in-out infinite alternate 0.1s;
+}
+
+.music-toggle.playing .music-bar:nth-child(3) {
+  animation: musicBarAnim 0.9s ease-in-out infinite alternate 0.2s;
+}
+
+.music-toggle.playing .music-bar:nth-child(4) {
+  animation: musicBarAnim 0.7s ease-in-out infinite alternate 0.15s;
+}
+
+@keyframes musicBarAnim {
+  0% { height: 3px; }
+  100% { height: 14px; }
+}
+
+.music-toggle.muted .music-bar {
+  height: 3px !important;
+  animation: none !important;
+}
+
+/* ==========================================================================
+   26. ENHANCED HOVER EFFECTS
+   ========================================================================== */
+
+/* Cards general enhanced hover */
+.event-card,
+.job-card,
+.feature-item {
+  will-change: transform;
+}
+
+/* Menu item gradient shift on hover */
+.menu-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent, rgba(212, 175, 55, 0.03));
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  pointer-events: none;
+  border-radius: 4px;
+}
+
+.menu-item {
+  position: relative;
+}
+
+.menu-item:hover::before {
+  opacity: 1;
+}
+
+/* Social link glow */
+.social-link:hover {
+  box-shadow: 0 4px 15px var(--glow-red), 0 0 30px rgba(196, 30, 42, 0.15);
+}
+
+/* Nav link subtle glow */
+.nav-links a:hover {
+  text-shadow: 0 0 15px var(--glow-gold);
+}
+
+/* Button press effect */
+.btn-primary:active,
+.btn-secondary:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+/* Footer link hover enhancement */
+.footer-col a:hover {
+  text-shadow: 0 0 10px var(--glow-gold);
+}
+
+/* ==========================================================================
+   27. PAGE TRANSITION EFFECTS
+   ========================================================================== */
+
+/* View transition support */
+@supports (view-transition-name: page) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.4s;
+  }
+}
+
+/* Section transition on scroll */
+.section-transition {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.section-transition.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Page load fade */
+body {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* ==========================================================================
+   28. RESPONSIVE — 1024px (Tablet Landscape)
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .gallery-item:nth-child(1) {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .events-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .about-grid {
+    gap: 2.5rem;
+  }
+}
+
+/* ==========================================================================
+   29. RESPONSIVE — 768px (Tablet Portrait)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery-item:nth-child(1) {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+
+  .events-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .reservation-wrapper {
+    padding: 2rem 1.5rem;
+  }
+
+  section {
+    padding: 4rem 1.5rem;
+  }
+
+  .lightbox-content {
+    padding: 2rem;
+    max-width: 95vw;
+  }
+
+  .lightbox-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  .lightbox-nav.lightbox-prev {
+    left: 0.8rem;
+  }
+
+  .lightbox-nav.lightbox-next {
+    right: 0.8rem;
+  }
+
+  .event-countdown .countdown-item {
+    min-width: 60px;
+    padding: 0.8rem 0.6rem;
+  }
+
+  .event-countdown .countdown-number {
+    font-size: 1.5rem;
+  }
+
+  .theme-switcher {
+    bottom: 50px;
+    right: 8px;
+  }
+
+  .back-to-top {
+    bottom: 100px;
+    right: 10px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .music-toggle {
+    bottom: 145px;
+    right: 10px;
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* ==========================================================================
+   30. RESPONSIVE — 480px (Mobile)
+   ========================================================================== */
+
+@media (max-width: 480px) {
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .gallery-item:nth-child(1) {
+    grid-column: span 1;
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-logo-text {
+    letter-spacing: 0.15em;
+  }
+
+  .hero-subtitle {
+    letter-spacing: 0.3em;
+  }
+
+  .event-countdown {
+    gap: 0.5rem;
+  }
+
+  .event-countdown .countdown-item {
+    min-width: 55px;
+    padding: 0.6rem 0.4rem;
+  }
+
+  .event-countdown .countdown-number {
+    font-size: 1.3rem;
+  }
+
+  .event-countdown .countdown-separator {
+    font-size: 1.2rem;
+  }
+
+  .cookie-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.2rem 1rem;
+    gap: 1rem;
+  }
+
+  .cookie-buttons {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .age-gate p {
+    padding: 0 1.5rem;
+  }
+
+  .age-gate-buttons {
+    flex-direction: column;
+  }
+
+  .lightbox-content {
+    padding: 1.5rem;
+  }
+
+  .navbar {
+    padding: 1rem 1.2rem;
+  }
+
+  .navbar.scrolled {
+    padding: 0.5rem 1.2rem;
+  }
+
+  .nav-logo {
+    font-size: 1.1rem;
+  }
+
+  .section-header {
+    margin-bottom: 3rem;
+  }
+
+  .about-features {
+    grid-template-columns: 1fr;
+  }
+
+  .jobs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-map {
+    min-height: 250px;
+  }
+
+  .theme-switcher-btn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .theme-dropdown {
+    min-width: 140px;
+  }
+}
+
+/* ==========================================================================
+   31. REDUCED MOTION — Accessibility
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .hero-logo-text {
+    animation: none;
+    background-size: 100% auto;
+  }
+
+  .loading-spinner {
+    animation: none;
+    border-top-color: var(--gold);
+    border-right-color: var(--crimson);
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+
+  .particle {
+    display: none;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .btn-primary::before {
+    animation: none;
+  }
+
+  .music-toggle.playing .music-bar {
+    animation: none;
+  }
+
+  .event-countdown .countdown-item {
+    animation: none;
+  }
+
+  .hero-scroll {
+    animation: none;
+  }
+
+  .about-image {
+    animation: none;
+  }
+}
+
+/* ==========================================================================
+   32. PRINT STYLES
+   ========================================================================== */
+
+@media print {
+  .navbar,
+  .hamburger,
+  .mobile-menu,
+  .age-gate,
+  #vass-watermark,
+  .demo-badge,
+  .cookie-banner,
+  .theme-switcher,
+  .back-to-top,
+  .music-toggle,
+  .loading-screen,
+  .hero-scroll,
+  .particles,
+  .lightbox {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  section {
+    padding: 2rem 0;
+  }
+
+  a {
+    color: #000;
+    text-decoration: underline;
+  }
+}
+
+/* ========== GALLERY PLACEHOLDERS (enhanced) ========== */
+.gallery-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.gallery-placeholder i {
+  font-size: 2.5rem;
+  color: var(--gold);
+  opacity: 0.35;
+  transition: all 0.4s;
+  text-shadow: 0 0 20px var(--glow-gold);
+}
+
+.gallery-placeholder span {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--light-gray);
+  opacity: 0.4;
+}
+
+.gallery-item:hover .gallery-placeholder i {
+  opacity: 0.6;
+  transform: scale(1.1);
+  color: var(--crimson);
+}
+
+/* Unique gradients per gallery item */
+.gallery-item:nth-child(1) { background: linear-gradient(135deg, #1a0508, #2d0a12, #0d0507); }
+.gallery-item:nth-child(2) { background: linear-gradient(135deg, #0d0507, #1a0a0e, #120408); }
+.gallery-item:nth-child(3) { background: linear-gradient(135deg, #120408, #1a0508, #0d0507); }
+.gallery-item:nth-child(4) { background: linear-gradient(135deg, #1a0a0e, #0d0507, #2d0a12); }
+.gallery-item:nth-child(5) { background: linear-gradient(135deg, #0d0507, #120408, #1a0508); }
+.gallery-item:nth-child(6) { background: linear-gradient(135deg, #120408, #2d0a12, #0d0507); }
+.gallery-item:nth-child(7) { background: linear-gradient(135deg, #2d0a12, #0d0507, #1a0a0e); }
+.gallery-item:nth-child(8) { background: linear-gradient(135deg, #0d0507, #1a0508, #120408); }
+
+/* Lightbox counter */
+.lightbox-counter {
+  display: block;
+  margin-top: 1rem;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.8rem;
+  color: var(--light-gray);
+  opacity: 0.5;
+  letter-spacing: 0.1em;
+}
+
+/* Form error message block */
+.form-error-msg {
+  text-align: center;
+  padding: 2rem;
+}
+
+/* ==========================================================================
+   END OF STYLESHEET
+   ========================================================================== */
+
+  
+/* ===== PRESENTATION OVERLAY ===== */
+.pres-overlay {
+  position: fixed; inset: 0; z-index: 99999;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  background: #050505;
+}
+.pres-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+}
+.pres-slide {
+  min-height: 100vh; width: 100%;
+  scroll-snap-align: start;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  padding: 3rem 2rem;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+.pres-slide::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(212,175,55,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Gold top line on each slide */
+.pres-slide::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, transparent, #d4af37, transparent);
+}
+
+/* Navigation dots */
+.pres-nav {
+  position: fixed; right: 1.5rem; top: 50%; transform: translateY(-50%);
+  z-index: 100000; display: flex; flex-direction: column; gap: 0.8rem;
+}
+.pres-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: rgba(212,175,55,0.3); border: 1px solid rgba(212,175,55,0.5);
+  cursor: pointer; transition: all 0.3s;
+}
+.pres-dot.active { background: #d4af37; transform: scale(1.3); }
+.pres-nav.hidden { display: none; }
+
+/* Scroll indicator */
+.pres-scroll-hint {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  color: rgba(212,175,55,0.5); font-size: 1.5rem;
+  animation: presBouncce 2s infinite;
+}
+@keyframes presBouncce {
+  0%,100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-10px); }
+}
+
+/* Typography */
+.pres-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  color: #d4af37; font-weight: 700;
+  text-align: center; margin-bottom: 0.5rem;
+}
+.pres-subtitle {
+  font-family: 'Lato', sans-serif;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  color: #c0b8b0; font-style: italic;
+  text-align: center; margin-bottom: 2.5rem;
+}
+.pres-big-text {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(3rem, 8vw, 5rem);
+  color: #d4af37; font-weight: 700;
+  letter-spacing: 0.3em; text-align: center;
+}
+.pres-spaced {
+  font-family: 'Lato', sans-serif;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  color: #c0b8b0; letter-spacing: 0.5em;
+  text-align: center; margin-top: 0.5rem;
+}
+.pres-tagline {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.3rem; color: #fff;
+  font-style: italic; text-align: center;
+  margin-top: 1.5rem;
+}
+.pres-divider {
+  width: 120px; height: 1px;
+  background: linear-gradient(90deg, transparent, #d4af37, transparent);
+  margin: 1.5rem auto;
+}
+.pres-brand {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.8rem; color: #666;
+  text-align: center; margin-top: 2rem;
+}
+
+/* Cards grid */
+.pres-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.2rem; max-width: 1000px; width: 100%;
+}
+.pres-card {
+  background: rgba(26,10,14,0.9);
+  border: 1px solid rgba(58,26,30,0.8);
+  border-radius: 8px; padding: 1.2rem 1.4rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+.pres-card-icon {
+  display: inline-flex; width: 36px; height: 36px;
+  border-radius: 50%; align-items: center; justify-content: center;
+  font-size: 0.9rem; font-weight: 700; margin-bottom: 0.6rem;
+}
+.pres-card-icon.red { background: #c41e2a; color: #fff; }
+.pres-card-icon.gold { background: #d4af37; color: #050505; }
+.pres-card h4 {
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem; color: #d4af37;
+  font-weight: 700; margin: 0 0 0.4rem;
+}
+.pres-card p {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.85rem; color: #c0b8b0;
+  line-height: 1.5; margin: 0;
+}
+
+/* Stats */
+.pres-stats {
+  display: flex; gap: 2rem; flex-wrap: wrap;
+  justify-content: center; max-width: 900px;
+}
+.pres-stat {
+  background: rgba(26,10,14,0.9);
+  border: 1px solid rgba(58,26,30,0.8);
+  border-radius: 8px; padding: 2rem 1.5rem;
+  text-align: center; flex: 1; min-width: 220px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+.pres-stat-num {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 3rem; color: #d4af37; font-weight: 700;
+}
+.pres-stat-label {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.95rem; color: #fff;
+  font-weight: 600; margin: 0.3rem 0;
+}
+.pres-stat-desc {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.8rem; color: #999; margin-top: 0.5rem;
+}
+.pres-stat-divider {
+  width: 60px; height: 1px; background: #d4af37;
+  margin: 0.6rem auto;
+}
+
+/* Price table */
+.pres-table {
+  border-collapse: collapse; width: 100%; max-width: 600px;
+  font-family: 'Lato', sans-serif;
+}
+.pres-table th {
+  background: #d4af37; color: #050505;
+  padding: 0.7rem 1rem; font-weight: 700;
+  text-align: left; font-size: 0.9rem;
+}
+.pres-table th:last-child { text-align: right; }
+.pres-table td {
+  padding: 0.6rem 1rem; font-size: 0.85rem;
+  color: #c0b8b0; border-bottom: 1px solid rgba(58,26,30,0.5);
+}
+.pres-table td:last-child { text-align: right; color: #fff; font-weight: 600; }
+.pres-table tr:nth-child(even) td { background: rgba(18,8,16,0.5); }
+.pres-table tr:nth-child(odd) td { background: rgba(26,10,14,0.5); }
+.pres-table .total-row td {
+  background: #d4af37 !important; color: #050505 !important;
+  font-weight: 700; font-size: 1rem;
+}
+
+/* Two column layout */
+.pres-two-col {
+  display: flex; gap: 2rem; max-width: 1000px;
+  width: 100%; flex-wrap: wrap; align-items: flex-start;
+}
+.pres-col { flex: 1; min-width: 280px; }
+
+/* Payment box */
+.pres-box {
+  background: rgba(26,10,14,0.9);
+  border: 1px solid #d4af37;
+  border-radius: 8px; padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+.pres-box h4 {
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem; color: #d4af37;
+  font-weight: 700; margin: 0 0 1rem;
+}
+.pres-payment {
+  display: flex; align-items: baseline;
+  gap: 0.8rem; margin-bottom: 0.8rem;
+}
+.pres-pct {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; color: #d4af37; font-weight: 700;
+}
+.pres-amt { font-size: 0.9rem; color: #fff; font-weight: 600; }
+.pres-pay-label { font-size: 0.75rem; color: #999; }
+.pres-note {
+  font-size: 0.75rem; color: #666;
+  margin-top: 1rem; font-style: italic;
+}
+.pres-highlight {
+  color: #dc143c; font-weight: 700;
+  font-size: 0.85rem; margin-top: 1rem;
+}
+
+/* Ops costs */
+.pres-ops-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1rem; max-width: 700px; width: 100%;
+}
+.pres-ops-item {
+  background: rgba(26,10,14,0.9);
+  border: 1px solid rgba(58,26,30,0.8);
+  border-radius: 8px; padding: 1.2rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+.pres-ops-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem; color: #d4af37; font-weight: 700;
+}
+.pres-ops-name {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.9rem; color: #fff;
+  font-weight: 600; margin: 0.3rem 0;
+}
+.pres-ops-desc {
+  font-size: 0.75rem; color: #999;
+}
+.pres-ops-total {
+  grid-column: 1 / -1;
+  background: rgba(212,175,55,0.1);
+  border: 2px solid #d4af37;
+  border-radius: 8px; padding: 1.2rem;
+  text-align: center;
+}
+
+/* CTA button */
+.pres-cta {
+  display: inline-block;
+  background: #c41e2a;
+  color: #fff; font-family: 'Lato', sans-serif;
+  font-size: 1.2rem; font-weight: 700;
+  padding: 1rem 3rem;
+  border: none; border-radius: 4px;
+  cursor: pointer; text-transform: uppercase;
+  letter-spacing: 0.1em;
+  box-shadow: 0 4px 30px rgba(196,30,42,0.4);
+  transition: all 0.3s;
+  margin-top: 1.5rem;
+}
+.pres-cta:hover {
+  background: #dc143c;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 40px rgba(196,30,42,0.6);
+}
+.pres-cta-sub {
+  font-size: 0.85rem; color: #c0b8b0;
+  margin-top: 0.8rem; text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .pres-cards { grid-template-columns: 1fr; }
+  .pres-stats { flex-direction: column; }
+  .pres-two-col { flex-direction: column; }
+  .pres-ops-grid { grid-template-columns: 1fr; }
+}
+
+</style>
+</head>
+<body>
+
+
+
+<!-- ===== PRESENTATION OVERLAY ===== -->
+<div class="pres-overlay" id="presOverlay">
+
+  <!-- SLIDE 1: Title -->
+  <div class="pres-slide" id="ps1">
+    <div class="pres-big-text">EUPHORIA</div>
+    <div class="pres-spaced">N I G H T C L U B</div>
+    <div class="pres-divider"></div>
+    <div class="pres-tagline">Návrh novej profesionálnej webstránky</div>
+    <div class="pres-brand">Pripravil: VassWeb | vassweb.sk</div>
+    <div class="pres-scroll-hint"><i class="fas fa-chevron-down"></i></div>
+  </div>
+
+  <!-- SLIDE 2: Problems -->
+  <div class="pres-slide" id="ps2">
+    <div class="pres-title">Aktuálny stav vášho webu</div>
+    <div class="pres-subtitle">Čo dnes chýba a kde strácate zákazníkov</div>
+    <div class="pres-cards">
+      <div class="pres-card"><div class="pres-card-icon red">✕</div><h4>Žiadna online rezervácia</h4><p>Zákazníci musia volať — mnohí radšej odídu ku konkurencii. Diskrétna online rezervácia je v tomto segmente kľúčová.</p></div>
+      <div class="pres-card"><div class="pres-card-icon red">✕</div><h4>Chýba nápojový lístok</h4><p>Návštevník nevidí ponuku pred príchodom. Netuší, čo ho čaká a koľko to stojí.</p></div>
+      <div class="pres-card"><div class="pres-card-icon red">✕</div><h4>Amatérsky dizajn</h4><p>Webnode šablóna nepôsobí luxusne. V segmente, kde zákazník hľadá exkluzivitu, to je problém.</p></div>
+      <div class="pres-card"><div class="pres-card-icon red">✕</div><h4>Neviditeľní na Google</h4><p>Bez SEO optimalizácie vás noví zákazníci jednoducho nenájdu. Nájdu konkurenciu.</p></div>
+      <div class="pres-card"><div class="pres-card-icon red">✕</div><h4>Chýba GDPR</h4><p>Nesúlad s legislatívou a bez cookie banneru — právne riziko a pokuta.</p></div>
+      <div class="pres-card"><div class="pres-card-icon red">✕</div><h4>Bez 18+ overenia</h4><p>Chýba vekové overenie pri vstupe — zákonná povinnosť pre tento typ podniku.</p></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: Solution -->
+  <div class="pres-slide" id="ps3">
+    <div class="pres-title">Naše riešenie</div>
+    <div class="pres-subtitle">Kompletný profesionálny web na mieru — luxusný, funkčný, bezpečný</div>
+    <div class="pres-cards">
+      <div class="pres-card"><div class="pres-card-icon gold">✓</div><h4>Online rezervácia</h4><p>Diskrétna online rezervácia VIP izieb, rozlúčok a bežných návštev. Automatické potvrdenie emailom.</p></div>
+      <div class="pres-card"><div class="pres-card-icon gold">✓</div><h4>Interaktívny nápojový lístok</h4><p>Filtrovanie podľa kategórií — koktaily, whiskey, víno, špeciality domu. S cenami a popismi.</p></div>
+      <div class="pres-card"><div class="pres-card-icon gold">✓</div><h4>Galéria s lightboxom</h4><p>Profesionálna galéria s navigáciou medzi fotkami. Ukáže atmosféru klubu na prvý pohľad.</p></div>
+      <div class="pres-card"><div class="pres-card-icon gold">✓</div><h4>Eventy s odpočítavaním</h4><p>Nadchádzajúce akcie s live odpočítavaním — UV Party, Gold Night, rozlúčky so slobodou.</p></div>
+      <div class="pres-card"><div class="pres-card-icon gold">✓</div><h4>SEO & Google mapa</h4><p>Keď niekto hľadá "nočný klub Šamorín" — nájde VÁS, nie konkurenciu.</p></div>
+      <div class="pres-card"><div class="pres-card-icon gold">✓</div><h4>18+ overenie & GDPR</h4><p>Vekové overenie pri vstupe + cookie banner. Plná právna ochrana vášho biznisu.</p></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: Design -->
+  <div class="pres-slide" id="ps4">
+    <div class="pres-title">Dizajn na mieru</div>
+    <div class="pres-subtitle">Farebná schéma zodpovedá reálnemu interiéru vášho klubu</div>
+    <div class="pres-stats">
+      <div class="pres-stat">
+        <div style="display:flex;gap:1rem;justify-content:center;margin-bottom:1rem;">
+          <div style="width:50px;height:50px;background:#050505;border:2px solid #d4af37;border-radius:6px;"></div>
+          <div style="width:50px;height:50px;background:#c41e2a;border:2px solid #d4af37;border-radius:6px;"></div>
+          <div style="width:50px;height:50px;background:#d4af37;border-radius:6px;"></div>
+        </div>
+        <div class="pres-stat-label">Čierna + Červená + Zlatá</div>
+        <div class="pres-stat-desc">Luxusná farebná paleta zodpovedajúca interiéru</div>
+      </div>
+      <div class="pres-stat">
+        <div class="pres-stat-num">5</div>
+        <div class="pres-stat-label">Farebných tém</div>
+        <div class="pres-stat-divider"></div>
+        <div class="pres-stat-desc">Gold, Neon Purple, Ice Blue, Crimson Red, Emerald Green</div>
+      </div>
+      <div class="pres-stat">
+        <div class="pres-stat-num">100%</div>
+        <div class="pres-stat-label">Responzívny dizajn</div>
+        <div class="pres-stat-divider"></div>
+        <div class="pres-stat-desc">Perfektne funguje na mobile, tablete aj PC</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: Price -->
+  <div class="pres-slide" id="ps5">
+    <div class="pres-title">Cenová ponuka</div>
+    <div class="pres-subtitle">Kompletný web na kľúč — dizajn, vývoj, spustenie</div>
+    <div class="pres-two-col">
+      <div class="pres-col">
+        <table class="pres-table">
+          <thead><tr><th>Položka</th><th>Cena</th></tr></thead>
+          <tbody>
+            <tr><td>UX/UI dizajn na mieru</td><td>450 €</td></tr>
+            <tr><td>Frontend vývoj (HTML/CSS/JS)</td><td>650 €</td></tr>
+            <tr><td>Online rezervačný systém</td><td>350 €</td></tr>
+            <tr><td>SEO, GDPR, 18+, hosting, doména</td><td>1 050 €</td></tr>
+            <tr class="total-row"><td>CELKOM</td><td>2 500 €</td></tr>
+          </tbody>
+        </table>
+        <div class="pres-note">Dodávateľ nie je platiteľom DPH. Platnosť ponuky: 30 dní.</div>
+      </div>
+      <div class="pres-col">
+        <div class="pres-box">
+          <h4>Platobné podmienky</h4>
+          <div class="pres-payment"><span class="pres-pct">40%</span><span><span class="pres-amt">1 000 €</span><br><span class="pres-pay-label">Záloha pri podpise</span></span></div>
+          <div class="pres-payment"><span class="pres-pct">30%</span><span><span class="pres-amt">750 €</span><br><span class="pres-pay-label">Po schválení dizajnu</span></span></div>
+          <div class="pres-payment"><span class="pres-pct">30%</span><span><span class="pres-amt">750 €</span><br><span class="pres-pay-label">Pri odovzdaní</span></span></div>
+          <div class="pres-highlight">Dodacia lehota: 6 týždňov</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6: Ops costs -->
+  <div class="pres-slide" id="ps6">
+    <div class="pres-title">Prevádzkové náklady</div>
+    <div class="pres-subtitle">Ročné náklady na prevádzku vašej novej stránky</div>
+    <div class="pres-ops-grid">
+      <div class="pres-ops-item">
+        <div class="pres-ops-price">120 €</div>
+        <div class="pres-ops-name">Hosting</div>
+        <div class="pres-ops-desc">Rýchly a spoľahlivý server / rok</div>
+      </div>
+      <div class="pres-ops-item">
+        <div class="pres-ops-price">15 €</div>
+        <div class="pres-ops-name">Doména .sk</div>
+        <div class="pres-ops-desc">euphorianightclub.sk / rok</div>
+      </div>
+      <div class="pres-ops-item">
+        <div class="pres-ops-price">0 €</div>
+        <div class="pres-ops-name">SSL certifikát</div>
+        <div class="pres-ops-desc">Let's Encrypt — zdarma, automaticky</div>
+      </div>
+      <div class="pres-ops-item">
+        <div class="pres-ops-price">240 €</div>
+        <div class="pres-ops-name">Technická údržba</div>
+        <div class="pres-ops-desc">Aktualizácie a podpora / 20 €/mes.</div>
+      </div>
+      <div class="pres-ops-total">
+        <div class="pres-ops-price">cca 375 €/rok</div>
+        <div class="pres-ops-name">Celkové ročné náklady</div>
+        <div class="pres-ops-desc">Voliteľne: správa soc. sietí, AI chatbot, SMS notifikácie</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: CTA -->
+  <div class="pres-slide" id="ps7">
+    <div class="pres-big-text">EUPHORIA</div>
+    <div class="pres-spaced">N I G H T C L U B</div>
+    <div class="pres-divider"></div>
+    <button class="pres-cta" id="presCta">Zobraziť váš nový web</button>
+    <div class="pres-cta-sub">Kliknite pre živú ukážku vášho nového webu</div>
+    <div style="margin-top:2rem;font-size:0.85rem;color:#d4af37;font-style:italic;text-align:center;font-family:'Playfair Display',serif;">
+      Leto sa blíži — ak začneme teraz, do mája máte novú stránku pripravenú na sezónu.
+    </div>
+    <div class="pres-brand">VassWeb | vassweb.sk | Richard Vass | richard.vass@vassco.sk</div>
+  </div>
+
+</div>
+
+<!-- Navigation dots -->
+<nav class="pres-nav" id="presNav">
+  <div class="pres-dot active" data-slide="0"></div>
+  <div class="pres-dot" data-slide="1"></div>
+  <div class="pres-dot" data-slide="2"></div>
+  <div class="pres-dot" data-slide="3"></div>
+  <div class="pres-dot" data-slide="4"></div>
+  <div class="pres-dot" data-slide="5"></div>
+  <div class="pres-dot" data-slide="6"></div>
+</nav>
+
+<!-- ========== LOADING SCREEN ========== -->
+<div class="loading-screen" id="loadingScreen">
+  <div class="loading-logo">EUPHORIA</div>
+  <div class="loading-spinner"></div>
+  <div class="loading-text">Načítava sa...</div>
+</div>
+
+<!-- ========== 18+ AGE GATE ========== -->
+<div class="age-gate" id="ageGate">
+  <div class="age-gate-logo">EUPHORIA</div>
+  <div class="age-gate-18">18+</div>
+  <p>Tento web obsahuje obsah určený výhradne pre osoby staršie ako 18 rokov. Vstupom potvrdzujete, že spĺňate túto vekovú hranicu.</p>
+  <div class="age-gate-buttons">
+    <button class="age-gate-yes" id="ageYes">Mám 18+ rokov — Vstúpiť</button>
+    <button class="age-gate-no" id="ageNo">Nie, odísť</button>
+  </div>
+</div>
+
+<!-- ========== WATERMARK ========== -->
+<div id="vass-watermark"></div>
+
+<!-- ========== DEMO BADGE ========== -->
+<div class="demo-badge">
+  <span>Demo verzia &bull; <strong>VassWeb</strong> &bull; vassweb.sk</span>
+</div>
+
+<!-- ========== NAVIGATION ========== -->
+<nav class="navbar" id="navbar">
+  <a href="#" class="nav-logo">EUPHORIA <span>NIGHTCLUB</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">O nás</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#gallery">Galéria</a></li>
+    <li><a href="#events">Program</a></li>
+    <li><a href="#jobs">Kariéra</a></li>
+    <li><a href="#contact">Kontakt</a></li>
+    <li><a href="#reservation" class="nav-cta">Rezervovať</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" class="mobile-link">O nás</a>
+  <a href="#menu" class="mobile-link">Menu</a>
+  <a href="#gallery" class="mobile-link">Galéria</a>
+  <a href="#events" class="mobile-link">Program</a>
+  <a href="#jobs" class="mobile-link">Kariéra</a>
+  <a href="#contact" class="mobile-link">Kontakt</a>
+  <a href="#reservation" class="mobile-link" style="color:var(--gold);">Rezervovať</a>
+</div>
+
+<!-- ========== HERO ========== -->
+<section class="hero" id="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="particles" id="particles"></div>
+  <div class="hero-content">
+    <h1 class="hero-logo-text">EUPHORIA</h1>
+    <div class="hero-subtitle">N I G H T C L U B &nbsp;&nbsp;•&nbsp;&nbsp; Š A M O R Í N</div>
+    <p class="hero-slogan">„Vstúpte do sveta nekonečného potešenia"</p>
+    <div class="hero-buttons">
+      <a href="#reservation" class="btn-primary"><i class="fas fa-crown" style="margin-right:0.6rem;font-size:0.75rem;"></i>Rezervovať VIP</a>
+      <a href="#menu" class="btn-secondary"><i class="fas fa-glass-martini-alt" style="margin-right:0.6rem;font-size:0.75rem;"></i>Nápojový lístok</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <a href="#about"><i class="fas fa-chevron-down"></i></a>
+  </div>
+</section>
+
+<!-- ========== ABOUT ========== -->
+<section id="about">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>O nás</h2>
+      <p>Miesto plné vzrušenia, relaxu a luxusu</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-image reveal">
+        <div class="about-image-placeholder">
+          <i class="fas fa-cocktail"></i>
+          <span>Fotografia interiéru</span>
+        </div>
+      </div>
+      <div class="about-text reveal">
+        <h3>Vitajte v Euphoria Nightclub</h3>
+        <p>Euphoria Nightclub — vaša brána do sveta nekonečného potešenia. Od roku 2023 sme sa stali jedným z najobľúbenejších miest pre milovníkov nočného života v Šamoríne a okolí.</p>
+        <p>Naše luxusné prostredie vás okamžite pohltí svojou atmosférou. V našom nočnom bare nájdete bohatý výber prémiových nápojov a spoločnosť okúzľujúcich dievčat, ktoré sú vždy ochotné spríjemniť vám večer.</p>
+        <p>VIP izby s jacuzzi, príjemná hudba, diskrétne prostredie — u nás si na svoje príde každý. Postará sa o vás náš milý a ochotný personál, aby ste si u nás užili nezabudnuteľnú noc plnú zábavy a relaxu.</p>
+        <div class="about-features">
+          <div class="feature-item"><i class="fas fa-glass-martini-alt"></i><span>Prémiové nápoje</span></div>
+          <div class="feature-item"><i class="fas fa-female"></i><span>Krásne spoločníčky</span></div>
+          <div class="feature-item"><i class="fas fa-hot-tub"></i><span>VIP izby s jacuzzi</span></div>
+          <div class="feature-item"><i class="fas fa-user-shield"></i><span>Diskrétne prostredie</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== MENU ========== -->
+<section id="menu">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>Nápojový lístok</h2>
+      <p>Ochutnajte naše prémiové nápoje a autorské koktaily</p>
+    </div>
+
+    <div class="menu-categories reveal">
+      <button class="menu-tab active" data-cat="all">Všetko</button>
+      <button class="menu-tab" data-cat="koktaily">Koktaily</button>
+      <button class="menu-tab" data-cat="whiskey">Whiskey & Rum</button>
+      <button class="menu-tab" data-cat="vino">Víno & Šampanské</button>
+      <button class="menu-tab" data-cat="pivo">Pivo</button>
+      <button class="menu-tab" data-cat="nealko">Nealko</button>
+      <button class="menu-tab" data-cat="special">Špeciality domu</button>
+    </div>
+
+    <div class="menu-grid reveal" id="menuGrid">
+      <div class="menu-item" data-cat="koktaily"><div class="menu-item-info"><h4>Euphoria Sunset</h4><p>Vodka, mango, passion fruit, lime, prosecco</p></div><div class="menu-item-price">9,50 €</div></div>
+      <div class="menu-item" data-cat="koktaily"><div class="menu-item-info"><h4>Midnight Mojito</h4><p>Tmavý rum, čerstvá mäta, limetka, trstinový cukor</p></div><div class="menu-item-price">8,00 €</div></div>
+      <div class="menu-item" data-cat="koktaily"><div class="menu-item-info"><h4>Golden Negroni</h4><p>Gin, Campari, sweet vermouth, pomarančová kôra</p></div><div class="menu-item-price">9,00 €</div></div>
+      <div class="menu-item" data-cat="koktaily"><div class="menu-item-info"><h4>Purple Rain</h4><p>Butterfly pea gin, citrón, levandulový sirup, tonic</p></div><div class="menu-item-price">10,00 €</div></div>
+      <div class="menu-item" data-cat="whiskey"><div class="menu-item-info"><h4>Jack Daniel's</h4><p>Tennessee whiskey, 4cl</p></div><div class="menu-item-price">5,00 €</div></div>
+      <div class="menu-item" data-cat="whiskey"><div class="menu-item-info"><h4>Jameson</h4><p>Írska whiskey, 4cl</p></div><div class="menu-item-price">4,50 €</div></div>
+      <div class="menu-item" data-cat="whiskey"><div class="menu-item-info"><h4>Havana Club 7 Años</h4><p>Kubánsky rum, 4cl</p></div><div class="menu-item-price">5,50 €</div></div>
+      <div class="menu-item" data-cat="vino"><div class="menu-item-info"><h4>Prosecco Brut</h4><p>Talianske šumivé víno, pohár</p></div><div class="menu-item-price">5,00 €</div></div>
+      <div class="menu-item" data-cat="vino"><div class="menu-item-info"><h4>Rosé Sélection</h4><p>Francúzske ružové víno, pohár</p></div><div class="menu-item-price">4,50 €</div></div>
+      <div class="menu-item" data-cat="pivo"><div class="menu-item-info"><h4>Pilsner Urquell</h4><p>Čapované, 0,5l</p></div><div class="menu-item-price">2,80 €</div></div>
+      <div class="menu-item" data-cat="pivo"><div class="menu-item-info"><h4>Corona Extra</h4><p>Fľaškové, 0,33l</p></div><div class="menu-item-price">3,50 €</div></div>
+      <div class="menu-item" data-cat="nealko"><div class="menu-item-info"><h4>Virgin Mojito</h4><p>Limetka, mäta, trstinový cukor, sóda</p></div><div class="menu-item-price">5,00 €</div></div>
+      <div class="menu-item" data-cat="nealko"><div class="menu-item-info"><h4>Fresh limonáda</h4><p>Citrón, pomaranč, zázvor, med</p></div><div class="menu-item-price">4,00 €</div></div>
+      <div class="menu-item" data-cat="special"><div class="menu-item-info"><h4>Euphoria Royal</h4><p>Šampanské, zlaté vločky, jahoda, elderflower</p></div><div class="menu-item-price">14,00 €</div></div>
+      <div class="menu-item" data-cat="special"><div class="menu-item-info"><h4>Smoky Old Fashioned</h4><p>Bourbon, údený céder, pomarančová esencia, cherry</p></div><div class="menu-item-price">12,00 €</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== GALLERY ========== -->
+<section id="gallery">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>Galéria</h2>
+      <p>Atmosféra, ktorú treba zažiť</p>
+    </div>
+    <div class="gallery-grid reveal" id="galleryGrid">
+      <div class="gallery-item" data-title="Interiér hlavnej sály" data-index="0">
+        <div class="gallery-placeholder"><i class="fas fa-couch"></i><span>Interiér</span></div>
+        <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+      </div>
+      <div class="gallery-item" data-title="VIP zóna" data-index="1">
+        <div class="gallery-placeholder"><i class="fas fa-crown"></i><span>VIP zóna</span></div>
+        <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+      </div>
+      <div class="gallery-item" data-title="Barový pult" data-index="2">
+        <div class="gallery-placeholder"><i class="fas fa-glass-martini-alt"></i><span>Bar</span></div>
+        <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+      </div>
+      <div class="gallery-item" data-title="DJ stage" data-index="3">
+        <div class="gallery-placeholder"><i class="fas fa-music"></i><span>DJ Stage</span></div>
+        <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+      </div>
+      <div class="gallery-item" data-title="Koktailové umenie" data-index="4">
+        <div class="gallery-placeholder"><i class="fas fa-cocktail"></i><span>Koktaily</span></div>
+        <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+      </div>
+      <div class="gallery-item" data-title="Nočná atmosféra" data-index="5">
+        <div class="gallery-placeholder"><i class="fas fa-moon"></i><span>Atmosféra</span></div>
+        <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+      </div>
+      <div class="gallery-item" data-title="Eventy a akcie" data-index="6">
+        <div class="gallery-placeholder"><i class="fas fa-glass-cheers"></i><span>Eventy</span></div>
+        <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+      </div>
+      <div class="gallery-item" data-title="Exteriér" data-index="7">
+        <div class="gallery-placeholder"><i class="fas fa-building"></i><span>Exteriér</span></div>
+        <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Zavrieť">&times;</button>
+  <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Predchádzajúca"><i class="fas fa-chevron-left"></i></button>
+  <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Nasledujúca"><i class="fas fa-chevron-right"></i></button>
+  <div class="lightbox-content">
+    <p id="lightboxText">Fotografia</p>
+    <span class="lightbox-counter" id="lightboxCounter">1 / 8</span>
+  </div>
+</div>
+
+<!-- ========== EVENTS ========== -->
+<section id="events">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>Program & Eventy</h2>
+      <p>Nadchádzajúce tematické večery a špeciálne akcie</p>
+    </div>
+    <div class="events-grid reveal">
+      <div class="event-card">
+        <div class="event-image">
+          <i class="fas fa-glass-cheers"></i>
+          <div class="event-date-badge"><span class="day">22</span><span class="month">Mar</span></div>
+        </div>
+        <div class="event-info">
+          <h3>Neon Nights — UV Party</h3>
+          <p>Žiarivý večer pod UV svetlami. Fluorescenčné koktaily, LED show a naše dievčatá v špeciálnom programe. Dress code: biela farba!</p>
+          <div class="event-countdown" data-date="2026-03-22T21:00:00">Začína o <span class="countdown-value"></span></div>
+          <div class="event-meta">
+            <span><i class="far fa-clock"></i> 21:00 – 05:00</span>
+            <span><i class="fas fa-ticket-alt"></i> Vstup voľný</span>
+          </div>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-image">
+          <i class="fas fa-crown"></i>
+          <div class="event-date-badge"><span class="day">05</span><span class="month">Apr</span></div>
+        </div>
+        <div class="event-info">
+          <h3>Gold & Glamour VIP Night</h3>
+          <p>Luxusný večer v zlatom štýle. Prémiové šampanské, exkluzívny program a VIP servis na najvyššej úrovni.</p>
+          <div class="event-countdown" data-date="2026-04-05T20:00:00">Začína o <span class="countdown-value"></span></div>
+          <div class="event-meta">
+            <span><i class="far fa-clock"></i> 20:00 – 04:00</span>
+            <span><i class="fas fa-ticket-alt"></i> Rezervácia nutná</span>
+          </div>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-image">
+          <i class="fas fa-heart"></i>
+          <div class="event-date-badge"><span class="day">19</span><span class="month">Apr</span></div>
+        </div>
+        <div class="event-info">
+          <h3>Rozlúčka so slobodou — špeciál</h3>
+          <p>Plánujete rozlúčku so slobodou? Pripravíme pre vás nezabudnuteľný večer s VIP programom, šampanským a prekvapeniami.</p>
+          <div class="event-countdown" data-date="2026-04-19T21:00:00">Začína o <span class="countdown-value"></span></div>
+          <div class="event-meta">
+            <span><i class="far fa-clock"></i> 21:00 – 05:00</span>
+            <span><i class="fas fa-ticket-alt"></i> Na objednávku</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="events-more reveal">
+      <a href="#" class="btn-secondary" onclick="event.preventDefault();">Zobraziť všetky eventy</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== RESERVATION ========== -->
+<section id="reservation">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>Online rezervácia</h2>
+      <p>Zarezervujte si návštevu alebo VIP izbu diskrétne a jednoducho</p>
+    </div>
+    <div class="reservation-wrapper reveal">
+      <form id="reservationForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">Meno a priezvisko *</label>
+            <input type="text" id="fname" name="name" placeholder="Ján Novák" required>
+            <span class="form-error" id="fnameError">Prosím zadajte meno</span>
+          </div>
+          <div class="form-group">
+            <label for="phone">Telefón *</label>
+            <input type="tel" id="phone" name="phone" placeholder="+421 9XX XXX XXX" required>
+            <span class="form-error" id="phoneError">Zadajte číslo vo formáte +421 XXX XXX XXX</span>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" placeholder="vas@email.com" required>
+            <span class="form-error" id="emailError">Prosím zadajte platný email</span>
+          </div>
+          <div class="form-group">
+            <label for="guests">Počet osôb *</label>
+            <select id="guests" name="guests" required>
+              <option value="">Vyberte...</option>
+              <option value="1">1 osoba</option>
+              <option value="2">2 osoby</option>
+              <option value="3">3 osoby</option>
+              <option value="4">4 osoby</option>
+              <option value="5">5 osôb</option>
+              <option value="6">6 osôb</option>
+              <option value="7">7 osôb</option>
+              <option value="8">8 osôb</option>
+              <option value="9">9 osôb</option>
+              <option value="10">10 osôb</option>
+              <option value="12">12 osôb</option>
+              <option value="15">15 osôb</option>
+              <option value="20">20 osôb</option>
+            </select>
+            <span class="form-error" id="guestsError">Prosím vyberte počet osôb</span>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="date">Dátum návštevy *</label>
+            <input type="date" id="date" name="date" required>
+            <span class="form-error" id="dateError">Prosím vyberte dátum</span>
+          </div>
+          <div class="form-group">
+            <label for="time">Čas príchodu *</label>
+            <select id="time" name="time" required>
+              <option value="">Vyberte...</option>
+              <option value="19:00">19:00</option><option value="19:30">19:30</option>
+              <option value="20:00">20:00</option><option value="20:30">20:30</option>
+              <option value="21:00" selected>21:00</option><option value="21:30">21:30</option>
+              <option value="22:00">22:00</option><option value="22:30">22:30</option>
+              <option value="23:00">23:00</option><option value="23:30">23:30</option>
+              <option value="00:00">00:00</option><option value="00:30">00:30</option>
+              <option value="01:00">01:00</option><option value="02:00">02:00</option>
+              <option value="03:00">03:00</option><option value="04:00">04:00</option>
+            </select>
+            <span class="form-error" id="timeError">Prosím vyberte čas</span>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group full">
+            <label for="type">Typ rezervácie *</label>
+            <select id="type" name="type" required>
+              <option value="">Vyberte typ...</option>
+              <option value="bezna">Bežná návšteva</option>
+              <option value="vip">VIP izba s jacuzzi</option>
+              <option value="vip-separe">VIP separé</option>
+              <option value="rozlucka">Rozlúčka so slobodou</option>
+              <option value="narodeniny">Narodeninová oslava</option>
+              <option value="firemna">Firemná / súkromná akcia</option>
+            </select>
+            <span class="form-error" id="typeError">Prosím vyberte typ rezervácie</span>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group full">
+            <label for="notes">Špeciálne požiadavky</label>
+            <textarea id="notes" name="notes" placeholder="Torta, dekorácie, špeciálne nápoje, alergie..."></textarea>
+          </div>
+        </div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="gdpr" required>
+          <label for="gdpr">Súhlasím so <a href="#" onclick="event.preventDefault();">spracovaním osobných údajov</a> v súlade s GDPR. *</label>
+        </div>
+        <div class="form-submit">
+          <button type="submit" class="btn-primary" id="submitBtn">Odoslať rezerváciu</button>
+        </div>
+      </form>
+      <div class="form-success" id="formSuccess">
+        <i class="fas fa-check-circle"></i>
+        <h3>Rezervácia odoslaná!</h3>
+        <p>Ďakujeme za vašu rezerváciu. Potvrdenie vám zašleme na email.<br>V prípade otázok nás kontaktujte na <strong>+421 950 480 799</strong>.</p>
+      </div>
+      <div class="form-error-msg" id="formError" style="display:none;">
+        <i class="fas fa-exclamation-circle" style="font-size:2rem;color:var(--crimson);margin-bottom:1rem;"></i>
+        <p style="color:var(--light-gray);">Nastala chyba pri odosielaní. Skúste to znova alebo nás kontaktujte telefonicky.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== JOBS ========== -->
+<section id="jobs">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>Kariéra</h2>
+      <p>Pridaj sa do nášho tímu</p>
+    </div>
+    <div class="jobs-grid reveal">
+      <div class="job-card">
+        <h3>Spoločníčka</h3>
+        <span class="job-type">Plný úväzok / Brigáda</span>
+        <p>Do nášho tímu prijímame nové dievčatá. Ak máš rada luxus a zábavu, neváhaj a ozvi sa nám. Ponúkame priateľskú atmosféru, stabilné zázemie, nástupný bonus, ubytovanie zdarma a bohaté finančné ohodnotenie. Minimálny vek: 18 rokov.</p>
+        <a href="tel:+421950480799" class="btn-secondary" style="font-size:0.8rem; padding:0.6rem 1.2rem;">Zavolať nám</a>
+      </div>
+      <div class="job-card">
+        <h3>Barman / Barmanka</h3>
+        <span class="job-type">Plný úväzok / Brigáda</span>
+        <p>Hľadáme skúseného barmana / barmanku s príjemným vystupovaním. Práca v dynamickom prostredí nočného klubu.</p>
+        <a href="mailto:euphorianightclub11@gmail.com" class="btn-secondary" style="font-size:0.8rem; padding:0.6rem 1.2rem;">Napísať email</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>Kontakt</h2>
+      <p>Nájdite nás v srdci Šamorína</p>
+    </div>
+    <div class="contact-grid reveal">
+      <div>
+        <ul class="contact-info-list">
+          <li class="contact-info-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div><h4>Adresa</h4><p>Bratislavská 11, 931 01 Šamorín</p></div>
+          </li>
+          <li class="contact-info-item">
+            <i class="fas fa-clock"></i>
+            <div><h4>Otváracia doba</h4><p>Pondelok – Nedeľa: 19:00 – 06:00</p></div>
+          </li>
+          <li class="contact-info-item">
+            <i class="fas fa-phone-alt"></i>
+            <div><h4>Telefón</h4><a href="tel:+421950480799">+421 950 480 799</a></div>
+          </li>
+          <li class="contact-info-item">
+            <i class="fas fa-envelope"></i>
+            <div><h4>Email</h4><a href="mailto:euphorianightclub11@gmail.com">euphorianightclub11@gmail.com</a></div>
+          </li>
+        </ul>
+        <div class="social-links">
+          <!-- TODO: Doplniť skutočné URL sociálnych sietí -->
+          <a href="https://facebook.com/euphorianightclub" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://instagram.com/euphoria_nightclub_samorin" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <!-- <a href="#" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="TikTok"><i class="fab fa-tiktok"></i></a> -->
+        </div>
+      </div>
+      <div class="contact-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2690.5!2d17.3114!3d48.0257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476c8f3c6d7e1e1d%3A0x0!2sBratislavsk%C3%A1%2011%2C%20%C5%A0amor%C3%ADn!5e0!3m2!1ssk!2ssk!4v1" allowfullscreen loading="lazy" title="Mapa - Euphoria Nightclub"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">EUPHORIA <span>NIGHTCLUB</span></a>
+      <p>Luxusný nočný bar v Šamoríne. Okúzľujúce spoločníčky, prémiové nápoje, VIP izby s jacuzzi a diskrétna atmosféra.</p>
+      <div class="social-links" style="margin-top:1.5rem;">
+        <a href="https://facebook.com/euphorianightclub" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com/euphoria_nightclub_samorin" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Navigácia</h4>
+      <ul><li><a href="#about">O nás</a></li><li><a href="#menu">Nápojový lístok</a></li><li><a href="#gallery">Galéria</a></li><li><a href="#events">Program</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <h4>Služby</h4>
+      <ul><li><a href="#reservation">Rezervácia</a></li><li><a href="#events">Eventy</a></li><li><a href="#jobs">Kariéra</a></li><li><a href="#contact">Kontakt</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <h4>Kontakt</h4>
+      <ul>
+        <li><a href="tel:+421950480799">+421 950 480 799</a></li>
+        <li><a href="mailto:euphorianightclub11@gmail.com">euphorianightclub11@gmail.com</a></li>
+        <li>Bratislavská 11</li>
+        <li>931 01 Šamorín</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Euphoria Nightclub s.r.o. Všetky práva vyhradené.</p>
+    <p style="display:flex;align-items:center;gap:8px;">Webstránku vytvorila firma <a href="https://vassweb.sk" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;"><strong style="color:var(--gold);">VassWeb</strong></a></p>
+    <p><a href="#" onclick="event.preventDefault();">Ochrana osobných údajov (GDPR)</a></p>
+  </div>
+</footer>
+
+<!-- ========== COOKIE BANNER ========== -->
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie consent">
+  <div class="cookie-text">
+    Táto stránka používa súbory cookies na zlepšenie vášho zážitku. Pokračovaním v prehliadaní súhlasíte s ich používaním.
+    <a href="#" onclick="event.preventDefault();">Viac informácií</a>
+  </div>
+  <div class="cookie-buttons">
+    <button class="cookie-btn cookie-accept" id="cookieAccept">Súhlasím</button>
+    <button class="cookie-btn cookie-decline" id="cookieDecline">Odmietnuť</button>
+  </div>
+</div>
+
+<!-- ========== THEME SWITCHER ========== -->
+<div class="theme-switcher" id="themeSwitcher">
+  <button class="theme-toggle" id="themeToggle" aria-label="Zmeniť tému">
+    <i class="fas fa-palette"></i>
+  </button>
+  <div class="theme-dropdown" id="themeDropdown">
+    <button class="theme-option" data-theme="gold"><span class="theme-dot" style="background:#d4af37;"></span>Gold & Black</button>
+    <button class="theme-option" data-theme="neon"><span class="theme-dot" style="background:#9b59b6;"></span>Neon Purple</button>
+    <button class="theme-option" data-theme="ice"><span class="theme-dot" style="background:#00d4ff;"></span>Ice Blue</button>
+    <button class="theme-option" data-theme="crimson"><span class="theme-dot" style="background:#dc143c;"></span>Crimson Red</button>
+    <button class="theme-option" data-theme="emerald"><span class="theme-dot" style="background:#00c853;"></span>Emerald Green</button>
+  </div>
+</div>
+
+<!-- ========== BACK TO TOP ========== -->
+<button class="back-to-top" id="backToTop" aria-label="Späť nahor">
+  <i class="fas fa-chevron-up"></i>
+</button>
+
+<!-- ========== MUSIC TOGGLE ========== -->
+<button class="music-toggle" id="musicToggle" aria-label="Hudba">
+  <i class="fas fa-music"></i>
+</button>
+
+<!-- Script -->
+<script>
+/* ========================================
+   Euphoria Nightclub - Main JavaScript
+   ======================================== */
+
+// ── 1. Console Protection ──────────────────────────────────────────
+console.log(
+  '%c\u00a9 Euphoria Nightclub. All rights reserved.',
+  'color: #d4af37; font-size: 14px; font-weight: bold;'
+);
+
+// Block F12, Ctrl+U, Ctrl+Shift+I/J/C (keep Ctrl+A, Ctrl+C, Ctrl+S unblocked)
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'F12') {
+    e.preventDefault();
+    return false;
+  }
+  if (e.ctrlKey && e.key === 'u') {
+    e.preventDefault();
+    return false;
+  }
+  if (e.ctrlKey && e.shiftKey && ['I', 'i', 'J', 'j', 'C', 'c'].includes(e.key)) {
+    e.preventDefault();
+    return false;
+  }
+});
+
+// Block right-click context menu
+document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+// Prevent drag on images and links
+document.addEventListener('dragstart', (e) => e.preventDefault());
+
+
+// ── 2. Loading Screen ──────────────────────────────────────────────
+window.addEventListener('load', () => {
+  const loadingScreen = document.querySelector('.loading-screen');
+  if (loadingScreen) {
+    setTimeout(() => {
+      loadingScreen.style.opacity = '0';
+      loadingScreen.style.transition = 'opacity 0.5s ease';
+      setTimeout(() => {
+        loadingScreen.style.display = 'none';
+      }, 500);
+    }, 1500);
+  }
+});
+
+
+// ── 3. Enhanced Particles System ───────────────────────────────────
+const createParticles = () => {
+  const container = document.querySelector('.particles');
+  if (!container) return;
+
+  const PARTICLE_COUNT = 50;
+  const colors = ['gold', 'crimson'];
+
+  for (let i = 0; i < PARTICLE_COUNT; i++) {
+    const particle = document.createElement('div');
+    particle.classList.add('particle');
+
+    // Alternate between gold and crimson via inline class
+    const colorClass = colors[i % 2];
+    particle.classList.add(`particle-${colorClass}`);
+
+    // Random size between 2-4px
+    const size = Math.random() * 2 + 2;
+    particle.style.width = `${size}px`;
+    particle.style.height = `${size}px`;
+
+    // Random position
+    particle.style.left = `${Math.random() * 100}%`;
+    particle.style.top = `${Math.random() * 100}%`;
+
+    // Random animation delay and duration
+    particle.style.animationDelay = `${Math.random() * 5}s`;
+    particle.style.animationDuration = `${Math.random() * 10 + 5}s`;
+
+    // Use CSS variable colors via inline style
+    particle.style.backgroundColor =
+      colorClass === 'gold' ? 'var(--gold)' : 'var(--crimson)';
+
+    container.appendChild(particle);
+  }
+};
+createParticles();
+
+
+// ── 4. Parallax Effect ─────────────────────────────────────────────
+const heroBg = document.querySelector('.hero-bg');
+
+const handleParallax = () => {
+  if (heroBg) {
+    const offset = window.scrollY * 0.3;
+    heroBg.style.transform = `translateY(${offset}px)`;
+  }
+};
+
+
+// ── 5. Navbar Scroll ───────────────────────────────────────────────
+const navbar = document.getElementById('navbar');
+
+const handleNavbarScroll = () => {
+  if (navbar) {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+  }
+};
+
+
+// ── Combined Scroll Handler ────────────────────────────────────────
+window.addEventListener('scroll', () => {
+  handleParallax();
+  handleNavbarScroll();
+  handleBackToTop();
+});
+
+
+// ── 6. Mobile Menu ─────────────────────────────────────────────────
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+
+const toggleMobile = () => {
+  if (!hamburger || !navLinks) return;
+  hamburger.classList.toggle('active');
+  navLinks.classList.toggle('active');
+  document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+};
+
+const closeMobile = () => {
+  if (!hamburger || !navLinks) return;
+  hamburger.classList.remove('active');
+  navLinks.classList.remove('active');
+  document.body.style.overflow = '';
+};
+
+if (hamburger) {
+  hamburger.addEventListener('click', toggleMobile);
+}
+
+// Close mobile menu when a nav link is clicked
+document.querySelectorAll('.nav-links a').forEach((link) => {
+  link.addEventListener('click', closeMobile);
+});
+
+
+// ── 7. Menu Filter ─────────────────────────────────────────────────
+const filterTabs = document.querySelectorAll('.menu-tab');
+const menuItems = document.querySelectorAll('.menu-item');
+
+filterTabs.forEach((tab) => {
+  tab.addEventListener('click', () => {
+    // Update active tab
+    filterTabs.forEach((t) => t.classList.remove('active'));
+    tab.classList.add('active');
+
+    const category = tab.dataset.cat;
+
+    menuItems.forEach((item) => {
+      if (category === 'all' || item.dataset.cat === category) {
+        item.style.display = '';
+        item.style.opacity = '1';
+      } else {
+        item.style.opacity = '0';
+        setTimeout(() => {
+          item.style.display = 'none';
+        }, 300);
+      }
+    });
+  });
+});
+
+
+// ── 8. Gallery Lightbox with Navigation ────────────────────────────
+const galleryItems = document.querySelectorAll('.gallery-item');
+const lightbox = document.querySelector('.lightbox');
+const lightboxText = document.getElementById('lightboxText');
+const lightboxCounter = document.getElementById('lightboxCounter');
+let currentGalleryIndex = 0;
+const galleryArray = Array.from(galleryItems);
+
+const updateLightboxContent = (index) => {
+  const item = galleryArray[index];
+  const title = item?.dataset?.title || 'Fotografia';
+  if (lightboxText) lightboxText.textContent = title + ' — fotografia bude doplnená';
+  if (lightboxCounter) lightboxCounter.textContent = `${index + 1} / ${galleryArray.length}`;
+};
+
+const openLightbox = (index) => {
+  if (!lightbox) return;
+  currentGalleryIndex = index;
+  updateLightboxContent(index);
+  lightbox.classList.add('active');
+  document.body.style.overflow = 'hidden';
+};
+
+const closeLightbox = () => {
+  if (!lightbox) return;
+  lightbox.classList.remove('active');
+  document.body.style.overflow = '';
+};
+
+const navigateLightbox = (direction) => {
+  currentGalleryIndex += direction;
+  if (currentGalleryIndex < 0) currentGalleryIndex = galleryArray.length - 1;
+  if (currentGalleryIndex >= galleryArray.length) currentGalleryIndex = 0;
+
+  updateLightboxContent(currentGalleryIndex);
+};
+
+// Attach click handlers to gallery items
+galleryArray.forEach((item, index) => {
+  item.addEventListener('click', () => openLightbox(index));
+});
+
+// Lightbox close button and overlay click
+if (lightbox) {
+  const closeBtn = lightbox.querySelector('.lightbox-close');
+  if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  // Prev / Next buttons
+  const prevBtn = lightbox.querySelector('.lightbox-prev');
+  const nextBtn = lightbox.querySelector('.lightbox-next');
+  if (prevBtn) prevBtn.addEventListener('click', () => navigateLightbox(-1));
+  if (nextBtn) nextBtn.addEventListener('click', () => navigateLightbox(1));
+}
+
+// Keyboard navigation for lightbox
+document.addEventListener('keydown', (e) => {
+  if (!lightbox || !lightbox.classList.contains('active')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') navigateLightbox(-1);
+  if (e.key === 'ArrowRight') navigateLightbox(1);
+});
+
+
+// ── 9. Reservation Form with Formspree ─────────────────────────────
+const reservationForm = document.getElementById('reservationForm');
+
+// Phone pattern: Slovak format +421 XXX XXX XXX
+const phoneRegex = /^\+?421\s?\d{3}\s?\d{3}\s?\d{3}$/;
+
+if (reservationForm) {
+  // Set min date to today
+  const dateField = document.getElementById('date');
+  if (dateField) dateField.min = new Date().toISOString().split('T')[0];
+
+  reservationForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Reset errors
+    document.querySelectorAll('.form-error').forEach(el => el.style.display = 'none');
+    let valid = true;
+
+    // Validate required fields
+    const fields = ['fname', 'phone', 'email', 'guests', 'date', 'time', 'type'];
+    fields.forEach(f => {
+      const el = document.getElementById(f);
+      if (el && !el.value.trim()) {
+        const err = document.getElementById(f + 'Error');
+        if (err) err.style.display = 'block';
+        valid = false;
+      }
+    });
+
+    // Phone validation: Slovak format +421 XXX XXX XXX
+    const phoneField = document.getElementById('phone');
+    if (phoneField && phoneField.value.trim() && !phoneRegex.test(phoneField.value.trim())) {
+      const err = document.getElementById('phoneError');
+      if (err) err.style.display = 'block';
+      valid = false;
+    }
+
+    // Email validation
+    const emailField = document.getElementById('email');
+    if (emailField && emailField.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value)) {
+      const err = document.getElementById('emailError');
+      if (err) err.style.display = 'block';
+      valid = false;
+    }
+
+    // GDPR checkbox
+    if (!document.getElementById('gdpr')?.checked) {
+      valid = false;
+      alert('Prosím potvrďte súhlas so spracovaním osobných údajov.');
+    }
+
+    if (!valid) return;
+
+    // Submit to Formspree
+    // TODO: Nahraďte YOUR_FORM_ID skutočným Formspree ID po registrácii na formspree.io
+    const formData = new FormData(reservationForm);
+    const submitBtn = document.getElementById('submitBtn');
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Odosielam...'; }
+
+    try {
+      const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+        method: 'POST',
+        body: formData,
+        headers: { Accept: 'application/json' },
+      });
+
+      if (response.ok) {
+        reservationForm.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      } else {
+        document.getElementById('formError').style.display = 'block';
+      }
+    } catch {
+      document.getElementById('formError').style.display = 'block';
+    } finally {
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Odoslať rezerváciu'; }
+    }
+  });
+}
+
+
+// ── 10. Theme Switcher ─────────────────────────────────────────────
+const themeBtn = document.querySelector('.theme-toggle');
+const themeDropdown = document.querySelector('.theme-dropdown');
+const themeOptions = document.querySelectorAll('.theme-option');
+const THEMES = ['gold', 'neon', 'ice', 'crimson', 'emerald'];
+
+// Restore saved theme on page load
+const savedTheme = localStorage.getItem('euphoria-theme');
+if (savedTheme && THEMES.includes(savedTheme)) {
+  document.documentElement.setAttribute('data-theme', savedTheme);
+}
+
+// Toggle dropdown visibility
+if (themeBtn && themeDropdown) {
+  themeBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    themeDropdown.classList.toggle('active');
+  });
+}
+
+// Select a theme
+themeOptions.forEach((option) => {
+  option.addEventListener('click', () => {
+    const theme = option.dataset.theme;
+    if (theme && THEMES.includes(theme)) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('euphoria-theme', theme);
+    }
+    if (themeDropdown) themeDropdown.classList.remove('active');
+  });
+});
+
+// Close dropdown on outside click
+document.addEventListener('click', () => {
+  if (themeDropdown) themeDropdown.classList.remove('active');
+});
+
+
+// ── 11. Back to Top Button ─────────────────────────────────────────
+const backToTopBtn = document.querySelector('.back-to-top');
+
+const handleBackToTop = () => {
+  if (backToTopBtn) {
+    backToTopBtn.classList.toggle('visible', window.scrollY > 500);
+  }
+};
+
+if (backToTopBtn) {
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+
+// ── 12. Music Toggle (UI only) ────────────────────────────────────
+const musicBtn = document.querySelector('.music-toggle');
+const musicIcon = document.querySelector('.music-icon');
+
+if (musicBtn) {
+  musicBtn.addEventListener('click', () => {
+    musicBtn.classList.toggle('active');
+    if (musicIcon) {
+      musicIcon.style.display = musicBtn.classList.contains('active') ? 'inline-block' : 'none';
+    }
+  });
+}
+
+
+// ── 13. Cookie Banner ──────────────────────────────────────────────
+const cookieBanner = document.querySelector('.cookie-banner');
+
+const acceptCookies = () => {
+  localStorage.setItem('euphoria-cookies', 'accepted');
+  if (cookieBanner) cookieBanner.style.display = 'none';
+};
+
+const declineCookies = () => {
+  localStorage.setItem('euphoria-cookies', 'declined');
+  if (cookieBanner) cookieBanner.style.display = 'none';
+};
+
+// Show cookie banner after 2s if no preference stored
+if (!localStorage.getItem('euphoria-cookies') && cookieBanner) {
+  setTimeout(() => {
+    cookieBanner.style.display = 'flex';
+  }, 2000);
+}
+
+// Attach cookie button handlers
+const cookieAcceptBtn = document.querySelector('.cookie-accept');
+const cookieDeclineBtn = document.querySelector('.cookie-decline');
+if (cookieAcceptBtn) cookieAcceptBtn.addEventListener('click', acceptCookies);
+if (cookieDeclineBtn) cookieDeclineBtn.addEventListener('click', declineCookies);
+
+
+// ── 14. Scroll Reveal (IntersectionObserver) ───────────────────────
+const revealElements = document.querySelectorAll('.reveal');
+
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  },
+  { threshold: 0.1 }
+);
+
+revealElements.forEach((el) => revealObserver.observe(el));
+
+
+// ── 15. Event Countdown Timer ──────────────────────────────────────
+const countdownElements = document.querySelectorAll('.event-countdown');
+
+const updateCountdowns = () => {
+  countdownElements.forEach((el) => {
+    const targetDate = new Date(el.dataset.date);
+    const now = new Date();
+    const diff = targetDate - now;
+
+    if (diff <= 0) {
+      el.textContent = 'Event has started!';
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+
+    el.textContent = `${days}d ${hours}h ${minutes}m`;
+  });
+};
+
+if (countdownElements.length > 0) {
+  updateCountdowns();
+  setInterval(updateCountdowns, 60000);
+}
+
+
+// ── 16. Set Date Input Minimum to Today ────────────────────────────
+const dateInput = document.getElementById('date');
+if (dateInput) {
+  const today = new Date().toISOString().split('T')[0];
+  dateInput.setAttribute('min', today);
+}
+
+
+// ── 17. Age Gate (Session Storage) ─────────────────────────────────
+const ageGate = document.querySelector('.age-gate');
+const ageYesBtn = document.getElementById('ageYes');
+const ageNoBtn = document.getElementById('ageNo');
+
+// If already confirmed this session, hide immediately
+if (sessionStorage.getItem('euphoria-age-verified') && ageGate) {
+  ageGate.style.display = 'none';
+}
+
+if (ageYesBtn) {
+  ageYesBtn.addEventListener('click', () => {
+    sessionStorage.setItem('euphoria-age-verified', 'true');
+    if (ageGate) {
+      ageGate.style.opacity = '0';
+      ageGate.style.transition = 'opacity 0.5s ease';
+      setTimeout(() => {
+        ageGate.style.display = 'none';
+      }, 500);
+    }
+  });
+}
+
+if (ageNoBtn) {
+  ageNoBtn.addEventListener('click', () => {
+    window.location.href = 'https://google.com';
+  });
+}
+
+
+
+// ===== PRESENTATION LOGIC =====
+(function() {
+  const overlay = document.getElementById('presOverlay');
+  const nav = document.getElementById('presNav');
+  const cta = document.getElementById('presCta');
+  const dots = document.querySelectorAll('.pres-dot');
+  const slides = overlay.querySelectorAll('.pres-slide');
+
+  // Hide loading screen and age gate during presentation
+  const loadingScreen = document.querySelector('.loading-screen');
+  const ageGate = document.querySelector('.age-gate');
+  if (loadingScreen) loadingScreen.style.display = 'none';
+  if (ageGate) ageGate.style.display = 'none';
+
+  // Update active dot on scroll
+  overlay.addEventListener('scroll', function() {
+    const scrollPos = overlay.scrollTop;
+    const slideHeight = window.innerHeight;
+    const current = Math.round(scrollPos / slideHeight);
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  });
+
+  // Click dot to scroll
+  dots.forEach(d => {
+    d.addEventListener('click', function() {
+      const idx = parseInt(this.dataset.slide);
+      slides[idx].scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  // CTA button — reveal website
+  if (cta) {
+    cta.addEventListener('click', function() {
+      overlay.classList.add('hidden');
+      nav.classList.add('hidden');
+
+      // Re-enable age gate and loading screen for website
+      if (ageGate) {
+        if (!sessionStorage.getItem('euphoria-age-verified')) {
+          ageGate.style.display = '';
+          ageGate.style.opacity = '1';
+        }
+      }
+      if (loadingScreen) {
+        loadingScreen.style.display = '';
+        loadingScreen.style.opacity = '1';
+        setTimeout(function() {
+          loadingScreen.style.opacity = '0';
+          loadingScreen.style.transition = 'opacity 0.5s ease';
+          setTimeout(function() {
+            loadingScreen.style.display = 'none';
+          }, 500);
+        }, 1200);
+      }
+
+      // Remove overlay from DOM after transition
+      setTimeout(function() {
+        overlay.remove();
+        nav.remove();
+      }, 1000);
+    });
+  }
+})();
+
+</script>
+
+</body>
+</html>

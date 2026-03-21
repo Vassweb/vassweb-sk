@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Euphoria Nightclub — Šamorín</title>
+<meta name="description" content="Euphoria Nightclub — prémiový nočný klub v Šamoríne. Eventy, DJ, VIP zóna, koktaily. Zažite noc plnú eufórie.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════ RESET & BASE ═══════════════ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #050505;
+  color: #e8e0d0;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #050505; }
+::-webkit-scrollbar-thumb { background: rgba(200, 40, 40, 0.4); border-radius: 3px; }
+
+/* ═══════════════ VARIABLES ═══════════════ */
+:root {
+  --accent: #d4a843;
+  --accent2: #e8c06a;
+  --accent-glow: rgba(212, 168, 67, 0.12);
+  --red: #c82828;
+  --red2: #e53935;
+  --red-glow: rgba(200, 40, 40, 0.15);
+  --gold: #d4a843;
+  --bg: #050505;
+  --bg2: #0a0908;
+  --bg3: #111110;
+  --text: #f0ead0;
+  --text-soft: rgba(240, 234, 208, 0.75);
+  --text-muted: rgba(240, 234, 208, 0.4);
+  --border: rgba(212, 168, 67, 0.12);
+  --heading: 'Playfair Display', Georgia, serif;
+  --script: 'Great Vibes', cursive;
+}
+
+/* ═══════════════ ANIMATED BG ═══════════════ */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes pulse { 0%,100% { opacity: 0.4; } 50% { opacity: 0.8; } }
+@keyframes neonPulse { 0%,100% { text-shadow: 0 0 20px rgba(212,168,67,0.5), 0 0 40px rgba(200,40,40,0.2); } 50% { text-shadow: 0 0 30px rgba(212,168,67,0.8), 0 0 60px rgba(200,40,40,0.4), 0 0 100px rgba(212,168,67,0.15); } }
+.script-text { font-family: var(--script); font-style: normal; }
+.neon-text { animation: neonPulse 3s ease-in-out infinite; }
+
+/* ═══════════════ NAV ═══════════════ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 16px 40px;
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(5,5,5,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: all 0.4s ease;
+}
+nav.scrolled {
+  padding: 12px 40px;
+  background: rgba(5,5,5,0.95);
+}
+.nav-logo {
+  font-family: var(--heading);
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+.nav-logo span { color: var(--text); font-weight: 400; }
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a:hover { color: var(--accent); }
+.nav-links a::after {
+  content: '';
+  position: absolute; bottom: -4px; left: 0; right: 0;
+  height: 1px; background: var(--accent);
+  transform: scaleX(0); transition: transform 0.3s;
+}
+.nav-links a:hover::after { transform: scaleX(1); }
+.nav-cta {
+  padding: 10px 24px !important;
+  background: linear-gradient(135deg, var(--red), var(--red2)) !important;
+  color: #fff !important;
+  border-radius: 6px;
+  font-weight: 600 !important;
+  letter-spacing: 0.08em !important;
+}
+.nav-cta::after { display: none !important; }
+.mobile-menu-btn {
+  display: none;
+  background: none; border: none; color: var(--text); cursor: pointer;
+  font-size: 24px;
+}
+
+/* ═══════════════ HERO ═══════════════ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(200,40,40,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(212,168,67,0.1) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 80%, rgba(200,40,40,0.06) 0%, transparent 50%),
+    radial-gradient(circle at 70% 60%, rgba(212,168,67,0.06) 0%, transparent 40%),
+    linear-gradient(180deg, #050505 0%, #0a0908 50%, #050505 100%);
+  background-size: 200% 200%;
+  animation: gradientShift 15s ease infinite;
+}
+.hero-bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(200,40,40,0.012) 2px,
+    rgba(200,40,40,0.012) 4px
+  );
+  pointer-events: none;
+}
+.hero-particles {
+  position: absolute; inset: 0; pointer-events: none;
+}
+.hero-content {
+  position: relative; z-index: 2;
+  padding: 0 20px;
+  max-width: 800px;
+}
+.hero-badge {
+  display: inline-block;
+  padding: 6px 20px;
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 32px;
+  background: var(--accent-glow);
+}
+.hero h1 {
+  font-family: var(--heading);
+  font-size: clamp(48px, 8vw, 96px);
+  font-weight: 400;
+  line-height: 1.05;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+.hero h1 .glow {
+  background: linear-gradient(135deg, var(--accent), var(--accent2), #e9d5ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero p {
+  font-size: clamp(16px, 2vw, 20px);
+  color: var(--text-soft);
+  max-width: 560px;
+  margin: 0 auto 40px;
+  font-weight: 300;
+  line-height: 1.7;
+}
+.hero-buttons {
+  display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+}
+.btn-primary {
+  padding: 14px 36px;
+  background: linear-gradient(135deg, var(--red), var(--red2));
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(200,40,40,0.4);
+}
+.btn-outline {
+  padding: 14px 36px;
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.btn-outline:hover {
+  background: var(--accent-glow);
+  transform: translateY(-2px);
+}
+.hero-scroll {
+  position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+  color: var(--text-muted); font-size: 11px; letter-spacing: 0.2em;
+  text-transform: uppercase; text-align: center; z-index: 2;
+  animation: float 3s ease-in-out infinite;
+}
+.hero-scroll::after {
+  content: ''; display: block; width: 1px; height: 40px;
+  background: linear-gradient(180deg, var(--accent), transparent);
+  margin: 10px auto 0;
+}
+@keyframes float { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-8px); } }
+
+/* ═══════════════ SECTIONS ═══════════════ */
+section { padding: 120px 40px; position: relative; }
+.section-label {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 16px;
+}
+.section-title {
+  font-family: var(--heading);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 400;
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+.section-desc {
+  font-size: 16px; color: var(--text-soft); max-width: 600px;
+  line-height: 1.7; font-weight: 300;
+}
+.container { max-width: 1200px; margin: 0 auto; }
+
+/* ═══════════════ ABOUT ═══════════════ */
+#about { background: var(--bg2); }
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  margin-top: 60px;
+}
+.about-features {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px;
+}
+.about-feature {
+  padding: 24px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: all 0.3s;
+}
+.about-feature:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(200,40,40,0.1);
+}
+.about-feature .icon {
+  font-size: 28px; margin-bottom: 12px;
+}
+.about-feature h4 {
+  font-size: 14px; font-weight: 600; margin-bottom: 6px; color: var(--accent);
+}
+.about-feature p {
+  font-size: 13px; color: var(--text-muted); line-height: 1.6;
+}
+.about-image {
+  aspect-ratio: 4/5;
+  border-radius: 16px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--bg3), rgba(200,40,40,0.05));
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.about-image::before {
+  content: 'EUPHORIA';
+  font-family: var(--heading);
+  font-size: 64px;
+  font-weight: 700;
+  color: rgba(200,40,40,0.06);
+  letter-spacing: 0.1em;
+}
+
+/* ═══════════════ EVENTS ═══════════════ */
+#events { background: var(--bg); }
+.events-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 24px; margin-top: 60px;
+}
+.event-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+.event-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(200,40,40,0.12);
+}
+.event-image {
+  height: 200px;
+  background: linear-gradient(135deg, rgba(200,40,40,0.1), rgba(212,168,67,0.05));
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.event-image .date-badge {
+  position: absolute; top: 16px; right: 16px;
+  background: linear-gradient(135deg, var(--red), var(--red2));
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.2;
+}
+.event-image .date-badge .day { font-size: 22px; display: block; }
+.event-info { padding: 24px; }
+.event-tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--red-glow);
+  color: var(--red2);
+  margin-bottom: 10px;
+}
+.event-info h3 {
+  font-family: var(--heading);
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.event-info p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+.event-meta {
+  display: flex; gap: 16px; margin-top: 14px; padding-top: 14px;
+  border-top: 1px solid var(--border);
+  font-size: 12px; color: var(--text-muted);
+}
+.event-meta span { display: flex; align-items: center; gap: 6px; }
+
+/* ═══════════════ GALLERY ═══════════════ */
+#gallery { background: var(--bg2); }
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  gap: 12px;
+  margin-top: 60px;
+}
+.gallery-item {
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  aspect-ratio: 1;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.4s;
+  display: flex; align-items: center; justify-content: center;
+}
+.gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
+.gallery-item:hover {
+  border-color: var(--accent);
+  transform: scale(1.02);
+}
+.gallery-item::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(5,5,5,0.8));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.gallery-item:hover::after { opacity: 1; }
+.gallery-placeholder {
+  font-size: 32px; color: rgba(200,40,40,0.15);
+  font-family: var(--heading);
+  letter-spacing: 0.1em;
+}
+
+/* ═══════════════ MENU / DRINKS ═══════════════ */
+#menu { background: var(--bg); }
+.menu-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px; margin-top: 60px;
+}
+.menu-category {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 32px;
+  transition: all 0.3s;
+}
+.menu-category:hover {
+  border-color: var(--accent);
+}
+.menu-category .cat-icon { font-size: 32px; margin-bottom: 16px; }
+.menu-category h3 {
+  font-family: var(--heading);
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: var(--accent);
+}
+.menu-item {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(200,40,40,0.06);
+}
+.menu-item:last-child { border-bottom: none; }
+.menu-item .name { font-size: 14px; color: var(--text-soft); }
+.menu-item .price {
+  font-size: 14px; font-weight: 600; color: var(--accent);
+  white-space: nowrap;
+}
+
+/* ═══════════════ VIP ═══════════════ */
+#vip {
+  background: linear-gradient(180deg, var(--bg2), var(--bg));
+  text-align: center;
+}
+.vip-inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 80px 40px;
+  background: var(--bg2);
+  border: 1px solid var(--red);
+  border-radius: 20px;
+  margin-top: 60px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 60px rgba(200,40,40,0.08), inset 0 0 60px rgba(200,40,40,0.03);
+}
+.vip-inner::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(200,40,40,0.08), transparent 70%);
+}
+.vip-inner h3 {
+  font-family: var(--heading);
+  font-size: 36px;
+  font-weight: 400;
+  margin-bottom: 16px;
+  position: relative;
+}
+.vip-inner p {
+  font-size: 16px; color: var(--text-soft); max-width: 500px;
+  margin: 0 auto 32px; line-height: 1.7; position: relative;
+}
+.vip-perks {
+  display: flex; gap: 32px; justify-content: center; flex-wrap: wrap;
+  margin-bottom: 36px; position: relative;
+}
+.vip-perk {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 14px; color: var(--text-soft);
+}
+.vip-perk .check { color: var(--red2); font-size: 18px; }
+
+/* ═══════════════ RESERVATIONS ═══════════════ */
+#rezervacia { background: var(--bg); }
+.reservation-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;
+  margin-top: 60px;
+}
+.reservation-form {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 40px;
+}
+.form-group { margin-bottom: 20px; }
+.form-group label {
+  display: block;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--text-muted);
+  margin-bottom: 8px;
+}
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  border-color: var(--accent);
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.reservation-info h3 {
+  font-family: var(--heading); font-size: 28px; margin-bottom: 24px;
+}
+.info-block { margin-bottom: 24px; }
+.info-block h4 {
+  font-size: 13px; font-weight: 600; color: var(--accent);
+  letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;
+}
+.info-block p { font-size: 14px; color: var(--text-soft); line-height: 1.7; }
+
+/* ═══════════════ CONTACT ═══════════════ */
+#kontakt { background: var(--bg2); }
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 60px;
+}
+.contact-item {
+  display: flex; gap: 16px; margin-bottom: 28px;
+}
+.contact-icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: var(--red-glow);
+  border: 1px solid rgba(200,40,40,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+}
+.contact-item h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+.contact-item p { font-size: 14px; color: var(--text-soft); }
+.contact-item a { color: var(--accent); transition: color 0.3s; }
+.contact-item a:hover { color: var(--accent2); }
+.map-placeholder {
+  width: 100%; height: 100%; min-height: 300px;
+  border-radius: 16px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+
+/* ═══════════════ FOOTER ═══════════════ */
+footer {
+  padding: 60px 40px 32px;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+}
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px;
+  max-width: 1200px; margin: 0 auto 40px;
+}
+.footer-brand h3 {
+  font-family: var(--heading);
+  font-size: 20px;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+}
+.footer-brand p { font-size: 13px; color: var(--text-muted); line-height: 1.7; max-width: 280px; }
+.footer-col h4 {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px;
+}
+.footer-col a {
+  display: block; padding: 5px 0; font-size: 14px; color: var(--text-soft);
+  transition: color 0.3s;
+}
+.footer-col a:hover { color: var(--accent); }
+.footer-bottom {
+  text-align: center; padding-top: 32px;
+  border-top: 1px solid var(--border);
+  max-width: 1200px; margin: 0 auto;
+}
+.footer-bottom p { font-size: 12px; color: var(--text-muted); }
+.footer-bottom a { color: var(--accent); }
+
+/* ═══════════════ ANIMATIONS ═══════════════ */
+.fade-in {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ═══════════════ RESPONSIVE ═══════════════ */
+@media (max-width: 768px) {
+  section { padding: 80px 20px; }
+  nav { padding: 14px 20px; }
+  .nav-links { display: none; }
+  .mobile-menu-btn { display: block; }
+  .about-grid, .reservation-grid, .contact-grid, .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .events-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; }
+  .gallery-item:nth-child(1) { grid-column: span 2; }
+  .menu-grid { grid-template-columns: 1fr; }
+  .vip-perks { flex-direction: column; align-items: center; }
+  .form-row { grid-template-columns: 1fr; }
+  .hero-buttons { flex-direction: column; align-items: center; }
+}
+
+/* ═══════════════ MOBILE MENU ═══════════════ */
+.mobile-nav {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(5,5,5,0.98);
+  backdrop-filter: blur(20px);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 24px;
+  opacity: 0; pointer-events: none; transition: opacity 0.3s;
+}
+.mobile-nav.open { opacity: 1; pointer-events: all; }
+.mobile-nav a {
+  font-family: var(--heading);
+  font-size: 28px; color: var(--text-soft);
+  transition: color 0.3s;
+}
+.mobile-nav a:hover { color: var(--accent); }
+.mobile-nav-close {
+  position: absolute; top: 20px; right: 20px;
+  background: none; border: none; color: var(--text); cursor: pointer;
+  font-size: 32px;
+}
+
+/* ═══════════════ COOKIE / GDPR ═══════════════ */
+.cookie-bar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 300;
+  background: var(--bg3);
+  border-top: 1px solid var(--border);
+  padding: 16px 40px;
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 20px; flex-wrap: wrap;
+  transform: translateY(100%);
+  transition: transform 0.4s ease;
+}
+.cookie-bar.show { transform: translateY(0); }
+.cookie-bar p { font-size: 13px; color: var(--text-soft); flex: 1; }
+.cookie-bar button {
+  padding: 8px 20px; border-radius: 6px; cursor: pointer;
+  font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600;
+  border: none;
+}
+.cookie-accept { background: var(--accent); color: #050505; }
+.cookie-decline { background: transparent; color: var(--text-muted); border: 1px solid var(--border) !important; }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Euphoria <span>Nightclub</span></a>
+  <div class="nav-links">
+    <a href="#about">O nás</a>
+    <a href="#events">Eventy</a>
+    <a href="#gallery">Galéria</a>
+    <a href="#menu">Nápoje</a>
+    <a href="#vip">VIP</a>
+    <a href="#kontakt">Kontakt</a>
+    <a href="#rezervacia" class="nav-cta">Rezervácia</a>
+  </div>
+  <button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.add('open')">☰</button>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" onclick="this.parentElement.classList.remove('open')">✕</button>
+  <a href="#about" onclick="this.parentElement.classList.remove('open')">O nás</a>
+  <a href="#events" onclick="this.parentElement.classList.remove('open')">Eventy</a>
+  <a href="#gallery" onclick="this.parentElement.classList.remove('open')">Galéria</a>
+  <a href="#menu" onclick="this.parentElement.classList.remove('open')">Nápoje</a>
+  <a href="#vip" onclick="this.parentElement.classList.remove('open')">VIP</a>
+  <a href="#kontakt" onclick="this.parentElement.classList.remove('open')">Kontakt</a>
+  <a href="#rezervacia" onclick="this.parentElement.classList.remove('open')" style="color:var(--accent);">Rezervácia</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <canvas class="hero-particles" id="particles"></canvas>
+  <div class="hero-content">
+    <div class="hero-badge">✦ Šamorín · Est. 2026</div>
+    <h1 style="color:#f0ead0;">Vstúpte do sveta<br><span class="script-text glow neon-text" style="font-size:clamp(56px,10vw,120px);display:block;line-height:1.2;background:linear-gradient(135deg,var(--red),var(--gold),var(--red2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Eufórie</span></h1>
+    <p>Prémiový nočný klub v srdci Šamorína. Exkluzívne eventy, svetová hudba, signature koktaily a nezabudnuteľná atmosféra.</p>
+    <div class="hero-buttons">
+      <a href="#rezervacia" class="btn-primary">Rezervovať stôl →</a>
+      <a href="#events" class="btn-outline">Najbližšie eventy</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-label fade-in">O nás</div>
+    <div class="section-title fade-in">Kde sa rodí <span style="color:var(--accent)">eufória</span></div>
+    <div class="about-grid">
+      <div>
+        <p class="section-desc fade-in">Euphoria Nightclub prináša do Šamorína novú úroveň nočného života. Spojenie moderného dizajnu, špičkového zvuku a výnimočných eventov vytvára priestor, kde sa každý večer mení na zážitok.</p>
+        <div class="about-features">
+          <div class="about-feature fade-in">
+            <div class="icon">🎵</div>
+            <h4>Prémiový zvuk</h4>
+            <p>Profesionálny sound systém pre dokonalý hudobný zážitok</p>
+          </div>
+          <div class="about-feature fade-in">
+            <div class="icon">🍸</div>
+            <h4>Signature koktaily</h4>
+            <p>Autorské drinky od skúsených barmanov</p>
+          </div>
+          <div class="about-feature fade-in">
+            <div class="icon">✨</div>
+            <h4>VIP zóna</h4>
+            <p>Exkluzívny priestor s privátnym servisom</p>
+          </div>
+          <div class="about-feature fade-in">
+            <div class="icon">🎭</div>
+            <h4>Live eventy</h4>
+            <p>DJ sety, tematické párty a špeciálne vystúpenia</p>
+          </div>
+        </div>
+      </div>
+      <div class="about-image fade-in"></div>
+    </div>
+  </div>
+</section>
+
+<!-- LIFESTYLE BANNER -->
+<section style="padding:100px 40px;text-align:center;position:relative;overflow:hidden;background:linear-gradient(135deg,#0a0a15 0%,rgba(200,40,40,0.08) 50%,#0a0a15 100%);">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(200,40,40,0.06),transparent 70%);"></div>
+  <div class="container" style="position:relative;">
+    <p class="fade-in" style="font-size:clamp(28px,5vw,48px);font-family:var(--heading);font-weight:400;line-height:1.3;max-width:700px;margin:0 auto;">
+      Miesto, kde sa <span class="script-text" style="color:var(--accent);font-size:1.4em;">noc</span> mení na <span class="script-text" style="color:var(--accent2);font-size:1.4em;">zážitok</span>
+    </p>
+    <div style="display:flex;justify-content:center;gap:48px;margin-top:48px;flex-wrap:wrap;">
+      <div class="fade-in" style="text-align:center;">
+        <div style="font-size:42px;font-weight:700;color:var(--accent);font-family:var(--heading);">500+</div>
+        <div style="font-size:12px;color:var(--text-muted);letter-spacing:0.1em;text-transform:uppercase;margin-top:4px;">Kapacita</div>
+      </div>
+      <div class="fade-in" style="text-align:center;">
+        <div style="font-size:42px;font-weight:700;color:var(--accent);font-family:var(--heading);">4</div>
+        <div style="font-size:12px;color:var(--text-muted);letter-spacing:0.1em;text-transform:uppercase;margin-top:4px;">VIP boxy</div>
+      </div>
+      <div class="fade-in" style="text-align:center;">
+        <div style="font-size:42px;font-weight:700;color:var(--accent);font-family:var(--heading);">2</div>
+        <div style="font-size:12px;color:var(--text-muted);letter-spacing:0.1em;text-transform:uppercase;margin-top:4px;">Podlažia</div>
+      </div>
+      <div class="fade-in" style="text-align:center;">
+        <div style="font-size:42px;font-weight:700;color:var(--accent);font-family:var(--heading);">∞</div>
+        <div style="font-size:12px;color:var(--text-muted);letter-spacing:0.1em;text-transform:uppercase;margin-top:4px;">Zážitkov</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section id="events">
+  <div class="container">
+    <div class="section-label fade-in">Eventy</div>
+    <div class="section-title fade-in">Najbližšie <span style="color:var(--accent)">akcie</span></div>
+    <p class="section-desc fade-in">Každý víkend prinášame niečo špeciálne. Sledujte nás na sociálnych sieťach.</p>
+    <div class="events-grid">
+      <div class="event-card fade-in">
+        <div class="event-image">
+          <span style="font-size:48px;">🎧</span>
+          <div class="date-badge"><span class="day">22</span>MAR</div>
+        </div>
+        <div class="event-info">
+          <div class="event-tag">DJ Night</div>
+          <h3>Grand Opening Night</h3>
+          <p>Oficiálne otvorenie Euphoria Nightclub. Špeciálny DJ set, welcome drink pre prvých 100 hostí.</p>
+          <div class="event-meta">
+            <span>⏰ 21:00 — 04:00</span>
+            <span>🎫 Free vstup</span>
+          </div>
+        </div>
+      </div>
+      <div class="event-card fade-in">
+        <div class="event-image">
+          <span style="font-size:48px;">🌙</span>
+          <div class="date-badge"><span class="day">29</span>MAR</div>
+        </div>
+        <div class="event-info">
+          <div class="event-tag">Theme Party</div>
+          <h3>Neon Nights</h3>
+          <p>UV párty s neonovými efektmi, body painting a špeciálnymi koktailmi v glow pohárikoch.</p>
+          <div class="event-meta">
+            <span>⏰ 22:00 — 05:00</span>
+            <span>🎫 10 € / VIP 25 €</span>
+          </div>
+        </div>
+      </div>
+      <div class="event-card fade-in">
+        <div class="event-image">
+          <span style="font-size:48px;">🎤</span>
+          <div class="date-badge"><span class="day">05</span>APR</div>
+        </div>
+        <div class="event-info">
+          <div class="event-tag">Live Music</div>
+          <h3>Latin Vibes</h3>
+          <p>Salsa, reggaeton a latino rytmy. Live band + DJ set. Tanečné workshopy od 20:00.</p>
+          <div class="event-meta">
+            <span>⏰ 20:00 — 04:00</span>
+            <span>🎫 8 € predpredaj</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="container">
+    <div class="section-label fade-in">Galéria</div>
+    <div class="section-title fade-in">Atmosféra <span style="color:var(--accent)">Euphoria</span></div>
+    <div class="gallery-grid">
+      <div class="gallery-item fade-in"><span class="gallery-placeholder">MAIN<br>FLOOR</span></div>
+      <div class="gallery-item fade-in"><span class="gallery-placeholder">BAR</span></div>
+      <div class="gallery-item fade-in"><span class="gallery-placeholder">VIP</span></div>
+      <div class="gallery-item fade-in"><span class="gallery-placeholder">DJ</span></div>
+      <div class="gallery-item fade-in"><span class="gallery-placeholder">LOUNGE</span></div>
+      <div class="gallery-item fade-in"><span class="gallery-placeholder">DANCE</span></div>
+    </div>
+    <p style="text-align:center;margin-top:24px;color:var(--text-muted);font-size:12px;">* Fotky z reálneho priestoru budú doplnené po otvorení</p>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="container">
+    <div class="section-label fade-in">Nápojový lístok</div>
+    <div class="section-title fade-in">Signature <span style="color:var(--accent)">Drinks</span></div>
+    <div class="menu-grid">
+      <div class="menu-category fade-in">
+        <div class="cat-icon">🍸</div>
+        <h3>Signature koktaily</h3>
+        <div class="menu-item"><span class="name">Euphoria Sunset</span><span class="price">9,90 €</span></div>
+        <div class="menu-item"><span class="name">Purple Haze</span><span class="price">10,90 €</span></div>
+        <div class="menu-item"><span class="name">Midnight Kiss</span><span class="price">11,90 €</span></div>
+        <div class="menu-item"><span class="name">Neon Dream</span><span class="price">10,90 €</span></div>
+        <div class="menu-item"><span class="name">Velvet Rush</span><span class="price">12,90 €</span></div>
+      </div>
+      <div class="menu-category fade-in">
+        <div class="cat-icon">🥃</div>
+        <h3>Prémiové destiláty</h3>
+        <div class="menu-item"><span class="name">Hennessy VS (4cl)</span><span class="price">8,90 €</span></div>
+        <div class="menu-item"><span class="name">Grey Goose (4cl)</span><span class="price">7,90 €</span></div>
+        <div class="menu-item"><span class="name">Patrón Silver (4cl)</span><span class="price">8,90 €</span></div>
+        <div class="menu-item"><span class="name">Monkey 47 Gin (4cl)</span><span class="price">9,90 €</span></div>
+        <div class="menu-item"><span class="name">Macallan 12 (4cl)</span><span class="price">12,90 €</span></div>
+      </div>
+      <div class="menu-category fade-in">
+        <div class="cat-icon">🍾</div>
+        <h3>Šampanské & VIP</h3>
+        <div class="menu-item"><span class="name">Moët & Chandon</span><span class="price">89 €</span></div>
+        <div class="menu-item"><span class="name">Veuve Clicquot</span><span class="price">99 €</span></div>
+        <div class="menu-item"><span class="name">Dom Pérignon</span><span class="price">290 €</span></div>
+        <div class="menu-item"><span class="name">Ace of Spades</span><span class="price">390 €</span></div>
+      </div>
+      <div class="menu-category fade-in">
+        <div class="cat-icon">🍺</div>
+        <h3>Pivo & nealko</h3>
+        <div class="menu-item"><span class="name">Pilsner Urquell 0,5l</span><span class="price">3,50 €</span></div>
+        <div class="menu-item"><span class="name">Corona Extra</span><span class="price">4,50 €</span></div>
+        <div class="menu-item"><span class="name">Red Bull</span><span class="price">4,90 €</span></div>
+        <div class="menu-item"><span class="name">Fever-Tree Tonic</span><span class="price">3,90 €</span></div>
+        <div class="menu-item"><span class="name">Minerálka / Džús</span><span class="price">2,50 €</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE BANNER -->
+<section style="padding:120px 40px;text-align:center;position:relative;overflow:hidden;background:#050505;">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 30% 40%,rgba(212,168,67,0.08),transparent 50%),radial-gradient(ellipse at 70% 60%,rgba(236,72,153,0.05),transparent 50%);"></div>
+  <div class="container fade-in" style="position:relative;">
+    <div style="font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;">EXKLUZÍVNE SLUŽBY</div>
+    <h2 style="font-family:var(--heading);font-size:clamp(32px,5vw,52px);font-weight:400;margin-bottom:48px;">
+      Pre tých, čo hľadajú<br><span class="script-text" style="color:var(--accent);font-size:1.3em;">viac</span>
+    </h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;max-width:900px;margin:0 auto;">
+      <div style="padding:32px 20px;background:var(--bg2);border:1px solid var(--border);border-radius:14px;transition:all 0.3s;" onmouseenter="this.style.borderColor='var(--accent)';this.style.transform='translateY(-4px)'" onmouseleave="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
+        <div style="font-size:36px;margin-bottom:12px;">🎂</div>
+        <h4 style="font-size:15px;font-weight:600;color:var(--accent);margin-bottom:6px;">Narodeniny</h4>
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.6;">VIP oslava s tortoou, šampanským a privátnym priestorom</p>
+      </div>
+      <div style="padding:32px 20px;background:var(--bg2);border:1px solid var(--border);border-radius:14px;transition:all 0.3s;" onmouseenter="this.style.borderColor='var(--accent)';this.style.transform='translateY(-4px)'" onmouseleave="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
+        <div style="font-size:36px;margin-bottom:12px;">🎉</div>
+        <h4 style="font-size:15px;font-weight:600;color:var(--accent);margin-bottom:6px;">Rozlúčky</h4>
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.6;">Nezabudnuteľná rozlúčka so slobodou na mieru</p>
+      </div>
+      <div style="padding:32px 20px;background:var(--bg2);border:1px solid var(--border);border-radius:14px;transition:all 0.3s;" onmouseenter="this.style.borderColor='var(--accent)';this.style.transform='translateY(-4px)'" onmouseleave="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
+        <div style="font-size:36px;margin-bottom:12px;">🏢</div>
+        <h4 style="font-size:15px;font-weight:600;color:var(--accent);margin-bottom:6px;">Firemné akcie</h4>
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.6;">Teambuilding, vianočný večierok, privátny event</p>
+      </div>
+      <div style="padding:32px 20px;background:var(--bg2);border:1px solid var(--border);border-radius:14px;transition:all 0.3s;" onmouseenter="this.style.borderColor='var(--accent)';this.style.transform='translateY(-4px)'" onmouseleave="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
+        <div style="font-size:36px;margin-bottom:12px;">🎵</div>
+        <h4 style="font-size:15px;font-weight:600;color:var(--accent);margin-bottom:6px;">DJ Booking</h4>
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.6;">Privátny DJ set pre vašu akciu alebo párty</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIP -->
+<section id="vip">
+  <div class="container">
+    <div class="section-label fade-in" style="text-align:center;">VIP Experience</div>
+    <div class="section-title fade-in" style="text-align:center;">Exkluzívny <span style="color:var(--accent)">VIP priestor</span></div>
+    <div class="vip-inner fade-in">
+      <h3>Privátny zážitok na najvyššej úrovni</h3>
+      <p>Rezervujte si VIP box pre seba a vašu spoločnosť. Privátny barman, prioritný vstup a exkluzívne podmienky.</p>
+      <div class="vip-perks">
+        <div class="vip-perk"><span class="check">✓</span> Privátny box</div>
+        <div class="vip-perk"><span class="check">✓</span> Osobný barman</div>
+        <div class="vip-perk"><span class="check">✓</span> Prioritný vstup</div>
+        <div class="vip-perk"><span class="check">✓</span> Premium nápoje</div>
+        <div class="vip-perk"><span class="check">✓</span> VIP parking</div>
+      </div>
+      <a href="#rezervacia" class="btn-primary" style="position:relative;">Rezervovať VIP →</a>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVATION -->
+<section id="rezervacia">
+  <div class="container">
+    <div class="section-label fade-in">Rezervácia</div>
+    <div class="section-title fade-in">Rezervujte si <span style="color:var(--accent)">miesto</span></div>
+    <div class="reservation-grid">
+      <form class="reservation-form fade-in" onsubmit="event.preventDefault(); this.querySelector('.submit-btn').textContent='✓ Odoslané!'; setTimeout(()=>this.querySelector('.submit-btn').textContent='Odoslať rezerváciu', 3000);">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Meno a priezvisko</label>
+            <input type="text" placeholder="Vaše meno" required>
+          </div>
+          <div class="form-group">
+            <label>Telefón</label>
+            <input type="tel" placeholder="+421 9XX XXX XXX" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>E-mail</label>
+          <input type="email" placeholder="vas@email.com" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Dátum</label>
+            <input type="date" required>
+          </div>
+          <div class="form-group">
+            <label>Počet osôb</label>
+            <select>
+              <option>1 — 2 osoby</option>
+              <option>3 — 4 osoby</option>
+              <option>5 — 8 osôb</option>
+              <option>9 — 15 osôb (VIP)</option>
+              <option>16+ (privátna akcia)</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Typ rezervácie</label>
+          <select>
+            <option>Stôl v hlavnej sále</option>
+            <option>VIP box</option>
+            <option>Narodeniny / oslava</option>
+            <option>Rozlúčka so slobodou</option>
+            <option>Firemný event</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Poznámka</label>
+          <textarea rows="3" placeholder="Špeciálne požiadavky..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary submit-btn" style="width:100%;justify-content:center;">Odoslať rezerváciu</button>
+      </form>
+      <div class="reservation-info fade-in">
+        <h3>Informácie</h3>
+        <div class="info-block">
+          <h4>Otváracie hodiny</h4>
+          <p>Piatok — Sobota: 21:00 — 05:00<br>Špeciálne eventy: podľa programu<br>Nedeľa — Štvrtok: zatvorené</p>
+        </div>
+        <div class="info-block">
+          <h4>Dress Code</h4>
+          <p>Smart casual. Šport oblečenie, tepláky a otvorená obuv nie sú povolené. Management si vyhradzuje právo odmietnuť vstup.</p>
+        </div>
+        <div class="info-block">
+          <h4>Vekové obmedzenie</h4>
+          <p>Vstup od 18 rokov. Pri vstupe je nutné preukázať sa platným dokladom totožnosti.</p>
+        </div>
+        <div class="info-block">
+          <h4>VIP rezervácie</h4>
+          <p>Pre VIP rezervácie kontaktujte priamo: <a href="tel:+421950480799" style="color:var(--accent);">+421 950 480 799</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="kontakt">
+  <div class="container">
+    <div class="section-label fade-in">Kontakt</div>
+    <div class="section-title fade-in">Nájdete nás v <span style="color:var(--accent)">Šamoríne</span></div>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-item fade-in">
+          <div class="contact-icon">📍</div>
+          <div><h4>Adresa</h4><p>Bratislavská 11<br>931 01 Šamorín</p></div>
+        </div>
+        <div class="contact-item fade-in">
+          <div class="contact-icon">📞</div>
+          <div><h4>Telefón</h4><p><a href="tel:+421950480799">+421 950 480 799</a></p></div>
+        </div>
+        <div class="contact-item fade-in">
+          <div class="contact-icon">📧</div>
+          <div><h4>E-mail</h4><p><a href="mailto:euphorianightclub11@gmail.com">euphorianightclub11@gmail.com</a></p></div>
+        </div>
+        <div class="contact-item fade-in">
+          <div class="contact-icon">📱</div>
+          <div><h4>Sociálne siete</h4><p><a href="#">Instagram</a> · <a href="#">Facebook</a> · <a href="#">TikTok</a></p></div>
+        </div>
+      </div>
+      <div class="map-placeholder fade-in">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2688.5!2d17.31!3d48.03!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDAyJzI0LjAiTiAxN8KwMTgnMzYuMCJF!5e0!3m2!1ssk!2ssk!4v1"
+          width="100%" height="100%" style="border:0;border-radius:16px;min-height:300px;" allowfullscreen loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>EUPHORIA</h3>
+      <p>Prémiový nočný klub v Šamoríne. Vytvorené pre tých, ktorí hľadajú viac ako len bežnú noc.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigácia</h4>
+      <a href="#about">O nás</a>
+      <a href="#events">Eventy</a>
+      <a href="#gallery">Galéria</a>
+      <a href="#menu">Nápoje</a>
+    </div>
+    <div class="footer-col">
+      <h4>Služby</h4>
+      <a href="#vip">VIP zóna</a>
+      <a href="#rezervacia">Rezervácie</a>
+      <a href="#">Firemné akcie</a>
+      <a href="#">Rozlúčky</a>
+    </div>
+    <div class="footer-col">
+      <h4>Právne</h4>
+      <a href="#">Ochrana údajov</a>
+      <a href="#">Obchodné podmienky</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Euphoria Nightclub — Šamorín. Vytvorené s ❤ <a href="https://vassweb.sk" target="_blank">Vassweb</a></p>
+  </div>
+</footer>
+
+<!-- COOKIE BAR -->
+<div class="cookie-bar" id="cookieBar">
+  <p>Táto stránka používa cookies pre zlepšenie vášho zážitku. <a href="#" style="color:var(--accent);">Viac info</a></p>
+  <div style="display:flex;gap:8px;">
+    <button class="cookie-decline" onclick="document.getElementById('cookieBar').classList.remove('show')">Odmietnuť</button>
+    <button class="cookie-accept" onclick="document.getElementById('cookieBar').classList.remove('show');localStorage.setItem('cookies','1')">Prijať</button>
+  </div>
+</div>
+
+<script>
+// ─── Nav scroll effect ───
+const nav = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// ─── Scroll animations ───
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// ─── Particles ───
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let particles = [];
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+for (let i = 0; i < 60; i++) {
+  particles.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    size: Math.random() * 2 + 0.5,
+    speedX: (Math.random() - 0.5) * 0.3,
+    speedY: (Math.random() - 0.5) * 0.3,
+    opacity: Math.random() * 0.5 + 0.1,
+  });
+}
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    const colors = ['rgba(200,40,40,', 'rgba(212,168,67,', 'rgba(229,57,53,'];
+    ctx.fillStyle = colors[Math.floor(p.x) % 3] + p.opacity + ')';
+    ctx.fill();
+    p.x += p.speedX;
+    p.y += p.speedY;
+    if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+  });
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+// ─── Cookie bar ───
+if (!localStorage.getItem('cookies')) {
+  setTimeout(() => document.getElementById('cookieBar').classList.add('show'), 2000);
+}
+
+// ─── Smooth scroll ───
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+</body>
+</html>

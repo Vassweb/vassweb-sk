@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vass & Co. Digital — Logo Návrh</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #f5f0e8;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    color: #1C1C1C;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    min-height: 100vh;
+  }
+
+  h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 28px;
+    color: #1A3A5C;
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+  }
+
+  .subtitle {
+    color: #7A7168;
+    font-size: 16px;
+    margin-bottom: 60px;
+  }
+
+  .variants {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    max-width: 1200px;
+    width: 100%;
+  }
+
+  .variant {
+    background: white;
+    border-radius: 16px;
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    position: relative;
+  }
+
+  .variant.dark {
+    background: #0a0a0a;
+  }
+
+  .variant-label {
+    position: absolute;
+    top: 16px;
+    left: 20px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #C9A84C;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+  }
+
+  /* ── LOGO SVG STYLES ── */
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 30px;
+  }
+
+  .emblem {
+    width: 90px;
+    height: 90px;
+    position: relative;
+  }
+
+  .emblem svg { width: 100%; height: 100%; }
+
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .brand-name {
+    font-family: 'Cinzel', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #1C1C1C;
+    line-height: 1;
+    letter-spacing: 1px;
+  }
+
+  .dark .brand-name { color: #F5F0E8; }
+
+  .brand-division {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 20px;
+    font-weight: 600;
+    font-style: italic;
+    color: #C9A84C;
+    letter-spacing: 2px;
+    margin-top: 2px;
+  }
+
+  .gold-wave {
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #C9A84C, transparent);
+    border-radius: 2px;
+    margin: 20px 0;
+  }
+
+  .variant-desc {
+    text-align: center;
+    color: #7A7168;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+  }
+
+  .dark .variant-desc { color: #9A9590; }
+
+  /* ── VO Monogram ── */
+  .vo-letters {
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+  }
+
+  /* ── Full-width variants ── */
+  .full-width {
+    grid-column: 1 / -1;
+  }
+
+  .full-width .logo-container {
+    gap: 24px;
+  }
+
+  .full-width .brand-name { font-size: 42px; }
+  .full-width .brand-division { font-size: 26px; }
+  .full-width .emblem { width: 110px; height: 110px; }
+
+  /* ── Standalone emblem ── */
+  .standalone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .standalone .emblem {
+    width: 140px;
+    height: 140px;
+    margin-bottom: 16px;
+  }
+
+  .standalone .brand-name {
+    font-size: 38px;
+    text-align: center;
+  }
+
+  .standalone .brand-division {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  /* Notes */
+  .notes {
+    max-width: 1200px;
+    width: 100%;
+    margin-top: 60px;
+    padding: 30px 40px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  }
+
+  .notes h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 20px;
+    color: #1A3A5C;
+    margin-bottom: 16px;
+  }
+
+  .notes ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .notes li {
+    padding: 8px 0;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #3D3630;
+    line-height: 1.6;
+  }
+
+  .notes li::before {
+    content: "●";
+    color: #C9A84C;
+    margin-right: 10px;
+  }
+
+  .color-row {
+    display: flex;
+    gap: 16px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+  }
+
+  .color-swatch {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    border: 2px solid #EDE8E0;
+    position: relative;
+  }
+
+  .color-swatch span {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: monospace;
+    font-size: 10px;
+    color: #7A7168;
+    white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+
+<h1>VASS & CO. DIGITAL</h1>
+<p class="subtitle">Návrh loga pre novú divíziu — Webstránky, Automatizácie, Appky</p>
+
+<div class="variants">
+
+  <!-- VARIANT 1: Horizontal light -->
+  <div class="variant">
+    <span class="variant-label">Variant A — Light</span>
+    <div class="logo-container">
+      <div class="emblem">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="goldGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#D4B85C"/>
+              <stop offset="50%" style="stop-color:#C9A84C"/>
+              <stop offset="100%" style="stop-color:#A08930"/>
+            </linearGradient>
+            <linearGradient id="goldGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#E8D48B"/>
+              <stop offset="50%" style="stop-color:#C9A84C"/>
+              <stop offset="100%" style="stop-color:#8B7425"/>
+            </linearGradient>
+          </defs>
+          <!-- Circle -->
+          <circle cx="100" cy="90" r="65" fill="url(#goldGrad1)" stroke="#A08930" stroke-width="3"/>
+          <circle cx="100" cy="90" r="55" fill="#1C1C1C"/>
+          <circle cx="100" cy="90" r="53" fill="none" stroke="url(#goldGrad2)" stroke-width="1.5"/>
+          <!-- V&C monogram -->
+          <text x="100" y="102" text-anchor="middle" font-family="'Cinzel', serif" font-weight="900" font-size="48" fill="url(#goldGrad2)">V&amp;C</text>
+          <!-- Gold wave under circle -->
+          <path d="M 30 160 Q 100 180, 170 160" stroke="url(#goldGrad1)" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <path d="M 40 168 Q 100 186, 160 168" stroke="url(#goldGrad2)" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <span class="brand-name">Vass & Co.</span>
+        <span class="brand-division">Digital</span>
+      </div>
+    </div>
+    <div class="gold-wave"></div>
+    <p class="variant-desc">Horizontálne logo — pre dokumenty, ponuky, hlavičky</p>
+  </div>
+
+  <!-- VARIANT 2: Horizontal dark -->
+  <div class="variant dark">
+    <span class="variant-label">Variant B — Dark</span>
+    <div class="logo-container">
+      <div class="emblem">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="goldGradD1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#D4B85C"/>
+              <stop offset="50%" style="stop-color:#C9A84C"/>
+              <stop offset="100%" style="stop-color:#A08930"/>
+            </linearGradient>
+            <linearGradient id="goldGradD2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#E8D48B"/>
+              <stop offset="50%" style="stop-color:#C9A84C"/>
+              <stop offset="100%" style="stop-color:#8B7425"/>
+            </linearGradient>
+          </defs>
+          <circle cx="100" cy="90" r="65" fill="url(#goldGradD1)" stroke="#A08930" stroke-width="3"/>
+          <circle cx="100" cy="90" r="55" fill="#0a0a0a"/>
+          <circle cx="100" cy="90" r="53" fill="none" stroke="url(#goldGradD2)" stroke-width="1.5"/>
+          <text x="100" y="102" text-anchor="middle" font-family="'Cinzel', serif" font-weight="900" font-size="48" fill="url(#goldGradD2)">V&amp;C</text>
+          <path d="M 30 160 Q 100 180, 170 160" stroke="url(#goldGradD1)" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <path d="M 40 168 Q 100 186, 160 168" stroke="url(#goldGradD2)" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <span class="brand-name">Vass & Co.</span>
+        <span class="brand-division">Digital</span>
+      </div>
+    </div>
+    <div class="gold-wave"></div>
+    <p class="variant-desc">Tmavý variant — pre web Euphoria, sociálne siete</p>
+  </div>
+
+  <!-- VARIANT 3: Stacked / Standalone -->
+  <div class="variant">
+    <span class="variant-label">Variant C — Stacked</span>
+    <div class="standalone">
+      <div class="emblem">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="goldGradS1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#D4B85C"/>
+              <stop offset="50%" style="stop-color:#C9A84C"/>
+              <stop offset="100%" style="stop-color:#A08930"/>
+            </linearGradient>
+            <linearGradient id="goldGradS2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#E8D48B"/>
+              <stop offset="50%" style="stop-color:#C9A84C"/>
+              <stop offset="100%" style="stop-color:#8B7425"/>
+            </linearGradient>
+          </defs>
+          <circle cx="100" cy="90" r="65" fill="url(#goldGradS1)" stroke="#A08930" stroke-width="3"/>
+          <circle cx="100" cy="90" r="55" fill="#1C1C1C"/>
+          <circle cx="100" cy="90" r="53" fill="none" stroke="url(#goldGradS2)" stroke-width="1.5"/>
+          <text x="100" y="102" text-anchor="middle" font-family="'Cinzel', serif" font-weight="900" font-size="48" fill="url(#goldGradS2)">V&amp;C</text>
+          <path d="M 30 160 Q 100 180, 170 160" stroke="url(#goldGradS1)" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <path d="M 40 168 Q 100 186, 160 168" stroke="url(#goldGradS2)" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+        </svg>
+      </div>
+      <span class="brand-name">Vass & Co.</span>
+      <span class="brand-division">Digital</span>
+    </div>
+    <div class="gold-wave"></div>
+    <p class="variant-desc">Na výšku — pre faktúry, vizitky, pečiatky</p>
+  </div>
+
+  <!-- VARIANT 4: Dark stacked -->
+  <div class="variant dark">
+    <span class="variant-label">Variant D — Dark Stacked</span>
+    <div class="standalone">
+      <div class="emblem">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="goldGradDS1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#D4B85C"/>
+              <stop offset="50%" style="stop-color:#C9A84C"/>
+              <stop offset="100%" style="stop-color:#A08930"/>
+            </linearGradient>
+            <linearGradient id="goldGradDS2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#E8D48B"/>
+              <stop offset="50%" style="stop-color:#C9A84C"/>
+              <stop offset="100%" style="stop-color:#8B7425"/>
+            </linearGradient>
+          </defs>
+          <circle cx="100" cy="90" r="65" fill="url(#goldGradDS1)" stroke="#A08930" stroke-width="3"/>
+          <circle cx="100" cy="90" r="55" fill="#0a0a0a"/>
+          <circle cx="100" cy="90" r="53" fill="none" stroke="url(#goldGradDS2)" stroke-width="1.5"/>
+          <text x="100" y="102" text-anchor="middle" font-family="'Cinzel', serif" font-weight="900" font-size="48" fill="url(#goldGradDS2)">V&amp;C</text>
+          <path d="M 30 160 Q 100 180, 170 160" stroke="url(#goldGradDS1)" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <path d="M 40 168 Q 100 186, 160 168" stroke="url(#goldGradDS2)" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+        </svg>
+      </div>
+      <span class="brand-name">Vass & Co.</span>
+      <span class="brand-division">Digital</span>
+    </div>
+    <div class="gold-wave"></div>
+    <p class="variant-desc">Tmavý vertikálny — pre app ikony, favicony</p>
+  </div>
+
+</div>
+
+<!-- NOTES -->
+<div class="notes">
+  <h2>Poznámky k rebrandingu</h2>
+  <ul>
+    <li><strong>Rovnaký emblem V&C</strong> — zlatý kruh s monogramom ostáva, len meníme subtitle pod značkou</li>
+    <li><strong>"Facility" → "Digital"</strong> — rovnaká typografia (Cormorant Garamond italic), rovnaká zlatá farba</li>
+    <li><strong>Zlatá vlna</strong> pod logom ostáva ako podpis značky</li>
+    <li><strong>Farebná paleta</strong> je identická: zlatá #C9A84C, tmavá #1C1C1C, navy #1A3A5C</li>
+    <li><strong>Použitie:</strong> Variant A/B pre dokumenty a web header, Variant C/D pre vizitky a app ikony</li>
+    <li><strong>Ďalší krok:</strong> Tieto návrhy poslať grafickému dizajnérovi na prepracovanie do finálneho PNG/SVG s rovnakým 3D efektom ako pôvodné Facility logo</li>
+  </ul>
+
+  <h2 style="margin-top: 24px;">Farebná paleta</h2>
+  <div class="color-row">
+    <div class="color-swatch" style="background: #C9A84C;"><span>#C9A84C</span></div>
+    <div class="color-swatch" style="background: #1C1C1C;"><span>#1C1C1C</span></div>
+    <div class="color-swatch" style="background: #1A3A5C;"><span>#1A3A5C</span></div>
+    <div class="color-swatch" style="background: #3D3630;"><span>#3D3630</span></div>
+    <div class="color-swatch" style="background: #7A7168;"><span>#7A7168</span></div>
+    <div class="color-swatch" style="background: #F5EDD8;"><span>#F5EDD8</span></div>
+    <div class="color-swatch" style="background: #F5F0E8;"><span>#F5F0E8</span></div>
+  </div>
+</div>
+
+</body>
+</html>
