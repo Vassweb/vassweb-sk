@@ -13,6 +13,7 @@ const DOMAIN_LOCALE_MAP: Record<string, Locale> = {
   'www.vassweb.cz': 'cs',
   'vassweb.hu': 'hu',
   'www.vassweb.hu': 'hu',
+  'app.vassweb.sk': 'sk',
 };
 
 function getLocaleFromAcceptLanguage(request: NextRequest): Locale {
@@ -55,10 +56,12 @@ function getLocaleForHost(host: string, request: NextRequest): Locale {
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Skip static files, API routes, and Next.js internals
+  // Skip static files, API routes, app routes, and Next.js internals
   if (
     pathname.startsWith('/_next') ||
     pathname.startsWith('/api') ||
+    pathname.startsWith('/app') ||
+    pathname.startsWith('/login') ||
     pathname.startsWith('/favicon') ||
     pathname.includes('.') // static files (images, css, js, etc.)
   ) {
