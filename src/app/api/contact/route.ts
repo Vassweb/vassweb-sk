@@ -107,50 +107,50 @@ export async function POST(request: NextRequest) {
       const errorData = await resendResponse.json().catch(() => ({}));
       console.error('Resend error:', JSON.stringify(errorData));
 
-      // If domain not verified, fall back to Resend default sender
-      if (resendResponse.status === 403 || (errorData.message && errorData.message.includes('not verified'))) {
-        const fallbackResponse = await fetch('https://api.resend.com/emails', {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${RESEND_API_KEY}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            from: 'Vassweb <onboarding@resend.dev>',
-            to: ['richard.vass@vassco.sk'],
-            reply_to: email,
-            subject: `Nový dopyt od ${name}`,
-            html: `
-              <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-                <div style="background: linear-gradient(135deg, #ffeebb, #d4a843); padding: 24px; border-radius: 12px 12px 0 0;">
-                  <h1 style="color: #0a0908; margin: 0; font-size: 20px;">Nový dopyt z vassweb.sk</h1>
-                </div>
-                <div style="background: #1a1918; padding: 24px; color: #ffffff; border-radius: 0 0 12px 12px;">
-                  <table style="width: 100%; border-collapse: collapse;">
-                    <tr>
-                      <td style="padding: 8px 0; color: #d4a843; font-weight: 600; width: 80px;">Meno:</td>
-                      <td style="padding: 8px 0; color: #ffffff;">${escapeHtml(name)}</td>
-                    </tr>
-                    <tr>
-                      <td style="padding: 8px 0; color: #d4a843; font-weight: 600;">E-mail:</td>
-                      <td style="padding: 8px 0;"><a href="mailto:${escapeHtml(email)}" style="color: #ffeebb;">${escapeHtml(email)}</a></td>
-                    </tr>
-                  </table>
-                  <hr style="border: none; border-top: 1px solid rgba(212,168,67,0.2); margin: 16px 0;" />
-                  <div style="color: rgba(255,255,255,0.8); line-height: 1.6; white-space: pre-wrap;">${escapeHtml(message)}</div>
-                </div>
+      // Try fallback with Resend default sender
+      const fallbackResponse = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${RESEND_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          from: 'Vassweb <onboarding@resend.dev>',
+          to: ['richard.vass@vassco.sk'],
+          reply_to: email,
+          subject: `Nový dopyt od ${name}`,
+          html: `
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+              <div style="background: linear-gradient(135deg, #ffeebb, #d4a843); padding: 24px; border-radius: 12px 12px 0 0;">
+                <h1 style="color: #0a0908; margin: 0; font-size: 20px;">Nový dopyt z vassweb.sk</h1>
               </div>
-            `,
-          }),
-        });
+              <div style="background: #1a1918; padding: 24px; color: #ffffff; border-radius: 0 0 12px 12px;">
+                <table style="width: 100%; border-collapse: collapse;">
+                  <tr>
+                    <td style="padding: 8px 0; color: #d4a843; font-weight: 600; width: 80px;">Meno:</td>
+                    <td style="padding: 8px 0; color: #ffffff;">${escapeHtml(name)}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; color: #d4a843; font-weight: 600;">E-mail:</td>
+                    <td style="padding: 8px 0;"><a href="mailto:${escapeHtml(email)}" style="color: #ffeebb;">${escapeHtml(email)}</a></td>
+                  </tr>
+                </table>
+                <hr style="border: none; border-top: 1px solid rgba(212,168,67,0.2); margin: 16px 0;" />
+                <div style="color: rgba(255,255,255,0.8); line-height: 1.6; white-space: pre-wrap;">${escapeHtml(message)}</div>
+              </div>
+            </div>
+          `,
+        }),
+      });
 
-        if (fallbackResponse.ok) {
-          return NextResponse.json({ success: true });
-        }
+      if (fallbackResponse.ok) {
+        return NextResponse.json({ success: true });
       }
 
+      const fallbackError = await fallbackResponse.json().catch(() => ({}));
+      console.error('Resend fallback error:', JSON.stringify(fallbackError));
       return NextResponse.json(
-        { error: 'Nepodarilo sa odoslať správu. Skúste to znova alebo nás kontaktujte na info@vassweb.sk.' },
+        { error: 'Nepodarilo sa odoslať správu. Skúste to znova alebo nás kontaktujte na info@vassweb.sk.', debug: { primary: errorData, fallback: fallbackError } },
         { status: 500 }
       );
     }
