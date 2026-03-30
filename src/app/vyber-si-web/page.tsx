@@ -1,27 +1,68 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 
+// ═══════════════════════════════════════════════════════════════
+// FONTS
+// ═══════════════════════════════════════════════════════════════
 const font = 'var(--font-inter), Inter, system-ui, sans-serif';
 const heading = 'var(--font-heading), Playfair Display, Georgia, serif';
 
+// ═══════════════════════════════════════════════════════════════
+// SVG ICONS — minimalistické path data pre každú šablónu
+// ═══════════════════════════════════════════════════════════════
+const icons: Record<string, string> = {
+  restaurant: 'M11 3V7H13V3H11ZM7.5 3C7.22 3 7 3.22 7 3.5V9C7 10.1 7.9 11 9 11V20C9 20.55 9.45 21 10 21H10C10.55 21 11 20.55 11 20V11C12.1 11 13 10.1 13 9V3.5C13 3.22 12.78 3 12.5 3H12.5C12.22 3 12 3.22 12 3.5V8H11V3.5C11 3.22 10.78 3 10.5 3H10.5C10.22 3 10 3.22 10 3.5V8H9V3.5C9 3.22 8.78 3 8.5 3H8.5C8.22 3 8 3.22 8 3.5V8L7.5 3ZM16 3C14.9 3 14 4.9 14 7C14 8.74 14.63 10.19 15.5 10.78V20C15.5 20.55 15.95 21 16.5 21H16.5C17.05 21 17.5 20.55 17.5 20V10.78C18.37 10.19 19 8.74 19 7C19 4.9 18.1 3 17 3H16Z',
+  beauty: 'M6.2 2C5.54 2 5 2.54 5 3.2V11H5C3.9 11 3 11.9 3 13V15C3 16.1 3.9 17 5 17H6V21C6 21.55 6.45 22 7 22H7C7.55 22 8 21.55 8 21V17H9C10.1 17 11 16.1 11 15V13C11 11.9 10.1 11 9 11H9V3.2C9 2.54 8.46 2 7.8 2H6.2ZM13 2L16.5 8.5L20 2H13ZM16.5 10C14.84 10 13.5 11.34 13.5 13C13.5 14.3 14.36 15.41 15.5 15.82V21C15.5 21.55 15.95 22 16.5 22C17.05 22 17.5 21.55 17.5 21V15.82C18.64 15.41 19.5 14.3 19.5 13C19.5 11.34 18.16 10 16.5 10Z',
+  auto: 'M18.92 6.01C18.72 5.42 18.16 5 17.5 5H6.5C5.84 5 5.29 5.42 5.08 6.01L3 12V20C3 20.55 3.45 21 4 21H5C5.55 21 6 20.55 6 20V19H18V20C18 20.55 18.45 21 19 21H20C20.55 21 21 20.55 21 20V12L18.92 6.01ZM6.5 16C5.67 16 5 15.33 5 14.5S5.67 13 6.5 13S8 13.67 8 14.5S7.33 16 6.5 16ZM17.5 16C16.67 16 16 15.33 16 14.5S16.67 13 17.5 13S19 13.67 19 14.5S18.33 16 17.5 16ZM5 11L6.5 6.5H17.5L19 11H5Z',
+  fitness: 'M20.57 14.86L22 13.43L20.57 12L17 15.57L8.43 7L12 3.43L10.57 2L9.14 3.43L7.71 2L5.57 4.14L4.14 2.71L2.71 4.14L4.14 5.57L2 7.71L3.43 9.14L2 10.57L3.43 12L7 8.43L15.57 17L12 20.57L13.43 22L14.86 20.57L16.29 22L18.43 19.86L19.86 21.29L21.29 19.86L19.86 18.43L22 16.29L20.57 14.86Z',
+  firma: 'M10 20V14H14V20H19V12H22L12 3L2 12H5V20H10Z',
+  zubar: 'M12 2C9.24 2 7 4.24 7 7C7 9.85 8.41 11.56 9.5 12.83C10 13.4 10.45 13.91 10.71 14.42C11.28 15.56 11 17 11 18C11 19.1 11.5 20 12 20S13 19.1 13 18C13 17 12.72 15.56 13.29 14.42C13.55 13.91 14 13.4 14.5 12.83C15.59 11.56 17 9.85 17 7C17 4.24 14.76 2 12 2Z',
+  veterinar: 'M4.5 9.5C5.88 9.5 7 8.38 7 7S5.88 4.5 4.5 4.5S2 5.62 2 7S3.12 9.5 4.5 9.5ZM9 5.5C10.38 5.5 11.5 4.38 11.5 3S10.38 0.5 9 0.5S6.5 1.62 6.5 3S7.62 5.5 9 5.5ZM15 5.5C16.38 5.5 17.5 4.38 17.5 3S16.38 0.5 15 0.5S12.5 1.62 12.5 3S13.62 5.5 15 5.5ZM19.5 9.5C20.88 9.5 22 8.38 22 7S20.88 4.5 19.5 4.5S17 5.62 17 7S18.12 9.5 19.5 9.5ZM17.34 14.86C14.28 11.8 8.67 12.56 6.34 16.14C4.01 19.72 5.07 22.5 8.5 22.5C10.43 22.5 11.22 20.5 12 20.5C12.78 20.5 13.57 22.5 15.5 22.5C18.93 22.5 20.4 17.92 17.34 14.86Z',
+  foto: 'M12 10.8C13.77 10.8 15.2 12.23 15.2 14C15.2 15.77 13.77 17.2 12 17.2C10.23 17.2 8.8 15.77 8.8 14C8.8 12.23 10.23 10.8 12 10.8ZM9 2L7.17 4H4C2.9 4 2 4.9 2 6V20C2 21.1 2.9 22 4 22H20C21.1 22 22 21.1 22 20V6C22 4.9 21.1 4 20 4H16.83L15 2H9ZM12 19C9.24 19 7 16.76 7 14C7 11.24 9.24 9 12 9C14.76 9 17 11.24 17 14C17 16.76 14.76 19 12 19Z',
+  cukraren: 'M12 6C12 4.9 11.1 4 10 4C10 2.9 9.1 2 8 2S6 2.9 6 4C4.9 4 4 4.9 4 6H12ZM3 8V10C3 11.1 3.9 12 5 12V20C5 21.1 5.9 22 7 22H9C10.1 22 11 21.1 11 20V12C12.1 12 13 11.1 13 10V8H3ZM19 6H15V8H19V10H15V12H19C20.1 12 21 11.1 21 10V8C21 6.9 20.1 6 19 6ZM17 14H15V20C15 21.1 15.9 22 17 22C18.1 22 19 21.1 19 20V14H17Z',
+  autoskola: 'M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM12 6C8.69 6 6 8.69 6 12H12V6Z',
+  ucto: 'M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM11 17H7V15H11V17ZM11 13H7V11H11V13ZM11 9H7V7H11V9ZM17 17H13V15H17V17ZM17 13H13V11H17V13ZM17 9H13V7H17V9Z',
+  realitka: 'M12 3L2 12H5V20H11V14H13V20H19V12H22L12 3ZM12 7.7L17 12.2V18H15V12H9V18H7V12.2L12 7.7Z',
+  hotel: 'M7 13C8.66 13 10 11.66 10 10C10 8.34 8.66 7 7 7C5.34 7 4 8.34 4 10C4 11.66 5.34 13 7 13ZM19 7H11V14H3V5H1V19H3V17H21V19H23V11C23 8.79 21.21 7 19 7Z',
+  svadobny: 'M12 2C9.79 2 8 3.79 8 6C8 7.2 8.54 8.27 9.38 9L12 21L14.62 9C15.46 8.27 16 7.2 16 6C16 3.79 14.21 2 12 2ZM12 8C10.9 8 10 7.1 10 6C10 4.9 10.9 4 12 4C13.1 4 14 4.9 14 6C14 7.1 13.1 8 12 8Z',
+  portfolio: 'M7 14C5.9 14 5 13.1 5 12H2C2 14.21 3.47 16.1 5.5 16.74V19.5H7.5V16.74C9.53 16.1 11 14.21 11 12H8C8 13.1 7.1 14 7 14ZM18.5 9.5C20.16 9.5 21.5 8.16 21.5 6.5C21.5 4.84 20.16 3.5 18.5 3.5C16.84 3.5 15.5 4.84 15.5 6.5C15.5 8.16 16.84 9.5 18.5 9.5ZM7 2L4 6H10L7 2ZM18.5 11C16.01 11 11 12.25 11 14.75V17H26V14.75C26 12.25 20.99 11 18.5 11Z',
+  eshop: 'M7 18C5.9 18 5.01 18.9 5.01 20S5.9 22 7 22S9 21.1 9 20S8.1 18 7 18ZM1 2V4H3L6.6 11.59L5.25 14.04C5.09 14.32 5 14.65 5 15C5 16.1 5.9 17 7 17H19V15H7.42C7.28 15 7.17 14.89 7.17 14.75L7.2 14.63L8.1 13H15.55C16.3 13 16.96 12.59 17.3 11.97L20.88 5.48C20.96 5.34 21 5.17 21 5C21 4.45 20.55 4 20 4H5.21L4.27 2H1Z',
+};
+
+// ═══════════════════════════════════════════════════════════════
+// SVG Icon Component
+// ═══════════════════════════════════════════════════════════════
+function TemplateIcon({ id, color, size = 32 }: { id: string; color: string; size?: number }) {
+  const d = icons[id];
+  if (!d) return null;
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d={d} fill={color} />
+    </svg>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════════
+// ŠABLÓNY (16)
+// ═══════════════════════════════════════════════════════════════
 const templates = [
-  { id: 'restaurant', name: 'Reštaurácia / Kaviareň', icon: '🍝', desc: 'Jedálny lístok, rezervácie, galéria jedál, otváracie hodiny', preview: '/demo/restaurant', price: 'od 299 €', category: 'gastro' },
-  { id: 'beauty', name: 'Kaderníctvo / Kozmetika', icon: '💇', desc: 'Služby, cenník, galéria prác, online rezervácia', preview: '/demo/portfolio', price: 'od 299 €', category: 'beauty' },
-  { id: 'auto', name: 'Autoservis / Pneuservis', icon: '🔧', desc: 'Služby, cenník, otváracie hodiny, kontakt s mapou', preview: '/demo/firma', price: 'od 299 €', category: 'sluzby' },
-  { id: 'fitness', name: 'Fitness / Joga / Masáže', icon: '💪', desc: 'Rozvrh lekcií, cenník, trénerský tím, galéria', preview: '/demo/fitness', price: 'od 299 €', category: 'health' },
-  { id: 'firma', name: 'Stavebná firma / Remeselník', icon: '🏗️', desc: 'O nás, služby, referencie, portfólio realizácií', preview: '/demo/firma', price: 'od 299 €', category: 'sluzby' },
-  { id: 'zubar', name: 'Zubár / Lekár / Klinika', icon: '🦷', desc: 'Ordinačné hodiny, služby, tím lekárov, kontakt', preview: '/demo/firma', price: 'od 299 €', category: 'health' },
-  { id: 'veterinar', name: 'Veterinár / Pet salón', icon: '🐾', desc: 'Služby, cenník, tím, galéria, otváracie hodiny', preview: '/demo/firma', price: 'od 299 €', category: 'health' },
-  { id: 'foto', name: 'Fotograf / Videograf', icon: '📸', desc: 'Portfólio, cenníky balíčkov, galéria, kontakt', preview: '/demo/portfolio', price: 'od 299 €', category: 'creative' },
-  { id: 'cukraren', name: 'Cukráreň / Pekáreň', icon: '🧁', desc: 'Menu, objednávky, galéria výrobkov, o nás', preview: '/demo/restaurant', price: 'od 299 €', category: 'gastro' },
-  { id: 'autoskola', name: 'Autoškola', icon: '🚗', desc: 'Kurzy, cenník, inštruktori, prihlášky online', preview: '/demo/firma', price: 'od 299 €', category: 'sluzby' },
-  { id: 'ucto', name: 'Účtovník / Daňový poradca', icon: '📊', desc: 'Služby, cenník, referencie, formulár na dopyt', preview: '/demo/firma', price: 'od 299 €', category: 'sluzby' },
-  { id: 'realitka', name: 'Realitná kancelária', icon: '🏠', desc: 'Ponuky nehnuteľností, vyhľadávanie, kontakt', preview: '/demo/firma', price: 'od 590 €', category: 'sluzby' },
-  { id: 'hotel', name: 'Hotel / Penzión / Ubytovanie', icon: '🏨', desc: 'Izby, galéria, cenník, online rezervácia', preview: '/demo/restaurant', price: 'od 590 €', category: 'gastro' },
-  { id: 'svadobny', name: 'Svadobný salón / Krajčír', icon: '👰', desc: 'Kolekcie, galéria, cenník, objednávka termínu', preview: '/demo/portfolio', price: 'od 299 €', category: 'creative' },
-  { id: 'eshop', name: 'E-shop', icon: '🛒', desc: 'Produkty, košík, platby, admin panel', preview: '/demo/eshop', price: 'od 1 990 €', category: 'eshop' },
-  { id: 'portfolio', name: 'Portfólio / Osobná stránka', icon: '🎨', desc: 'Práce, bio, kontakt, moderný dizajn', preview: '/demo/portfolio', price: 'od 299 €', category: 'creative' },
+  { id: 'restaurant', name: 'Reštaurácia / Kaviareň', desc: 'Jedálny lístok, rezervácie, galéria jedál, otváracie hodiny', preview: '/demo/restaurant', price: 'od 299 €', category: 'gastro', features: ['Menu', 'Rezervácie', 'Galéria'] },
+  { id: 'beauty', name: 'Kaderníctvo / Kozmetika', desc: 'Služby, cenník, galéria prác, online rezervácia', preview: '/demo/portfolio', price: 'od 299 €', category: 'beauty', features: ['Cenník', 'Galéria', 'Rezervácia'] },
+  { id: 'auto', name: 'Autoservis / Pneuservis', desc: 'Služby, cenník, otváracie hodiny, kontakt s mapou', preview: '/demo/firma', price: 'od 299 €', category: 'sluzby', features: ['Služby', 'Cenník', 'Kontakt'] },
+  { id: 'fitness', name: 'Fitness / Joga / Masáže', desc: 'Rozvrh lekcií, cenník, trénerský tím, galéria', preview: '/demo/fitness', price: 'od 299 €', category: 'health', features: ['Rozvrh', 'Cenník', 'Tréneri'] },
+  { id: 'firma', name: 'Stavebná firma / Remeselník', desc: 'O nás, služby, referencie, portfólio realizácií', preview: '/demo/firma', price: 'od 299 €', category: 'sluzby', features: ['Referencie', 'Portfólio', 'Služby'] },
+  { id: 'zubar', name: 'Zubár / Lekár / Klinika', desc: 'Ordinačné hodiny, služby, tím lekárov, kontakt', preview: '/demo/firma', price: 'od 299 €', category: 'health', features: ['Ordinácia', 'Tím', 'Služby'] },
+  { id: 'veterinar', name: 'Veterinár / Pet salón', desc: 'Služby, cenník, tím, galéria, otváracie hodiny', preview: '/demo/firma', price: 'od 299 €', category: 'health', features: ['Služby', 'Cenník', 'Tím'] },
+  { id: 'foto', name: 'Fotograf / Videograf', desc: 'Portfólio, cenníky balíčkov, galéria, kontakt', preview: '/demo/portfolio', price: 'od 299 €', category: 'creative', features: ['Portfólio', 'Balíčky', 'Galéria'] },
+  { id: 'cukraren', name: 'Cukráreň / Pekáreň', desc: 'Menu, objednávky, galéria výrobkov, o nás', preview: '/demo/restaurant', price: 'od 299 €', category: 'gastro', features: ['Menu', 'Objednávky', 'Galéria'] },
+  { id: 'autoskola', name: 'Autoškola', desc: 'Kurzy, cenník, inštruktori, prihlášky online', preview: '/demo/firma', price: 'od 299 €', category: 'sluzby', features: ['Kurzy', 'Cenník', 'Prihlášky'] },
+  { id: 'ucto', name: 'Účtovník / Daňový poradca', desc: 'Služby, cenník, referencie, formulár na dopyt', preview: '/demo/firma', price: 'od 299 €', category: 'sluzby', features: ['Služby', 'Referencie', 'Formulár'] },
+  { id: 'realitka', name: 'Realitná kancelária', desc: 'Ponuky nehnuteľností, vyhľadávanie, kontakt', preview: '/demo/firma', price: 'od 590 €', category: 'sluzby', features: ['Ponuky', 'Filtrovanie', 'Kontakt'] },
+  { id: 'hotel', name: 'Hotel / Penzión', desc: 'Izby, galéria, cenník, online rezervácia', preview: '/demo/restaurant', price: 'od 590 €', category: 'gastro', features: ['Izby', 'Galéria', 'Rezervácia'] },
+  { id: 'svadobny', name: 'Svadobný salón / Krajčír', desc: 'Kolekcie, galéria, cenník, objednávka termínu', preview: '/demo/portfolio', price: 'od 299 €', category: 'creative', features: ['Kolekcie', 'Galéria', 'Termíny'] },
+  { id: 'portfolio', name: 'Portfólio / Osobná stránka', desc: 'Práce, bio, kontakt, moderný dizajn', preview: '/demo/portfolio', price: 'od 299 €', category: 'creative', features: ['Práce', 'Bio', 'Kontakt'] },
+  { id: 'eshop', name: 'E-shop', desc: 'Produkty, košík, platby, admin panel', preview: '/demo/eshop', price: 'od 1 990 €', category: 'eshop', features: ['Produkty', 'Košík', 'Platby'] },
 ];
 
 const categories = [
@@ -34,6 +75,9 @@ const categories = [
   { key: 'eshop', label: 'E-shop' },
 ];
 
+// ═══════════════════════════════════════════════════════════════
+// FARBY (12 presetov)
+// ═══════════════════════════════════════════════════════════════
 const colorPresets = [
   { name: 'Zlato', primary: '#d4a843', bg: '#0a0908' },
   { name: 'Modrá', primary: '#3b82f6', bg: '#0a1628' },
@@ -43,44 +87,97 @@ const colorPresets = [
   { name: 'Oranžová', primary: '#f59e0b', bg: '#1a1408' },
   { name: 'Ružová', primary: '#ec4899', bg: '#1a081a' },
   { name: 'Tyrkysová', primary: '#06b6d4', bg: '#081a1a' },
-  { name: 'Tmavá', primary: '#94a3b8', bg: '#0f172a' },
+  { name: 'Tmavá elegancia', primary: '#94a3b8', bg: '#0f172a' },
   { name: 'Svetlá modrá', primary: '#2563eb', bg: '#ffffff' },
   { name: 'Svetlá zelená', primary: '#059669', bg: '#ffffff' },
   { name: 'Svetlá zlato', primary: '#b8860b', bg: '#ffffff' },
 ];
 
+// ═══════════════════════════════════════════════════════════════
+// STEP LABELS
+// ═══════════════════════════════════════════════════════════════
+const stepLabels = ['Šablóna', 'Dizajn', 'Kontakt'];
+
+// ═══════════════════════════════════════════════════════════════
+// FEATURE ICONS for live preview
+// ═══════════════════════════════════════════════════════════════
+const featureIcons = [
+  'M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z', // star
+  'M13 2.05V4.07C16.95 4.56 20 7.92 20 12C20 16.42 16.42 20 12 20C7.58 20 4 16.42 4 12C4 9.87 4.93 7.96 6.4 6.63L7.83 8.06C6.69 9.01 6 10.42 6 12C6 15.31 8.69 18 12 18C15.31 18 18 15.31 18 12C18 8.95 15.71 6.41 12.74 6.07L13 2.05ZM11 2.05L10.95 6.07C9.45 6.28 8.09 6.96 7.05 7.96L4.22 5.14C6.04 3.19 8.38 2.2 11 2.05Z', // speed
+  'M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1ZM10 17L6 13L7.41 11.59L10 14.17L16.59 7.58L18 9L10 17Z', // shield
+];
+
+// ═══════════════════════════════════════════════════════════════
+// MAIN COMPONENT
+// ═══════════════════════════════════════════════════════════════
 export default function VyberSiWeb() {
   const [step, setStep] = useState(1);
   const [selectedTemplate, setSelectedTemplate] = useState<string | null>(null);
   const [categoryFilter, setCategoryFilter] = useState('all');
   const [selectedColor, setSelectedColor] = useState(colorPresets[0]);
+  const [secondaryColor, setSecondaryColor] = useState('#ffffff');
   const [customColor, setCustomColor] = useState('#d4a843');
+  const [customBg, setCustomBg] = useState('#0a0908');
   const [logoFile, setLogoFile] = useState<string | null>(null);
   const [logoName, setLogoName] = useState('');
+  const [logoError, setLogoError] = useState('');
+  const [isDragging, setIsDragging] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
   const [form, setForm] = useState({ firma: '', meno: '', email: '', telefon: '', web: '', poznamky: '' });
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
+  const [animKey, setAnimKey] = useState(0);
 
   const selectedTmpl = templates.find(t => t.id === selectedTemplate);
   const filteredTemplates = categoryFilter === 'all' ? templates : templates.filter(t => t.category === categoryFilter);
   const isLight = selectedColor.bg === '#ffffff';
-  const textColor = isLight ? '#1a1a1a' : '#fff';
-  const mutedColor = isLight ? 'rgba(0,0,0,0.45)' : 'rgba(255,255,255,0.45)';
-  const cardBg = isLight ? '#f5f5f5' : '#111110';
-  const inputBg = isLight ? '#ffffff' : '#111110';
-  const inputBorder = isLight ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.08)';
+  const textColor = isLight ? '#1a1a1a' : '#ffffff';
+  const mutedColor = isLight ? 'rgba(0,0,0,0.5)' : 'rgba(255,255,255,0.5)';
+  const subtleColor = isLight ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.06)';
 
-  const handleLogo = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    if (file.size > 2 * 1024 * 1024) return; // max 2MB
+  // Trigger anim on step change
+  useEffect(() => { setAnimKey(k => k + 1); }, [step]);
+
+  // ═══ Logo Handler ═══
+  const processLogoFile = useCallback((file: File) => {
+    setLogoError('');
+    const validTypes = ['image/png', 'image/jpeg', 'image/jpg', 'image/svg+xml', 'image/webp'];
+    if (!validTypes.includes(file.type)) {
+      setLogoError('Povolené formáty: PNG, JPG, SVG, WEBP');
+      return;
+    }
+    if (file.size > 5 * 1024 * 1024) {
+      setLogoError('Maximálna veľkosť je 5 MB');
+      return;
+    }
     setLogoName(file.name);
     const reader = new FileReader();
     reader.onload = () => setLogoFile(reader.result as string);
     reader.readAsDataURL(file);
+  }, []);
+
+  const handleLogo = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) processLogoFile(file);
   };
 
+  const handleDragOver = useCallback((e: React.DragEvent) => { e.preventDefault(); setIsDragging(true); }, []);
+  const handleDragLeave = useCallback(() => setIsDragging(false), []);
+  const handleDrop = useCallback((e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(false);
+    const file = e.dataTransfer.files?.[0];
+    if (file) processLogoFile(file);
+  }, [processLogoFile]);
+
+  // ═══ Navigate Step ═══
+  const goStep = (s: number) => {
+    if (s === 1) setStep(1);
+    if (s === 2 && selectedTemplate) setStep(2);
+    if (s === 3 && selectedTemplate) setStep(3);
+  };
+
+  // ═══ Submit ═══
   const handleSubmit = async () => {
     if (!form.firma || !form.email) return;
     setSending(true);
@@ -93,7 +190,7 @@ export default function VyberSiWeb() {
           email: form.email,
           phone: form.telefon,
           company: form.firma,
-          message: `KONFIGURÁTOR WEBU\n\nŠablóna: ${selectedTmpl?.name || 'Neurčená'}\nFarba: ${selectedColor.name} (${selectedColor.primary})\nPozadie: ${selectedColor.bg}\nLogo: ${logoName || 'Žiadne'}\nExistujúci web: ${form.web || 'Žiadny'}\n\nPoznámky:\n${form.poznamky}`,
+          message: `KONFIGURÁTOR WEBU\n\nŠablóna: ${selectedTmpl?.name || 'Neurčená'}\nFarba: ${selectedColor.name} (${selectedColor.primary})\nPozadie: ${selectedColor.bg}\nSekundárna: ${secondaryColor}\nLogo: ${logoName || 'Žiadne'}\nExistujúci web: ${form.web || 'Žiadny'}\n\nPoznámky:\n${form.poznamky}`,
           source: 'konfigurator',
         }),
       });
@@ -104,325 +201,684 @@ export default function VyberSiWeb() {
     setSending(false);
   };
 
-  // ═══ ĎAKUJEM STRÁNKA ═══
+  // ═══════════════════════════════════════════════════════════════
+  // ĎAKOVACIA STRÁNKA
+  // ═══════════════════════════════════════════════════════════════
   if (sent) {
     return (
       <div style={{ minHeight: '100vh', background: '#0a0908', color: '#fff', fontFamily: font, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }}>
-        <div style={{ textAlign: 'center', maxWidth: 520, animation: 'fadeIn 0.5s ease' }}>
-          <div style={{ fontSize: 64, marginBottom: 24 }}>🎉</div>
-          <h1 style={{ fontFamily: heading, fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 700, marginBottom: 16 }}>
+        <div style={{ textAlign: 'center', maxWidth: 560, animation: 'konfFadeUp 0.6s cubic-bezier(0.16,1,0.3,1) both' }}>
+          {/* Checkmark SVG */}
+          <div style={{ width: 80, height: 80, borderRadius: '50%', background: 'rgba(212,168,67,0.1)', border: '2px solid rgba(212,168,67,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 28px' }}>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="#d4a843" /></svg>
+          </div>
+          <h1 style={{ fontFamily: heading, fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 700, marginBottom: 16, lineHeight: 1.2 }}>
             Ďakujeme, <span style={{ color: '#d4a843' }}>{form.firma}</span>!
           </h1>
-          <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 16, lineHeight: 1.7, marginBottom: 32 }}>
+          <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: 16, lineHeight: 1.7, marginBottom: 36 }}>
             Váš výber sme prijali. Ozveme sa vám do 24 hodín s návrhom a cenovou ponukou.
           </p>
-          <div style={{ padding: 20, background: 'rgba(212,168,67,0.08)', border: '1px solid rgba(212,168,67,0.2)', borderRadius: 16, textAlign: 'left', marginBottom: 32 }}>
-            <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', marginBottom: 12 }}>VÁŠ VÝBER</div>
-            <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginBottom: 12 }}>
-              <span style={{ fontSize: 28 }}>{selectedTmpl?.icon}</span>
+
+          {/* Recap card */}
+          <div style={{ padding: 24, background: 'rgba(212,168,67,0.06)', border: '1px solid rgba(212,168,67,0.15)', borderRadius: 16, textAlign: 'left', marginBottom: 36 }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 16 }}>Rekapitulácia</div>
+            <div style={{ display: 'flex', gap: 14, alignItems: 'center', marginBottom: 16 }}>
+              {selectedTmpl && <TemplateIcon id={selectedTmpl.id} color="#d4a843" size={36} />}
               <div>
-                <div style={{ fontWeight: 600 }}>{selectedTmpl?.name}</div>
-                <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)' }}>{selectedTmpl?.price}</div>
+                <div style={{ fontWeight: 700, fontSize: 15 }}>{selectedTmpl?.name}</div>
+                <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)' }}>{selectedTmpl?.price}</div>
               </div>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-              <div style={{ width: 20, height: 20, borderRadius: 6, background: selectedColor.primary }} />
-              <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)' }}>Farba: {selectedColor.name}</span>
-            </div>
-            {logoFile && (
+            <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <img src={logoFile} alt="logo" style={{ width: 20, height: 20, borderRadius: 4, objectFit: 'contain' }} />
-                <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)' }}>Logo: {logoName}</span>
+                <div style={{ width: 22, height: 22, borderRadius: 6, background: selectedColor.primary, border: '2px solid rgba(255,255,255,0.1)' }} />
+                <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)' }}>{selectedColor.name}</span>
               </div>
-            )}
+              {logoFile && (
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <img src={logoFile} alt="logo" style={{ width: 22, height: 22, borderRadius: 6, objectFit: 'contain' }} />
+                  <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)' }}>{logoName}</span>
+                </div>
+              )}
+            </div>
+            {form.meno && <div style={{ marginTop: 12, fontSize: 13, color: 'rgba(255,255,255,0.4)' }}>Kontakt: {form.meno} / {form.email}</div>}
           </div>
-          <a href="https://vassweb.sk" style={{ color: '#d4a843', textDecoration: 'none', fontSize: 14, fontWeight: 600 }}>← Späť na vassweb.sk</a>
+
+          <a href="https://vassweb.sk" style={{ color: '#d4a843', textDecoration: 'none', fontSize: 14, fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" fill="#d4a843" /></svg>
+            Späť na vassweb.sk
+          </a>
         </div>
-        <style>{`@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }`}</style>
+        <style>{`@keyframes konfFadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }`}</style>
       </div>
     );
   }
 
+  // ═══════════════════════════════════════════════════════════════
+  // MAIN RENDER
+  // ═══════════════════════════════════════════════════════════════
   return (
     <div style={{ minHeight: '100vh', background: '#0a0908', color: '#fff', fontFamily: font }}>
       <style>{`
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        input:focus, textarea:focus { border-color: ${selectedColor.primary} !important; outline: none; }
+        @keyframes konfFadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes konfPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+        .konf-card { transition: all 0.25s cubic-bezier(0.16,1,0.3,1); }
+        .konf-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+        .konf-color-btn { transition: all 0.2s ease; }
+        .konf-color-btn:hover { transform: scale(1.08); }
+        .konf-input:focus { border-color: ${selectedColor.primary} !important; outline: none; box-shadow: 0 0 0 3px ${selectedColor.primary}20; }
+        .konf-btn-primary { transition: all 0.2s ease; }
+        .konf-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 20px ${selectedColor.primary}40; }
+        .konf-btn-secondary { transition: all 0.2s ease; }
+        .konf-btn-secondary:hover { border-color: rgba(255,255,255,0.15) !important; color: rgba(255,255,255,0.6) !important; }
+        .konf-progress-step { transition: all 0.3s ease; cursor: pointer; }
+        .konf-progress-step:hover { opacity: 0.85; }
+        .konf-drop-zone { transition: all 0.25s ease; }
       `}</style>
 
-      {/* Header */}
-      <header style={{ textAlign: 'center', padding: '48px 24px 32px', position: 'relative' }}>
-        <div style={{ position: 'absolute', inset: 0, background: `radial-gradient(ellipse at 50% 0%, ${selectedColor.primary}15 0%, transparent 60%)` }} />
+      {/* ═══ HEADER ═══ */}
+      <header style={{ textAlign: 'center', padding: '48px 24px 36px', position: 'relative' }}>
+        <div style={{ position: 'absolute', inset: 0, background: `radial-gradient(ellipse at 50% 0%, ${selectedColor.primary}12 0%, transparent 55%)`, transition: 'background 0.5s ease' }} />
         <div style={{ position: 'relative', zIndex: 1 }}>
-          <a href="https://vassweb.sk" style={{ color: '#d4a843', textDecoration: 'none', fontSize: 22, fontWeight: 700 }}>Vassweb</a>
-          <h1 style={{ fontFamily: heading, fontSize: 'clamp(22px, 3.5vw, 36px)', fontWeight: 700, margin: '16px 0 8px' }}>
-            Nakonfigurujte si <span style={{ color: selectedColor.primary }}>vlastný web</span>
+          <a href="https://vassweb.sk" style={{ color: '#d4a843', textDecoration: 'none', fontSize: 20, fontWeight: 700, letterSpacing: '0.02em' }}>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" style={{ verticalAlign: 'middle', marginRight: 8 }}>
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#d4a843" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            </svg>
+            Vassweb
+          </a>
+          <h1 style={{ fontFamily: heading, fontSize: 'clamp(24px, 4vw, 38px)', fontWeight: 700, margin: '20px 0 10px', lineHeight: 1.25 }}>
+            Nakonfigurujte si{' '}
+            <span style={{ color: selectedColor.primary, transition: 'color 0.3s' }}>vlastný web</span>
           </h1>
-          <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: 14, maxWidth: 480, margin: '0 auto' }}>
-            3 kroky a hotovo. Vyberte šablónu, farby, nahrajte logo — a my to postavíme.
+          <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: 15, maxWidth: 500, margin: '0 auto', lineHeight: 1.6 }}>
+            3 kroky a hotovo. Vyberte šablónu, upravte dizajn, zanechajte kontakt — a my to postavíme.
           </p>
         </div>
       </header>
 
-      {/* Progress */}
-      <div style={{ maxWidth: 600, margin: '0 auto 32px', padding: '0 24px' }}>
-        <div style={{ display: 'flex', gap: 8 }}>
-          {[1, 2, 3].map(s => (
-            <button key={s} onClick={() => { if (s < step || (s === 2 && selectedTemplate) || (s === 3 && selectedTemplate)) setStep(s); }}
-              style={{ flex: 1, height: 6, borderRadius: 3, background: s <= step ? selectedColor.primary : 'rgba(255,255,255,0.08)', transition: 'background 0.3s', border: 'none', cursor: s <= step ? 'pointer' : 'default' }} />
-          ))}
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 8 }}>
-          {['1. Šablóna', '2. Dizajn', '3. Kontakt'].map((l, i) => (
-            <span key={l} style={{ fontSize: 11, color: step > i ? selectedColor.primary : 'rgba(255,255,255,0.25)', fontWeight: 600 }}>{l}</span>
-          ))}
+      {/* ═══ PROGRESS BAR — klikateľný ═══ */}
+      <div style={{ maxWidth: 640, margin: '0 auto 36px', padding: '0 24px' }}>
+        <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+          {[1, 2, 3].map((s, i) => {
+            const isActive = step === s;
+            const isCompleted = step > s;
+            const canClick = s === 1 || (s === 2 && !!selectedTemplate) || (s === 3 && !!selectedTemplate);
+            return (
+              <div key={s} style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 8 }}>
+                <button
+                  className="konf-progress-step"
+                  onClick={() => canClick && goStep(s)}
+                  style={{
+                    display: 'flex', alignItems: 'center', gap: 10, background: 'none', border: 'none',
+                    cursor: canClick ? 'pointer' : 'default', padding: 0, width: '100%',
+                  }}
+                >
+                  {/* Step circle */}
+                  <div style={{
+                    width: 32, height: 32, borderRadius: '50%', flexShrink: 0,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    fontSize: 13, fontWeight: 700, fontFamily: font,
+                    background: isActive ? selectedColor.primary : isCompleted ? `${selectedColor.primary}30` : 'rgba(255,255,255,0.04)',
+                    color: isActive ? (isLight ? '#fff' : '#000') : isCompleted ? selectedColor.primary : 'rgba(255,255,255,0.2)',
+                    border: `2px solid ${isActive ? selectedColor.primary : isCompleted ? `${selectedColor.primary}50` : 'rgba(255,255,255,0.06)'}`,
+                    transition: 'all 0.3s ease',
+                  }}>
+                    {isCompleted ? (
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill={selectedColor.primary} /></svg>
+                    ) : s}
+                  </div>
+                  <span style={{
+                    fontSize: 13, fontWeight: 600, whiteSpace: 'nowrap',
+                    color: isActive ? selectedColor.primary : isCompleted ? 'rgba(255,255,255,0.5)' : 'rgba(255,255,255,0.2)',
+                    transition: 'color 0.3s',
+                  }}>
+                    {stepLabels[i]}
+                  </span>
+                </button>
+                {/* Progress line */}
+                <div style={{
+                  height: 3, borderRadius: 2,
+                  background: isActive || isCompleted ? selectedColor.primary : 'rgba(255,255,255,0.04)',
+                  transition: 'background 0.4s ease',
+                }} />
+              </div>
+            );
+          })}
         </div>
       </div>
 
-      <div style={{ maxWidth: 960, margin: '0 auto', padding: '0 24px 60px' }}>
+      <div style={{ maxWidth: 1060, margin: '0 auto', padding: '0 24px 64px' }}>
 
-        {/* ═══ STEP 1 — ŠABLÓNA ═══ */}
+        {/* ═══════════════════════════════════════════════════════ */}
+        {/* STEP 1 — ŠABLÓNA                                      */}
+        {/* ═══════════════════════════════════════════════════════ */}
         {step === 1 && (
-          <div style={{ animation: 'fadeIn 0.4s ease' }}>
-            <h2 style={{ fontSize: 20, fontWeight: 700, marginBottom: 20, textAlign: 'center' }}>Aký web potrebujete?</h2>
+          <div key={`step1-${animKey}`} style={{ animation: 'konfFadeUp 0.5s cubic-bezier(0.16,1,0.3,1) both' }}>
+            <h2 style={{ fontSize: 22, fontWeight: 700, marginBottom: 6, textAlign: 'center', fontFamily: heading }}>Aký web potrebujete?</h2>
+            <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.35)', fontSize: 14, marginBottom: 24 }}>Vyberte si odvetvie a my pripravíme web na mieru.</p>
 
             {/* Category filter */}
-            <div style={{ display: 'flex', gap: 6, justifyContent: 'center', marginBottom: 24, flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: 8, justifyContent: 'center', marginBottom: 28, flexWrap: 'wrap' }}>
               {categories.map(c => (
                 <button key={c.key} onClick={() => setCategoryFilter(c.key)}
-                  style={{ padding: '6px 14px', borderRadius: 20, fontSize: 12, fontWeight: 600, fontFamily: font, cursor: 'pointer', border: `1px solid ${categoryFilter === c.key ? selectedColor.primary : 'rgba(255,255,255,0.08)'}`, background: categoryFilter === c.key ? `${selectedColor.primary}15` : 'transparent', color: categoryFilter === c.key ? selectedColor.primary : 'rgba(255,255,255,0.4)', transition: 'all 0.2s' }}>
+                  style={{
+                    padding: '8px 18px', borderRadius: 24, fontSize: 13, fontWeight: 600, fontFamily: font,
+                    cursor: 'pointer', transition: 'all 0.2s ease',
+                    border: `1.5px solid ${categoryFilter === c.key ? selectedColor.primary : 'rgba(255,255,255,0.06)'}`,
+                    background: categoryFilter === c.key ? `${selectedColor.primary}12` : 'transparent',
+                    color: categoryFilter === c.key ? selectedColor.primary : 'rgba(255,255,255,0.35)',
+                  }}>
                   {c.label}
                 </button>
               ))}
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 14 }}>
-              {filteredTemplates.map(t => (
-                <button key={t.id} onClick={() => setSelectedTemplate(t.id)}
-                  style={{
-                    textAlign: 'left', padding: 20, borderRadius: 14, cursor: 'pointer', fontFamily: font,
-                    background: selectedTemplate === t.id ? `${selectedColor.primary}12` : '#111110',
-                    border: `2px solid ${selectedTemplate === t.id ? selectedColor.primary : 'rgba(255,255,255,0.04)'}`,
-                    color: '#fff', transition: 'all 0.2s',
-                  }}>
-                  <div style={{ fontSize: 32, marginBottom: 10 }}>{t.icon}</div>
-                  <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 4 }}>{t.name}</div>
-                  <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', lineHeight: 1.5, marginBottom: 10 }}>{t.desc}</div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ fontSize: 16, fontWeight: 700, color: selectedColor.primary }}>{t.price}</span>
-                    <a href={t.preview} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}
-                      style={{ fontSize: 11, color: selectedColor.primary, textDecoration: 'none', fontWeight: 600, padding: '3px 10px', borderRadius: 6, border: `1px solid ${selectedColor.primary}30`, background: `${selectedColor.primary}08` }}>
-                      Náhľad →
-                    </a>
-                  </div>
-                </button>
-              ))}
+            {/* Template grid */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: 16 }}>
+              {filteredTemplates.map(t => {
+                const isSelected = selectedTemplate === t.id;
+                return (
+                  <button key={t.id} onClick={() => setSelectedTemplate(t.id)} className="konf-card"
+                    style={{
+                      textAlign: 'left', padding: 22, borderRadius: 16, cursor: 'pointer', fontFamily: font,
+                      background: isSelected ? `${selectedColor.primary}0a` : 'rgba(255,255,255,0.02)',
+                      border: `2px solid ${isSelected ? selectedColor.primary : 'rgba(255,255,255,0.04)'}`,
+                      color: '#fff', position: 'relative', overflow: 'hidden',
+                    }}>
+                    {/* Icon */}
+                    <div style={{ marginBottom: 14, opacity: isSelected ? 1 : 0.6, transition: 'opacity 0.2s' }}>
+                      <TemplateIcon id={t.id} color={isSelected ? selectedColor.primary : 'rgba(255,255,255,0.5)'} size={36} />
+                    </div>
+                    <div style={{ fontSize: 15, fontWeight: 700, marginBottom: 6, lineHeight: 1.3 }}>{t.name}</div>
+                    <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', lineHeight: 1.55, marginBottom: 14 }}>{t.desc}</div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <span style={{ fontSize: 17, fontWeight: 800, color: selectedColor.primary }}>{t.price}</span>
+                      <a href={t.preview} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}
+                        style={{
+                          fontSize: 11, color: selectedColor.primary, textDecoration: 'none', fontWeight: 600,
+                          padding: '5px 12px', borderRadius: 8,
+                          border: `1px solid ${selectedColor.primary}25`,
+                          background: `${selectedColor.primary}08`,
+                          transition: 'all 0.2s',
+                        }}>
+                        Náhľad
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" style={{ marginLeft: 4, verticalAlign: 'middle' }}>
+                          <path d="M5 12h14M12 5l7 7-7 7" stroke={selectedColor.primary} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </a>
+                    </div>
+                    {/* Selected checkmark */}
+                    {isSelected && (
+                      <div style={{ position: 'absolute', top: 12, right: 12, width: 24, height: 24, borderRadius: '50%', background: selectedColor.primary, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill={isLight ? '#fff' : '#000'} /></svg>
+                      </div>
+                    )}
+                  </button>
+                );
+              })}
             </div>
 
-            <div style={{ textAlign: 'center', marginTop: 28 }}>
+            {/* Next button */}
+            <div style={{ textAlign: 'center', marginTop: 32 }}>
               <button onClick={() => { if (selectedTemplate) setStep(2); }} disabled={!selectedTemplate}
-                style={{ padding: '13px 36px', borderRadius: 12, fontSize: 14, fontWeight: 700, fontFamily: font, cursor: selectedTemplate ? 'pointer' : 'not-allowed', background: selectedTemplate ? `linear-gradient(135deg, ${selectedColor.primary}, ${selectedColor.primary}cc)` : 'rgba(255,255,255,0.04)', color: selectedTemplate ? '#000' : 'rgba(255,255,255,0.2)', border: 'none', opacity: selectedTemplate ? 1 : 0.4 }}>
-                Ďalej → Dizajn
+                className="konf-btn-primary"
+                style={{
+                  padding: '14px 40px', borderRadius: 12, fontSize: 15, fontWeight: 700, fontFamily: font,
+                  cursor: selectedTemplate ? 'pointer' : 'not-allowed',
+                  background: selectedTemplate ? `linear-gradient(135deg, ${selectedColor.primary}, ${selectedColor.primary}cc)` : 'rgba(255,255,255,0.03)',
+                  color: selectedTemplate ? (isLight ? '#fff' : '#000') : 'rgba(255,255,255,0.15)',
+                  border: 'none', opacity: selectedTemplate ? 1 : 0.5,
+                }}>
+                Ďalej — Dizajn
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style={{ marginLeft: 8, verticalAlign: 'middle' }}>
+                  <path d="M5 12h14M12 5l7 7-7 7" stroke={selectedTemplate ? (isLight ? '#fff' : '#000') : 'rgba(255,255,255,0.15)'} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
               </button>
             </div>
           </div>
         )}
 
-        {/* ═══ STEP 2 — DIZAJN (Farby + Logo) ═══ */}
+        {/* ═══════════════════════════════════════════════════════ */}
+        {/* STEP 2 — DIZAJN (Farby + Logo + Live Preview)         */}
+        {/* ═══════════════════════════════════════════════════════ */}
         {step === 2 && (
-          <div style={{ animation: 'fadeIn 0.4s ease' }}>
-            <h2 style={{ fontSize: 20, fontWeight: 700, marginBottom: 24, textAlign: 'center' }}>Upravte si dizajn</h2>
+          <div key={`step2-${animKey}`} style={{ animation: 'konfFadeUp 0.5s cubic-bezier(0.16,1,0.3,1) both' }}>
+            <h2 style={{ fontSize: 22, fontWeight: 700, marginBottom: 6, textAlign: 'center', fontFamily: heading }}>Upravte si dizajn</h2>
+            <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.35)', fontSize: 14, marginBottom: 28 }}>Zvoľte farby, nahrajte logo a sledujte zmeny naživo.</p>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(420px, 1fr))', gap: 24 }}>
-              {/* Left — controls */}
+            <div style={{ display: 'grid', gridTemplateColumns: '380px 1fr', gap: 28, alignItems: 'start' }}>
+
+              {/* ═══ LEFT PANEL — Controls ═══ */}
               <div>
-                {/* Colors */}
+                {/* Color Presets */}
                 <div style={{ marginBottom: 24 }}>
-                  <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 12, color: 'rgba(255,255,255,0.6)' }}>Farebná schéma</div>
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 8 }}>
-                    {colorPresets.map(c => (
-                      <button key={c.name} onClick={() => { setSelectedColor(c); setCustomColor(c.primary); }}
-                        style={{ padding: 12, borderRadius: 10, cursor: 'pointer', textAlign: 'center', fontFamily: font, background: selectedColor.name === c.name ? `${c.primary}20` : '#111110', border: `2px solid ${selectedColor.name === c.name ? c.primary : 'rgba(255,255,255,0.04)'}`, color: '#fff', transition: 'all 0.2s' }}>
-                        <div style={{ width: 28, height: 28, borderRadius: 8, background: c.primary, margin: '0 auto 6px', border: c.bg === '#ffffff' ? '1px solid rgba(0,0,0,0.1)' : 'none' }}>
-                          {c.bg === '#ffffff' && <div style={{ width: '100%', height: '50%', borderRadius: '0 0 8px 8px', background: '#fff' }} />}
-                        </div>
-                        <div style={{ fontSize: 10, fontWeight: 600, color: c.primary }}>{c.name}</div>
-                      </button>
-                    ))}
+                  <div style={{ fontSize: 12, fontWeight: 700, marginBottom: 12, color: 'rgba(255,255,255,0.5)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style={{ verticalAlign: 'middle', marginRight: 6 }}>
+                      <path d="M12 22C6.49 22 2 17.51 2 12S6.49 2 12 2s10 4.04 10 9c0 3.31-2.69 6-6 6h-1.77c-.28 0-.5.22-.5.5 0 .12.05.23.13.33.41.47.64 1.06.64 1.67A2.5 2.5 0 0 1 12 22zm0-18c-4.41 0-8 3.59-8 8s3.59 8 8 8c.28 0 .5-.22.5-.5a.54.54 0 0 0-.14-.35c-.41-.46-.63-1.05-.63-1.65a2.5 2.5 0 0 1 2.5-2.5H16c2.21 0 4-1.79 4-4 0-3.86-3.59-7-8-7z" fill="rgba(255,255,255,0.5)" />
+                    </svg>
+                    Farebná schéma
                   </div>
-                  <div style={{ marginTop: 12, display: 'flex', alignItems: 'center', gap: 12 }}>
-                    <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)' }}>Vlastná:</span>
-                    <input type="color" value={customColor} onChange={e => { setCustomColor(e.target.value); setSelectedColor({ name: 'Vlastná', primary: e.target.value, bg: '#0a0908' }); }}
-                      style={{ width: 36, height: 28, border: 'none', borderRadius: 6, cursor: 'pointer', background: 'transparent' }} />
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 8 }}>
+                    {colorPresets.map(c => {
+                      const isActive = selectedColor.name === c.name;
+                      return (
+                        <button key={c.name} onClick={() => { setSelectedColor(c); setCustomColor(c.primary); setCustomBg(c.bg); }}
+                          className="konf-color-btn"
+                          style={{
+                            padding: '10px 4px', borderRadius: 10, cursor: 'pointer', textAlign: 'center', fontFamily: font,
+                            background: isActive ? `${c.primary}18` : 'rgba(255,255,255,0.02)',
+                            border: `2px solid ${isActive ? c.primary : 'rgba(255,255,255,0.04)'}`,
+                            color: '#fff',
+                          }}>
+                          <div style={{
+                            width: 30, height: 30, borderRadius: 8, margin: '0 auto 6px', position: 'relative', overflow: 'hidden',
+                            border: c.bg === '#ffffff' ? '2px solid rgba(0,0,0,0.08)' : '2px solid rgba(255,255,255,0.06)',
+                          }}>
+                            <div style={{ position: 'absolute', inset: 0, background: c.bg }} />
+                            <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: c.primary, clipPath: 'polygon(0 0, 100% 0, 0 100%)' }} />
+                          </div>
+                          <div style={{ fontSize: 9, fontWeight: 600, color: isActive ? c.primary : 'rgba(255,255,255,0.35)', lineHeight: 1.2 }}>{c.name}</div>
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
 
-                {/* Logo upload */}
+                {/* Custom color + secondary */}
+                <div style={{ display: 'flex', gap: 16, marginBottom: 24, padding: 14, background: 'rgba(255,255,255,0.02)', borderRadius: 12, border: '1px solid rgba(255,255,255,0.04)' }}>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.35)', marginBottom: 6, fontWeight: 600 }}>Vlastná farba</div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                      <input type="color" value={customColor} onChange={e => { setCustomColor(e.target.value); setSelectedColor({ name: 'Vlastná', primary: e.target.value, bg: customBg }); }}
+                        style={{ width: 32, height: 28, border: 'none', borderRadius: 6, cursor: 'pointer', background: 'transparent', padding: 0 }} />
+                      <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', fontFamily: 'monospace' }}>{customColor}</span>
+                    </div>
+                  </div>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.35)', marginBottom: 6, fontWeight: 600 }}>Sekundárna</div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                      <input type="color" value={secondaryColor} onChange={e => setSecondaryColor(e.target.value)}
+                        style={{ width: 32, height: 28, border: 'none', borderRadius: 6, cursor: 'pointer', background: 'transparent', padding: 0 }} />
+                      <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', fontFamily: 'monospace' }}>{secondaryColor}</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Logo Upload — Drag & Drop */}
                 <div style={{ marginBottom: 24 }}>
-                  <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 12, color: 'rgba(255,255,255,0.6)' }}>Logo (voliteľné)</div>
-                  <input ref={fileRef} type="file" accept="image/*" onChange={handleLogo} style={{ display: 'none' }} />
-                  <button onClick={() => fileRef.current?.click()}
-                    style={{ width: '100%', padding: 16, borderRadius: 12, cursor: 'pointer', fontFamily: font, fontSize: 13, fontWeight: 600, background: '#111110', border: `2px dashed ${logoFile ? selectedColor.primary : 'rgba(255,255,255,0.08)'}`, color: logoFile ? selectedColor.primary : 'rgba(255,255,255,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, transition: 'all 0.2s' }}>
+                  <div style={{ fontSize: 12, fontWeight: 700, marginBottom: 12, color: 'rgba(255,255,255,0.5)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style={{ verticalAlign: 'middle', marginRight: 6 }}>
+                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" fill="rgba(255,255,255,0.5)" />
+                    </svg>
+                    Logo (voliteľné)
+                  </div>
+                  <input ref={fileRef} type="file" accept=".png,.jpg,.jpeg,.svg,.webp" onChange={handleLogo} style={{ display: 'none' }} />
+                  <div
+                    onClick={() => fileRef.current?.click()}
+                    onDragOver={handleDragOver}
+                    onDragLeave={handleDragLeave}
+                    onDrop={handleDrop}
+                    className="konf-drop-zone"
+                    style={{
+                      padding: logoFile ? 16 : 28,
+                      borderRadius: 14, cursor: 'pointer',
+                      background: isDragging ? `${selectedColor.primary}08` : 'rgba(255,255,255,0.02)',
+                      border: `2px dashed ${isDragging ? selectedColor.primary : logoFile ? `${selectedColor.primary}50` : 'rgba(255,255,255,0.06)'}`,
+                      textAlign: 'center',
+                    }}>
                     {logoFile ? (
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+                        <img src={logoFile} alt="logo preview" style={{ width: 48, height: 48, borderRadius: 10, objectFit: 'contain', background: 'rgba(255,255,255,0.05)', padding: 4 }} />
+                        <div style={{ textAlign: 'left', flex: 1, minWidth: 0 }}>
+                          <div style={{ fontSize: 13, fontWeight: 600, color: '#fff', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{logoName}</div>
+                          <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.3)' }}>Kliknite pre zmenu</div>
+                        </div>
+                        <button onClick={(e) => { e.stopPropagation(); setLogoFile(null); setLogoName(''); setLogoError(''); }}
+                          style={{ width: 28, height: 28, borderRadius: 8, background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.3)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontSize: 16 }}>
+                          &times;
+                        </button>
+                      </div>
+                    ) : (
                       <>
-                        <img src={logoFile} alt="logo" style={{ width: 28, height: 28, borderRadius: 6, objectFit: 'contain' }} />
-                        {logoName} — Zmeniť
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" style={{ margin: '0 auto 8px', display: 'block', opacity: 0.3 }}>
+                          <path d="M9 16h6v-6h4l-7-7-7 7h4v6zm-4 2h14v2H5v-2z" fill="#fff" />
+                        </svg>
+                        <div style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.4)', marginBottom: 4 }}>
+                          Pretiahnite logo sem alebo kliknite
+                        </div>
+                        <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.2)' }}>
+                          PNG, JPG, SVG, WEBP — max 5 MB
+                        </div>
                       </>
-                    ) : '+ Nahrať logo (PNG, JPG, SVG — max 2MB)'}
-                  </button>
-                  {logoFile && (
-                    <button onClick={() => { setLogoFile(null); setLogoName(''); }} style={{ marginTop: 6, fontSize: 11, color: 'rgba(255,255,255,0.3)', background: 'none', border: 'none', cursor: 'pointer', fontFamily: font }}>Odstrániť logo</button>
+                    )}
+                  </div>
+                  {logoError && (
+                    <div style={{ marginTop: 8, fontSize: 12, color: '#ef4444', display: 'flex', alignItems: 'center', gap: 6 }}>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" fill="#ef4444" /></svg>
+                      {logoError}
+                    </div>
                   )}
+                </div>
+
+                {/* Company name input for preview */}
+                <div>
+                  <div style={{ fontSize: 12, fontWeight: 700, marginBottom: 10, color: 'rgba(255,255,255,0.5)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style={{ verticalAlign: 'middle', marginRight: 6 }}>
+                      <path d="M2.5 4v3h5v12h3V7h5V4h-13zm19 5h-9v3h3v7h3v-7h3V9z" fill="rgba(255,255,255,0.5)" />
+                    </svg>
+                    Názov firmy (pre náhľad)
+                  </div>
+                  <input
+                    value={form.firma}
+                    onChange={e => setForm(f => ({ ...f, firma: e.target.value }))}
+                    placeholder="Napr. Kaderníctvo Lucia"
+                    className="konf-input"
+                    style={{
+                      width: '100%', padding: '11px 14px', background: 'rgba(255,255,255,0.02)',
+                      border: '1.5px solid rgba(255,255,255,0.06)', borderRadius: 10, color: '#fff',
+                      fontSize: 14, fontFamily: font,
+                    }}
+                  />
                 </div>
               </div>
 
-              {/* Right — LIVE PREVIEW with WATERMARK */}
+              {/* ═══ RIGHT PANEL — LIVE PREVIEW ═══ */}
               <div>
-                <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 12, color: 'rgba(255,255,255,0.6)' }}>Náhľad</div>
-                <div style={{ position: 'relative', borderRadius: 14, overflow: 'hidden', border: `1px solid ${selectedColor.primary}15` }}>
-                  {/* VODOTLAČ */}
-                  <div style={{ position: 'absolute', inset: 0, zIndex: 10, pointerEvents: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
-                    <div style={{ transform: 'rotate(-35deg)', display: 'flex', flexDirection: 'column', gap: 40, opacity: 0.07 }}>
-                      {[0, 1, 2, 3].map(row => (
-                        <div key={row} style={{ display: 'flex', gap: 60 }}>
-                          {[0, 1, 2].map(col => (
-                            <span key={col} style={{ fontSize: 28, fontWeight: 900, color: isLight ? '#000' : '#fff', whiteSpace: 'nowrap', letterSpacing: '0.1em' }}>VASSWEB</span>
+                <div style={{ fontSize: 12, fontWeight: 700, marginBottom: 12, color: 'rgba(255,255,255,0.5)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style={{ verticalAlign: 'middle', marginRight: 6 }}>
+                    <path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14z" fill="rgba(255,255,255,0.5)" />
+                  </svg>
+                  Živý náhľad
+                </div>
+
+                <div style={{
+                  position: 'relative', borderRadius: 16, overflow: 'hidden',
+                  border: `1px solid ${selectedColor.primary}20`,
+                  boxShadow: `0 0 60px ${selectedColor.primary}08`,
+                  transition: 'all 0.4s ease',
+                }}>
+                  {/* Browser chrome */}
+                  <div style={{
+                    padding: '8px 14px', background: isLight ? '#e8e8e8' : '#1a1a1a',
+                    display: 'flex', alignItems: 'center', gap: 8,
+                    borderBottom: `1px solid ${isLight ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.06)'}`,
+                  }}>
+                    <div style={{ display: 'flex', gap: 5 }}>
+                      <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#ff5f57' }} />
+                      <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#febc2e' }} />
+                      <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#28c840' }} />
+                    </div>
+                    <div style={{
+                      flex: 1, height: 24, borderRadius: 6, fontSize: 11, fontFamily: 'monospace',
+                      background: isLight ? '#fff' : 'rgba(255,255,255,0.05)',
+                      color: isLight ? 'rgba(0,0,0,0.35)' : 'rgba(255,255,255,0.2)',
+                      display: 'flex', alignItems: 'center', padding: '0 10px',
+                    }}>
+                      {form.firma ? `www.${form.firma.toLowerCase().replace(/\s+/g, '').replace(/[^a-z0-9]/gi, '')}.sk` : 'www.vasafirma.sk'}
+                    </div>
+                  </div>
+
+                  {/* ═══ VASSWEB VODOTLAČ ═══ */}
+                  <div style={{ position: 'absolute', inset: 0, zIndex: 10, pointerEvents: 'none', overflow: 'hidden' }}>
+                    <div style={{
+                      position: 'absolute', top: '50%', left: '50%',
+                      transform: 'translate(-50%, -50%) rotate(-35deg)',
+                      display: 'flex', flexDirection: 'column', gap: 50, opacity: 0.06,
+                    }}>
+                      {[0, 1, 2, 3, 4].map(row => (
+                        <div key={row} style={{ display: 'flex', gap: 70, whiteSpace: 'nowrap' }}>
+                          {[0, 1, 2, 3].map(col => (
+                            <span key={col} style={{
+                              fontSize: 26, fontWeight: 900, letterSpacing: '0.15em',
+                              color: isLight ? '#000' : '#fff',
+                              userSelect: 'none',
+                            }}>VASSWEB</span>
                           ))}
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  {/* Preview content */}
-                  <div style={{ background: selectedColor.bg, padding: 24, minHeight: 320 }}>
+                  {/* ═══ Preview Content ═══ */}
+                  <div style={{ background: selectedColor.bg, padding: 0, minHeight: 400, transition: 'background 0.4s ease', position: 'relative' }}>
                     {/* Navbar */}
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 32, paddingBottom: 12, borderBottom: `1px solid ${selectedColor.primary}15` }}>
+                    <div style={{
+                      display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                      padding: '14px 24px',
+                      borderBottom: `1px solid ${subtleColor}`,
+                      backdropFilter: 'blur(10px)',
+                    }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                         {logoFile ? (
-                          <img src={logoFile} alt="logo" style={{ width: 32, height: 32, borderRadius: 8, objectFit: 'contain' }} />
+                          <img src={logoFile} alt="logo" style={{ width: 30, height: 30, borderRadius: 8, objectFit: 'contain' }} />
                         ) : (
-                          <div style={{ width: 32, height: 32, borderRadius: 8, background: selectedColor.primary, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 14, fontWeight: 900, color: selectedColor.bg === '#ffffff' ? '#fff' : '#000' }}>
+                          <div style={{
+                            width: 30, height: 30, borderRadius: 8, background: selectedColor.primary,
+                            display: 'flex', alignItems: 'center', justifyContent: 'center',
+                            fontSize: 14, fontWeight: 900,
+                            color: isLight ? '#fff' : '#000',
+                          }}>
                             {(form.firma || 'V')[0].toUpperCase()}
                           </div>
                         )}
-                        <span style={{ fontSize: 16, fontWeight: 700, color: textColor }}>{form.firma || 'Vaša firma'}</span>
+                        <span style={{ fontSize: 14, fontWeight: 700, color: textColor }}>{form.firma || 'Vaša firma'}</span>
                       </div>
-                      <div style={{ display: 'flex', gap: 16 }}>
+                      <div style={{ display: 'flex', gap: 18 }}>
                         {['Služby', 'O nás', 'Kontakt'].map(l => (
-                          <span key={l} style={{ fontSize: 12, color: mutedColor, fontWeight: 500 }}>{l}</span>
+                          <span key={l} style={{ fontSize: 11, color: mutedColor, fontWeight: 500, cursor: 'default' }}>{l}</span>
                         ))}
                       </div>
                     </div>
 
                     {/* Hero */}
-                    <div style={{ marginBottom: 24 }}>
-                      <div style={{ fontSize: 10, color: selectedColor.primary, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 8 }}>{selectedTmpl?.name}</div>
-                      <h3 style={{ fontSize: 22, fontWeight: 800, color: textColor, marginBottom: 8, lineHeight: 1.2 }}>
-                        Vitajte v <span style={{ color: selectedColor.primary }}>{form.firma || 'Vašej firme'}</span>
+                    <div style={{ padding: '36px 24px 28px' }}>
+                      <div style={{
+                        fontSize: 9, color: selectedColor.primary, fontWeight: 700,
+                        letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 10,
+                      }}>
+                        {selectedTmpl?.name}
+                      </div>
+                      <h3 style={{
+                        fontFamily: heading, fontSize: 24, fontWeight: 800, color: textColor,
+                        marginBottom: 10, lineHeight: 1.25,
+                      }}>
+                        Vitajte v{' '}
+                        <span style={{ color: selectedColor.primary }}>{form.firma || 'Vašej firme'}</span>
                       </h3>
-                      <p style={{ fontSize: 13, color: mutedColor, lineHeight: 1.6, marginBottom: 16 }}>
-                        Profesionálne služby pre vás a vašu rodinu. Kontaktujte nás ešte dnes.
+                      <p style={{ fontSize: 12, color: mutedColor, lineHeight: 1.65, marginBottom: 18, maxWidth: 360 }}>
+                        Profesionálne služby pre vás a vašu rodinu. Kontaktujte nás ešte dnes a presvedčte sa sami.
                       </p>
-                      <div style={{ display: 'flex', gap: 8 }}>
-                        <div style={{ padding: '8px 18px', borderRadius: 8, background: selectedColor.primary, color: selectedColor.bg === '#ffffff' ? '#fff' : '#000', fontSize: 12, fontWeight: 700 }}>Kontaktujte nás</div>
-                        <div style={{ padding: '8px 18px', borderRadius: 8, border: `1px solid ${selectedColor.primary}40`, color: selectedColor.primary, fontSize: 12, fontWeight: 600 }}>Naše služby</div>
+                      <div style={{ display: 'flex', gap: 10 }}>
+                        <div style={{
+                          padding: '9px 20px', borderRadius: 8,
+                          background: selectedColor.primary,
+                          color: isLight ? '#fff' : '#000',
+                          fontSize: 12, fontWeight: 700,
+                        }}>Kontaktujte nás</div>
+                        <div style={{
+                          padding: '9px 20px', borderRadius: 8,
+                          border: `1.5px solid ${selectedColor.primary}40`,
+                          color: selectedColor.primary, fontSize: 12, fontWeight: 600,
+                        }}>Naše služby</div>
                       </div>
                     </div>
 
                     {/* Features */}
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 10 }}>
-                      {['Kvalita', 'Rýchlosť', 'Spoľahlivosť'].map(f => (
-                        <div key={f} style={{ padding: 12, borderRadius: 8, background: `${selectedColor.primary}08`, border: `1px solid ${selectedColor.primary}10`, textAlign: 'center' }}>
-                          <div style={{ fontSize: 18, marginBottom: 4 }}>⭐</div>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12, padding: '0 24px 20px' }}>
+                      {(selectedTmpl?.features || ['Kvalita', 'Rýchlosť', 'Spoľahlivosť']).map((f, i) => (
+                        <div key={f} style={{
+                          padding: 14, borderRadius: 10,
+                          background: `${selectedColor.primary}06`,
+                          border: `1px solid ${selectedColor.primary}10`,
+                          textAlign: 'center',
+                        }}>
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style={{ margin: '0 auto 6px', display: 'block' }}>
+                            <path d={featureIcons[i % 3]} fill={selectedColor.primary} opacity="0.7" />
+                          </svg>
                           <div style={{ fontSize: 11, fontWeight: 600, color: textColor }}>{f}</div>
                         </div>
                       ))}
+                    </div>
+
+                    {/* Footer */}
+                    <div style={{
+                      padding: '14px 24px',
+                      borderTop: `1px solid ${subtleColor}`,
+                      display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                    }}>
+                      <span style={{ fontSize: 10, color: mutedColor }}>
+                        &copy; 2026 {form.firma || 'Vaša firma'}
+                      </span>
+                      <span style={{ fontSize: 10, color: mutedColor }}>
+                        Vytvoril{' '}
+                        <span style={{ color: selectedColor.primary, fontWeight: 600 }}>Vassweb</span>
+                      </span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div style={{ display: 'flex', justifyContent: 'center', gap: 12, marginTop: 28 }}>
-              <button onClick={() => setStep(1)} style={{ padding: '13px 28px', borderRadius: 12, fontSize: 13, fontWeight: 600, fontFamily: font, cursor: 'pointer', background: 'transparent', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.4)' }}>← Späť</button>
-              <button onClick={() => setStep(3)}
-                style={{ padding: '13px 36px', borderRadius: 12, fontSize: 14, fontWeight: 700, fontFamily: font, cursor: 'pointer', background: `linear-gradient(135deg, ${selectedColor.primary}, ${selectedColor.primary}cc)`, color: '#000', border: 'none' }}>
-                Ďalej → Kontakt
+            {/* Navigation */}
+            <div style={{ display: 'flex', justifyContent: 'center', gap: 12, marginTop: 32 }}>
+              <button onClick={() => setStep(1)} className="konf-btn-secondary"
+                style={{ padding: '13px 28px', borderRadius: 12, fontSize: 13, fontWeight: 600, fontFamily: font, cursor: 'pointer', background: 'transparent', border: '1.5px solid rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.35)' }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style={{ verticalAlign: 'middle', marginRight: 6 }}>
+                  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" fill="rgba(255,255,255,0.35)" />
+                </svg>
+                Späť
+              </button>
+              <button onClick={() => setStep(3)} className="konf-btn-primary"
+                style={{ padding: '13px 40px', borderRadius: 12, fontSize: 15, fontWeight: 700, fontFamily: font, cursor: 'pointer', background: `linear-gradient(135deg, ${selectedColor.primary}, ${selectedColor.primary}cc)`, color: isLight ? '#fff' : '#000', border: 'none' }}>
+                Ďalej — Kontakt
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style={{ marginLeft: 8, verticalAlign: 'middle' }}>
+                  <path d="M5 12h14M12 5l7 7-7 7" stroke={isLight ? '#fff' : '#000'} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
               </button>
             </div>
           </div>
         )}
 
-        {/* ═══ STEP 3 — KONTAKT ═══ */}
+        {/* ═══════════════════════════════════════════════════════ */}
+        {/* STEP 3 — KONTAKT                                      */}
+        {/* ═══════════════════════════════════════════════════════ */}
         {step === 3 && (
-          <div style={{ animation: 'fadeIn 0.4s ease', maxWidth: 560, margin: '0 auto' }}>
-            <h2 style={{ fontSize: 20, fontWeight: 700, marginBottom: 8, textAlign: 'center' }}>Povedzte nám o sebe</h2>
-            <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.35)', fontSize: 13, marginBottom: 28 }}>Ozveme sa do 24 hodín s návrhom a cenovou ponukou.</p>
+          <div key={`step3-${animKey}`} style={{ animation: 'konfFadeUp 0.5s cubic-bezier(0.16,1,0.3,1) both', maxWidth: 580, margin: '0 auto' }}>
+            <h2 style={{ fontSize: 22, fontWeight: 700, marginBottom: 6, textAlign: 'center', fontFamily: heading }}>Povedzte nám o sebe</h2>
+            <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.35)', fontSize: 14, marginBottom: 28 }}>Ozveme sa do 24 hodín s návrhom a cenovou ponukou.</p>
 
-            {/* Recap */}
-            <div style={{ display: 'flex', gap: 12, padding: 14, background: '#111110', borderRadius: 12, marginBottom: 20, alignItems: 'center' }}>
-              <span style={{ fontSize: 24 }}>{selectedTmpl?.icon}</span>
-              <div style={{ flex: 1 }}>
-                <div style={{ fontSize: 13, fontWeight: 600 }}>{selectedTmpl?.name}</div>
-                <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.35)' }}>{selectedTmpl?.price}</div>
+            {/* Recap card */}
+            <div style={{
+              display: 'flex', gap: 14, padding: 16, borderRadius: 14, marginBottom: 24, alignItems: 'center',
+              background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)',
+            }}>
+              {selectedTmpl && <TemplateIcon id={selectedTmpl.id} color={selectedColor.primary} size={32} />}
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ fontSize: 14, fontWeight: 700 }}>{selectedTmpl?.name}</div>
+                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)' }}>{selectedTmpl?.price}</div>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                <div style={{ width: 20, height: 20, borderRadius: 6, background: selectedColor.primary }} />
-                {logoFile && <img src={logoFile} alt="" style={{ width: 20, height: 20, borderRadius: 4, objectFit: 'contain' }} />}
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
+                <div style={{ width: 22, height: 22, borderRadius: 6, background: selectedColor.primary, border: '2px solid rgba(255,255,255,0.1)' }} />
+                {logoFile && <img src={logoFile} alt="" style={{ width: 22, height: 22, borderRadius: 6, objectFit: 'contain' }} />}
               </div>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+            {/* Form */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
               <div>
-                <label style={{ fontSize: 11, color: 'rgba(255,255,255,0.35)', display: 'block', marginBottom: 4 }}>Názov firmy *</label>
-                <input value={form.firma} onChange={e => setForm(f => ({ ...f, firma: e.target.value }))} placeholder="Napr. Kaderníctvo Lucia"
-                  style={{ width: '100%', padding: '11px 14px', background: inputBg, border: `1px solid ${inputBorder}`, borderRadius: 10, color: '#fff', fontSize: 13, fontFamily: font }} />
+                <label style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', display: 'block', marginBottom: 6, fontWeight: 600 }}>
+                  Názov firmy <span style={{ color: selectedColor.primary }}>*</span>
+                </label>
+                <input value={form.firma} onChange={e => setForm(f => ({ ...f, firma: e.target.value }))}
+                  placeholder="Napr. Kaderníctvo Lucia" className="konf-input"
+                  style={{ width: '100%', padding: '12px 16px', background: 'rgba(255,255,255,0.02)', border: '1.5px solid rgba(255,255,255,0.06)', borderRadius: 10, color: '#fff', fontSize: 14, fontFamily: font }} />
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
                 <div>
-                  <label style={{ fontSize: 11, color: 'rgba(255,255,255,0.35)', display: 'block', marginBottom: 4 }}>Vaše meno</label>
-                  <input value={form.meno} onChange={e => setForm(f => ({ ...f, meno: e.target.value }))} placeholder="Meno a priezvisko"
-                    style={{ width: '100%', padding: '11px 14px', background: inputBg, border: `1px solid ${inputBorder}`, borderRadius: 10, color: '#fff', fontSize: 13, fontFamily: font }} />
+                  <label style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', display: 'block', marginBottom: 6, fontWeight: 600 }}>Vaše meno</label>
+                  <input value={form.meno} onChange={e => setForm(f => ({ ...f, meno: e.target.value }))}
+                    placeholder="Meno a priezvisko" className="konf-input"
+                    style={{ width: '100%', padding: '12px 16px', background: 'rgba(255,255,255,0.02)', border: '1.5px solid rgba(255,255,255,0.06)', borderRadius: 10, color: '#fff', fontSize: 14, fontFamily: font }} />
                 </div>
                 <div>
-                  <label style={{ fontSize: 11, color: 'rgba(255,255,255,0.35)', display: 'block', marginBottom: 4 }}>Telefón</label>
-                  <input value={form.telefon} onChange={e => setForm(f => ({ ...f, telefon: e.target.value }))} placeholder="+421 9XX XXX XXX"
-                    style={{ width: '100%', padding: '11px 14px', background: inputBg, border: `1px solid ${inputBorder}`, borderRadius: 10, color: '#fff', fontSize: 13, fontFamily: font }} />
+                  <label style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', display: 'block', marginBottom: 6, fontWeight: 600 }}>Telefón</label>
+                  <input value={form.telefon} onChange={e => setForm(f => ({ ...f, telefon: e.target.value }))}
+                    placeholder="+421 9XX XXX XXX" className="konf-input"
+                    style={{ width: '100%', padding: '12px 16px', background: 'rgba(255,255,255,0.02)', border: '1.5px solid rgba(255,255,255,0.06)', borderRadius: 10, color: '#fff', fontSize: 14, fontFamily: font }} />
                 </div>
               </div>
+
               <div>
-                <label style={{ fontSize: 11, color: 'rgba(255,255,255,0.35)', display: 'block', marginBottom: 4 }}>Email *</label>
-                <input value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} placeholder="vas@email.sk" type="email"
-                  style={{ width: '100%', padding: '11px 14px', background: inputBg, border: `1px solid ${inputBorder}`, borderRadius: 10, color: '#fff', fontSize: 13, fontFamily: font }} />
+                <label style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', display: 'block', marginBottom: 6, fontWeight: 600 }}>
+                  Email <span style={{ color: selectedColor.primary }}>*</span>
+                </label>
+                <input value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
+                  placeholder="vas@email.sk" type="email" className="konf-input"
+                  style={{ width: '100%', padding: '12px 16px', background: 'rgba(255,255,255,0.02)', border: '1.5px solid rgba(255,255,255,0.06)', borderRadius: 10, color: '#fff', fontSize: 14, fontFamily: font }} />
               </div>
+
               <div>
-                <label style={{ fontSize: 11, color: 'rgba(255,255,255,0.35)', display: 'block', marginBottom: 4 }}>Existujúca webstránka</label>
-                <input value={form.web} onChange={e => setForm(f => ({ ...f, web: e.target.value }))} placeholder="www.priklad.sk"
-                  style={{ width: '100%', padding: '11px 14px', background: inputBg, border: `1px solid ${inputBorder}`, borderRadius: 10, color: '#fff', fontSize: 13, fontFamily: font }} />
+                <label style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', display: 'block', marginBottom: 6, fontWeight: 600 }}>Existujúca webstránka</label>
+                <input value={form.web} onChange={e => setForm(f => ({ ...f, web: e.target.value }))}
+                  placeholder="www.priklad.sk" className="konf-input"
+                  style={{ width: '100%', padding: '12px 16px', background: 'rgba(255,255,255,0.02)', border: '1.5px solid rgba(255,255,255,0.06)', borderRadius: 10, color: '#fff', fontSize: 14, fontFamily: font }} />
               </div>
+
               <div>
-                <label style={{ fontSize: 11, color: 'rgba(255,255,255,0.35)', display: 'block', marginBottom: 4 }}>Čo by ste chceli na webe?</label>
+                <label style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', display: 'block', marginBottom: 6, fontWeight: 600 }}>Čo by ste chceli na webe?</label>
                 <textarea value={form.poznamky} onChange={e => setForm(f => ({ ...f, poznamky: e.target.value }))} rows={3}
-                  placeholder="Napr. galériu prác, online rezerváciu, jedálny lístok..."
-                  style={{ width: '100%', padding: '11px 14px', background: inputBg, border: `1px solid ${inputBorder}`, borderRadius: 10, color: '#fff', fontSize: 13, fontFamily: font, resize: 'vertical' }} />
+                  placeholder="Napr. galériu prác, online rezerváciu, jedálny lístok..." className="konf-input"
+                  style={{ width: '100%', padding: '12px 16px', background: 'rgba(255,255,255,0.02)', border: '1.5px solid rgba(255,255,255,0.06)', borderRadius: 10, color: '#fff', fontSize: 14, fontFamily: font, resize: 'vertical' }} />
               </div>
             </div>
 
-            <div style={{ display: 'flex', justifyContent: 'center', gap: 12, marginTop: 24 }}>
-              <button onClick={() => setStep(2)} style={{ padding: '13px 28px', borderRadius: 12, fontSize: 13, fontWeight: 600, fontFamily: font, cursor: 'pointer', background: 'transparent', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.4)' }}>← Späť</button>
-              <button onClick={handleSubmit} disabled={sending || !form.firma || !form.email}
-                style={{ padding: '13px 36px', borderRadius: 12, fontSize: 14, fontWeight: 700, fontFamily: font, cursor: (!form.firma || !form.email) ? 'not-allowed' : 'pointer', background: (!form.firma || !form.email) ? 'rgba(255,255,255,0.04)' : `linear-gradient(135deg, ${selectedColor.primary}, ${selectedColor.primary}cc)`, color: (!form.firma || !form.email) ? 'rgba(255,255,255,0.2)' : '#000', border: 'none', opacity: (!form.firma || !form.email) ? 0.4 : 1 }}>
-                {sending ? 'Odosielam...' : 'Odoslať — Chcem web!'}
+            {/* Navigation */}
+            <div style={{ display: 'flex', justifyContent: 'center', gap: 12, marginTop: 28 }}>
+              <button onClick={() => setStep(2)} className="konf-btn-secondary"
+                style={{ padding: '13px 28px', borderRadius: 12, fontSize: 13, fontWeight: 600, fontFamily: font, cursor: 'pointer', background: 'transparent', border: '1.5px solid rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.35)' }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style={{ verticalAlign: 'middle', marginRight: 6 }}>
+                  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" fill="rgba(255,255,255,0.35)" />
+                </svg>
+                Späť
+              </button>
+              <button onClick={handleSubmit} disabled={sending || !form.firma || !form.email} className="konf-btn-primary"
+                style={{
+                  padding: '13px 40px', borderRadius: 12, fontSize: 15, fontWeight: 700, fontFamily: font,
+                  cursor: (!form.firma || !form.email) ? 'not-allowed' : 'pointer',
+                  background: (!form.firma || !form.email) ? 'rgba(255,255,255,0.03)' : `linear-gradient(135deg, ${selectedColor.primary}, ${selectedColor.primary}cc)`,
+                  color: (!form.firma || !form.email) ? 'rgba(255,255,255,0.15)' : (isLight ? '#fff' : '#000'),
+                  border: 'none', opacity: (!form.firma || !form.email) ? 0.5 : 1,
+                }}>
+                {sending ? (
+                  <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style={{ animation: 'spin 1s linear infinite' }}>
+                      <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke={isLight ? '#fff' : '#000'} strokeWidth="2" strokeLinecap="round" />
+                    </svg>
+                    Odosielam...
+                  </span>
+                ) : (
+                  <>
+                    Odoslať — Chcem web!
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style={{ marginLeft: 8, verticalAlign: 'middle' }}>
+                      <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill={isLight ? '#fff' : '#000'} />
+                    </svg>
+                  </>
+                )}
               </button>
             </div>
           </div>
         )}
       </div>
 
-      {/* Footer */}
-      <footer style={{ textAlign: 'center', padding: '24px', borderTop: '1px solid rgba(255,255,255,0.03)', fontSize: 11, color: 'rgba(255,255,255,0.15)' }}>
-        © 2026 Vassweb — VVD s.r.o. | <a href="https://vassweb.sk" style={{ color: '#d4a843', textDecoration: 'none' }}>vassweb.sk</a>
+      {/* ═══ FOOTER ═══ */}
+      <footer style={{ textAlign: 'center', padding: '24px', borderTop: '1px solid rgba(255,255,255,0.03)', fontSize: 12, color: 'rgba(255,255,255,0.15)' }}>
+        &copy; 2026 Vassweb — VVD s.r.o. |{' '}
+        <a href="https://vassweb.sk" style={{ color: '#d4a843', textDecoration: 'none', fontWeight: 600 }}>vassweb.sk</a>
       </footer>
+
+      {/* Spinner keyframe */}
+      <style>{`@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`}</style>
     </div>
   );
 }
