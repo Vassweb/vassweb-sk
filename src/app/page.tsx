@@ -981,11 +981,21 @@ export default function Home({ locale = 'sk' }: { locale?: Locale }) {
           {/* Šablóny grid */}
           <div className="grid-portfolio" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
             {[
-              { icon: '🍝', name: 'Reštaurácia', price: 'od 299 €', href: '/demo/restaurant' },
-              { icon: '💇', name: 'Kaderníctvo', price: 'od 299 €', href: '/demo/portfolio' },
-              { icon: '🔧', name: 'Autoservis', price: 'od 299 €', href: '/demo/firma' },
-              { icon: '💪', name: 'Fitness / Joga', price: 'od 299 €', href: '/demo/fitness' },
-              { icon: '🦷', name: 'Zubár / Klinika', price: 'od 299 €', href: '/demo/firma' },
+              { icon: '🍝', name: 'Reštaurácia / Kaviareň', price: 'od 299 €', href: '/demo/restaurant' },
+              { icon: '💇', name: 'Kaderníctvo / Kozmetika', price: 'od 299 €', href: '/demo/portfolio' },
+              { icon: '🔧', name: 'Autoservis / Pneuservis', price: 'od 299 €', href: '/demo/firma' },
+              { icon: '💪', name: 'Fitness / Joga / Masáže', price: 'od 299 €', href: '/demo/fitness' },
+              { icon: '🏗️', name: 'Stavebná firma / Remeselník', price: 'od 299 €', href: '/demo/firma' },
+              { icon: '🦷', name: 'Zubár / Lekár / Klinika', price: 'od 299 €', href: '/demo/firma' },
+              { icon: '🐾', name: 'Veterinár / Pet salón', price: 'od 299 €', href: '/demo/firma' },
+              { icon: '📸', name: 'Fotograf / Videograf', price: 'od 299 €', href: '/demo/portfolio' },
+              { icon: '🧁', name: 'Cukráreň / Pekáreň', price: 'od 299 €', href: '/demo/restaurant' },
+              { icon: '🚗', name: 'Autoškola', price: 'od 299 €', href: '/demo/firma' },
+              { icon: '📊', name: 'Účtovník / Daňový poradca', price: 'od 299 €', href: '/demo/firma' },
+              { icon: '🏠', name: 'Realitná kancelária', price: 'od 590 €', href: '/demo/firma' },
+              { icon: '🏨', name: 'Hotel / Penzión', price: 'od 590 €', href: '/demo/restaurant' },
+              { icon: '👰', name: 'Svadobný salón / Krajčír', price: 'od 299 €', href: '/demo/portfolio' },
+              { icon: '🎨', name: 'Portfólio / Osobná stránka', price: 'od 299 €', href: '/demo/portfolio' },
               { icon: '🛒', name: 'E-shop', price: 'od 1 990 €', href: '/demo/eshop' },
             ].map((tmpl, i) => (
               <FadeIn key={i} delay={i * 0.1}>
@@ -1011,7 +1021,7 @@ export default function Home({ locale = 'sk' }: { locale?: Locale }) {
           <FadeIn delay={0.4}>
             <div style={{ textAlign: 'center', marginTop: 48 }}>
               <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: 14, fontFamily: body, marginBottom: 20 }}>
-                + 10 ďalších šablón — vrátane veterinára, fotografa, cukrárne, hotela, autoškoly a ďalších
+                Vyberte si farby, nahrajte logo a pošlite nám brief — ozveme sa do 24 hodín
               </p>
               <a href="/vyber-si-web" style={{
                 display: 'inline-flex', alignItems: 'center', gap: 10,
