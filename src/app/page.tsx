@@ -964,112 +964,74 @@ export default function Home({ locale = 'sk' }: { locale?: Locale }) {
 
       <SectionDivider />
 
-      {/* ══ PORTFOLIO ══ */}
+      {/* ══ VYBER SI WEB — namiesto portfólia ══ */}
       <section id="portfolio" style={section}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <FadeIn>
-            <div style={{ textAlign: 'center', marginBottom: 56 }}>
-              <p style={label}>{tr.portfolio.label}</p>
-              <h2 style={h2Style}>{tr.portfolio.heading}</h2>
-              <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: 15, fontFamily: body, maxWidth: 500, margin: '12px auto 0' }}>{tr.portfolio.subtext}</p>
+            <div style={{ textAlign: 'center', marginBottom: 48 }}>
+              <p style={label}>KONFIGURÁTOR</p>
+              <h2 style={h2Style}>Vyberte si svoj web</h2>
+              <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: 15, fontFamily: body, maxWidth: 540, margin: '12px auto 0' }}>
+                16 šablón pre rôzne odvetvia. Vyberte si dizajn, farby, nahrajte logo — a my to postavíme. Hotové do 5 dní.
+              </p>
               <div style={{ width: 40, height: 1, background: 'linear-gradient(90deg, transparent, #d4a843, transparent)', margin: '20px auto 0' }} />
             </div>
           </FadeIn>
 
-          <div className="grid-portfolio" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
-            {tr.portfolio.items.map((item, i) => (
-              <FadeIn key={i} delay={i * 0.15}>
-                <div style={{
-                  ...card,
-                  padding: 0,
-                  overflow: 'hidden',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  transition: 'transform 0.3s ease, border-color 0.3s ease',
+          {/* Šablóny grid */}
+          <div className="grid-portfolio" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
+            {[
+              { icon: '🍝', name: 'Reštaurácia', price: 'od 299 €', href: '/demo/restaurant' },
+              { icon: '💇', name: 'Kaderníctvo', price: 'od 299 €', href: '/demo/portfolio' },
+              { icon: '🔧', name: 'Autoservis', price: 'od 299 €', href: '/demo/firma' },
+              { icon: '💪', name: 'Fitness / Joga', price: 'od 299 €', href: '/demo/fitness' },
+              { icon: '🦷', name: 'Zubár / Klinika', price: 'od 299 €', href: '/demo/firma' },
+              { icon: '🛒', name: 'E-shop', price: 'od 1 990 €', href: '/demo/eshop' },
+            ].map((tmpl, i) => (
+              <FadeIn key={i} delay={i * 0.1}>
+                <a href={tmpl.href} target="_blank" rel="noopener noreferrer" style={{
+                  ...card, textDecoration: 'none', color: '#fff', display: 'flex', alignItems: 'center', gap: 16,
+                  transition: 'transform 0.3s ease, border-color 0.3s ease', cursor: 'pointer',
                 }}
-                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.borderColor = 'rgba(212,168,67,0.25)'; }}
+                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.borderColor = 'rgba(212,168,67,0.3)'; }}
                 onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = 'rgba(212,168,67,0.12)'; }}
                 >
-                  {/* Placeholder image area */}
-                  <div style={{
-                    height: 200,
-                    background: `linear-gradient(135deg, rgba(212,168,67,${0.04 + i * 0.02}), rgba(10,9,8,0.95))`,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    position: 'relative',
-                    overflow: 'hidden',
-                  }}>
-                    <div style={{
-                      position: 'absolute', inset: 0,
-                      background: `radial-gradient(circle at ${30 + i * 20}% 40%, rgba(212,168,67,0.08), transparent 60%)`,
-                    }} />
-                    <span style={{
-                      fontFamily: heading,
-                      fontSize: 'clamp(36px, 4vw, 48px)',
-                      fontWeight: 400,
-                      background: 'linear-gradient(135deg, rgba(255,238,187,0.15), rgba(212,168,67,0.15))',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      position: 'relative',
-                    }}>
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
+                  <div style={{ fontSize: 36, flexShrink: 0 }}>{tmpl.icon}</div>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ fontFamily: heading, fontSize: 17, fontWeight: 500, marginBottom: 2 }}>{tmpl.name}</div>
+                    <div style={{ fontSize: 13, color: '#d4a843', fontWeight: 600 }}>{tmpl.price}</div>
                   </div>
-
-                  {/* Content */}
-                  <div style={{ padding: '24px 24px 28px', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                    <span style={{
-                      fontSize: 10, fontWeight: 600, fontFamily: body, letterSpacing: '0.15em',
-                      textTransform: 'uppercase', color: '#d4a843', marginBottom: 10,
-                    }}>
-                      {item.category}
-                    </span>
-                    <h3 style={{
-                      fontFamily: heading, fontSize: 20, fontWeight: 500, color: '#fff', marginBottom: 10,
-                    }}>
-                      {item.title}
-                    </h3>
-                    <p style={{
-                      fontSize: 13, color: 'rgba(255,255,255,0.4)', fontFamily: body, lineHeight: 1.7, marginBottom: 16, flex: 1,
-                    }}>
-                      {item.desc}
-                    </p>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: item.href ? 16 : 0 }}>
-                      {item.tags.map(tag => (
-                        <span key={tag} style={{
-                          fontSize: 10, fontFamily: body, fontWeight: 500,
-                          padding: '4px 10px', borderRadius: 999,
-                          border: '1px solid rgba(212,168,67,0.12)',
-                          color: 'rgba(212,168,67,0.5)',
-                          letterSpacing: '0.05em',
-                        }}>
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    {item.href && (
-                      <a href={item.href} target="_blank" rel="noopener noreferrer" style={{
-                        display: 'inline-flex', alignItems: 'center', gap: 8,
-                        padding: '10px 20px', borderRadius: 8,
-                        background: 'linear-gradient(135deg, rgba(212,168,67,0.12), rgba(212,168,67,0.04))',
-                        border: '1px solid rgba(212,168,67,0.2)',
-                        color: '#d4a843', fontSize: 13, fontWeight: 500, fontFamily: body,
-                        textDecoration: 'none', transition: 'all 0.3s ease',
-                        letterSpacing: '0.03em',
-                      }}
-                      onMouseEnter={e => { e.currentTarget.style.background = 'linear-gradient(135deg, rgba(212,168,67,0.2), rgba(212,168,67,0.08))'; e.currentTarget.style.borderColor = 'rgba(212,168,67,0.4)'; }}
-                      onMouseLeave={e => { e.currentTarget.style.background = 'linear-gradient(135deg, rgba(212,168,67,0.12), rgba(212,168,67,0.04))'; e.currentTarget.style.borderColor = 'rgba(212,168,67,0.2)'; }}
-                      >
-                        <ExternalLink size={14} />
-                        {tr.portfolio.viewDemo}
-                      </a>
-                    )}
-                  </div>
-                </div>
+                  <ExternalLink size={16} color="rgba(212,168,67,0.4)" />
+                </a>
               </FadeIn>
             ))}
           </div>
+
+          {/* CTA — Konfigurátor */}
+          <FadeIn delay={0.4}>
+            <div style={{ textAlign: 'center', marginTop: 48 }}>
+              <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: 14, fontFamily: body, marginBottom: 20 }}>
+                + 10 ďalších šablón — vrátane veterinára, fotografa, cukrárne, hotela, autoškoly a ďalších
+              </p>
+              <a href="/vyber-si-web" style={{
+                display: 'inline-flex', alignItems: 'center', gap: 10,
+                padding: '16px 40px', borderRadius: 12,
+                background: 'linear-gradient(135deg, #ffeebb, #d4a843, #8a6a1e)',
+                color: '#0a0908', fontSize: 16, fontWeight: 700, fontFamily: body,
+                textDecoration: 'none', transition: 'transform 0.2s, box-shadow 0.2s',
+                boxShadow: '0 4px 24px rgba(212,168,67,0.3)',
+                letterSpacing: '0.02em',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 8px 32px rgba(212,168,67,0.4)'; }}
+              onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 24px rgba(212,168,67,0.3)'; }}
+              >
+                Nakonfigurovať si web →
+              </a>
+              <p style={{ color: 'rgba(255,255,255,0.2)', fontSize: 12, fontFamily: body, marginTop: 12 }}>
+                Vyberte šablónu, farby, nahrajte logo — hotové za 3 minúty
+              </p>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
