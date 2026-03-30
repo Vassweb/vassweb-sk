@@ -328,6 +328,59 @@ function SectionDivider() {
   );
 }
 
+/* ═══ FEATURE TOOLTIPS — vysvetlivky pre laikov ═══ */
+const featureTooltips: Record<string, string> = {
+  'SEO optimalizácia': 'Váš web sa zobrazí vyššie vo výsledkoch Google',
+  'SEO optimisation': 'Your website will rank higher in Google results',
+  'SEO optimalizace': 'Váš web se zobrazí výše ve výsledcích Google',
+  'SEO optimalizáció': 'Weboldala magasabban jelenik meg a Google-ben',
+  'CMS systém': 'Admin panel kde si meníte obsah sami, bez programátora',
+  'CMS system': 'Admin panel where you edit content yourself, no developer needed',
+  'CMS rendszer': 'Admin felület ahol maga szerkeszti a tartalmat',
+  'SSL certifikát': 'Šifrovanie a zámok v prehliadači — bezpečný web',
+  'SSL certificate': 'Encryption and padlock in browser — secure website',
+  'SSL tanúsítvány': 'Titkosítás és lakat a böngészőben — biztonságos web',
+  'Google Analytics': 'Štatistiky návštevnosti — koľko ľudí prišlo a odkiaľ',
+  'Hosting (1. rok v cene)': 'Server kde beží váš web — 1. rok zadarmo',
+  'Hosting (1st year included)': 'Server hosting your website — 1st year free',
+  'Hosting (1. rok v ceně)': 'Server kde běží váš web — 1. rok zdarma',
+  'Hosting (1. év az árban)': 'Szerver ahol a web fut — 1. év ingyenes',
+  'Responzívna webstránka': 'Web vyzerá perfektne na mobile aj počítači',
+  'Responsive website': 'Website looks perfect on mobile and desktop',
+  'Responzivní webstránka': 'Web vypadá perfektně na mobilu i počítači',
+  'Reszponzív weboldal': 'A weboldal tökéletesen néz ki mobilon és asztalon',
+  'Vlastná doména': 'Vaša adresa na internete — napr. vasafirma.sk',
+  'Custom domain': 'Your internet address — e.g. yourbusiness.com',
+  'Vlastní doména': 'Vaše adresa na internetu — např. vasefirma.cz',
+  'Saját domain': 'Az Ön internet címe — pl. cege.hu',
+  'AI chatbot integrácia': 'Inteligentný chatbot ktorý odpovedá klientom 24/7',
+  'AI chatbot integration': 'Smart chatbot that answers clients 24/7',
+  'AI chatbot integrace': 'Inteligentní chatbot co odpovídá klientům 24/7',
+  'AI chatbot integráció': 'Intelligens chatbot ami 24/7 válaszol az ügyfeleknek',
+  'Blog modul': 'Píšte články a novinky — pomáha SEO aj dôveryhodnosti',
+  'Blog module': 'Write articles and news — helps SEO and credibility',
+  'E-mail automatizácia': 'Automatické emaily klientom — potvrdenia, novinky',
+  'Email automation': 'Automated emails to clients — confirmations, news',
+  'E-mail automatizace': 'Automatické emaily klientům — potvrzení, novinky',
+  'E-mail automatizáció': 'Automatikus emailek az ügyfeleknek — visszaigazolások',
+  'Kontaktný formulár': 'Formulár cez ktorý vám klienti píšu správy',
+  'Contact form': 'Form through which clients send you messages',
+  'Kontaktní formulář': 'Formulář přes který vám klienti píšou zprávy',
+  'Kapcsolatfelvételi űrlap': 'Űrlap amin keresztül az ügyfelek üzenetet küldenek',
+  'Mobilný dizajn': 'Web optimalizovaný pre smartfóny a tablety',
+  'Mobile design': 'Website optimised for smartphones and tablets',
+  'Mobilní design': 'Web optimalizovaný pro smartphony a tablety',
+  'Mobil dizájn': 'Okostelefonokra és tabletekre optimalizált web',
+  'Prioritná podpora': 'Prednostná technická pomoc — odpoveď do 4 hodín',
+  'Priority support': 'Priority technical help — response within 4 hours',
+  'Prioritní podpora': 'Přednostní technická pomoc — odpověď do 4 hodin',
+  'Elsőbbségi támogatás': 'Elsőbbségi technikai segítség — válasz 4 órán belül',
+  'Napojenie na soc. siete': 'Facebook, Instagram, LinkedIn — prepojenie s webom',
+  'Social media integration': 'Facebook, Instagram, LinkedIn — connected to your site',
+  'Napojení na soc. sítě': 'Facebook, Instagram, LinkedIn — propojení s webem',
+  'Közösségi média integráció': 'Facebook, Instagram, LinkedIn — összekapcsolva a weboldallal',
+};
+
 /* ═══ PRICING CARD WITH SELECTION ═══ */
 function PricingCard({ plan, isSelected, onSelect, tPricing }: {
   plan: { name: string; price: string; originalPrice?: string; featured: boolean; features: string[] };
@@ -337,7 +390,6 @@ function PricingCard({ plan, isSelected, onSelect, tPricing }: {
 }) {
   const [hoveredFeature, setHoveredFeature] = useState(-1);
   const isHighlighted = isSelected || plan.featured;
-
   return (
     <div
       onClick={onSelect}
@@ -407,7 +459,9 @@ function PricingCard({ plan, isSelected, onSelect, tPricing }: {
             }}
           >
             <CheckCircle size={15} color="#d4a843" style={{ flexShrink: 0, marginTop: 2 }} />
-            {f}
+            <span title={featureTooltips[f] || undefined} style={{ cursor: featureTooltips[f] ? 'help' : undefined, borderBottom: featureTooltips[f] ? '1px dotted rgba(212,168,67,0.25)' : undefined, paddingBottom: featureTooltips[f] ? 1 : undefined }}>
+              {f}
+            </span>
           </li>
         ))}
       </ul>
@@ -744,13 +798,18 @@ export default function Home({ locale = 'sk' }: { locale?: Locale }) {
                 transition: 'transform 0.2s, box-shadow 0.2s',
                 position: 'relative',
               }}>{tr.hero.ctaPrimary}</a>
-              <a href="#sluzby" className="outline-btn" style={{
-                display: 'inline-block', padding: '14px 36px',
-                border: '1px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.6)',
-                borderRadius: 999, fontWeight: 500, fontSize: 14,
-                textDecoration: 'none', backgroundColor: 'transparent', fontFamily: body,
+              <a href="/vyber-si-web" className="outline-btn" style={{
+                display: 'inline-flex', alignItems: 'center', gap: 8, padding: '14px 36px',
+                border: '1px solid rgba(212,168,67,0.35)', color: '#d4a843',
+                borderRadius: 999, fontWeight: 600, fontSize: 14,
+                textDecoration: 'none', backgroundColor: 'rgba(212,168,67,0.05)', fontFamily: body,
                 transition: 'all 0.2s',
-              }}>{tr.hero.ctaSecondary}</a>
+              }}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
+                  <path d="M12 15.5A3.5 3.5 0 0 1 8.5 12 3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5 3.5 3.5 0 0 1-3.5 3.5m7.43-2.53c.04-.32.07-.64.07-.97s-.03-.66-.07-1l2.11-1.63c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64L4.57 11c-.04.34-.07.67-.07 1s.03.65.07.97l-2.11 1.66c-.19.15-.25.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1.01c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.58 1.69-.98l2.49 1.01c.22.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64L19.43 12.97z" fill="#d4a843" />
+                </svg>
+                Vytvor si web
+              </a>
             </div>
           </FadeIn>
 
