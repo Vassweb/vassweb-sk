@@ -31,6 +31,85 @@ const icons: Record<string, string> = {
 };
 
 // ═══════════════════════════════════════════════════════════════
+// Mini Browser Mockup — SVG wireframe náhľad webu pre template kartu
+// ═══════════════════════════════════════════════════════════════
+function TemplateMockup({ id, primary }: { id: string; primary: string }) {
+  // Varianty obsahu podľa typu šablóny
+  const hasGallery = ['beauty', 'foto', 'cukraren', 'hotel', 'svadobny', 'restaurant'].includes(id);
+  const hasCards = ['fitness', 'zubar', 'veterinar', 'auto', 'ucto', 'autoskola', 'firma'].includes(id);
+  const hasProducts = ['eshop'].includes(id);
+  const hasMap = ['auto', 'firma', 'realitka'].includes(id);
+
+  return (
+    <div style={{ borderRadius: 8, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.07)', marginBottom: 14, userSelect: 'none' }}>
+      {/* Browser chrome */}
+      <div style={{ padding: '5px 8px', background: 'rgba(255,255,255,0.04)', display: 'flex', alignItems: 'center', gap: 4 }}>
+        <div style={{ display: 'flex', gap: 3 }}>
+          <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#ff5f57', opacity: 0.7 }} />
+          <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#febc2e', opacity: 0.7 }} />
+          <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#28c840', opacity: 0.7 }} />
+        </div>
+        <div style={{ flex: 1, height: 12, borderRadius: 3, background: 'rgba(255,255,255,0.04)', marginLeft: 4 }} />
+      </div>
+      {/* Page content */}
+      <div style={{ background: 'rgba(10,10,10,0.95)', padding: '8px 10px 10px' }}>
+        {/* Navbar */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+          <div style={{ width: 28, height: 5, borderRadius: 3, background: primary, opacity: 0.9 }} />
+          <div style={{ display: 'flex', gap: 5 }}>
+            {[1,2,3].map(i => <div key={i} style={{ width: 16, height: 4, borderRadius: 2, background: 'rgba(255,255,255,0.07)' }} />)}
+          </div>
+        </div>
+        {/* Hero */}
+        <div style={{ marginBottom: 8 }}>
+          <div style={{ width: '55%', height: 7, borderRadius: 4, background: primary, opacity: 0.8, marginBottom: 4 }} />
+          <div style={{ width: '75%', height: 4, borderRadius: 2, background: 'rgba(255,255,255,0.1)', marginBottom: 3 }} />
+          <div style={{ width: '60%', height: 4, borderRadius: 2, background: 'rgba(255,255,255,0.06)', marginBottom: 8 }} />
+          <div style={{ width: 36, height: 11, borderRadius: 3, background: primary, opacity: 0.85 }} />
+        </div>
+        {/* Content blocks — variant podľa šablóny */}
+        {hasGallery && (
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 3 }}>
+            {[1,2,3,4,5,6].map(i => <div key={i} style={{ height: 18, borderRadius: 3, background: i % 2 === 0 ? `${primary}18` : 'rgba(255,255,255,0.04)', border: `1px solid rgba(255,255,255,0.05)` }} />)}
+          </div>
+        )}
+        {hasCards && (
+          <div style={{ display: 'flex', gap: 4 }}>
+            {[1,2,3].map(i => (
+              <div key={i} style={{ flex: 1, borderRadius: 4, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', padding: '5px 4px' }}>
+                <div style={{ width: '60%', height: 4, borderRadius: 2, background: primary, opacity: 0.6, marginBottom: 3 }} />
+                <div style={{ width: '80%', height: 3, borderRadius: 2, background: 'rgba(255,255,255,0.07)' }} />
+              </div>
+            ))}
+          </div>
+        )}
+        {hasProducts && (
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 3 }}>
+            {[1,2,3,4].map(i => (
+              <div key={i} style={{ borderRadius: 3, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)', padding: '4px 3px' }}>
+                <div style={{ height: 14, borderRadius: 2, background: `${primary}12`, marginBottom: 3 }} />
+                <div style={{ width: '70%', height: 3, borderRadius: 2, background: primary, opacity: 0.5 }} />
+              </div>
+            ))}
+          </div>
+        )}
+        {!hasGallery && !hasCards && !hasProducts && (
+          <div style={{ display: 'flex', gap: 4 }}>
+            <div style={{ flex: 1, height: 28, borderRadius: 4, background: `${primary}10`, border: `1px solid ${primary}20` }} />
+            <div style={{ flex: 1, height: 28, borderRadius: 4, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }} />
+          </div>
+        )}
+        {hasMap && (
+          <div style={{ marginTop: 4, height: 12, borderRadius: 3, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ width: 6, height: 6, borderRadius: '50%', background: primary, opacity: 0.6 }} />
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════════
 // SVG Icon Component — vždy renderuje <svg>, nikdy emoji
 // ═══════════════════════════════════════════════════════════════
 function TemplateIcon({ id, color, size = 32 }: { id: string; color: string; size?: number }) {
@@ -528,6 +607,18 @@ export default function VyberSiWeb() {
               ))}
             </div>
 
+            {/* Social proof + urgencia */}
+            <div style={{ display: 'flex', gap: 10, justifyContent: 'center', marginBottom: 20, flexWrap: 'wrap' }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '6px 14px', background: 'rgba(34,197,94,0.07)', border: '1px solid rgba(34,197,94,0.15)', borderRadius: 999, fontSize: 12, color: 'rgba(34,197,94,0.85)', fontWeight: 600 }}>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="rgba(34,197,94,0.85)" /></svg>
+                7 webov vytvorených tento mesiac
+              </div>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '6px 14px', background: 'rgba(251,146,60,0.07)', border: '1px solid rgba(251,146,60,0.15)', borderRadius: 999, fontSize: 12, color: 'rgba(251,146,60,0.9)', fontWeight: 600 }}>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z" fill="rgba(251,146,60,0.9)" /></svg>
+                Dostupnosť: 2 termíny v apríli
+              </div>
+            </div>
+
             {/* Template grid */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: 16 }}>
               {filteredTemplates.map(t => {
@@ -535,15 +626,16 @@ export default function VyberSiWeb() {
                 return (
                   <button key={t.id} onClick={() => setSelectedTemplate(t.id)} className="konf-card"
                     style={{
-                      textAlign: 'left', padding: 22, borderRadius: 16, cursor: 'pointer', fontFamily: font,
+                      textAlign: 'left', padding: 16, borderRadius: 16, cursor: 'pointer', fontFamily: font,
                       background: isSelected ? `${selectedColor.primary}0a` : 'rgba(255,255,255,0.02)',
                       border: `2px solid ${isSelected ? selectedColor.primary : 'rgba(255,255,255,0.04)'}`,
                       color: '#fff', position: 'relative', overflow: 'hidden',
                     }}>
-                    <div style={{ marginBottom: 14, opacity: isSelected ? 1 : 0.6, transition: 'opacity 0.2s' }}>
-                      <TemplateIcon id={t.id} color={isSelected ? selectedColor.primary : 'rgba(255,255,255,0.5)'} size={36} />
+                    <TemplateMockup id={t.id} primary={isSelected ? selectedColor.primary : 'rgba(255,255,255,0.25)'} />
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
+                      <TemplateIcon id={t.id} color={isSelected ? selectedColor.primary : 'rgba(255,255,255,0.4)'} size={18} />
+                      <div style={{ fontSize: 14, fontWeight: 700, lineHeight: 1.3 }}>{t.name}</div>
                     </div>
-                    <div style={{ fontSize: 15, fontWeight: 700, marginBottom: 6, lineHeight: 1.3 }}>{t.name}</div>
                     <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', lineHeight: 1.55, marginBottom: 14 }}>{t.desc}</div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <span style={{ fontSize: 17, fontWeight: 800, color: selectedColor.primary }}>{t.price}</span>
@@ -1163,6 +1255,12 @@ export default function VyberSiWeb() {
                   <div style={{ fontSize: 22, fontWeight: 800, color: selectedColor.primary, fontFamily: heading }}>{calcTotal}€</div>
                   <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)' }}>odhadovaná cena</div>
                 </div>
+              </div>
+              <div style={{ marginTop: 12, paddingTop: 12, borderTop: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', gap: 6 }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z" fill="rgba(255,255,255,0.35)" /></svg>
+                <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)' }}>
+                  Odhadovaný čas realizácie: <strong style={{ color: selectedColor.primary }}>14 dní</strong> od schválenia návrhu
+                </span>
               </div>
             </div>
 
