@@ -76,9 +76,9 @@ export default function ObchodnePodmienky() {
             Všetky ceny sú uvedené bez DPH, pokiaľ nie je uvedené inak.
           </p>
           <p style={paragraph}>
-            Štandardné platobné podmienky: 50 % záloha pred začatím prác, 50 % po odovzdaní diela.
-            Pri väčších projektoch môže byť dohodnutý iný platobný harmonogram. Splatnosť faktúr
-            je 14 dní od vystavenia.
+            Štandardné platobné podmienky: 70 % záloha pred začatím prác, 30 % po odovzdaní diela.
+            Pri projektoch nad 2 000 € môže byť dohodnutý iný platobný harmonogram (napr. 50/50).
+            Splatnosť faktúr je 14 dní od vystavenia.
           </p>
         </section>
 
