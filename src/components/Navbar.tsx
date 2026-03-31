@@ -131,6 +131,7 @@ export default function Navbar() {
             <div style={{ position: 'relative' }}>
               <button
                 onClick={e => { e.stopPropagation(); setLangOpen(!langOpen); }}
+                onKeyDown={e => { if (e.key === 'Escape') setLangOpen(false); }}
                 aria-expanded={langOpen}
                 aria-haspopup="true"
                 aria-label={locale === 'en' ? 'Change language' : locale === 'cs' ? 'Změnit jazyk' : locale === 'hu' ? 'Nyelv váltása' : 'Zmeniť jazyk'}

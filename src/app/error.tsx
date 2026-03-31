@@ -5,7 +5,21 @@ import Image from 'next/image';
 const heading = 'var(--font-heading), Playfair Display, Georgia, serif';
 const body = 'var(--font-inter), Inter, system-ui, sans-serif';
 
+const texts: Record<string, { code: string; title: string; sub: string; retry: string; home: string }> = {
+  sk: { code: '500', title: 'Niečo sa pokazilo', sub: 'Nastala neočakávaná chyba. Skúste to znova alebo sa vráťte na hlavnú stránku.', retry: 'Skúsiť znova', home: 'Hlavná stránka' },
+  en: { code: '500', title: 'Something went wrong', sub: 'An unexpected error occurred. Try again or go back to the homepage.', retry: 'Try again', home: 'Homepage' },
+  cs: { code: '500', title: 'Něco se pokazilo', sub: 'Nastala neočekávaná chyba. Zkuste to znovu nebo se vraťte na hlavní stránku.', retry: 'Zkusit znovu', home: 'Hlavní stránka' },
+  hu: { code: '500', title: 'Valami hiba történt', sub: 'Váratlan hiba történt. Próbálja újra vagy térjen vissza a főoldalra.', retry: 'Újrapróbálás', home: 'Főoldal' },
+};
+
+function getLocaleFromCookie(): string {
+  if (typeof document === 'undefined') return 'sk';
+  const match = document.cookie.match(/(?:^|;\s*)locale=([^;]*)/);
+  return match?.[1] || 'sk';
+}
+
 export default function Error({ reset }: { error: Error & { digest?: string }; reset: () => void }) {
+  const t = texts[getLocaleFromCookie()] || texts.sk;
   return (
     <main id="main-content" style={{
       minHeight: '100vh',
@@ -56,7 +70,7 @@ export default function Error({ reset }: { error: Error & { digest?: string }; r
           marginBottom: 8,
           fontWeight: 300,
         }}>
-          Niečo sa pokazilo
+          {t.title}
         </p>
         <p style={{
           fontFamily: body,
@@ -65,7 +79,7 @@ export default function Error({ reset }: { error: Error & { digest?: string }; r
           marginBottom: 40,
           lineHeight: 1.6,
         }}>
-          Nastala neočakávaná chyba. Skúste to znova alebo sa vráťte na hlavnú stránku.
+          {t.sub}
         </p>
         <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
           <button
@@ -84,7 +98,7 @@ export default function Error({ reset }: { error: Error & { digest?: string }; r
               textTransform: 'uppercase' as const,
             }}
           >
-            Skúsiť znova
+            {t.retry}
           </button>
           <a href="/" style={{
             display: 'inline-block',
@@ -99,7 +113,7 @@ export default function Error({ reset }: { error: Error & { digest?: string }; r
             letterSpacing: '0.08em',
             textTransform: 'uppercase' as const,
           }}>
-            Hlavná stránka
+            {t.home}
           </a>
         </div>
       </div>

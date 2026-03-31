@@ -64,6 +64,15 @@ export function middleware(request: NextRequest) {
     if (pathname.startsWith('/_next') || pathname.startsWith('/api') || pathname.includes('.')) {
       return NextResponse.next();
     }
+
+    // Auth check — require sb-access-token cookie for /app routes
+    const authToken = request.cookies.get('sb-access-token')?.value;
+    if (!authToken && pathname !== '/login') {
+      const loginUrl = request.nextUrl.clone();
+      loginUrl.pathname = '/login';
+      return NextResponse.redirect(loginUrl);
+    }
+
     // Root of app.vassweb.sk → show /app
     if (pathname === '/' || pathname === '') {
       const url = request.nextUrl.clone();

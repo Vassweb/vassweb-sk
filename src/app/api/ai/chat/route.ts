@@ -2,6 +2,12 @@ import { NextResponse } from 'next/server';
 
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY || '';
 
+const COMPANY_ICO = process.env.COMPANY_ICO || '';
+const COMPANY_DIC = process.env.COMPANY_DIC || '';
+const COMPANY_IC_DPH = process.env.COMPANY_IC_DPH || '';
+const COMPANY_IBAN = process.env.COMPANY_IBAN || '';
+const COMPANY_EMAIL = process.env.COMPANY_EMAIL || '';
+
 const SYSTEM_PROMPT = `Si biznis asistent pre Vassweb (VVD s.r.o.) — slovenská firma zameraná na webový vývoj, AI riešenia a automatizáciu.
 
 Tvoje úlohy:
@@ -20,10 +26,10 @@ Pravidlá:
 
 Firemné údaje:
 - Firma: VVD s. r. o. (brand: Vassweb)
-- IČO: 56921021, DIČ: 2122501524, IČ DPH: SK2122501524
-- IBAN: SK11 0900 0000 0052 3252 7162
+- IČO: ${COMPANY_ICO}, DIČ: ${COMPANY_DIC}, IČ DPH: ${COMPANY_IC_DPH}
+- IBAN: ${COMPANY_IBAN}
 - Konateľ: Richard Vass
-- Email: richard.vass@vassco.sk, Web: vassweb.sk`;
+- Email: ${COMPANY_EMAIL}, Web: vassweb.sk`;
 
 export async function POST(request: Request) {
   try {

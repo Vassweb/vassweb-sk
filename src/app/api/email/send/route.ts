@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
         to: Array.isArray(to) ? to : [to],
         subject,
         html,
-        reply_to: replyTo || 'richard.vass@vassco.sk',
+        reply_to: replyTo || process.env.COMPANY_EMAIL || 'noreply@vassweb.sk',
       }),
     });
 

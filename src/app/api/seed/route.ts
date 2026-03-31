@@ -52,8 +52,11 @@ export async function GET(request: Request) {
   }
   const token = SUPABASE_SERVICE_ROLE_KEY;
 
-  // Known user ID for richard.vass@vassco.sk
-  const OWNER_USER_ID = '0beae804-0988-4f0a-9fe6-07bc05fd9118';
+  // Owner user ID from env — set in Vercel dashboard
+  const OWNER_USER_ID = process.env.OWNER_USER_ID || '';
+  if (!OWNER_USER_ID) {
+    return NextResponse.json({ error: 'OWNER_USER_ID not configured' }, { status: 500 });
+  }
 
   const results: string[] = [];
   const uf = { user_id: OWNER_USER_ID };

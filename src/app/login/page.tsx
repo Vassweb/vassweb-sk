@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { auth } from '@/lib/supabase';
 
-const ALLOWED_EMAIL = process.env.NEXT_PUBLIC_ALLOWED_EMAIL || 'richard.vass@vassco.sk';
+const ALLOWED_EMAIL = process.env.NEXT_PUBLIC_ALLOWED_EMAIL || '';
 
 function setAuthCookie(token: string) {
   document.cookie = `sb-access-token=${token}; path=/; max-age=604800; SameSite=Lax`;

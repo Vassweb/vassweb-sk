@@ -226,7 +226,7 @@ export async function POST(req: NextRequest) {
       ai_analysis: ai ? JSON.stringify(ai) : null,
       ai_suggested_price: ai?.odhad_ceny ? parseFloat(ai.odhad_ceny.replace(/[^0-9.]/g, '')) || null : null,
       notes: notes || '',
-      organization_id: organization_id || '81801874-1e39-49c7-a84b-3b73d2a53949', // default: Vass&Co Facility
+      organization_id: organization_id || process.env.DEFAULT_ORGANIZATION_ID || null,
     };
 
     const created = await supaFetch('leads', {

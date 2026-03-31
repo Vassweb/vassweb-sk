@@ -1,9 +1,20 @@
 import Image from 'next/image';
+import { cookies } from 'next/headers';
 
 const heading = 'var(--font-heading), Playfair Display, Georgia, serif';
 const body = 'var(--font-inter), Inter, system-ui, sans-serif';
 
-export default function NotFound() {
+const texts: Record<string, { title: string; sub: string; home: string; contact: string }> = {
+  sk: { title: 'Stránka nenájdená', sub: 'Stránka, ktorú hľadáte, bola presunutá alebo nikdy neexistovala.', home: 'Hlavná stránka', contact: 'Kontakt' },
+  en: { title: 'Page not found', sub: 'The page you are looking for has been moved or never existed.', home: 'Homepage', contact: 'Contact' },
+  cs: { title: 'Stránka nenalezena', sub: 'Stránka, kterou hledáte, byla přesunuta nebo nikdy neexistovala.', home: 'Hlavní stránka', contact: 'Kontakt' },
+  hu: { title: 'Az oldal nem található', sub: 'A keresett oldal áthelyezésre került vagy nem létezik.', home: 'Főoldal', contact: 'Kapcsolat' },
+};
+
+export default async function NotFound() {
+  const cookieStore = await cookies();
+  const locale = cookieStore.get('locale')?.value || 'sk';
+  const t = texts[locale] || texts.sk;
   return (
     <main id="main-content" style={{
       minHeight: '100vh',
@@ -54,7 +65,7 @@ export default function NotFound() {
           marginBottom: 8,
           fontWeight: 300,
         }}>
-          Stránka nenájdená
+          {t.title}
         </p>
         <p style={{
           fontFamily: body,
@@ -63,7 +74,7 @@ export default function NotFound() {
           marginBottom: 40,
           lineHeight: 1.6,
         }}>
-          Stránka, ktorú hľadáte, bola presunutá alebo nikdy neexistovala.
+          {t.sub}
         </p>
         <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
           <a href="/" style={{
@@ -79,7 +90,7 @@ export default function NotFound() {
             letterSpacing: '0.08em',
             textTransform: 'uppercase' as const,
           }}>
-            Hlavná stránka
+            {t.home}
           </a>
           <a href="#kontakt" style={{
             display: 'inline-block',
@@ -94,7 +105,7 @@ export default function NotFound() {
             letterSpacing: '0.08em',
             textTransform: 'uppercase' as const,
           }}>
-            Kontakt
+            {t.contact}
           </a>
         </div>
       </div>
