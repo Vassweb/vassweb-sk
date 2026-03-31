@@ -5,7 +5,7 @@ import Image from 'next/image';
 import {
   Globe, Bot, Zap, Smartphone, ArrowDown, CheckCircle,
   Shield, MonitorSmartphone, Search, Wrench, BarChart3, Send, Phone, Mail,
-  ChevronUp, ChevronDown, Quote, Star, ExternalLink,
+  ChevronUp, ChevronDown, Quote, Star,
 } from 'lucide-react';
 import { type Locale, getT } from '@/lib/translations';
 
@@ -1040,27 +1040,27 @@ export default function Home({ locale = 'sk' }: { locale?: Locale }) {
           {/* Šablóny grid */}
           <div className="grid-portfolio" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
             {[
-              { icon: '🍝', name: 'Reštaurácia / Kaviareň', price: 'od 299 €', href: '/demo/restaurant' },
-              { icon: '💇', name: 'Kaderníctvo / Kozmetika', price: 'od 299 €', href: '/demo/portfolio' },
-              { icon: '🔧', name: 'Autoservis / Pneuservis', price: 'od 299 €', href: '/demo/firma' },
-              { icon: '💪', name: 'Fitness / Joga / Masáže', price: 'od 299 €', href: '/demo/fitness' },
-              { icon: '🏗️', name: 'Stavebná firma / Remeselník', price: 'od 299 €', href: '/demo/firma' },
-              { icon: '🦷', name: 'Zubár / Lekár / Klinika', price: 'od 299 €', href: '/demo/firma' },
-              { icon: '🐾', name: 'Veterinár / Pet salón', price: 'od 299 €', href: '/demo/firma' },
-              { icon: '📸', name: 'Fotograf / Videograf', price: 'od 299 €', href: '/demo/portfolio' },
-              { icon: '🧁', name: 'Cukráreň / Pekáreň', price: 'od 299 €', href: '/demo/restaurant' },
-              { icon: '🚗', name: 'Autoškola', price: 'od 299 €', href: '/demo/firma' },
-              { icon: '📊', name: 'Účtovník / Daňový poradca', price: 'od 299 €', href: '/demo/firma' },
-              { icon: '🏠', name: 'Realitná kancelária', price: 'od 590 €', href: '/demo/firma' },
-              { icon: '🏨', name: 'Hotel / Penzión', price: 'od 590 €', href: '/demo/restaurant' },
-              { icon: '👰', name: 'Svadobný salón / Krajčír', price: 'od 299 €', href: '/demo/portfolio' },
-              { icon: '🎨', name: 'Portfólio / Osobná stránka', price: 'od 299 €', href: '/demo/portfolio' },
-              { icon: '🛒', name: 'E-shop', price: 'od 1 990 €', href: '/demo/eshop' },
+              { icon: '🍝', name: 'Reštaurácia / Kaviareň', price: 'od 299 €' },
+              { icon: '💇', name: 'Kaderníctvo / Kozmetika', price: 'od 299 €' },
+              { icon: '🔧', name: 'Autoservis / Pneuservis', price: 'od 299 €' },
+              { icon: '💪', name: 'Fitness / Joga / Masáže', price: 'od 299 €' },
+              { icon: '🏗️', name: 'Stavebná firma / Remeselník', price: 'od 299 €' },
+              { icon: '🦷', name: 'Zubár / Lekár / Klinika', price: 'od 299 €' },
+              { icon: '🐾', name: 'Veterinár / Pet salón', price: 'od 299 €' },
+              { icon: '📸', name: 'Fotograf / Videograf', price: 'od 299 €' },
+              { icon: '🧁', name: 'Cukráreň / Pekáreň', price: 'od 299 €' },
+              { icon: '🚗', name: 'Autoškola', price: 'od 299 €' },
+              { icon: '📊', name: 'Účtovník / Daňový poradca', price: 'od 299 €' },
+              { icon: '🏠', name: 'Realitná kancelária', price: 'od 590 €' },
+              { icon: '🏨', name: 'Hotel / Penzión', price: 'od 590 €' },
+              { icon: '👰', name: 'Svadobný salón / Krajčír', price: 'od 299 €' },
+              { icon: '🎨', name: 'Portfólio / Osobná stránka', price: 'od 299 €' },
+              { icon: '🛒', name: 'E-shop', price: 'od 1 990 €' },
             ].map((tmpl, i) => (
               <FadeIn key={i} delay={i * 0.1}>
-                <a href={tmpl.href} target="_blank" rel="noopener noreferrer" style={{
-                  ...card, textDecoration: 'none', color: '#fff', display: 'flex', alignItems: 'center', gap: 16,
-                  transition: 'transform 0.3s ease, border-color 0.3s ease', cursor: 'pointer',
+                <div style={{
+                  ...card, color: '#fff', display: 'flex', alignItems: 'center', gap: 16,
+                  transition: 'transform 0.3s ease, border-color 0.3s ease',
                 }}
                 onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.borderColor = 'rgba(212,168,67,0.3)'; }}
                 onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = 'rgba(212,168,67,0.12)'; }}
@@ -1070,8 +1070,7 @@ export default function Home({ locale = 'sk' }: { locale?: Locale }) {
                     <div style={{ fontFamily: heading, fontSize: 17, fontWeight: 500, marginBottom: 2 }}>{tmpl.name}</div>
                     <div style={{ fontSize: 13, color: '#d4a843', fontWeight: 600 }}>{tmpl.price}</div>
                   </div>
-                  <ExternalLink size={16} color="rgba(212,168,67,0.4)" />
-                </a>
+                </div>
               </FadeIn>
             ))}
           </div>

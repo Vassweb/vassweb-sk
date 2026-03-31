@@ -66,22 +66,22 @@ const templatePreviewText: Record<string, { headline: string; tagline: string; h
 };
 
 const templates = [
-  { id: 'restaurant', name: 'Reštaurácia / Kaviareň', desc: 'Jedálny lístok, rezervácie, galéria jedál, otváracie hodiny', preview: '/demo/restaurant', price: 'od 299 €', category: 'gastro', features: ['Menu', 'Rezervácie', 'Galéria'], hasDemo: true },
-  { id: 'beauty', name: 'Kaderníctvo / Kozmetika', desc: 'Služby, cenník, galéria prác, online rezervácia', preview: '/demo/portfolio', price: 'od 299 €', category: 'beauty', features: ['Cenník', 'Galéria', 'Rezervácia'], hasDemo: true },
-  { id: 'auto', name: 'Autoservis / Pneuservis', desc: 'Služby, cenník, otváracie hodiny, kontakt s mapou', preview: '/demo/firma', price: 'od 299 €', category: 'sluzby', features: ['Služby', 'Cenník', 'Kontakt'], hasDemo: true },
-  { id: 'fitness', name: 'Fitness / Joga / Masáže', desc: 'Rozvrh lekcií, cenník, trénerský tím, galéria', preview: '/demo/fitness', price: 'od 299 €', category: 'health', features: ['Rozvrh', 'Cenník', 'Tréneri'], hasDemo: false },
-  { id: 'firma', name: 'Stavebná firma / Remeselník', desc: 'O nás, služby, referencie, portfólio realizácií', preview: '/demo/firma', price: 'od 299 €', category: 'sluzby', features: ['Referencie', 'Portfólio', 'Služby'], hasDemo: true },
+  { id: 'restaurant', name: 'Reštaurácia / Kaviareň', desc: 'Jedálny lístok, rezervácie, galéria jedál, otváracie hodiny', preview: '', price: 'od 299 €', category: 'gastro', features: ['Menu', 'Rezervácie', 'Galéria'], hasDemo: false },
+  { id: 'beauty', name: 'Kaderníctvo / Kozmetika', desc: 'Služby, cenník, galéria prác, online rezervácia', preview: '', price: 'od 299 €', category: 'beauty', features: ['Cenník', 'Galéria', 'Rezervácia'], hasDemo: false },
+  { id: 'auto', name: 'Autoservis / Pneuservis', desc: 'Služby, cenník, otváracie hodiny, kontakt s mapou', preview: '', price: 'od 299 €', category: 'sluzby', features: ['Služby', 'Cenník', 'Kontakt'], hasDemo: false },
+  { id: 'fitness', name: 'Fitness / Joga / Masáže', desc: 'Rozvrh lekcií, cenník, trénerský tím, galéria', preview: '', price: 'od 299 €', category: 'health', features: ['Rozvrh', 'Cenník', 'Tréneri'], hasDemo: false },
+  { id: 'firma', name: 'Stavebná firma / Remeselník', desc: 'O nás, služby, referencie, portfólio realizácií', preview: '', price: 'od 299 €', category: 'sluzby', features: ['Referencie', 'Portfólio', 'Služby'], hasDemo: false },
   { id: 'zubar', name: 'Zubár / Lekár / Klinika', desc: 'Ordinačné hodiny, služby, tím lekárov, kontakt', preview: '', price: 'od 299 €', category: 'health', features: ['Ordinácia', 'Tím', 'Služby'], hasDemo: false },
   { id: 'veterinar', name: 'Veterinár / Pet salón', desc: 'Služby, cenník, tím, galéria, otváracie hodiny', preview: '', price: 'od 299 €', category: 'health', features: ['Služby', 'Cenník', 'Tím'], hasDemo: false },
-  { id: 'foto', name: 'Fotograf / Videograf', desc: 'Portfólio, cenníky balíčkov, galéria, kontakt', preview: '/demo/portfolio', price: 'od 299 €', category: 'creative', features: ['Portfólio', 'Balíčky', 'Galéria'], hasDemo: true },
-  { id: 'cukraren', name: 'Cukráreň / Pekáreň', desc: 'Menu, objednávky, galéria výrobkov, o nás', preview: '/demo/restaurant', price: 'od 299 €', category: 'gastro', features: ['Menu', 'Objednávky', 'Galéria'], hasDemo: true },
+  { id: 'foto', name: 'Fotograf / Videograf', desc: 'Portfólio, cenníky balíčkov, galéria, kontakt', preview: '', price: 'od 299 €', category: 'creative', features: ['Portfólio', 'Balíčky', 'Galéria'], hasDemo: false },
+  { id: 'cukraren', name: 'Cukráreň / Pekáreň', desc: 'Menu, objednávky, galéria výrobkov, o nás', preview: '', price: 'od 299 €', category: 'gastro', features: ['Menu', 'Objednávky', 'Galéria'], hasDemo: false },
   { id: 'autoskola', name: 'Autoškola', desc: 'Kurzy, cenník, inštruktori, prihlášky online', preview: '', price: 'od 299 €', category: 'sluzby', features: ['Kurzy', 'Cenník', 'Prihlášky'], hasDemo: false },
   { id: 'ucto', name: 'Účtovník / Daňový poradca', desc: 'Služby, cenník, referencie, formulár na dopyt', preview: '', price: 'od 299 €', category: 'sluzby', features: ['Služby', 'Referencie', 'Formulár'], hasDemo: false },
   { id: 'realitka', name: 'Realitná kancelária', desc: 'Ponuky nehnuteľností, vyhľadávanie, kontakt', preview: '', price: 'od 590 €', category: 'sluzby', features: ['Ponuky', 'Filtrovanie', 'Kontakt'], hasDemo: false },
-  { id: 'hotel', name: 'Hotel / Penzión', desc: 'Izby, galéria, cenník, online rezervácia', preview: '/demo/restaurant', price: 'od 590 €', category: 'gastro', features: ['Izby', 'Galéria', 'Rezervácia'], hasDemo: true },
-  { id: 'svadobny', name: 'Svadobný salón / Krajčír', desc: 'Kolekcie, galéria, cenník, objednávka termínu', preview: '/demo/portfolio', price: 'od 299 €', category: 'creative', features: ['Kolekcie', 'Galéria', 'Termíny'], hasDemo: true },
-  { id: 'portfolio', name: 'Portfólio / Osobná stránka', desc: 'Práce, bio, kontakt, moderný dizajn', preview: '/demo/portfolio', price: 'od 299 €', category: 'creative', features: ['Práce', 'Bio', 'Kontakt'], hasDemo: true },
-  { id: 'eshop', name: 'E-shop', desc: 'Produkty, košík, platby, admin panel', preview: '/demo/eshop', price: 'od 1 990 €', category: 'eshop', features: ['Produkty', 'Košík', 'Platby'], hasDemo: false },
+  { id: 'hotel', name: 'Hotel / Penzión', desc: 'Izby, galéria, cenník, online rezervácia', preview: '', price: 'od 590 €', category: 'gastro', features: ['Izby', 'Galéria', 'Rezervácia'], hasDemo: false },
+  { id: 'svadobny', name: 'Svadobný salón / Krajčír', desc: 'Kolekcie, galéria, cenník, objednávka termínu', preview: '', price: 'od 299 €', category: 'creative', features: ['Kolekcie', 'Galéria', 'Termíny'], hasDemo: false },
+  { id: 'portfolio', name: 'Portfólio / Osobná stránka', desc: 'Práce, bio, kontakt, moderný dizajn', preview: '', price: 'od 299 €', category: 'creative', features: ['Práce', 'Bio', 'Kontakt'], hasDemo: false },
+  { id: 'eshop', name: 'E-shop', desc: 'Produkty, košík, platby, admin panel', preview: '', price: 'od 1 990 €', category: 'eshop', features: ['Produkty', 'Košík', 'Platby'], hasDemo: false },
 ];
 
 const categories = [
