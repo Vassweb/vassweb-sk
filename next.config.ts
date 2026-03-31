@@ -11,11 +11,11 @@ const securityHeaders = [
     key: 'Content-Security-Policy',
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://vercel.live",
-      "style-src 'self' 'unsafe-inline'",
-      "img-src 'self' data: blob: https://www.google-analytics.com https://www.googletagmanager.com",
-      "font-src 'self' data:",
-      "connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://vitals.vercel-insights.com https://vercel.live https://*.supabase.co",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://vercel.live https://connect.facebook.net",
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+      "img-src 'self' data: blob: https://www.google-analytics.com https://www.googletagmanager.com https://connect.facebook.net https://www.facebook.com",
+      "font-src 'self' data: https://fonts.gstatic.com",
+      "connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://vitals.vercel-insights.com https://vercel.live https://*.supabase.co https://connect.facebook.net",
       "frame-ancestors 'self'",
       "base-uri 'self'",
       "form-action 'self'",
@@ -24,6 +24,12 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   images: {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],

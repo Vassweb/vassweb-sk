@@ -255,11 +255,17 @@ export default function VyberSiWeb() {
   };
 
   // ═══ Submit ═══
+  const [submitError, setSubmitError] = useState('');
   const handleSubmit = async () => {
+    setSubmitError('');
     if (!form.firma || !form.email) return;
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+      setSubmitError('Zadajte platnú emailovú adresu');
+      return;
+    }
     setSending(true);
     try {
-      await fetch('/api/contact', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -271,15 +277,13 @@ export default function VyberSiWeb() {
           source: 'konfigurator',
         }),
       });
+      if (!res.ok) throw new Error('API error');
       setSent(true);
     } catch {
-      setSent(true);
+      setSubmitError('Nepodarilo sa odoslať. Skúste to znova.');
     }
     setSending(false);
   };
-
-  // Computed darkness BG — 0 = čierna, 100 = biela
-  const computedBg = isLight ? selectedColor.bg : selectedColor.bg;
 
   // ═══════════════════════════════════════════════════════════════
   // ĎAKOVACIA STRÁNKA
@@ -1053,6 +1057,9 @@ export default function VyberSiWeb() {
                   </>
                 )}
               </button>
+              {submitError && (
+                <div style={{ marginTop: 12, fontSize: 13, color: '#ef4444', textAlign: 'center' }}>{submitError}</div>
+              )}
             </div>
           </div>
         )}
