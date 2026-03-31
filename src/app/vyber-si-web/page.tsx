@@ -3,6 +3,118 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
 
 // ═══════════════════════════════════════════════════════════════
+// TRANSLATIONS
+// ═══════════════════════════════════════════════════════════════
+type Locale = 'sk' | 'en' | 'cs' | 'hu';
+
+const t = {
+  sk: {
+    badges: { done: 'Hotové do 14 dní', consult: 'Konzultácia zadarmo', rating: '⭐ 4.9 / 5 hodnotenie' },
+    social: { webs: '7 webov vytvorených tento mesiac', avail: 'Dostupnosť: 2 termíny v apríli' },
+    step1: { heading: 'Aký web potrebujete?', sub: 'Vyberte si odvetvie a my pripravíme web na mieru.', next: 'Ďalej — Dizajn' },
+    step2: { heading: 'Upravte si dizajn', sub: 'Meňte farby, fonty, zaoblenie — sledujte zmeny naživo.', back: 'Späť', next: 'Ďalej — Kontakt', pkg: 'Balík', addons: 'Doplnky à la carte' },
+    step3: {
+      heading: 'Povedzte nám o sebe', sub: 'Ozveme sa do 24 hodín s návrhom a cenovou ponukou.',
+      timeline: [{ label: 'Dnes', desc: 'Odoslanie formulára' }, { label: '24h', desc: 'Cenová ponuka' }, { label: '14 dní', desc: 'Hotový web' }],
+      deadline: 'Odhadovaný čas realizácie:', deadlineBold: '14 dní', deadlineEnd: 'od schválenia návrhu',
+      fields: { firma: 'Názov firmy', meno: 'Vaše meno', telefon: 'Telefón', email: 'Email', web: 'Existujúca webstránka', poznamky: 'Čo by ste chceli na webe?' },
+      placeholders: { firma: 'Napr. Kaderníctvo Lucia', meno: 'Meno a priezvisko', telefon: '+421 9XX XXX XXX', web: 'www.priklad.sk', poznamky: 'Napr. galériu prác, online rezerváciu, jedálny lístok...' },
+      gdpr: 'Súhlasím so spracovaním osobných údajov v súlade s', gdprAnd: 'a', gdprEnd: 'spoločnosti Vassweb.', gdprReq: '(povinné)',
+      back: 'Späť', submit: 'Odoslať — Chcem web!', submitting: 'Odosielam...',
+    },
+    thanks: { heading: 'Ďakujeme!', sub: 'Váš výber sme prijali. Ozveme sa vám do 24 hodín s návrhom a cenovou ponukou.', back: 'Späť na vassweb.sk', pkg: 'Balík', template: 'Šablóna' },
+    smartTip: (name: string, savings: number) => `Balík ${name} obsahuje vybrané doplnky a ušetríte ${savings}€`,
+    estPrice: 'odhadovaná cena', maintenance: '/mes', maintenance2: '/mes údržba',
+    privacy: 'Ochranou osobných údajov', terms: 'Obchodnými podmienkami',
+    stepLabels: ['Šablóna', 'Dizajn', 'Kontakt'],
+    header: { titleMain: 'Nakonfigurujte si', titleHighlight: 'vlastný web', sub: '3 kroky a hotovo. Vyberte šablónu, upravte dizajn, zanechajte kontakt — a my to postavíme.' },
+    previewLabel: 'Živý náhľad',
+    calc: { heading: 'Kalkulačka ceny', sub: 'Odhadnite cenu — nezáväzne', price: 'Odhadovaná cena', includes: (n: number) => `Zahŕňa ${n} doplnkov`, inPkg: 'V balíku', tip: 'Tip na úsporu', switchPkg: (name: string) => `Prepnúť na balík ${name}` },
+    recap: 'Rekapitulácia',
+    comingSoon: 'Pripravujeme',
+    previewLink: 'Náhľad',
+  },
+  en: {
+    badges: { done: 'Ready in 14 days', consult: 'Free consultation', rating: '⭐ 4.9 / 5 rating' },
+    social: { webs: '7 websites built this month', avail: 'Availability: 2 slots in April' },
+    step1: { heading: 'What website do you need?', sub: 'Choose your industry and we\'ll prepare a custom website.', next: 'Next — Design' },
+    step2: { heading: 'Customize your design', sub: 'Change colors, fonts, rounding — watch changes live.', back: 'Back', next: 'Next — Contact', pkg: 'Package', addons: 'À la carte add-ons' },
+    step3: {
+      heading: 'Tell us about yourself', sub: 'We\'ll get back to you within 24 hours with a proposal and quote.',
+      timeline: [{ label: 'Today', desc: 'Submit form' }, { label: '24h', desc: 'Price quote' }, { label: '14 days', desc: 'Website ready' }],
+      deadline: 'Estimated delivery time:', deadlineBold: '14 days', deadlineEnd: 'from design approval',
+      fields: { firma: 'Company name', meno: 'Your name', telefon: 'Phone', email: 'Email', web: 'Existing website', poznamky: 'What would you like on your website?' },
+      placeholders: { firma: 'e.g. Lucia\'s Hair Salon', meno: 'Full name', telefon: '+421 9XX XXX XXX', web: 'www.example.com', poznamky: 'e.g. gallery, online booking, menu...' },
+      gdpr: 'I agree to the processing of personal data in accordance with the', gdprAnd: 'and', gdprEnd: 'of Vassweb.', gdprReq: '(required)',
+      back: 'Back', submit: 'Submit — I want a website!', submitting: 'Submitting...',
+    },
+    thanks: { heading: 'Thank you!', sub: 'We received your inquiry. We\'ll get back to you within 24 hours with a proposal and quote.', back: 'Back to vassweb.sk', pkg: 'Package', template: 'Template' },
+    smartTip: (name: string, savings: number) => `Package ${name} includes selected add-ons and saves you ${savings}€`,
+    estPrice: 'estimated price', maintenance: '/mo', maintenance2: '/mo maintenance',
+    privacy: 'Privacy Policy', terms: 'Terms and Conditions',
+    stepLabels: ['Template', 'Design', 'Contact'],
+    header: { titleMain: 'Configure your', titleHighlight: 'website', sub: '3 steps and done. Choose a template, customize design, leave contact — and we\'ll build it.' },
+    previewLabel: 'Live preview',
+    calc: { heading: 'Price calculator', sub: 'Estimate price — no commitment', price: 'Estimated price', includes: (n: number) => `Includes ${n} add-ons`, inPkg: 'In package', tip: 'Savings tip', switchPkg: (name: string) => `Switch to ${name} package` },
+    recap: 'Summary',
+    comingSoon: 'Coming soon',
+    previewLink: 'Preview',
+  },
+  cs: {
+    badges: { done: 'Hotovo do 14 dní', consult: 'Konzultace zdarma', rating: '⭐ 4.9 / 5 hodnocení' },
+    social: { webs: '7 webů vytvořených tento měsíc', avail: 'Dostupnost: 2 termíny v dubnu' },
+    step1: { heading: 'Jaký web potřebujete?', sub: 'Vyberte si odvětví a my připravíme web na míru.', next: 'Dál — Vzhled' },
+    step2: { heading: 'Upravte si vzhled', sub: 'Měňte barvy, fonty, zaoblení — sledujte změny živě.', back: 'Zpět', next: 'Dál — Kontakt', pkg: 'Balíček', addons: 'Doplňky à la carte' },
+    step3: {
+      heading: 'Řekněte nám o sobě', sub: 'Ozveme se do 24 hodin s návrhem a cenovou nabídkou.',
+      timeline: [{ label: 'Dnes', desc: 'Odeslání formuláře' }, { label: '24h', desc: 'Cenová nabídka' }, { label: '14 dní', desc: 'Hotový web' }],
+      deadline: 'Odhadovaný čas realizace:', deadlineBold: '14 dní', deadlineEnd: 'od schválení návrhu',
+      fields: { firma: 'Název firmy', meno: 'Vaše jméno', telefon: 'Telefon', email: 'Email', web: 'Stávající webstránka', poznamky: 'Co byste chtěli na webu?' },
+      placeholders: { firma: 'Např. Kadeřnictví Lucia', meno: 'Jméno a příjmení', telefon: '+421 9XX XXX XXX', web: 'www.priklad.cz', poznamky: 'Např. galerii prací, online rezervaci, jídelní lístek...' },
+      gdpr: 'Souhlasím se zpracováním osobních údajů v souladu s', gdprAnd: 'a', gdprEnd: 'společnosti Vassweb.', gdprReq: '(povinné)',
+      back: 'Zpět', submit: 'Odeslat — Chci web!', submitting: 'Odesílám...',
+    },
+    thanks: { heading: 'Děkujeme!', sub: 'Vaši poptávku jsme přijali. Ozveme se do 24 hodin s návrhem a nabídkou.', back: 'Zpět na vassweb.sk', pkg: 'Balíček', template: 'Šablona' },
+    smartTip: (name: string, savings: number) => `Balíček ${name} obsahuje vybrané doplňky a ušetříte ${savings}€`,
+    estPrice: 'odhadovaná cena', maintenance: '/měs', maintenance2: '/měs údržba',
+    privacy: 'Ochranou osobních údajů', terms: 'Obchodními podmínkami',
+    stepLabels: ['Šablona', 'Vzhled', 'Kontakt'],
+    header: { titleMain: 'Nakonfigurujte si', titleHighlight: 'vlastní web', sub: '3 kroky a hotovo. Vyberte šablonu, upravte vzhled, zanechte kontakt — a my to postavíme.' },
+    previewLabel: 'Živý náhled',
+    calc: { heading: 'Kalkulačka ceny', sub: 'Odhadněte cenu — nezávazně', price: 'Odhadovaná cena', includes: (n: number) => `Zahrnuje ${n} doplňků`, inPkg: 'V balíčku', tip: 'Tip na úsporu', switchPkg: (name: string) => `Přepnout na balíček ${name}` },
+    recap: 'Rekapitulace',
+    comingSoon: 'Připravujeme',
+    previewLink: 'Náhled',
+  },
+  hu: {
+    badges: { done: '14 napon belül kész', consult: 'Ingyenes konzultáció', rating: '⭐ 4.9 / 5 értékelés' },
+    social: { webs: '7 weboldal készült el ebben a hónapban', avail: 'Elérhetőség: 2 időpont áprilisban' },
+    step1: { heading: 'Milyen weboldalt szeretne?', sub: 'Válassza ki az iparágát és mi egyedi weboldalt készítünk.', next: 'Tovább — Dizájn' },
+    step2: { heading: 'Testreszabja a dizájnt', sub: 'Módosítsa a színeket, betűtípusokat — kövesse a változásokat élőben.', back: 'Vissza', next: 'Tovább — Kapcsolat', pkg: 'Csomag', addons: 'Kiegészítők' },
+    step3: {
+      heading: 'Meséljen magáról', sub: '24 órán belül visszajelzünk ajánlattal és árajánlattal.',
+      timeline: [{ label: 'Ma', desc: 'Űrlap elküldése' }, { label: '24h', desc: 'Árajánlat' }, { label: '14 nap', desc: 'Kész weboldal' }],
+      deadline: 'Becsült elkészítési idő:', deadlineBold: '14 nap', deadlineEnd: 'a terv jóváhagyásától',
+      fields: { firma: 'Cég neve', meno: 'Az Ön neve', telefon: 'Telefon', email: 'Email', web: 'Meglévő weboldal', poznamky: 'Mit szeretne a weboldalon?' },
+      placeholders: { firma: 'Pl. Lucia fodrászat', meno: 'Teljes név', telefon: '+421 9XX XXX XXX', web: 'www.pelda.sk', poznamky: 'Pl. galéria, online foglalás, étlap...' },
+      gdpr: 'Hozzájárulok a személyes adatok kezeléséhez az', gdprAnd: 'és a', gdprEnd: 'Vassweb szerint.', gdprReq: '(kötelező)',
+      back: 'Vissza', submit: 'Küldés — Weboldalt kérek!', submitting: 'Küldés...',
+    },
+    thanks: { heading: 'Köszönjük!', sub: 'Megkaptuk a megkeresését. 24 órán belül visszajelzünk ajánlattal.', back: 'Vissza a vassweb.sk-ra', pkg: 'Csomag', template: 'Sablon' },
+    smartTip: (name: string, savings: number) => `A ${name} csomag tartalmazza a kiválasztott kiegészítőket és ${savings}€-t takarít meg`,
+    estPrice: 'becsült ár', maintenance: '/hó', maintenance2: '/hó karbantartás',
+    privacy: 'Adatvédelmi irányelvek', terms: 'Általános szerződési feltételek',
+    stepLabels: ['Sablon', 'Dizájn', 'Kapcsolat'],
+    header: { titleMain: 'Konfigurálja', titleHighlight: 'weboldalát', sub: '3 lépés és kész. Válasszon sablont, testreszabja a dizájnt, adja meg elérhetőségét — és mi megépítjük.' },
+    previewLabel: 'Élő előnézet',
+    calc: { heading: 'Árkalkulátor', sub: 'Becsülje meg az árat — kötelezettség nélkül', price: 'Becsült ár', includes: (n: number) => `${n} kiegészítőt tartalmaz`, inPkg: 'Csomagban van', tip: 'Megtakarítási tipp', switchPkg: (name: string) => `Váltás a ${name} csomagra` },
+    recap: 'Összefoglalás',
+    comingSoon: 'Hamarosan',
+    previewLink: 'Előnézet',
+  },
+};
+
+// ═══════════════════════════════════════════════════════════════
 // FONTS
 // ═══════════════════════════════════════════════════════════════
 const font = 'var(--font-inter), Inter, system-ui, sans-serif';
@@ -251,13 +363,11 @@ const addonsList = [
   { id: 'maintenance', name: 'Mesačná údržba', price: 59, monthly: true },
 ];
 
-const stepLabels = ['Šablóna', 'Dizajn', 'Kontakt'];
-
-
 // ═══════════════════════════════════════════════════════════════
 // MAIN COMPONENT
 // ═══════════════════════════════════════════════════════════════
-export default function VyberSiWeb() {
+export default function VyberSiWeb({ locale = 'sk' }: { locale?: Locale }) {
+  const tr = t[locale];
   const [step, setStep] = useState(1);
   const [selectedTemplate, setSelectedTemplate] = useState<string | null>(null);
   const [categoryFilter, setCategoryFilter] = useState('all');
@@ -311,7 +421,7 @@ export default function VyberSiWeb() {
       const savings = currentTotal - withPkg;
       const newlyCovered = selectedAddonIds.filter(id => pkg.includes.includes(id) && !currentPkg.includes.includes(id));
       if (savings >= 50 && newlyCovered.length > 0) {
-        return { text: `Balík ${pkg.name} obsahuje vybrané doplnky a ušetríte ${savings}€`, targetPackage: pkg.id };
+        return { text: tr.smartTip(pkg.name, savings), targetPackage: pkg.id };
       }
     }
     return null;
@@ -424,18 +534,18 @@ export default function VyberSiWeb() {
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="#d4a843" /></svg>
           </div>
           <h1 style={{ fontFamily: heading, fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 700, marginBottom: 16, lineHeight: 1.2 }}>
-            Ďakujeme, <span style={{ color: '#d4a843' }}>{form.firma}</span>!
+            {tr.thanks.heading}, <span style={{ color: '#d4a843' }}>{form.firma}</span>!
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: 16, lineHeight: 1.7, marginBottom: 36 }}>
-            Váš výber sme prijali. Ozveme sa vám do 24 hodín s návrhom a cenovou ponukou.
+            {tr.thanks.sub}
           </p>
           <div style={{ padding: 24, background: 'rgba(212,168,67,0.06)', border: '1px solid rgba(212,168,67,0.15)', borderRadius: 16, textAlign: 'left', marginBottom: 36 }}>
-            <div style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 16 }}>Rekapitulácia</div>
+            <div style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 16 }}>{tr.recap}</div>
             <div style={{ display: 'flex', gap: 14, alignItems: 'center', marginBottom: 16 }}>
               {selectedTmpl && <TemplateIcon id={selectedTmpl.id} color="#d4a843" size={36} />}
               <div>
                 <div style={{ fontWeight: 700, fontSize: 15 }}>{selectedTmpl?.name}</div>
-                <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)' }}>Balík {currentPkg.name} — {calcTotal}€{calcMaintenance > 0 ? ` + ${calcMaintenance}€/mes` : ''}</div>
+                <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)' }}>{tr.thanks.pkg} {currentPkg.name} — {calcTotal}€{calcMaintenance > 0 ? ` + ${calcMaintenance}€/mes` : ''}</div>
               </div>
             </div>
             <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
@@ -454,7 +564,7 @@ export default function VyberSiWeb() {
           </div>
           <a href="https://vassweb.sk" style={{ color: '#d4a843', textDecoration: 'none', fontSize: 14, fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 6 }}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" fill="#d4a843" /></svg>
-            Späť na vassweb.sk
+            {tr.thanks.back}
           </a>
         </div>
         <style>{`@keyframes konfFadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }`}</style>
@@ -510,24 +620,24 @@ export default function VyberSiWeb() {
             Vassweb
           </a>
           <h1 style={{ fontFamily: heading, fontSize: 'clamp(24px, 4vw, 38px)', fontWeight: 700, margin: '20px 0 10px', lineHeight: 1.25 }}>
-            Nakonfigurujte si{' '}
-            <span style={{ color: selectedColor.primary, transition: 'color 0.3s' }}>vlastný web</span>
+            {tr.header.titleMain}{' '}
+            <span style={{ color: selectedColor.primary, transition: 'color 0.3s' }}>{tr.header.titleHighlight}</span>
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: 15, maxWidth: 500, margin: '0 auto 16px', lineHeight: 1.6 }}>
-            3 kroky a hotovo. Vyberte šablónu, upravte dizajn, zanechajte kontakt — a my to postavíme.
+            {tr.header.sub}
           </p>
           {/* Social proof badges */}
           <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap', marginTop: 4 }}>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '5px 14px', background: 'rgba(212,168,67,0.08)', border: '1px solid rgba(212,168,67,0.2)', borderRadius: 999, fontSize: 12, color: 'rgba(212,168,67,0.9)' }}>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="#d4a843" /></svg>
-              Hotové do 14 dní
+              {tr.badges.done}
             </div>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '5px 14px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 999, fontSize: 12, color: 'rgba(255,255,255,0.6)' }}>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" fill="rgba(255,255,255,0.5)" /></svg>
-              Konzultácia zadarmo
+              {tr.badges.consult}
             </div>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '5px 14px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 999, fontSize: 12, color: 'rgba(255,255,255,0.6)' }}>
-              ⭐ 4.9 / 5 hodnotenie
+              {tr.badges.rating}
             </div>
           </div>
         </div>
@@ -568,7 +678,7 @@ export default function VyberSiWeb() {
                     color: isActive ? selectedColor.primary : isCompleted ? 'rgba(255,255,255,0.5)' : 'rgba(255,255,255,0.2)',
                     transition: 'color 0.3s',
                   }}>
-                    {stepLabels[i]}
+                    {tr.stepLabels[i]}
                   </span>
                 </button>
                 <div style={{
@@ -589,8 +699,8 @@ export default function VyberSiWeb() {
         {/* ═══════════════════════════════════════════════════════ */}
         {step === 1 && (
           <div key={`step1-${animKey}`} style={{ animation: 'konfFadeUp 0.5s cubic-bezier(0.16,1,0.3,1) both' }}>
-            <h2 style={{ fontSize: 22, fontWeight: 700, marginBottom: 6, textAlign: 'center', fontFamily: heading }}>Aký web potrebujete?</h2>
-            <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.35)', fontSize: 14, marginBottom: 24 }}>Vyberte si odvetvie a my pripravíme web na mieru.</p>
+            <h2 style={{ fontSize: 22, fontWeight: 700, marginBottom: 6, textAlign: 'center', fontFamily: heading }}>{tr.step1.heading}</h2>
+            <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.35)', fontSize: 14, marginBottom: 24 }}>{tr.step1.sub}</p>
 
             {/* Category filter */}
             <div style={{ display: 'flex', gap: 8, justifyContent: 'center', marginBottom: 28, flexWrap: 'wrap' }}>
@@ -612,11 +722,11 @@ export default function VyberSiWeb() {
             <div style={{ display: 'flex', gap: 10, justifyContent: 'center', marginBottom: 20, flexWrap: 'wrap' }}>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '6px 14px', background: 'rgba(34,197,94,0.07)', border: '1px solid rgba(34,197,94,0.15)', borderRadius: 999, fontSize: 12, color: 'rgba(34,197,94,0.85)', fontWeight: 600 }}>
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="rgba(34,197,94,0.85)" /></svg>
-                7 webov vytvorených tento mesiac
+                {tr.social.webs}
               </div>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '6px 14px', background: 'rgba(251,146,60,0.07)', border: '1px solid rgba(251,146,60,0.15)', borderRadius: 999, fontSize: 12, color: 'rgba(251,146,60,0.9)', fontWeight: 600 }}>
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z" fill="rgba(251,146,60,0.9)" /></svg>
-                Dostupnosť: 2 termíny v apríli
+                {tr.social.avail}
               </div>
             </div>
 
@@ -649,13 +759,13 @@ export default function VyberSiWeb() {
                             background: `${selectedColor.primary}08`,
                             transition: 'all 0.2s',
                           }}>
-                          Náhľad
+                          {tr.previewLink}
                           <svg width="10" height="10" viewBox="0 0 24 24" fill="none" style={{ marginLeft: 4, verticalAlign: 'middle' }}>
                             <path d="M5 12h14M12 5l7 7-7 7" stroke={selectedColor.primary} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                           </svg>
                         </a>
                       ) : (
-                        <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.2)', fontWeight: 500 }}>Pripravujeme</span>
+                        <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.2)', fontWeight: 500 }}>{tr.comingSoon}</span>
                       )}
                     </div>
                     {isSelected && (
@@ -679,7 +789,7 @@ export default function VyberSiWeb() {
                   color: selectedTemplate ? (isLight ? '#fff' : '#000') : 'rgba(255,255,255,0.15)',
                   border: 'none', opacity: selectedTemplate ? 1 : 0.5,
                 }}>
-                Ďalej — Dizajn
+                {tr.step1.next}
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style={{ marginLeft: 8, verticalAlign: 'middle' }}>
                   <path d="M5 12h14M12 5l7 7-7 7" stroke={selectedTemplate ? (isLight ? '#fff' : '#000') : 'rgba(255,255,255,0.15)'} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
@@ -693,8 +803,8 @@ export default function VyberSiWeb() {
         {/* ═══════════════════════════════════════════════════════ */}
         {step === 2 && (
           <div key={`step2-${animKey}`} style={{ animation: 'konfFadeUp 0.5s cubic-bezier(0.16,1,0.3,1) both' }}>
-            <h2 style={{ fontSize: 22, fontWeight: 700, marginBottom: 6, textAlign: 'center', fontFamily: heading }}>Upravte si dizajn</h2>
-            <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.35)', fontSize: 14, marginBottom: 28 }}>Meňte farby, fonty, zaoblenie — sledujte zmeny naživo.</p>
+            <h2 style={{ fontSize: 22, fontWeight: 700, marginBottom: 6, textAlign: 'center', fontFamily: heading }}>{tr.step2.heading}</h2>
+            <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.35)', fontSize: 14, marginBottom: 28 }}>{tr.step2.sub}</p>
 
             <div className="konf-step2-grid" style={{ display: 'grid', gridTemplateColumns: '320px 1fr', gap: 24, alignItems: 'start' }}>
 
@@ -926,7 +1036,7 @@ export default function VyberSiWeb() {
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style={{ verticalAlign: 'middle', marginRight: 6 }}>
                     <path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14z" fill="rgba(255,255,255,0.5)" />
                   </svg>
-                  Živý náhľad
+                  {tr.previewLabel}
                 </div>
 
                 <div style={{
@@ -1127,11 +1237,11 @@ export default function VyberSiWeb() {
             <div style={{ marginTop: 28, padding: '24px 28px', borderRadius: 16, background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)' }}>
               <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 20 }}>
                 <div>
-                  <h3 style={{ fontFamily: heading, fontSize: 18, fontWeight: 700, marginBottom: 4, color: '#fff' }}>Kalkulačka ceny</h3>
-                  <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.35)', margin: 0 }}>Odhadnite cenu — nezáväzne</p>
+                  <h3 style={{ fontFamily: heading, fontSize: 18, fontWeight: 700, marginBottom: 4, color: '#fff' }}>{tr.calc.heading}</h3>
+                  <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.35)', margin: 0 }}>{tr.calc.sub}</p>
                 </div>
                 <div style={{ textAlign: 'right', flexShrink: 0 }}>
-                  <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.3)', marginBottom: 2 }}>Odhadovaná cena</div>
+                  <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.3)', marginBottom: 2 }}>{tr.calc.price}</div>
                   <div style={{ fontSize: 30, fontWeight: 800, color: selectedColor.primary, fontFamily: heading, lineHeight: 1 }}>{calcTotal}€</div>
                   {calcMaintenance > 0 && <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', marginTop: 4 }}>+ {calcMaintenance}€/mes</div>}
                 </div>
@@ -1139,7 +1249,7 @@ export default function VyberSiWeb() {
 
               {/* Packages */}
               <div style={{ marginBottom: 20 }}>
-                <div style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 10 }}>Balík</div>
+                <div style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 10 }}>{tr.step2.pkg}</div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10 }}>
                   {packages.map(pkg => {
                     const isSel = calcPackage === pkg.id;
@@ -1156,7 +1266,7 @@ export default function VyberSiWeb() {
                         <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.35)', lineHeight: 1.4 }}>{pkg.desc}</div>
                         {pkg.includes.length > 0 && (
                           <div style={{ marginTop: 6, fontSize: 10, color: isSel ? `${selectedColor.primary}80` : 'rgba(255,255,255,0.2)' }}>
-                            Zahŕňa {pkg.includes.length} doplnkov
+                            {tr.calc.includes(pkg.includes.length)}
                           </div>
                         )}
                       </button>
@@ -1167,7 +1277,7 @@ export default function VyberSiWeb() {
 
               {/* Add-ons */}
               <div>
-                <div style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 10 }}>Doplnky à la carte</div>
+                <div style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 10 }}>{tr.step2.addons}</div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: 8 }}>
                   {addonsList.map(addon => {
                     const isChecked = calcAddons.has(addon.id);
@@ -1204,7 +1314,7 @@ export default function VyberSiWeb() {
                         <div style={{ flex: 1, minWidth: 0 }}>
                           <div style={{ fontSize: 12, fontWeight: 600, lineHeight: 1.3 }}>{addon.name}</div>
                           <div style={{ fontSize: 11, color: isIncluded ? selectedColor.primary : 'rgba(255,255,255,0.35)' }}>
-                            {isIncluded ? 'V balíku' : `+${addon.price}€${addon.monthly ? '/mes' : ''}`}
+                            {isIncluded ? tr.calc.inPkg : `+${addon.price}€${addon.monthly ? '/mes' : ''}`}
                           </div>
                         </div>
                       </button>
@@ -1224,11 +1334,11 @@ export default function VyberSiWeb() {
                     <path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26C17.81 13.47 19 11.38 19 9c0-3.86-3.14-7-7-7z" fill={selectedColor.primary} />
                   </svg>
                   <div>
-                    <div style={{ fontSize: 12, fontWeight: 700, color: selectedColor.primary, marginBottom: 2 }}>Tip na úsporu</div>
+                    <div style={{ fontSize: 12, fontWeight: 700, color: selectedColor.primary, marginBottom: 2 }}>{tr.calc.tip}</div>
                     <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.6)' }}>{smartTip.text}</div>
                     <button onClick={() => setCalcPackage(smartTip.targetPackage)}
                       style={{ marginTop: 6, fontSize: 11, fontWeight: 600, color: selectedColor.primary, background: 'none', border: 'none', cursor: 'pointer', padding: 0, textDecoration: 'underline' }}>
-                      Prepnúť na balík {packages.find(p => p.id === smartTip.targetPackage)?.name}
+                      {tr.calc.switchPkg(packages.find(p => p.id === smartTip.targetPackage)?.name ?? '')}
                     </button>
                   </div>
                 </div>
@@ -1242,11 +1352,11 @@ export default function VyberSiWeb() {
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                   <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" fill="rgba(255,255,255,0.35)" />
                 </svg>
-                Späť
+                {tr.step2.back}
               </button>
               <button onClick={() => setStep(3)} className="konf-btn-primary"
                 style={{ padding: '13px 40px', borderRadius: 12, fontSize: 15, fontWeight: 700, fontFamily: font, cursor: 'pointer', background: `linear-gradient(135deg, ${selectedColor.primary}, ${selectedColor.primary}cc)`, color: isLight ? '#fff' : '#000', border: 'none', display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-                Ďalej — Kontakt
+                {tr.step2.next}
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                   <path d="M5 12h14M12 5l7 7-7 7" stroke={isLight ? '#fff' : '#000'} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
@@ -1260,8 +1370,8 @@ export default function VyberSiWeb() {
         {/* ═══════════════════════════════════════════════════════ */}
         {step === 3 && (
           <div key={`step3-${animKey}`} style={{ animation: 'konfFadeUp 0.5s cubic-bezier(0.16,1,0.3,1) both', maxWidth: 580, margin: '0 auto' }}>
-            <h2 style={{ fontSize: 22, fontWeight: 700, marginBottom: 6, textAlign: 'center', fontFamily: heading }}>Povedzte nám o sebe</h2>
-            <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.62)', fontSize: 14, marginBottom: 24 }}>Ozveme sa do 24 hodín s návrhom a cenovou ponukou.</p>
+            <h2 style={{ fontSize: 22, fontWeight: 700, marginBottom: 6, textAlign: 'center', fontFamily: heading }}>{tr.step3.heading}</h2>
+            <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.62)', fontSize: 14, marginBottom: 24 }}>{tr.step3.sub}</p>
 
             {/* Recap card */}
             <div style={{
@@ -1272,7 +1382,7 @@ export default function VyberSiWeb() {
                 {selectedTmpl && <TemplateIcon id={selectedTmpl.id} color={selectedColor.primary} size={32} />}
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <div style={{ fontSize: 14, fontWeight: 700 }}>{selectedTmpl?.name}</div>
-                  <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)' }}>Šablóna</div>
+                  <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)' }}>{tr.thanks.template}</div>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
                   <div style={{ width: 22, height: 22, borderRadius: 6, background: selectedColor.primary, border: '2px solid rgba(255,255,255,0.1)' }} />
@@ -1282,7 +1392,7 @@ export default function VyberSiWeb() {
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <div>
                   <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', marginBottom: 2 }}>
-                    Balík <strong style={{ color: selectedColor.primary }}>{currentPkg.name}</strong>
+                    {tr.thanks.pkg} <strong style={{ color: selectedColor.primary }}>{currentPkg.name}</strong>
                     {[...calcAddons].filter(id => id !== 'maintenance').length > 0 && (
                       <span style={{ color: 'rgba(255,255,255,0.5)' }}> + {[...calcAddons].filter(id => id !== 'maintenance').length} doplnk{[...calcAddons].filter(id => id !== 'maintenance').length === 1 ? '' : 'y'}</span>
                     )}
@@ -1291,24 +1401,20 @@ export default function VyberSiWeb() {
                 </div>
                 <div style={{ textAlign: 'right' }}>
                   <div style={{ fontSize: 22, fontWeight: 800, color: selectedColor.primary, fontFamily: heading }}>{calcTotal}€</div>
-                  <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)' }}>odhadovaná cena</div>
+                  <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)' }}>{tr.estPrice}</div>
                 </div>
               </div>
               <div style={{ marginTop: 12, paddingTop: 12, borderTop: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', gap: 6 }}>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z" fill="rgba(255,255,255,0.35)" /></svg>
                 <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)' }}>
-                  Odhadovaný čas realizácie: <strong style={{ color: selectedColor.primary }}>14 dní</strong> od schválenia návrhu
+                  {tr.step3.deadline} <strong style={{ color: selectedColor.primary }}>{tr.step3.deadlineBold}</strong> {tr.step3.deadlineEnd}
                 </span>
               </div>
             </div>
 
             {/* Timeline / proces */}
             <div style={{ display: 'flex', gap: 0, marginBottom: 20, borderRadius: 12, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.06)' }}>
-              {[
-                { step: '1', label: 'Dnes', desc: 'Odoslanie formulára' },
-                { step: '2', label: '24h', desc: 'Cenová ponuka' },
-                { step: '3', label: '14 dní', desc: 'Hotový web' },
-              ].map((s, i) => (
+              {tr.step3.timeline.map((s, i) => (
                 <div key={i} style={{ flex: 1, padding: '12px 10px', textAlign: 'center', background: i === 0 ? `${selectedColor.primary}15` : 'rgba(255,255,255,0.02)', borderRight: i < 2 ? '1px solid rgba(255,255,255,0.06)' : 'none' }}>
                   <div style={{ fontSize: 11, fontWeight: 700, color: i === 0 ? selectedColor.primary : 'rgba(255,255,255,0.4)', marginBottom: 2 }}>{s.label}</div>
                   <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', lineHeight: 1.4 }}>{s.desc}</div>
@@ -1320,31 +1426,31 @@ export default function VyberSiWeb() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
               <div>
                 <label style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', display: 'block', marginBottom: 6, fontWeight: 600 }}>
-                  Názov firmy <span style={{ color: selectedColor.primary }}>*</span>
+                  {tr.step3.fields.firma} <span style={{ color: selectedColor.primary }}>*</span>
                 </label>
                 <input value={form.firma} onChange={e => setForm(f => ({ ...f, firma: e.target.value }))}
-                  placeholder="Napr. Kaderníctvo Lucia" className="konf-input"
+                  placeholder={tr.step3.placeholders.firma} className="konf-input"
                   style={{ width: '100%', padding: '12px 16px', background: 'rgba(255,255,255,0.02)', border: '1.5px solid rgba(255,255,255,0.06)', borderRadius: 10, color: '#fff', fontSize: 14, fontFamily: font }} />
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
                 <div>
-                  <label style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', display: 'block', marginBottom: 6, fontWeight: 600 }}>Vaše meno</label>
+                  <label style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', display: 'block', marginBottom: 6, fontWeight: 600 }}>{tr.step3.fields.meno}</label>
                   <input value={form.meno} onChange={e => setForm(f => ({ ...f, meno: e.target.value }))}
-                    placeholder="Meno a priezvisko" className="konf-input"
+                    placeholder={tr.step3.placeholders.meno} className="konf-input"
                     style={{ width: '100%', padding: '12px 16px', background: 'rgba(255,255,255,0.02)', border: '1.5px solid rgba(255,255,255,0.06)', borderRadius: 10, color: '#fff', fontSize: 14, fontFamily: font }} />
                 </div>
                 <div>
-                  <label style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', display: 'block', marginBottom: 6, fontWeight: 600 }}>Telefón</label>
+                  <label style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', display: 'block', marginBottom: 6, fontWeight: 600 }}>{tr.step3.fields.telefon}</label>
                   <input value={form.telefon} onChange={e => setForm(f => ({ ...f, telefon: e.target.value }))}
-                    placeholder="+421 9XX XXX XXX" className="konf-input"
+                    placeholder={tr.step3.placeholders.telefon} className="konf-input"
                     style={{ width: '100%', padding: '12px 16px', background: 'rgba(255,255,255,0.02)', border: '1.5px solid rgba(255,255,255,0.06)', borderRadius: 10, color: '#fff', fontSize: 14, fontFamily: font }} />
                 </div>
               </div>
 
               <div>
                 <label style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', display: 'block', marginBottom: 6, fontWeight: 600 }}>
-                  Email <span style={{ color: selectedColor.primary }}>*</span>
+                  {tr.step3.fields.email} <span style={{ color: selectedColor.primary }}>*</span>
                 </label>
                 <input value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
                   placeholder="vas@email.sk" type="email" className="konf-input"
@@ -1352,16 +1458,16 @@ export default function VyberSiWeb() {
               </div>
 
               <div>
-                <label style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', display: 'block', marginBottom: 6, fontWeight: 600 }}>Existujúca webstránka</label>
+                <label style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', display: 'block', marginBottom: 6, fontWeight: 600 }}>{tr.step3.fields.web}</label>
                 <input value={form.web} onChange={e => setForm(f => ({ ...f, web: e.target.value }))}
-                  placeholder="www.priklad.sk" className="konf-input"
+                  placeholder={tr.step3.placeholders.web} className="konf-input"
                   style={{ width: '100%', padding: '12px 16px', background: 'rgba(255,255,255,0.02)', border: '1.5px solid rgba(255,255,255,0.06)', borderRadius: 10, color: '#fff', fontSize: 14, fontFamily: font }} />
               </div>
 
               <div>
-                <label style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', display: 'block', marginBottom: 6, fontWeight: 600 }}>Čo by ste chceli na webe?</label>
+                <label style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', display: 'block', marginBottom: 6, fontWeight: 600 }}>{tr.step3.fields.poznamky}</label>
                 <textarea value={form.poznamky} onChange={e => setForm(f => ({ ...f, poznamky: e.target.value }))} rows={3}
-                  placeholder="Napr. galériu prác, online rezerváciu, jedálny lístok..." className="konf-input"
+                  placeholder={tr.step3.placeholders.poznamky} className="konf-input"
                   style={{ width: '100%', padding: '12px 16px', background: 'rgba(255,255,255,0.02)', border: '1.5px solid rgba(255,255,255,0.06)', borderRadius: 10, color: '#fff', fontSize: 14, fontFamily: font, resize: 'vertical' }} />
               </div>
             </div>
@@ -1382,11 +1488,11 @@ export default function VyberSiWeb() {
                   </div>
                 </div>
                 <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', lineHeight: 1.5 }}>
-                  Súhlasím so spracovaním osobných údajov v súlade s{' '}
-                  <a href="/ochrana-udajov" target="_blank" style={{ color: selectedColor.primary, textDecoration: 'none' }}>Ochranou osobných údajov</a>
-                  {' '}a{' '}
-                  <a href="/obchodne-podmienky" target="_blank" style={{ color: selectedColor.primary, textDecoration: 'none' }}>Obchodnými podmienkami</a>
-                  {' '}spoločnosti Vassweb. <span style={{ color: 'rgba(255,255,255,0.3)' }}>(povinné)</span>
+                  {tr.step3.gdpr}{' '}
+                  <a href="/ochrana-udajov" target="_blank" style={{ color: selectedColor.primary, textDecoration: 'none' }}>{tr.privacy}</a>
+                  {' '}{tr.step3.gdprAnd}{' '}
+                  <a href="/obchodne-podmienky" target="_blank" style={{ color: selectedColor.primary, textDecoration: 'none' }}>{tr.terms}</a>
+                  {' '}{tr.step3.gdprEnd} <span style={{ color: 'rgba(255,255,255,0.3)' }}>{tr.step3.gdprReq}</span>
                 </span>
               </label>
             </div>
@@ -1398,7 +1504,7 @@ export default function VyberSiWeb() {
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                   <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" fill="rgba(255,255,255,0.35)" />
                 </svg>
-                Späť
+                {tr.step3.back}
               </button>
               <button onClick={handleSubmit} disabled={sending || !form.firma || !form.email || !gdprConsent} className="konf-btn-primary"
                 style={{
@@ -1413,11 +1519,11 @@ export default function VyberSiWeb() {
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style={{ animation: 'spin 1s linear infinite' }}>
                       <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke={isLight ? '#fff' : '#000'} strokeWidth="2" strokeLinecap="round" />
                     </svg>
-                    Odosielam...
+                    {tr.step3.submitting}
                   </span>
                 ) : (
                   <>
-                    Odoslať — Chcem web!
+                    {tr.step3.submit}
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style={{ marginLeft: 8, verticalAlign: 'middle' }}>
                       <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill={isLight ? '#fff' : '#000'} />
                     </svg>
