@@ -627,9 +627,10 @@ export default function VyberSiWeb() {
                       onChange={e => {
                         const v = Number(e.target.value);
                         setDarkness(v);
-                        // 0 = čierna, 50 = tmavá, 100 = biela
-                        const lightness = Math.round(v * 2.55);
-                        const bgColor = v > 90 ? '#ffffff' : v > 70 ? `rgb(${lightness}, ${lightness}, ${lightness})` : `rgb(${Math.round(v * 0.4)}, ${Math.round(v * 0.35)}, ${Math.round(v * 0.5)})`;
+                        // 0 = biela, 100 = čierna (tmavosť = koľko tmavé)
+                        const inv = 100 - v;
+                        const lightness = Math.round(inv * 2.55);
+                        const bgColor = inv > 90 ? '#ffffff' : inv > 70 ? `rgb(${lightness}, ${lightness}, ${lightness})` : `rgb(${Math.round(inv * 0.4)}, ${Math.round(inv * 0.35)}, ${Math.round(inv * 0.5)})`;
                         setSelectedColor(prev => ({ ...prev, bg: bgColor }));
                         setActiveTheme(null);
                       }}
@@ -933,16 +934,16 @@ export default function VyberSiWeb() {
             {/* Navigation */}
             <div style={{ display: 'flex', justifyContent: 'center', gap: 12, marginTop: 32 }}>
               <button onClick={() => setStep(1)} className="konf-btn-secondary"
-                style={{ padding: '13px 28px', borderRadius: 12, fontSize: 13, fontWeight: 600, fontFamily: font, cursor: 'pointer', background: 'transparent', border: '1.5px solid rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.35)' }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style={{ verticalAlign: 'middle', marginRight: 6 }}>
+                style={{ padding: '13px 28px', borderRadius: 12, fontSize: 13, fontWeight: 600, fontFamily: font, cursor: 'pointer', background: 'transparent', border: '1.5px solid rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.35)', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                   <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" fill="rgba(255,255,255,0.35)" />
                 </svg>
                 Späť
               </button>
               <button onClick={() => setStep(3)} className="konf-btn-primary"
-                style={{ padding: '13px 40px', borderRadius: 12, fontSize: 15, fontWeight: 700, fontFamily: font, cursor: 'pointer', background: `linear-gradient(135deg, ${selectedColor.primary}, ${selectedColor.primary}cc)`, color: isLight ? '#fff' : '#000', border: 'none' }}>
+                style={{ padding: '13px 40px', borderRadius: 12, fontSize: 15, fontWeight: 700, fontFamily: font, cursor: 'pointer', background: `linear-gradient(135deg, ${selectedColor.primary}, ${selectedColor.primary}cc)`, color: isLight ? '#fff' : '#000', border: 'none', display: 'inline-flex', alignItems: 'center', gap: 8 }}>
                 Ďalej — Kontakt
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style={{ marginLeft: 8, verticalAlign: 'middle' }}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                   <path d="M5 12h14M12 5l7 7-7 7" stroke={isLight ? '#fff' : '#000'} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </button>
@@ -1027,8 +1028,8 @@ export default function VyberSiWeb() {
             {/* Navigation */}
             <div style={{ display: 'flex', justifyContent: 'center', gap: 12, marginTop: 28 }}>
               <button onClick={() => setStep(2)} className="konf-btn-secondary"
-                style={{ padding: '13px 28px', borderRadius: 12, fontSize: 13, fontWeight: 600, fontFamily: font, cursor: 'pointer', background: 'transparent', border: '1.5px solid rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.35)' }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style={{ verticalAlign: 'middle', marginRight: 6 }}>
+                style={{ padding: '13px 28px', borderRadius: 12, fontSize: 13, fontWeight: 600, fontFamily: font, cursor: 'pointer', background: 'transparent', border: '1.5px solid rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.35)', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                   <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" fill="rgba(255,255,255,0.35)" />
                 </svg>
                 Späť

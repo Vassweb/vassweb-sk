@@ -1040,22 +1040,22 @@ export default function Home({ locale = 'sk' }: { locale?: Locale }) {
           {/* Šablóny grid */}
           <div className="grid-portfolio" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
             {[
-              { icon: '🍝', name: 'Reštaurácia / Kaviareň', price: 'od 299 €' },
-              { icon: '💇', name: 'Kaderníctvo / Kozmetika', price: 'od 299 €' },
-              { icon: '🔧', name: 'Autoservis / Pneuservis', price: 'od 299 €' },
-              { icon: '💪', name: 'Fitness / Joga / Masáže', price: 'od 299 €' },
-              { icon: '🏗️', name: 'Stavebná firma / Remeselník', price: 'od 299 €' },
-              { icon: '🦷', name: 'Zubár / Lekár / Klinika', price: 'od 299 €' },
-              { icon: '🐾', name: 'Veterinár / Pet salón', price: 'od 299 €' },
-              { icon: '📸', name: 'Fotograf / Videograf', price: 'od 299 €' },
-              { icon: '🧁', name: 'Cukráreň / Pekáreň', price: 'od 299 €' },
-              { icon: '🚗', name: 'Autoškola', price: 'od 299 €' },
-              { icon: '📊', name: 'Účtovník / Daňový poradca', price: 'od 299 €' },
-              { icon: '🏠', name: 'Realitná kancelária', price: 'od 590 €' },
-              { icon: '🏨', name: 'Hotel / Penzión', price: 'od 590 €' },
-              { icon: '👰', name: 'Svadobný salón / Krajčír', price: 'od 299 €' },
-              { icon: '🎨', name: 'Portfólio / Osobná stránka', price: 'od 299 €' },
-              { icon: '🛒', name: 'E-shop', price: 'od 1 990 €' },
+              { path: 'M11 3V7H13V3H11ZM7.5 3C7.22 3 7 3.22 7 3.5V9C7 10.1 7.9 11 9 11V20C9 20.55 9.45 21 10 21H10C10.55 21 11 20.55 11 20V11C12.1 11 13 10.1 13 9V3.5C13 3.22 12.78 3 12.5 3H12.5C12.22 3 12 3.22 12 3.5V8H11V3.5C11 3.22 10.78 3 10.5 3H10.5C10.22 3 10 3.22 10 3.5V8H9V3.5C9 3.22 8.78 3 8.5 3H8.5C8.22 3 8 3.22 8 3.5V8L7.5 3ZM16 3C14.9 3 14 4.9 14 7C14 8.74 14.63 10.19 15.5 10.78V20C15.5 20.55 15.95 21 16.5 21H16.5C17.05 21 17.5 20.55 17.5 20V10.78C18.37 10.19 19 8.74 19 7C19 4.9 18.1 3 17 3H16Z', name: 'Reštaurácia / Kaviareň', price: 'od 299 €' },
+              { path: 'M6.2 2C5.54 2 5 2.54 5 3.2V11H5C3.9 11 3 11.9 3 13V15C3 16.1 3.9 17 5 17H6V21C6 21.55 6.45 22 7 22H7C7.55 22 8 21.55 8 21V17H9C10.1 17 11 16.1 11 15V13C11 11.9 10.1 11 9 11H9V3.2C9 2.54 8.46 2 7.8 2H6.2ZM13 2L16.5 8.5L20 2H13ZM16.5 10C14.84 10 13.5 11.34 13.5 13C13.5 14.3 14.36 15.41 15.5 15.82V21C15.5 21.55 15.95 22 16.5 22C17.05 22 17.5 21.55 17.5 21V15.82C18.64 15.41 19.5 14.3 19.5 13C19.5 11.34 18.16 10 16.5 10Z', name: 'Kaderníctvo / Kozmetika', price: 'od 299 €' },
+              { path: 'M18.92 6.01C18.72 5.42 18.16 5 17.5 5H6.5C5.84 5 5.29 5.42 5.08 6.01L3 12V20C3 20.55 3.45 21 4 21H5C5.55 21 6 20.55 6 20V19H18V20C18 20.55 18.45 21 19 21H20C20.55 21 21 20.55 21 20V12L18.92 6.01ZM6.5 16C5.67 16 5 15.33 5 14.5S5.67 13 6.5 13S8 13.67 8 14.5S7.33 16 6.5 16ZM17.5 16C16.67 16 16 15.33 16 14.5S16.67 13 17.5 13S19 13.67 19 14.5S18.33 16 17.5 16ZM5 11L6.5 6.5H17.5L19 11H5Z', name: 'Autoservis / Pneuservis', price: 'od 299 €' },
+              { path: 'M20.57 14.86L22 13.43L20.57 12L17 15.57L8.43 7L12 3.43L10.57 2L9.14 3.43L7.71 2L5.57 4.14L4.14 2.71L2.71 4.14L4.14 5.57L2 7.71L3.43 9.14L2 10.57L3.43 12L7 8.43L15.57 17L12 20.57L13.43 22L14.86 20.57L16.29 22L18.43 19.86L19.86 21.29L21.29 19.86L19.86 18.43L22 16.29L20.57 14.86Z', name: 'Fitness / Joga / Masáže', price: 'od 299 €' },
+              { path: 'M10 20V14H14V20H19V12H22L12 3L2 12H5V20H10Z', name: 'Stavebná firma / Remeselník', price: 'od 299 €' },
+              { path: 'M12 2C9.24 2 7 4.24 7 7C7 9.85 8.41 11.56 9.5 12.83C10 13.4 10.45 13.91 10.71 14.42C11.28 15.56 11 17 11 18C11 19.1 11.5 20 12 20S13 19.1 13 18C13 17 12.72 15.56 13.29 14.42C13.55 13.91 14 13.4 14.5 12.83C15.59 11.56 17 9.85 17 7C17 4.24 14.76 2 12 2Z', name: 'Zubár / Lekár / Klinika', price: 'od 299 €' },
+              { path: 'M4.5 9.5C5.88 9.5 7 8.38 7 7S5.88 4.5 4.5 4.5S2 5.62 2 7S3.12 9.5 4.5 9.5ZM9 5.5C10.38 5.5 11.5 4.38 11.5 3S10.38 0.5 9 0.5S6.5 1.62 6.5 3S7.62 5.5 9 5.5ZM15 5.5C16.38 5.5 17.5 4.38 17.5 3S16.38 0.5 15 0.5S12.5 1.62 12.5 3S13.62 5.5 15 5.5ZM19.5 9.5C20.88 9.5 22 8.38 22 7S20.88 4.5 19.5 4.5S17 5.62 17 7S18.12 9.5 19.5 9.5ZM17.34 14.86C14.28 11.8 8.67 12.56 6.34 16.14C4.01 19.72 5.07 22.5 8.5 22.5C10.43 22.5 11.22 20.5 12 20.5C12.78 20.5 13.57 22.5 15.5 22.5C18.93 22.5 20.4 17.92 17.34 14.86Z', name: 'Veterinár / Pet salón', price: 'od 299 €' },
+              { path: 'M12 10.8C13.77 10.8 15.2 12.23 15.2 14C15.2 15.77 13.77 17.2 12 17.2C10.23 17.2 8.8 15.77 8.8 14C8.8 12.23 10.23 10.8 12 10.8ZM9 2L7.17 4H4C2.9 4 2 4.9 2 6V20C2 21.1 2.9 22 4 22H20C21.1 22 22 21.1 22 20V6C22 4.9 21.1 4 20 4H16.83L15 2H9ZM12 19C9.24 19 7 16.76 7 14C7 11.24 9.24 9 12 9C14.76 9 17 11.24 17 14C17 16.76 14.76 19 12 19Z', name: 'Fotograf / Videograf', price: 'od 299 €' },
+              { path: 'M12 6C12 4.9 11.1 4 10 4C10 2.9 9.1 2 8 2S6 2.9 6 4C4.9 4 4 4.9 4 6H12ZM3 8V10C3 11.1 3.9 12 5 12V20C5 21.1 5.9 22 7 22H9C10.1 22 11 21.1 11 20V12C12.1 12 13 11.1 13 10V8H3ZM19 6H15V8H19V10H15V12H19C20.1 12 21 11.1 21 10V8C21 6.9 20.1 6 19 6ZM17 14H15V20C15 21.1 15.9 22 17 22C18.1 22 19 21.1 19 20V14H17Z', name: 'Cukráreň / Pekáreň', price: 'od 299 €' },
+              { path: 'M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM12 6C8.69 6 6 8.69 6 12H12V6Z', name: 'Autoškola', price: 'od 299 €' },
+              { path: 'M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM11 17H7V15H11V17ZM11 13H7V11H11V13ZM11 9H7V7H11V9ZM17 17H13V15H17V17ZM17 13H13V11H17V13ZM17 9H13V7H17V9Z', name: 'Účtovník / Daňový poradca', price: 'od 299 €' },
+              { path: 'M12 3L2 12H5V20H11V14H13V20H19V12H22L12 3ZM12 7.7L17 12.2V18H15V12H9V18H7V12.2L12 7.7Z', name: 'Realitná kancelária', price: 'od 590 €' },
+              { path: 'M7 13C8.66 13 10 11.66 10 10C10 8.34 8.66 7 7 7C5.34 7 4 8.34 4 10C4 11.66 5.34 13 7 13ZM19 7H11V14H3V5H1V19H3V17H21V19H23V11C23 8.79 21.21 7 19 7Z', name: 'Hotel / Penzión', price: 'od 590 €' },
+              { path: 'M12 2C9.79 2 8 3.79 8 6C8 7.2 8.54 8.27 9.38 9L12 21L14.62 9C15.46 8.27 16 7.2 16 6C16 3.79 14.21 2 12 2ZM12 8C10.9 8 10 7.1 10 6C10 4.9 10.9 4 12 4C13.1 4 14 4.9 14 6C14 7.1 13.1 8 12 8Z', name: 'Svadobný salón / Krajčír', price: 'od 299 €' },
+              { path: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z', name: 'Portfólio / Osobná stránka', price: 'od 299 €' },
+              { path: 'M7 18C5.9 18 5.01 18.9 5.01 20S5.9 22 7 22S9 21.1 9 20S8.1 18 7 18ZM1 2V4H3L6.6 11.59L5.25 14.04C5.09 14.32 5 14.65 5 15C5 16.1 5.9 17 7 17H19V15H7.42C7.28 15 7.17 14.89 7.17 14.75L7.2 14.63L8.1 13H15.55C16.3 13 16.96 12.59 17.3 11.97L20.88 5.48C20.96 5.34 21 5.17 21 5C21 4.45 20.55 4 20 4H5.21L4.27 2H1Z', name: 'E-shop', price: 'od 1 990 €' },
             ].map((tmpl, i) => (
               <FadeIn key={i} delay={i * 0.1}>
                 <div style={{
@@ -1065,7 +1065,9 @@ export default function Home({ locale = 'sk' }: { locale?: Locale }) {
                 onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.borderColor = 'rgba(212,168,67,0.3)'; }}
                 onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = 'rgba(212,168,67,0.12)'; }}
                 >
-                  <div style={{ fontSize: 36, flexShrink: 0 }}>{tmpl.icon}</div>
+                  <div style={{ width: 44, height: 44, borderRadius: 12, backgroundColor: 'rgba(212,168,67,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d={tmpl.path} fill="#d4a843" /></svg>
+                  </div>
                   <div style={{ flex: 1 }}>
                     <div style={{ fontFamily: heading, fontSize: 17, fontWeight: 500, marginBottom: 2 }}>{tmpl.name}</div>
                     <div style={{ fontSize: 13, color: '#d4a843', fontWeight: 600 }}>{tmpl.price}</div>
