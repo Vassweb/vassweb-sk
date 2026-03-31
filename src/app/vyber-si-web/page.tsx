@@ -979,7 +979,7 @@ export default function VyberSiWeb() {
 
                   {/* ═══ Preview Content — kontextový podľa šablóny ═══ */}
                   <div style={{
-                    background: selectedColor.bg, padding: 0, minHeight: 420,
+                    background: selectedColor.bg, padding: 0, minHeight: 680,
                     transition: `background ${animSpeed / 100 * 0.4}s ease`,
                     position: 'relative',
                   }}>
@@ -1065,6 +1065,43 @@ export default function VyberSiWeb() {
                           <div style={{ fontSize: 11, fontWeight: 600, color: textColor, fontFamily: fontPresets[fontPreset].bodyFont }}>{f}</div>
                         </div>
                       ))}
+                    </div>
+
+                    {/* About / Gallery section */}
+                    <div style={{ padding: '20px 24px', borderTop: `1px solid ${subtleColor}` }}>
+                      <div style={{ fontSize: 9, color: selectedColor.primary, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 8, fontFamily: fontPresets[fontPreset].bodyFont }}>
+                        O nás
+                      </div>
+                      <h4 style={{ fontFamily: fontPresets[fontPreset].headingFont, fontSize: 16, fontWeight: 700, color: textColor, marginBottom: 8 }}>
+                        Prečo si vybrať nás?
+                      </h4>
+                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, marginBottom: 16 }}>
+                        {['Skúsenosti', 'Kvalita', 'Rýchlosť', 'Podpora'].map((item, i) => (
+                          <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                            <div style={{ width: 16, height: 16, borderRadius: '50%', background: `${selectedColor.primary}20`, border: `1px solid ${selectedColor.primary}40`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                              <svg width="8" height="8" viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill={selectedColor.primary} /></svg>
+                            </div>
+                            <span style={{ fontSize: 10, color: mutedColor, fontFamily: fontPresets[fontPreset].bodyFont }}>{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                      {/* Gallery mockup */}
+                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 6 }}>
+                        {[1,2,3].map(i => (
+                          <div key={i} style={{ height: 52, borderRadius: Math.min(borderRadius, 8), background: `${selectedColor.primary}${i === 2 ? '18' : '0c'}`, border: `1px solid ${selectedColor.primary}15` }} />
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* CTA Banner */}
+                    <div style={{ margin: '0 24px 20px', padding: '16px 20px', borderRadius: Math.min(borderRadius, 12), background: `${selectedColor.primary}12`, border: `1px solid ${selectedColor.primary}25`, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <div>
+                        <div style={{ fontSize: 12, fontWeight: 700, color: textColor, fontFamily: fontPresets[fontPreset].headingFont, marginBottom: 2 }}>Kontaktujte nás dnes</div>
+                        <div style={{ fontSize: 10, color: mutedColor, fontFamily: fontPresets[fontPreset].bodyFont }}>Bezplatná konzultácia</div>
+                      </div>
+                      <div style={{ padding: '7px 14px', borderRadius: Math.min(borderRadius, 8), background: selectedColor.primary, color: isLight ? '#fff' : '#000', fontSize: 10, fontWeight: 700, fontFamily: fontPresets[fontPreset].bodyFont, flexShrink: 0 }}>
+                        Začnime →
+                      </div>
                     </div>
 
                     {/* Footer */}
