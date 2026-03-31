@@ -151,6 +151,27 @@ const featureIcons = [
   'M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1ZM10 17L6 13L7.41 11.59L10 14.17L16.59 7.58L18 9L10 17Z',
 ];
 
+const packages = [
+  { id: 'starter', name: 'Štarter', price: 299, desc: 'Prezentačný web, 5 sekcií, kontakt', includes: [] as string[] },
+  { id: 'basic', name: 'Basic', price: 590, desc: 'SEO, galéria, kontaktné formuláre', includes: ['seo', 'gallery'] },
+  { id: 'business', name: 'Business', price: 990, desc: 'CMS/Blog, viacjazyčnosť, SEO, galéria', includes: ['seo', 'cms', 'multilang', 'gallery'] },
+  { id: 'premium', name: 'Premium', price: 1990, desc: 'E-shop, rezervácie, logo + všetko z Business', includes: ['seo', 'cms', 'multilang', 'gallery', 'eshop', 'booking', 'logo'] },
+];
+
+const addonsList = [
+  { id: 'seo', name: 'SEO optimalizácia', price: 149, monthly: false },
+  { id: 'cms', name: 'Blog / CMS', price: 199, monthly: false },
+  { id: 'multilang', name: 'Viacjazyčnosť', price: 149, monthly: false },
+  { id: 'booking', name: 'Online rezervácie', price: 199, monthly: false },
+  { id: 'gallery', name: 'Galéria', price: 99, monthly: false },
+  { id: 'eshop', name: 'E-shop', price: 499, monthly: false },
+  { id: 'chatbot', name: 'AI Chatbot', price: 299, monthly: false },
+  { id: 'logo', name: 'Logo dizajn', price: 199, monthly: false },
+  { id: 'copy', name: 'Copywriting', price: 149, monthly: false },
+  { id: 'ads', name: 'Google Ads setup', price: 199, monthly: false },
+  { id: 'maintenance', name: 'Mesačná údržba', price: 59, monthly: true },
+];
+
 const stepLabels = ['Šablóna', 'Dizajn', 'Kontakt'];
 
 
@@ -174,6 +195,8 @@ export default function VyberSiWeb() {
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
   const [animKey, setAnimKey] = useState(0);
+  const [calcPackage, setCalcPackage] = useState('basic');
+  const [calcAddons, setCalcAddons] = useState<Set<string>>(new Set());
 
   // Sidebar controls (KCars-style)
   const [borderRadius, setBorderRadius] = useState(16);
@@ -189,6 +212,31 @@ export default function VyberSiWeb() {
   const mutedColor = isLight ? 'rgba(0,0,0,0.5)' : 'rgba(255,255,255,0.5)';
   const subtleColor = isLight ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.06)';
   const previewText = selectedTmpl ? templatePreviewText[selectedTmpl.id] : null;
+
+  // ═══ PRICE CALCULATOR COMPUTED ═══
+  const currentPkg = packages.find(p => p.id === calcPackage)!;
+  const calcTotal = currentPkg.price + [...calcAddons]
+    .filter(id => id !== 'maintenance' && !currentPkg.includes.includes(id))
+    .reduce((s, id) => s + (addonsList.find(a => a.id === id)?.price || 0), 0);
+  const calcMaintenance = calcAddons.has('maintenance') ? 59 : 0;
+  const smartTip = (() => {
+    const selectedAddonIds = [...calcAddons].filter(id => id !== 'maintenance');
+    const currentTotal = currentPkg.price + selectedAddonIds
+      .filter(id => !currentPkg.includes.includes(id))
+      .reduce((s, id) => s + (addonsList.find(a => a.id === id)?.price || 0), 0);
+    const nextPackages = packages.filter(p => p.price > currentPkg.price);
+    for (const pkg of nextPackages) {
+      const withPkg = pkg.price + selectedAddonIds
+        .filter(id => !pkg.includes.includes(id))
+        .reduce((s, id) => s + (addonsList.find(a => a.id === id)?.price || 0), 0);
+      const savings = currentTotal - withPkg;
+      const newlyCovered = selectedAddonIds.filter(id => pkg.includes.includes(id) && !currentPkg.includes.includes(id));
+      if (savings >= 50 && newlyCovered.length > 0) {
+        return { text: `Balík ${pkg.name} obsahuje vybrané doplnky a ušetríte ${savings}€`, targetPackage: pkg.id };
+      }
+    }
+    return null;
+  })();
 
   useEffect(() => { setAnimKey(k => k + 1); }, [step]);
 
@@ -273,7 +321,7 @@ export default function VyberSiWeb() {
           email: form.email,
           phone: form.telefon,
           company: form.firma,
-          message: `KONFIGURÁTOR WEBU\n\nŠablóna: ${selectedTmpl?.name || 'Neurčená'}\nFarba: ${selectedColor.name} (${selectedColor.primary})\nPozadie: ${selectedColor.bg}\nSekundárna: ${secondaryColor}\nFont: ${fontPresets[fontPreset].name}\nZaoblenie: ${borderRadius}px\nTmavosť: ${darkness}\nLogo: ${logoName || 'Žiadne'}\nExistujúci web: ${form.web || 'Žiadny'}\n\nPoznámky:\n${form.poznamky}`,
+          message: `KONFIGURÁTOR WEBU\n\nŠablóna: ${selectedTmpl?.name || 'Neurčená'}\n\n── CENOVÁ KALKULÁCIA ──\nBalík: ${currentPkg.name} (${currentPkg.price}€)\nDoplnky: ${[...calcAddons].filter(id => id !== 'maintenance').map(id => { const a = addonsList.find(x => x.id === id); return a ? `${a.name} +${a.price}€` : id; }).join(', ') || 'Žiadne'}\nMesačná údržba: ${calcMaintenance > 0 ? `${calcMaintenance}€/mes` : 'Nie'}\nODHAD CELKOM: ${calcTotal}€${calcMaintenance > 0 ? ` + ${calcMaintenance}€/mes` : ''}\n\n── DIZAJN ──\nFarba: ${selectedColor.name} (${selectedColor.primary})\nPozadie: ${selectedColor.bg}\nFont: ${fontPresets[fontPreset].name}\nZaoblenie: ${borderRadius}px\nLogo: ${logoName || 'Žiadne'}\nExistujúci web: ${form.web || 'Žiadny'}\n\nPoznámky:\n${form.poznamky}`,
           source: 'konfigurator',
         }),
       });
@@ -307,7 +355,7 @@ export default function VyberSiWeb() {
               {selectedTmpl && <TemplateIcon id={selectedTmpl.id} color="#d4a843" size={36} />}
               <div>
                 <div style={{ fontWeight: 700, fontSize: 15 }}>{selectedTmpl?.name}</div>
-                <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)' }}>{selectedTmpl?.price}</div>
+                <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)' }}>Balík {currentPkg.name} — {calcTotal}€{calcMaintenance > 0 ? ` + ${calcMaintenance}€/mes` : ''}</div>
               </div>
             </div>
             <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
@@ -931,6 +979,118 @@ export default function VyberSiWeb() {
               </div>
             </div>
 
+            {/* ═══ PRICE CALCULATOR ═══ */}
+            <div style={{ marginTop: 28, padding: '24px 28px', borderRadius: 16, background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 20 }}>
+                <div>
+                  <h3 style={{ fontFamily: heading, fontSize: 18, fontWeight: 700, marginBottom: 4, color: '#fff' }}>Kalkulačka ceny</h3>
+                  <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.35)', margin: 0 }}>Odhadnite cenu — nezáväzne</p>
+                </div>
+                <div style={{ textAlign: 'right', flexShrink: 0 }}>
+                  <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.3)', marginBottom: 2 }}>Odhadovaná cena</div>
+                  <div style={{ fontSize: 30, fontWeight: 800, color: selectedColor.primary, fontFamily: heading, lineHeight: 1 }}>{calcTotal}€</div>
+                  {calcMaintenance > 0 && <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', marginTop: 4 }}>+ {calcMaintenance}€/mes</div>}
+                </div>
+              </div>
+
+              {/* Packages */}
+              <div style={{ marginBottom: 20 }}>
+                <div style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 10 }}>Balík</div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10 }}>
+                  {packages.map(pkg => {
+                    const isSel = calcPackage === pkg.id;
+                    return (
+                      <button key={pkg.id} onClick={() => setCalcPackage(pkg.id)}
+                        style={{
+                          padding: '14px 12px', borderRadius: 12, cursor: 'pointer', textAlign: 'left',
+                          background: isSel ? `${selectedColor.primary}12` : 'rgba(255,255,255,0.02)',
+                          border: `2px solid ${isSel ? selectedColor.primary : 'rgba(255,255,255,0.05)'}`,
+                          color: '#fff', transition: 'all 0.2s ease', fontFamily: font,
+                        }}>
+                        <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 2, color: isSel ? selectedColor.primary : '#fff' }}>{pkg.name}</div>
+                        <div style={{ fontSize: 20, fontWeight: 800, color: isSel ? selectedColor.primary : 'rgba(255,255,255,0.7)', marginBottom: 6 }}>{pkg.price}€</div>
+                        <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.35)', lineHeight: 1.4 }}>{pkg.desc}</div>
+                        {pkg.includes.length > 0 && (
+                          <div style={{ marginTop: 6, fontSize: 10, color: isSel ? `${selectedColor.primary}80` : 'rgba(255,255,255,0.2)' }}>
+                            Zahŕňa {pkg.includes.length} doplnkov
+                          </div>
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Add-ons */}
+              <div>
+                <div style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 10 }}>Doplnky à la carte</div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: 8 }}>
+                  {addonsList.map(addon => {
+                    const isChecked = calcAddons.has(addon.id);
+                    const isIncluded = currentPkg.includes.includes(addon.id);
+                    return (
+                      <button key={addon.id} onClick={() => {
+                        if (isIncluded) return;
+                        setCalcAddons(prev => {
+                          const next = new Set(prev);
+                          if (next.has(addon.id)) next.delete(addon.id); else next.add(addon.id);
+                          return next;
+                        });
+                      }}
+                        style={{
+                          display: 'flex', alignItems: 'center', gap: 10, padding: '10px 12px', borderRadius: 10,
+                          cursor: isIncluded ? 'default' : 'pointer',
+                          background: isChecked || isIncluded ? `${selectedColor.primary}08` : 'rgba(255,255,255,0.02)',
+                          border: `1.5px solid ${isChecked || isIncluded ? selectedColor.primary + '40' : 'rgba(255,255,255,0.05)'}`,
+                          color: '#fff', transition: 'all 0.2s ease', textAlign: 'left', opacity: isIncluded ? 0.65 : 1,
+                          fontFamily: font,
+                        }}>
+                        <div style={{
+                          width: 18, height: 18, borderRadius: 4, flexShrink: 0,
+                          background: isChecked || isIncluded ? selectedColor.primary : 'rgba(255,255,255,0.05)',
+                          border: `1.5px solid ${isChecked || isIncluded ? selectedColor.primary : 'rgba(255,255,255,0.15)'}`,
+                          display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        }}>
+                          {(isChecked || isIncluded) && (
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none">
+                              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill={isLight ? '#fff' : '#000'} />
+                            </svg>
+                          )}
+                        </div>
+                        <div style={{ flex: 1, minWidth: 0 }}>
+                          <div style={{ fontSize: 12, fontWeight: 600, lineHeight: 1.3 }}>{addon.name}</div>
+                          <div style={{ fontSize: 11, color: isIncluded ? selectedColor.primary : 'rgba(255,255,255,0.35)' }}>
+                            {isIncluded ? 'V balíku' : `+${addon.price}€${addon.monthly ? '/mes' : ''}`}
+                          </div>
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Smart tip */}
+              {smartTip && (
+                <div style={{
+                  marginTop: 16, padding: '12px 16px', borderRadius: 10,
+                  background: `${selectedColor.primary}10`, border: `1px solid ${selectedColor.primary}25`,
+                  display: 'flex', alignItems: 'flex-start', gap: 10,
+                }}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0, marginTop: 1 }}>
+                    <path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26C17.81 13.47 19 11.38 19 9c0-3.86-3.14-7-7-7z" fill={selectedColor.primary} />
+                  </svg>
+                  <div>
+                    <div style={{ fontSize: 12, fontWeight: 700, color: selectedColor.primary, marginBottom: 2 }}>Tip na úsporu</div>
+                    <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.6)' }}>{smartTip.text}</div>
+                    <button onClick={() => setCalcPackage(smartTip.targetPackage)}
+                      style={{ marginTop: 6, fontSize: 11, fontWeight: 600, color: selectedColor.primary, background: 'none', border: 'none', cursor: 'pointer', padding: 0, textDecoration: 'underline' }}>
+                      Prepnúť na balík {packages.find(p => p.id === smartTip.targetPackage)?.name}
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+
             {/* Navigation */}
             <div style={{ display: 'flex', justifyContent: 'center', gap: 12, marginTop: 32 }}>
               <button onClick={() => setStep(1)} className="konf-btn-secondary"
@@ -961,17 +1121,34 @@ export default function VyberSiWeb() {
 
             {/* Recap card */}
             <div style={{
-              display: 'flex', gap: 14, padding: 16, borderRadius: 14, marginBottom: 24, alignItems: 'center',
+              padding: 18, borderRadius: 14, marginBottom: 24,
               background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)',
             }}>
-              {selectedTmpl && <TemplateIcon id={selectedTmpl.id} color={selectedColor.primary} size={32} />}
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ fontSize: 14, fontWeight: 700 }}>{selectedTmpl?.name}</div>
-                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)' }}>{selectedTmpl?.price}</div>
+              <div style={{ display: 'flex', gap: 14, alignItems: 'center', marginBottom: 14, paddingBottom: 14, borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                {selectedTmpl && <TemplateIcon id={selectedTmpl.id} color={selectedColor.primary} size={32} />}
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ fontSize: 14, fontWeight: 700 }}>{selectedTmpl?.name}</div>
+                  <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)' }}>Šablóna</div>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
+                  <div style={{ width: 22, height: 22, borderRadius: 6, background: selectedColor.primary, border: '2px solid rgba(255,255,255,0.1)' }} />
+                  {logoFile && <img src={logoFile} alt="" style={{ width: 22, height: 22, borderRadius: 6, objectFit: 'contain' }} />}
+                </div>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
-                <div style={{ width: 22, height: 22, borderRadius: 6, background: selectedColor.primary, border: '2px solid rgba(255,255,255,0.1)' }} />
-                {logoFile && <img src={logoFile} alt="" style={{ width: 22, height: 22, borderRadius: 6, objectFit: 'contain' }} />}
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div>
+                  <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)', marginBottom: 2 }}>
+                    Balík <strong style={{ color: selectedColor.primary }}>{currentPkg.name}</strong>
+                    {[...calcAddons].filter(id => id !== 'maintenance').length > 0 && (
+                      <span style={{ color: 'rgba(255,255,255,0.35)' }}> + {[...calcAddons].filter(id => id !== 'maintenance').length} doplnk{[...calcAddons].filter(id => id !== 'maintenance').length === 1 ? '' : 'y'}</span>
+                    )}
+                  </div>
+                  {calcMaintenance > 0 && <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.25)' }}>+ {calcMaintenance}€/mes údržba</div>}
+                </div>
+                <div style={{ textAlign: 'right' }}>
+                  <div style={{ fontSize: 22, fontWeight: 800, color: selectedColor.primary, fontFamily: heading }}>{calcTotal}€</div>
+                  <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.3)' }}>odhadovaná cena</div>
+                </div>
               </div>
             </div>
 
