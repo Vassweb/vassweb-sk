@@ -19,7 +19,12 @@ export default function Navbar() {
   const pathname = usePathname();
   const locale = getLocaleFromPath(pathname);
   const tr = getT(locale);
-  const navLinks = tr.navbar.links;
+  const isSubpage = pathname !== '/' && pathname !== `/${locale}` && !['sk', 'en', 'cs', 'hu'].includes(pathname.replace('/', ''));
+  const basePath = locale === 'sk' ? '/' : `/${locale}`;
+  const navLinks = tr.navbar.links.map(l => ({
+    ...l,
+    href: isSubpage && l.href.startsWith('#') ? `${basePath}${l.href}` : l.href,
+  }));
 
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -174,7 +179,7 @@ export default function Navbar() {
               )}
             </div>
 
-            <a href="#kontakt" style={{
+            <a href={isSubpage ? `${basePath}#kontakt` : '#kontakt'} style={{
               padding: '10px 28px',
               background: 'linear-gradient(135deg, #ffeebb, #d4a843, #8a6a1e)',
               color: '#0a0908',
@@ -236,7 +241,7 @@ export default function Navbar() {
               ))}
             </div>
 
-            <a href="#kontakt" onClick={() => setIsOpen(false)} style={{
+            <a href={isSubpage ? `${basePath}#kontakt` : '#kontakt'} onClick={() => setIsOpen(false)} style={{
               marginTop: 8, padding: '14px 24px',
               background: 'linear-gradient(135deg, #ffeebb, #d4a843, #8a6a1e)',
               color: '#0a0908', borderRadius: 999, fontWeight: 600,

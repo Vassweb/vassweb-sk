@@ -98,21 +98,31 @@ const categories = [
 // RÝCHLE TÉMY ako KCars
 // ═══════════════════════════════════════════════════════════════
 const quickThemes = [
-  { name: 'Fire', primary: '#ef4444', accent: '#f97316', bg: '#0a0608', darkBg: true },
-  { name: 'Ocean', primary: '#3b82f6', accent: '#06b6d4', bg: '#060a14', darkBg: true },
-  { name: 'Forest', primary: '#10b981', accent: '#22c55e', bg: '#060e0a', darkBg: true },
-  { name: 'Gold', primary: '#d4a843', accent: '#f59e0b', bg: '#0a0908', darkBg: true },
-  { name: 'Stealth', primary: '#94a3b8', accent: '#64748b', bg: '#0f172a', darkBg: true },
+  { name: 'Fire', primary: '#ef4444', accent: '#f97316', bg: '#0a0608' },
+  { name: 'Ocean', primary: '#3b82f6', accent: '#06b6d4', bg: '#060a14' },
+  { name: 'Forest', primary: '#10b981', accent: '#22c55e', bg: '#060e0a' },
+  { name: 'Gold', primary: '#d4a843', accent: '#f59e0b', bg: '#0a0908' },
+  { name: 'Stealth', primary: '#94a3b8', accent: '#64748b', bg: '#0f172a' },
+  { name: 'Light', primary: '#2563eb', accent: '#3b82f6', bg: '#ffffff' },
+  { name: 'Cream', primary: '#b8860b', accent: '#d4a843', bg: '#faf8f5' },
 ];
 
 // ═══════════════════════════════════════════════════════════════
-// FONT PRESETS
+// FONT PRESETS — Google Fonts sa načítajú cez link v head
 // ═══════════════════════════════════════════════════════════════
 const fontPresets = [
-  { name: 'Elegant', headingFont: 'Playfair Display, Georgia, serif', bodyFont: 'Inter, system-ui, sans-serif' },
-  { name: 'Modern', headingFont: 'Inter, system-ui, sans-serif', bodyFont: 'Inter, system-ui, sans-serif' },
-  { name: 'Bold', headingFont: 'system-ui, -apple-system, sans-serif', bodyFont: 'system-ui, -apple-system, sans-serif' },
+  { name: 'Elegant', headingFont: "'Playfair Display', Georgia, serif", bodyFont: "'Inter', system-ui, sans-serif" },
+  { name: 'Modern', headingFont: "'Inter', system-ui, sans-serif", bodyFont: "'Inter', system-ui, sans-serif" },
+  { name: 'Sporty', headingFont: "'Outfit', system-ui, sans-serif", bodyFont: "'Inter', system-ui, sans-serif" },
+  { name: 'Luxus', headingFont: "'Cormorant Garamond', Georgia, serif", bodyFont: "'Lato', system-ui, sans-serif" },
+  { name: 'Tech', headingFont: "'Space Grotesk', system-ui, sans-serif", bodyFont: "'IBM Plex Sans', system-ui, sans-serif" },
+  { name: 'Rounded', headingFont: "'Nunito', system-ui, sans-serif", bodyFont: "'Nunito Sans', system-ui, sans-serif" },
+  { name: 'Classic', headingFont: "'Merriweather', Georgia, serif", bodyFont: "'Source Sans 3', system-ui, sans-serif" },
+  { name: 'Hravý', headingFont: "'Poppins', system-ui, sans-serif", bodyFont: "'Poppins', system-ui, sans-serif" },
 ];
+
+// Google Fonts URL pre všetky fonty v preview
+const googleFontsUrl = 'https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Cormorant+Garamond:wght@400;600;700&family=Lato:wght@400;700&family=Space+Grotesk:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=Nunito:wght@400;600;700;800&family=Nunito+Sans:wght@400;600;700&family=Merriweather:wght@400;700&family=Source+Sans+3:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap';
 
 // ═══════════════════════════════════════════════════════════════
 // FARBY (12 presetov)
@@ -174,7 +184,7 @@ export default function VyberSiWeb() {
 
   const selectedTmpl = templates.find(t => t.id === selectedTemplate);
   const filteredTemplates = categoryFilter === 'all' ? templates : templates.filter(t => t.category === categoryFilter);
-  const isLight = selectedColor.bg === '#ffffff';
+  const isLight = selectedColor.bg === '#ffffff' || selectedColor.bg === '#faf8f5' || (selectedColor.bg.startsWith('rgb(') && parseInt(selectedColor.bg.match(/\d+/)?.[0] || '0') > 180);
   const textColor = isLight ? '#1a1a1a' : '#ffffff';
   const mutedColor = isLight ? 'rgba(0,0,0,0.5)' : 'rgba(255,255,255,0.5)';
   const subtleColor = isLight ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.06)';
@@ -268,11 +278,8 @@ export default function VyberSiWeb() {
     setSending(false);
   };
 
-  // Computed darkness BG
-  const darknessR = Math.round(darkness * 1.2);
-  const darknessG = Math.round(darkness * 1.1);
-  const darknessB = Math.round(darkness * 1.8);
-  const computedBg = isLight ? selectedColor.bg : `rgb(${darknessR}, ${darknessG}, ${darknessB})`;
+  // Computed darkness BG — 0 = čierna, 100 = biela
+  const computedBg = isLight ? selectedColor.bg : selectedColor.bg;
 
   // ═══════════════════════════════════════════════════════════════
   // ĎAKOVACIA STRÁNKA
@@ -327,6 +334,9 @@ export default function VyberSiWeb() {
   // MAIN RENDER
   // ═══════════════════════════════════════════════════════════════
   return (
+    <>
+    {/* eslint-disable-next-line @next/next/no-page-custom-font */}
+    <link rel="stylesheet" href={googleFontsUrl} />
     <div style={{ minHeight: '100vh', background: '#0a0908', color: '#fff', fontFamily: font }}>
       <style>{`
         @keyframes konfFadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
@@ -609,36 +619,36 @@ export default function VyberSiWeb() {
                 <div className="konf-sidebar-section">
                   <div className="konf-sidebar-label">Tmavosť pozadia</div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                    <input type="range" min={0} max={30} value={darkness}
+                    <input type="range" min={0} max={100} value={darkness}
                       onChange={e => {
                         const v = Number(e.target.value);
                         setDarkness(v);
-                        if (!isLight) {
-                          const r = Math.round(v * 1.2);
-                          const g = Math.round(v * 1.1);
-                          const b = Math.round(v * 1.8);
-                          setSelectedColor(prev => ({ ...prev, bg: `rgb(${r}, ${g}, ${b})` }));
-                          setActiveTheme(null);
-                        }
+                        // 0 = čierna, 50 = tmavá, 100 = biela
+                        const lightness = Math.round(v * 2.55);
+                        const bgColor = v > 90 ? '#ffffff' : v > 70 ? `rgb(${lightness}, ${lightness}, ${lightness})` : `rgb(${Math.round(v * 0.4)}, ${Math.round(v * 0.35)}, ${Math.round(v * 0.5)})`;
+                        setSelectedColor(prev => ({ ...prev, bg: bgColor }));
+                        setActiveTheme(null);
                       }}
                       className="konf-range"
                       style={{ flex: 1 }} />
-                    <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.25)', minWidth: 20, textAlign: 'right' }}>{darkness}</span>
+                    <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.25)', minWidth: 20, textAlign: 'right' }}>{darkness}%</span>
                   </div>
                 </div>
 
                 {/* Štýl písma */}
                 <div className="konf-sidebar-section">
                   <div className="konf-sidebar-label">Štýl písma</div>
-                  <div style={{ display: 'flex', gap: 6 }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 6 }}>
                     {fontPresets.map((fp, i) => (
                       <button key={fp.name} onClick={() => setFontPreset(i)}
                         style={{
-                          flex: 1, padding: '7px 0', borderRadius: 8, fontSize: 11, fontWeight: 600,
-                          cursor: 'pointer', fontFamily: font, textAlign: 'center',
+                          padding: '8px 6px', borderRadius: 8, fontSize: 11, fontWeight: 600,
+                          cursor: 'pointer', textAlign: 'center',
+                          fontFamily: fp.headingFont,
                           background: fontPreset === i ? `${selectedColor.primary}15` : 'rgba(255,255,255,0.03)',
                           border: `1.5px solid ${fontPreset === i ? selectedColor.primary : 'rgba(255,255,255,0.06)'}`,
                           color: fontPreset === i ? selectedColor.primary : 'rgba(255,255,255,0.35)',
+                          transition: 'all 0.15s ease',
                         }}>
                         {fp.name}
                       </button>
@@ -1054,5 +1064,6 @@ export default function VyberSiWeb() {
         <a href="https://vassweb.sk" style={{ color: '#d4a843', textDecoration: 'none', fontWeight: 600 }}>vassweb.sk</a>
       </footer>
     </div>
+    </>
   );
 }
