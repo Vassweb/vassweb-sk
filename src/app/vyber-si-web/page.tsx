@@ -382,6 +382,7 @@ export default function VyberSiWeb() {
   };
 
   // ═══ Submit ═══
+  const [gdprConsent, setGdprConsent] = useState(false);
   const [submitError, setSubmitError] = useState('');
   const handleSubmit = async () => {
     setSubmitError('');
@@ -1328,8 +1329,33 @@ export default function VyberSiWeb() {
               </div>
             </div>
 
+            {/* GDPR súhlas */}
+            <div style={{ marginTop: 20, padding: '14px 16px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 10 }}>
+              <label style={{ display: 'flex', alignItems: 'flex-start', gap: 10, cursor: 'pointer' }}>
+                <div style={{ position: 'relative', flexShrink: 0, marginTop: 1 }}>
+                  <input type="checkbox" checked={gdprConsent} onChange={e => setGdprConsent(e.target.checked)}
+                    style={{ position: 'absolute', opacity: 0, width: 18, height: 18, cursor: 'pointer', margin: 0 }} />
+                  <div style={{
+                    width: 18, height: 18, borderRadius: 5, border: `2px solid ${gdprConsent ? selectedColor.primary : 'rgba(255,255,255,0.2)'}`,
+                    background: gdprConsent ? selectedColor.primary : 'transparent',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    transition: 'all 0.15s ease',
+                  }}>
+                    {gdprConsent && <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill={isLight ? '#fff' : '#000'} /></svg>}
+                  </div>
+                </div>
+                <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', lineHeight: 1.5 }}>
+                  Súhlasím so spracovaním osobných údajov v súlade s{' '}
+                  <a href="/ochrana-udajov" target="_blank" style={{ color: selectedColor.primary, textDecoration: 'none' }}>Ochranou osobných údajov</a>
+                  {' '}a{' '}
+                  <a href="/obchodne-podmienky" target="_blank" style={{ color: selectedColor.primary, textDecoration: 'none' }}>Obchodnými podmienkami</a>
+                  {' '}spoločnosti Vassweb. <span style={{ color: 'rgba(255,255,255,0.3)' }}>(povinné)</span>
+                </span>
+              </label>
+            </div>
+
             {/* Navigation */}
-            <div style={{ display: 'flex', justifyContent: 'center', gap: 12, marginTop: 28 }}>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: 12, marginTop: 16 }}>
               <button onClick={() => setStep(2)} className="konf-btn-secondary"
                 style={{ padding: '13px 28px', borderRadius: 12, fontSize: 13, fontWeight: 600, fontFamily: font, cursor: 'pointer', background: 'transparent', border: '1.5px solid rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.35)', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
@@ -1337,13 +1363,13 @@ export default function VyberSiWeb() {
                 </svg>
                 Späť
               </button>
-              <button onClick={handleSubmit} disabled={sending || !form.firma || !form.email} className="konf-btn-primary"
+              <button onClick={handleSubmit} disabled={sending || !form.firma || !form.email || !gdprConsent} className="konf-btn-primary"
                 style={{
                   padding: '13px 40px', borderRadius: 12, fontSize: 15, fontWeight: 700, fontFamily: font,
-                  cursor: (!form.firma || !form.email) ? 'not-allowed' : 'pointer',
-                  background: (!form.firma || !form.email) ? 'rgba(255,255,255,0.03)' : `linear-gradient(135deg, ${selectedColor.primary}, ${selectedColor.primary}cc)`,
-                  color: (!form.firma || !form.email) ? 'rgba(255,255,255,0.15)' : (isLight ? '#fff' : '#000'),
-                  border: 'none', opacity: (!form.firma || !form.email) ? 0.5 : 1,
+                  cursor: (!form.firma || !form.email || !gdprConsent) ? 'not-allowed' : 'pointer',
+                  background: (!form.firma || !form.email || !gdprConsent) ? 'rgba(255,255,255,0.03)' : `linear-gradient(135deg, ${selectedColor.primary}, ${selectedColor.primary}cc)`,
+                  color: (!form.firma || !form.email || !gdprConsent) ? 'rgba(255,255,255,0.15)' : (isLight ? '#fff' : '#000'),
+                  border: 'none', opacity: (!form.firma || !form.email || !gdprConsent) ? 0.5 : 1,
                 }}>
                 {sending ? (
                   <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
