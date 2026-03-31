@@ -433,9 +433,23 @@ export default function VyberSiWeb() {
             Nakonfigurujte si{' '}
             <span style={{ color: selectedColor.primary, transition: 'color 0.3s' }}>vlastný web</span>
           </h1>
-          <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: 15, maxWidth: 500, margin: '0 auto', lineHeight: 1.6 }}>
+          <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: 15, maxWidth: 500, margin: '0 auto 16px', lineHeight: 1.6 }}>
             3 kroky a hotovo. Vyberte šablónu, upravte dizajn, zanechajte kontakt — a my to postavíme.
           </p>
+          {/* Social proof badges */}
+          <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap', marginTop: 4 }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '5px 14px', background: 'rgba(212,168,67,0.08)', border: '1px solid rgba(212,168,67,0.2)', borderRadius: 999, fontSize: 12, color: 'rgba(212,168,67,0.9)' }}>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="#d4a843" /></svg>
+              Hotové do 14 dní
+            </div>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '5px 14px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 999, fontSize: 12, color: 'rgba(255,255,255,0.6)' }}>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" fill="rgba(255,255,255,0.5)" /></svg>
+              Konzultácia zadarmo
+            </div>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '5px 14px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 999, fontSize: 12, color: 'rgba(255,255,255,0.6)' }}>
+              ⭐ 4.9 / 5 hodnotenie
+            </div>
+          </div>
         </div>
       </header>
 
@@ -1117,18 +1131,18 @@ export default function VyberSiWeb() {
         {step === 3 && (
           <div key={`step3-${animKey}`} style={{ animation: 'konfFadeUp 0.5s cubic-bezier(0.16,1,0.3,1) both', maxWidth: 580, margin: '0 auto' }}>
             <h2 style={{ fontSize: 22, fontWeight: 700, marginBottom: 6, textAlign: 'center', fontFamily: heading }}>Povedzte nám o sebe</h2>
-            <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.35)', fontSize: 14, marginBottom: 28 }}>Ozveme sa do 24 hodín s návrhom a cenovou ponukou.</p>
+            <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.62)', fontSize: 14, marginBottom: 24 }}>Ozveme sa do 24 hodín s návrhom a cenovou ponukou.</p>
 
             {/* Recap card */}
             <div style={{
-              padding: 18, borderRadius: 14, marginBottom: 24,
-              background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)',
+              padding: 18, borderRadius: 14, marginBottom: 16,
+              background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)',
             }}>
-              <div style={{ display: 'flex', gap: 14, alignItems: 'center', marginBottom: 14, paddingBottom: 14, borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+              <div style={{ display: 'flex', gap: 14, alignItems: 'center', marginBottom: 14, paddingBottom: 14, borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
                 {selectedTmpl && <TemplateIcon id={selectedTmpl.id} color={selectedColor.primary} size={32} />}
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <div style={{ fontSize: 14, fontWeight: 700 }}>{selectedTmpl?.name}</div>
-                  <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)' }}>Šablóna</div>
+                  <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)' }}>Šablóna</div>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
                   <div style={{ width: 22, height: 22, borderRadius: 6, background: selectedColor.primary, border: '2px solid rgba(255,255,255,0.1)' }} />
@@ -1137,19 +1151,33 @@ export default function VyberSiWeb() {
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <div>
-                  <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)', marginBottom: 2 }}>
+                  <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', marginBottom: 2 }}>
                     Balík <strong style={{ color: selectedColor.primary }}>{currentPkg.name}</strong>
                     {[...calcAddons].filter(id => id !== 'maintenance').length > 0 && (
-                      <span style={{ color: 'rgba(255,255,255,0.35)' }}> + {[...calcAddons].filter(id => id !== 'maintenance').length} doplnk{[...calcAddons].filter(id => id !== 'maintenance').length === 1 ? '' : 'y'}</span>
+                      <span style={{ color: 'rgba(255,255,255,0.5)' }}> + {[...calcAddons].filter(id => id !== 'maintenance').length} doplnk{[...calcAddons].filter(id => id !== 'maintenance').length === 1 ? '' : 'y'}</span>
                     )}
                   </div>
-                  {calcMaintenance > 0 && <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.25)' }}>+ {calcMaintenance}€/mes údržba</div>}
+                  {calcMaintenance > 0 && <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)' }}>+ {calcMaintenance}€/mes údržba</div>}
                 </div>
                 <div style={{ textAlign: 'right' }}>
                   <div style={{ fontSize: 22, fontWeight: 800, color: selectedColor.primary, fontFamily: heading }}>{calcTotal}€</div>
-                  <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.3)' }}>odhadovaná cena</div>
+                  <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)' }}>odhadovaná cena</div>
                 </div>
               </div>
+            </div>
+
+            {/* Timeline / proces */}
+            <div style={{ display: 'flex', gap: 0, marginBottom: 20, borderRadius: 12, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.06)' }}>
+              {[
+                { step: '1', label: 'Dnes', desc: 'Odoslanie formulára' },
+                { step: '2', label: '24h', desc: 'Cenová ponuka' },
+                { step: '3', label: '14 dní', desc: 'Hotový web' },
+              ].map((s, i) => (
+                <div key={i} style={{ flex: 1, padding: '12px 10px', textAlign: 'center', background: i === 0 ? `${selectedColor.primary}15` : 'rgba(255,255,255,0.02)', borderRight: i < 2 ? '1px solid rgba(255,255,255,0.06)' : 'none' }}>
+                  <div style={{ fontSize: 11, fontWeight: 700, color: i === 0 ? selectedColor.primary : 'rgba(255,255,255,0.4)', marginBottom: 2 }}>{s.label}</div>
+                  <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', lineHeight: 1.4 }}>{s.desc}</div>
+                </div>
+              ))}
             </div>
 
             {/* Form */}

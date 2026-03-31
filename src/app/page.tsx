@@ -124,7 +124,7 @@ function HoverCard({ children, style }: { children: React.ReactNode; style?: Rea
         position: 'relative' as const,
         overflow: 'hidden' as const,
         transform: hovered ? 'translateY(-6px)' : 'translateY(0)',
-        borderColor: hovered ? 'rgba(212,168,67,0.35)' : 'rgba(212,168,67,0.12)',
+        borderColor: hovered ? 'rgba(212,168,67,0.5)' : 'rgba(212,168,67,0.12)',
         backgroundColor: hovered ? 'rgba(255,255,255,0.04)' : 'rgba(255,255,255,0.025)',
         boxShadow: hovered
           ? '0 8px 32px rgba(212,168,67,0.1), 0 0 0 1px rgba(212,168,67,0.15), inset 0 1px 0 rgba(212,168,67,0.1)'
@@ -527,7 +527,7 @@ function FAQItem({ question, answer, isOpen, onClick }: {
         opacity: isOpen ? 1 : 0,
       }}>
         <p style={{
-          color: 'rgba(255,255,255,0.45)', fontSize: 14, lineHeight: 1.8,
+          color: 'rgba(255,255,255,0.65)', fontSize: 14, lineHeight: 1.8,
           fontFamily: body, fontWeight: 300, padding: '0 0 20px 0',
         }}>{answer}</p>
       </div>
@@ -571,7 +571,7 @@ function TestimonialCard({ name, role, text }: { name: string; role: string; tex
       </div>
 
       <p style={{
-        color: 'rgba(255,255,255,0.55)', fontSize: 14, lineHeight: 1.8,
+        color: 'rgba(255,255,255,0.75)', fontSize: 14, lineHeight: 1.8,
         fontFamily: body, fontWeight: 300, fontStyle: 'italic',
         marginBottom: 20,
       }}>
@@ -593,7 +593,7 @@ function TestimonialCard({ name, role, text }: { name: string; role: string; tex
         </div>
         <div>
           <div style={{ fontFamily: body, fontWeight: 600, fontSize: 13, color: '#fff' }}>{name}</div>
-          <div style={{ fontFamily: body, fontWeight: 400, fontSize: 11, color: 'rgba(212,168,67,0.5)' }}>{role}</div>
+          <div style={{ fontFamily: body, fontWeight: 400, fontSize: 11, color: 'rgba(212,168,67,0.8)' }}>{role}</div>
         </div>
       </div>
     </div>
@@ -781,7 +781,7 @@ export default function Home({ locale = 'sk' }: { locale?: Locale }) {
 
           <FadeIn delay={0.4}>
             <p style={{
-              fontSize: 16, color: 'rgba(255,255,255,0.45)', fontFamily: body, fontWeight: 300,
+              fontSize: 16, color: 'rgba(255,255,255,0.68)', fontFamily: body, fontWeight: 300,
               maxWidth: 480, margin: '0 auto 40px', lineHeight: 1.7, minHeight: '2.5em',
             }}>
               <TypeWriter text={tr.hero.typewriter} delay={1200} />
@@ -849,7 +849,7 @@ export default function Home({ locale = 'sk' }: { locale?: Locale }) {
                       <Icon size={22} color="#d4a843" strokeWidth={1.5} />
                     </div>
                     <h3 style={{ fontFamily: heading, fontWeight: 500, fontSize: 20, color: '#fff', marginBottom: 8 }}>{s.title}</h3>
-                    <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: 13, lineHeight: 1.7, fontFamily: body }}>{s.desc}</p>
+                    <p style={{ color: 'rgba(255,255,255,0.62)', fontSize: 13, lineHeight: 1.7, fontFamily: body }}>{s.desc}</p>
                   </HoverCard>
                 </FadeIn>
               );
@@ -877,8 +877,8 @@ export default function Home({ locale = 'sk' }: { locale?: Locale }) {
                   <div style={{ fontFamily: heading, fontWeight: 400, fontSize: 'clamp(40px, 5vw, 56px)', ...goldGradient, marginBottom: 6 }}>
                     <AnimatedCounter value={item.num} suffix={item.suffix} />
                   </div>
-                  <div style={{ color: 'rgba(212,168,67,0.5)', fontSize: 11, fontWeight: 600, fontFamily: body, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 12 }}>{item.lbl}</div>
-                  <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: 14, fontFamily: body }}>{item.desc}</p>
+                  <div style={{ color: 'rgba(212,168,67,0.8)', fontSize: 11, fontWeight: 600, fontFamily: body, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 12 }}>{item.lbl}</div>
+                  <p style={{ color: 'rgba(255,255,255,0.62)', fontSize: 14, fontFamily: body }}>{item.desc}</p>
                 </div>
               </FadeIn>
             ))}
@@ -895,7 +895,7 @@ export default function Home({ locale = 'sk' }: { locale?: Locale }) {
                 pointerEvents: 'none',
               }} />
               <div style={{ ...card, padding: '36px 32px', textAlign: 'center', position: 'relative' }}>
-                <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: 15, lineHeight: 1.8, fontFamily: body, fontWeight: 300, fontStyle: 'italic' }}>
+                <p style={{ color: 'rgba(255,255,255,0.72)', fontSize: 15, lineHeight: 1.8, fontFamily: body, fontWeight: 300, fontStyle: 'italic' }}>
                   &ldquo;{tr.about.tagline}&rdquo;
                 </p>
               </div>
@@ -934,7 +934,7 @@ export default function Home({ locale = 'sk' }: { locale?: Locale }) {
                     </div>
                     <div>
                       <h4 style={{ fontFamily: heading, fontWeight: 500, fontSize: 17, color: '#fff', marginBottom: 6 }}>{item.title}</h4>
-                      <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: 13, lineHeight: 1.6, fontFamily: body }}>{item.desc}</p>
+                      <p style={{ color: 'rgba(255,255,255,0.62)', fontSize: 13, lineHeight: 1.6, fontFamily: body }}>{item.desc}</p>
                     </div>
                   </HoverCard>
                 </FadeIn>
@@ -962,7 +962,7 @@ export default function Home({ locale = 'sk' }: { locale?: Locale }) {
                 <HoverCard>
                   <div style={{ fontFamily: body, fontWeight: 300, fontSize: 32, ...goldGradient, marginBottom: 12, fontVariantNumeric: 'lining-nums' as const }}>{item.step}</div>
                   <h3 style={{ fontFamily: heading, fontWeight: 500, fontSize: 18, color: '#fff', marginBottom: 6 }}>{item.title}</h3>
-                  <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: 13, lineHeight: 1.6, fontFamily: body }}>{item.desc}</p>
+                  <p style={{ color: 'rgba(255,255,255,0.62)', fontSize: 13, lineHeight: 1.6, fontFamily: body }}>{item.desc}</p>
                 </HoverCard>
               </FadeIn>
             ))}
@@ -991,7 +991,7 @@ export default function Home({ locale = 'sk' }: { locale?: Locale }) {
           </div>
 
           <FadeIn>
-            <p style={{ textAlign: 'center', marginTop: 24, color: 'rgba(255,255,255,0.2)', fontSize: 12, fontFamily: body }}>
+            <p style={{ textAlign: 'center', marginTop: 24, color: 'rgba(255,255,255,0.45)', fontSize: 12, fontFamily: body }}>
               {tr.pricing.note}
             </p>
           </FadeIn>
@@ -1030,7 +1030,7 @@ export default function Home({ locale = 'sk' }: { locale?: Locale }) {
             <div style={{ textAlign: 'center', marginBottom: 48 }}>
               <p style={label}>{locale === 'en' ? 'CONFIGURATOR' : locale === 'hu' ? 'KONFIGURÁTOR' : 'KONFIGURÁTOR'}</p>
               <h2 style={h2Style}>{locale === 'en' ? 'Choose your website' : locale === 'cs' ? 'Vyberte si svůj web' : locale === 'hu' ? 'Válassza ki weboldalát' : 'Vyberte si svoj web'}</h2>
-              <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: 15, fontFamily: body, maxWidth: 540, margin: '12px auto 0' }}>
+              <p style={{ color: 'rgba(255,255,255,0.62)', fontSize: 15, fontFamily: body, maxWidth: 540, margin: '12px auto 0' }}>
                 {locale === 'en' ? '16 templates for different industries. Choose a design, colors, upload your logo — and we\'ll build it. Ready in 5 days.' : locale === 'cs' ? '16 šablon pro různá odvětví. Vyberte si design, barvy, nahrajte logo — a my to postavíme. Hotové do 5 dnů.' : locale === 'hu' ? '16 sablon különböző iparágakhoz. Válasszon dizájnt, színeket, töltse fel logóját — és mi megépítjük. 5 napon belül kész.' : '16 šablón pre rôzne odvetvia. Vyberte si dizajn, farby, nahrajte logo — a my to postavíme. Hotové do 5 dní.'}
               </p>
               <div style={{ width: 40, height: 1, background: 'linear-gradient(90deg, transparent, #d4a843, transparent)', margin: '20px auto 0' }} />
@@ -1080,7 +1080,7 @@ export default function Home({ locale = 'sk' }: { locale?: Locale }) {
           {/* CTA — Konfigurátor */}
           <FadeIn delay={0.4}>
             <div style={{ textAlign: 'center', marginTop: 48 }}>
-              <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: 14, fontFamily: body, marginBottom: 20 }}>
+              <p style={{ color: 'rgba(255,255,255,0.62)', fontSize: 14, fontFamily: body, marginBottom: 20 }}>
                 {locale === 'en' ? 'Choose colors, upload your logo and send us a brief — we\'ll get back to you within 24 hours' : locale === 'cs' ? 'Vyberte si barvy, nahrajte logo a pošlete nám brief — ozveme se do 24 hodin' : locale === 'hu' ? 'Válasszon színeket, töltse fel logóját és küldjön briefet — 24 órán belül jelentkezünk' : 'Vyberte si farby, nahrajte logo a pošlite nám brief — ozveme sa do 24 hodín'}
               </p>
               <a href="/vyber-si-web" style={{
@@ -1097,7 +1097,7 @@ export default function Home({ locale = 'sk' }: { locale?: Locale }) {
               >
                 {locale === 'en' ? 'Configure your website →' : locale === 'cs' ? 'Nakonfigurovat si web →' : locale === 'hu' ? 'Konfigurálja weboldalát →' : 'Nakonfigurovať si web →'}
               </a>
-              <p style={{ color: 'rgba(255,255,255,0.2)', fontSize: 12, fontFamily: body, marginTop: 12 }}>
+              <p style={{ color: 'rgba(255,255,255,0.42)', fontSize: 12, fontFamily: body, marginTop: 12 }}>
                 {locale === 'en' ? 'Choose a template, colors, upload your logo — done in 3 minutes' : locale === 'cs' ? 'Vyberte šablonu, barvy, nahrajte logo — hotové za 3 minuty' : locale === 'hu' ? 'Válasszon sablont, színeket, töltse fel logóját — 3 perc alatt kész' : 'Vyberte šablónu, farby, nahrajte logo — hotové za 3 minúty'}
               </p>
             </div>
@@ -1149,7 +1149,7 @@ export default function Home({ locale = 'sk' }: { locale?: Locale }) {
             <h2 style={{ ...h2Style, marginBottom: 20 }}>
               <span style={goldGradient}>{tr.contact.heading1}</span>{' '}{tr.contact.heading2}
             </h2>
-            <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.4)', lineHeight: 1.7, fontFamily: body, fontWeight: 300, maxWidth: 440, margin: '0 auto 40px' }}>
+            <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.62)', lineHeight: 1.7, fontFamily: body, fontWeight: 300, maxWidth: 440, margin: '0 auto 40px' }}>
               {tr.contact.subtext}
             </p>
           </FadeIn>
@@ -1161,14 +1161,14 @@ export default function Home({ locale = 'sk' }: { locale?: Locale }) {
           <FadeIn delay={0.3}>
             <div style={{ marginTop: 32, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}>
               <div style={{ width: 30, height: 1, background: 'linear-gradient(90deg, transparent, rgba(212,168,67,0.2), transparent)', marginBottom: 4 }} />
-              <p style={{ fontSize: 11, fontFamily: body, color: 'rgba(255,255,255,0.2)', letterSpacing: '0.15em', textTransform: 'uppercase' as const }}>
+              <p style={{ fontSize: 11, fontFamily: body, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.15em', textTransform: 'uppercase' as const }}>
                 {locale === 'en' ? 'Or reach us directly' : locale === 'cs' ? 'Nebo nás kontaktujte přímo' : locale === 'hu' ? 'Vagy keressen minket közvetlenül' : 'Alebo nás kontaktujte priamo'}
               </p>
               <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap', justifyContent: 'center' }}>
-                <a href="tel:+421918668728" className="animated-link" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: 'rgba(212,168,67,0.5)', fontSize: 13, textDecoration: 'none', fontFamily: body, transition: 'color 0.3s' }}>
+                <a href="tel:+421918668728" className="animated-link" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: 'rgba(212,168,67,0.75)', fontSize: 13, textDecoration: 'none', fontFamily: body, transition: 'color 0.3s' }}>
                   <Phone size={14} /> +421 918 668 728
                 </a>
-                <a href="mailto:info@vassweb.sk" className="animated-link" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: 'rgba(212,168,67,0.5)', fontSize: 13, textDecoration: 'none', fontFamily: body, transition: 'color 0.3s' }}>
+                <a href="mailto:info@vassweb.sk" className="animated-link" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: 'rgba(212,168,67,0.75)', fontSize: 13, textDecoration: 'none', fontFamily: body, transition: 'color 0.3s' }}>
                   <Mail size={14} /> info@vassweb.sk
                 </a>
               </div>
@@ -1190,7 +1190,7 @@ export default function Home({ locale = 'sk' }: { locale?: Locale }) {
           <FadeIn>
             <div style={{ textAlign: 'center', marginBottom: 48 }}>
               <Image src="/images/logo-horizontal.webp" alt="Vassweb" width={1200} height={774} style={{ height: 36, width: 'auto', margin: '0 auto 16px', display: 'block' }} />
-              <p style={{ color: 'rgba(255,255,255,0.25)', fontSize: 13, fontFamily: body, lineHeight: 1.8, maxWidth: 400, margin: '0 auto' }}>
+              <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: 13, fontFamily: body, lineHeight: 1.8, maxWidth: 400, margin: '0 auto' }}>
                 {tr.footer.tagline}
               </p>
             </div>
@@ -1199,33 +1199,33 @@ export default function Home({ locale = 'sk' }: { locale?: Locale }) {
           {/* Middle section — 3 columns: nav, contact, legal */}
           <div className="grid-footer" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 40, marginBottom: 48 }}>
             <div style={{ textAlign: 'center' }}>
-              <h4 style={{ color: 'rgba(212,168,67,0.4)', fontWeight: 600, fontSize: 10, fontFamily: body, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 16 }}>{tr.footer.navHeading}</h4>
+              <h4 style={{ color: 'rgba(212,168,67,0.7)', fontWeight: 600, fontSize: 10, fontFamily: body, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 16 }}>{tr.footer.navHeading}</h4>
               {tr.footer.navLinks.map(l => (
-                <a key={l.href} href={l.href} className="footer-link" style={{ display: 'block', color: 'rgba(255,255,255,0.25)', fontSize: 13, textDecoration: 'none', marginBottom: 10, fontFamily: body, transition: 'color 0.3s' }}>{l.label}</a>
+                <a key={l.href} href={l.href} className="footer-link" style={{ display: 'block', color: 'rgba(255,255,255,0.5)', fontSize: 13, textDecoration: 'none', marginBottom: 10, fontFamily: body, transition: 'color 0.3s' }}>{l.label}</a>
               ))}
             </div>
             <div style={{ textAlign: 'center' }}>
-              <h4 style={{ color: 'rgba(212,168,67,0.4)', fontWeight: 600, fontSize: 10, fontFamily: body, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 16 }}>{tr.footer.contactHeading}</h4>
-              <a href="tel:+421918668728" className="footer-link" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, color: 'rgba(255,255,255,0.25)', fontSize: 13, textDecoration: 'none', marginBottom: 10, fontFamily: body, transition: 'color 0.3s' }}>
-                <Phone size={13} color="rgba(212,168,67,0.3)" /> +421 918 668 728
+              <h4 style={{ color: 'rgba(212,168,67,0.7)', fontWeight: 600, fontSize: 10, fontFamily: body, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 16 }}>{tr.footer.contactHeading}</h4>
+              <a href="tel:+421918668728" className="footer-link" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, color: 'rgba(255,255,255,0.5)', fontSize: 13, textDecoration: 'none', marginBottom: 10, fontFamily: body, transition: 'color 0.3s' }}>
+                <Phone size={13} color="rgba(212,168,67,0.6)" /> +421 918 668 728
               </a>
-              <a href="mailto:info@vassweb.sk" className="footer-link" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, color: 'rgba(255,255,255,0.25)', fontSize: 13, textDecoration: 'none', marginBottom: 10, fontFamily: body, transition: 'color 0.3s' }}>
-                <Mail size={13} color="rgba(212,168,67,0.3)" /> info@vassweb.sk
+              <a href="mailto:info@vassweb.sk" className="footer-link" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, color: 'rgba(255,255,255,0.5)', fontSize: 13, textDecoration: 'none', marginBottom: 10, fontFamily: body, transition: 'color 0.3s' }}>
+                <Mail size={13} color="rgba(212,168,67,0.6)" /> info@vassweb.sk
               </a>
             </div>
             <div style={{ textAlign: 'center' }}>
-              <h4 style={{ color: 'rgba(212,168,67,0.4)', fontWeight: 600, fontSize: 10, fontFamily: body, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 16 }}>{tr.footer.legalHeading}</h4>
-              <a href={locale === 'en' ? '/en/privacy-policy' : locale === 'cs' ? '/cs/ochrana-udaju' : locale === 'hu' ? '/hu/adatvedelmi-iranyelvek' : '/ochrana-udajov'} className="footer-link" style={{ display: 'block', color: 'rgba(255,255,255,0.25)', fontSize: 13, textDecoration: 'none', marginBottom: 10, fontFamily: body, transition: 'color 0.3s' }}>{tr.footer.privacy}</a>
-              <a href={locale === 'en' ? '/en/terms-and-conditions' : locale === 'cs' ? '/cs/obchodni-podminky' : locale === 'hu' ? '/hu/altalanos-szerzodesi-feltetelek' : '/obchodne-podmienky'} className="footer-link" style={{ display: 'block', color: 'rgba(255,255,255,0.25)', fontSize: 13, textDecoration: 'none', marginBottom: 10, fontFamily: body, transition: 'color 0.3s' }}>{tr.footer.terms}</a>
+              <h4 style={{ color: 'rgba(212,168,67,0.7)', fontWeight: 600, fontSize: 10, fontFamily: body, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 16 }}>{tr.footer.legalHeading}</h4>
+              <a href={locale === 'en' ? '/en/privacy-policy' : locale === 'cs' ? '/cs/ochrana-udaju' : locale === 'hu' ? '/hu/adatvedelmi-iranyelvek' : '/ochrana-udajov'} className="footer-link" style={{ display: 'block', color: 'rgba(255,255,255,0.5)', fontSize: 13, textDecoration: 'none', marginBottom: 10, fontFamily: body, transition: 'color 0.3s' }}>{tr.footer.privacy}</a>
+              <a href={locale === 'en' ? '/en/terms-and-conditions' : locale === 'cs' ? '/cs/obchodni-podminky' : locale === 'hu' ? '/hu/altalanos-szerzodesi-feltetelek' : '/obchodne-podmienky'} className="footer-link" style={{ display: 'block', color: 'rgba(255,255,255,0.5)', fontSize: 13, textDecoration: 'none', marginBottom: 10, fontFamily: body, transition: 'color 0.3s' }}>{tr.footer.terms}</a>
             </div>
           </div>
 
           {/* Bottom bar */}
           <div style={{ borderTop: '1px solid rgba(255,255,255,0.04)', paddingTop: 24, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
-            <p style={{ color: 'rgba(255,255,255,0.15)', fontSize: 11, fontFamily: body }}>
+            <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: 11, fontFamily: body }}>
               {tr.footer.copyright}
             </p>
-            <p style={{ color: 'rgba(212,168,67,0.15)', fontSize: 9, fontFamily: body, letterSpacing: '0.2em', textTransform: 'uppercase' as const }}>
+            <p style={{ color: 'rgba(212,168,67,0.4)', fontSize: 9, fontFamily: body, letterSpacing: '0.2em', textTransform: 'uppercase' as const }}>
               Crafted with precision
             </p>
           </div>
