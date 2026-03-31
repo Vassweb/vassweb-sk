@@ -808,7 +808,7 @@ export default function Home({ locale = 'sk' }: { locale?: Locale }) {
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
                   <path d="M12 15.5A3.5 3.5 0 0 1 8.5 12 3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5 3.5 3.5 0 0 1-3.5 3.5m7.43-2.53c.04-.32.07-.64.07-.97s-.03-.66-.07-1l2.11-1.63c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64L4.57 11c-.04.34-.07.67-.07 1s.03.65.07.97l-2.11 1.66c-.19.15-.25.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1.01c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.58 1.69-.98l2.49 1.01c.22.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64L19.43 12.97z" fill="#d4a843" />
                 </svg>
-                Vytvor si web
+                {locale === 'en' ? 'Build your website' : locale === 'cs' ? 'Vytvořte si web' : locale === 'hu' ? 'Készítse el weboldalát' : 'Vytvor si web'}
               </a>
             </div>
           </FadeIn>
@@ -1028,10 +1028,10 @@ export default function Home({ locale = 'sk' }: { locale?: Locale }) {
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <FadeIn>
             <div style={{ textAlign: 'center', marginBottom: 48 }}>
-              <p style={label}>KONFIGURÁTOR</p>
-              <h2 style={h2Style}>Vyberte si svoj web</h2>
+              <p style={label}>{locale === 'en' ? 'CONFIGURATOR' : locale === 'hu' ? 'KONFIGURÁTOR' : 'KONFIGURÁTOR'}</p>
+              <h2 style={h2Style}>{locale === 'en' ? 'Choose your website' : locale === 'cs' ? 'Vyberte si svůj web' : locale === 'hu' ? 'Válassza ki weboldalát' : 'Vyberte si svoj web'}</h2>
               <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: 15, fontFamily: body, maxWidth: 540, margin: '12px auto 0' }}>
-                16 šablón pre rôzne odvetvia. Vyberte si dizajn, farby, nahrajte logo — a my to postavíme. Hotové do 5 dní.
+                {locale === 'en' ? '16 templates for different industries. Choose a design, colors, upload your logo — and we\'ll build it. Ready in 5 days.' : locale === 'cs' ? '16 šablon pro různá odvětví. Vyberte si design, barvy, nahrajte logo — a my to postavíme. Hotové do 5 dnů.' : locale === 'hu' ? '16 sablon különböző iparágakhoz. Válasszon dizájnt, színeket, töltse fel logóját — és mi megépítjük. 5 napon belül kész.' : '16 šablón pre rôzne odvetvia. Vyberte si dizajn, farby, nahrajte logo — a my to postavíme. Hotové do 5 dní.'}
               </p>
               <div style={{ width: 40, height: 1, background: 'linear-gradient(90deg, transparent, #d4a843, transparent)', margin: '20px auto 0' }} />
             </div>
@@ -1079,7 +1079,7 @@ export default function Home({ locale = 'sk' }: { locale?: Locale }) {
           <FadeIn delay={0.4}>
             <div style={{ textAlign: 'center', marginTop: 48 }}>
               <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: 14, fontFamily: body, marginBottom: 20 }}>
-                Vyberte si farby, nahrajte logo a pošlite nám brief — ozveme sa do 24 hodín
+                {locale === 'en' ? 'Choose colors, upload your logo and send us a brief — we\'ll get back to you within 24 hours' : locale === 'cs' ? 'Vyberte si barvy, nahrajte logo a pošlete nám brief — ozveme se do 24 hodin' : locale === 'hu' ? 'Válasszon színeket, töltse fel logóját és küldjön briefet — 24 órán belül jelentkezünk' : 'Vyberte si farby, nahrajte logo a pošlite nám brief — ozveme sa do 24 hodín'}
               </p>
               <a href="/vyber-si-web" style={{
                 display: 'inline-flex', alignItems: 'center', gap: 10,
@@ -1093,10 +1093,10 @@ export default function Home({ locale = 'sk' }: { locale?: Locale }) {
               onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 8px 32px rgba(212,168,67,0.4)'; }}
               onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 24px rgba(212,168,67,0.3)'; }}
               >
-                Nakonfigurovať si web →
+                {locale === 'en' ? 'Configure your website →' : locale === 'cs' ? 'Nakonfigurovat si web →' : locale === 'hu' ? 'Konfigurálja weboldalát →' : 'Nakonfigurovať si web →'}
               </a>
               <p style={{ color: 'rgba(255,255,255,0.2)', fontSize: 12, fontFamily: body, marginTop: 12 }}>
-                Vyberte šablónu, farby, nahrajte logo — hotové za 3 minúty
+                {locale === 'en' ? 'Choose a template, colors, upload your logo — done in 3 minutes' : locale === 'cs' ? 'Vyberte šablonu, barvy, nahrajte logo — hotové za 3 minuty' : locale === 'hu' ? 'Válasszon sablont, színeket, töltse fel logóját — 3 perc alatt kész' : 'Vyberte šablónu, farby, nahrajte logo — hotové za 3 minúty'}
               </p>
             </div>
           </FadeIn>
