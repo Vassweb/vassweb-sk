@@ -823,7 +823,7 @@ export default function VyberSiWeb() {
 
                   {/* ═══ Preview Content — kontextový podľa šablóny ═══ */}
                   <div style={{
-                    background: computedBg, padding: 0, minHeight: 420,
+                    background: selectedColor.bg, padding: 0, minHeight: 420,
                     transition: `background ${animSpeed / 100 * 0.4}s ease`,
                     position: 'relative',
                   }}>
