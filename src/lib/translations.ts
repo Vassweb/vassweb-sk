@@ -203,7 +203,7 @@ const sk: Translations = {
     legalHeading: 'Právne',
     privacy: 'Ochrana osobných údajov',
     terms: 'Obchodné podmienky',
-    copyright: '© 2026 Vassweb s.r.o. Všetky práva vyhradené.',
+    copyright: '© 2026 VVD s.r.o. Všetky práva vyhradené.',
   },
   navbar: {
     links: [
@@ -362,7 +362,7 @@ const en: Translations = {
     legalHeading: 'Legal',
     privacy: 'Privacy Policy',
     terms: 'Terms & Conditions',
-    copyright: '© 2026 Vassweb s.r.o. All rights reserved.',
+    copyright: '© 2026 VVD s.r.o. All rights reserved.',
   },
   navbar: {
     links: [
@@ -521,7 +521,7 @@ const cs: Translations = {
     legalHeading: 'Právní',
     privacy: 'Ochrana osobních údajů',
     terms: 'Obchodní podmínky',
-    copyright: '© 2026 Vassweb s.r.o. Všechna práva vyhrazena.',
+    copyright: '© 2026 VVD s.r.o. Všechna práva vyhrazena.',
   },
   navbar: {
     links: [
@@ -680,7 +680,7 @@ const hu: Translations = {
     legalHeading: 'Jogi',
     privacy: 'Adatvédelmi irányelvek',
     terms: 'Általános szerződési feltételek',
-    copyright: '© 2026 Vassweb s.r.o. Minden jog fenntartva.',
+    copyright: '© 2026 VVD s.r.o. Minden jog fenntartva.',
   },
   navbar: {
     links: [
