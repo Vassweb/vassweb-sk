@@ -3,7 +3,7 @@ import { Playfair_Display, Inter } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import './globals.css';
-import NavbarWrapper from '@/components/NavbarWrapper';
+import Navbar from '@/components/Navbar';
 import CookieConsent from '@/components/CookieConsent';
 
 const playfair = Playfair_Display({
@@ -168,7 +168,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         `}} />
       </head>
       <body className={`${playfair.variable} ${inter.variable}`}>
-        <NavbarWrapper />
+        <Navbar />
         {children}
         <CookieConsent />
         <Analytics />
