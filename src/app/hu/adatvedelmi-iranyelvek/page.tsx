@@ -17,14 +17,34 @@ export default function AdatvedelmiIranyelvek() {
         </p>
 
         <section style={{ marginBottom: '40px' }}>
-          <h2 style={sectionTitle}>1. Kik vagyunk</h2>
+          <h2 style={sectionTitle}>1. Kik vagyunk — adatkezelő azonosítása</h2>
           <p style={paragraph}>
-            Ennek a weboldalnak az üzemeltetője a Vassweb (a továbbiakban &quot;mi&quot; vagy &quot;üzemeltető&quot;).
-            Elérhet minket az{' '}
-            <a href="mailto:info@vassweb.sk" style={linkStyle}>info@vassweb.sk</a> e-mail címen vagy
-            telefonon a{' '}
-            <a href="tel:+421918668728" style={linkStyle}>+421 918 668 728</a> számon.
+            Az adatkezelő a GDPR 4. cikk 7. pontja értelmében a{' '}
+            <strong style={{ color: '#e8e0d0' }}>VVD s.r.o.</strong> társaság, amely a Vassweb márkanév alatt működik
+            (a továbbiakban &quot;mi&quot; vagy &quot;üzemeltető&quot;).
           </p>
+          <div
+            style={{
+              background: 'rgba(212, 168, 67, 0.05)',
+              border: '1px solid rgba(212, 168, 67, 0.15)',
+              borderRadius: '12px',
+              padding: '20px',
+              marginBottom: '16px',
+            }}
+          >
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Cégnév:</strong> VVD s.r.o.</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Székhely:</strong> Blatná na Ostrove 281, 930 32, Szlovákia</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Cégjegyzékszám:</strong> 56 921 021</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Adószám:</strong> 2122501524 · <strong style={{ color: '#d4a843' }}>ÁFA-szám:</strong> SK2122501524</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Cégbíróság:</strong> Nagyszombati Járásbíróság, Sro szakasz, 59422/T</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Ügyvezető:</strong> Richard Vass</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>E-mail:</strong>{' '}
+              <a href="mailto:info@vassweb.sk" style={linkStyle}>info@vassweb.sk</a>
+            </p>
+            <p style={{ ...paragraph, marginBottom: 0 }}><strong style={{ color: '#d4a843' }}>Telefon:</strong>{' '}
+              <a href="tel:+421918668728" style={linkStyle}>+421 918 668 728</a>
+            </p>
+          </div>
           <p style={paragraph}>
             Komolyan vesszük az Ön magánéletének védelmét. Ez az oldal leírja, milyen adatokat gyűjtünk,
             miért gyűjtjük őket, és milyen jogai vannak az adatkezeléssel kapcsolatban az Európai Parlament

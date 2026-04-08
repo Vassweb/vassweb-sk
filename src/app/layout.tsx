@@ -3,7 +3,7 @@ import { Playfair_Display, Inter } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import './globals.css';
-import Navbar from '@/components/Navbar';
+import NavbarWrapper from '@/components/NavbarWrapper';
 import CookieConsent from '@/components/CookieConsent';
 
 const playfair = Playfair_Display({
@@ -80,14 +80,19 @@ const jsonLd = [
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Vassweb',
-    legalName: 'Vassweb s.r.o.',
+    legalName: 'VVD s.r.o.',
     url: 'https://vassweb.sk',
     logo: 'https://vassweb.sk/images/logo-horizontal.webp',
     image: 'https://vassweb.sk/images/og-image.webp',
     email: 'info@vassweb.sk',
     telephone: '+421918668728',
+    taxID: '2122501524',
+    vatID: 'SK2122501524',
     address: {
       '@type': 'PostalAddress',
+      streetAddress: 'Blatná na Ostrove 281',
+      postalCode: '930 32',
+      addressLocality: 'Blatná na Ostrove',
       addressCountry: 'SK',
     },
     sameAs: [],
@@ -96,14 +101,20 @@ const jsonLd = [
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
     name: 'Vassweb',
+    legalName: 'VVD s.r.o.',
     description: 'Tvoríme weby, automatizácie a AI riešenia, ktoré šetria čas a zarábajú peniaze.',
     url: 'https://vassweb.sk',
     logo: 'https://vassweb.sk/images/logo-horizontal.webp',
     image: 'https://vassweb.sk/images/og-image.webp',
     telephone: '+421918668728',
     email: 'info@vassweb.sk',
+    taxID: '2122501524',
+    vatID: 'SK2122501524',
     address: {
       '@type': 'PostalAddress',
+      streetAddress: 'Blatná na Ostrove 281',
+      postalCode: '930 32',
+      addressLocality: 'Blatná na Ostrove',
       addressCountry: 'SK',
     },
     areaServed: [
@@ -143,24 +154,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="preconnect" href="https://www.google-analytics.com" crossOrigin="anonymous" />
-        {/* Meta Pixel */}
-        <script dangerouslySetInnerHTML={{ __html: `
-          !function(f,b,e,v,n,t,s)
-          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-          n.queue=[];t=b.createElement(e);t.async=!0;
-          t.src=v;s=b.getElementsByTagName(e)[0];
-          s.parentNode.insertBefore(t,s)}(window, document,'script',
-          'https://connect.facebook.net/en_US/fbevents.js');
-          fbq('init', '1650043139749771');
-          fbq('track', 'PageView');
-        `}} />
-        <noscript>
-          <img height="1" width="1" style={{ display: 'none' }}
-            src="https://www.facebook.com/tr?id=1650043139749771&ev=PageView&noscript=1"
-          />
-        </noscript>
+        {/* Meta Pixel & Google Analytics — načítavajú sa cez CookieConsent komponent po súhlase používateľa (GDPR/ePrivacy compliance) */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -174,7 +168,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         `}} />
       </head>
       <body className={`${playfair.variable} ${inter.variable}`}>
-        <Navbar />
+        <NavbarWrapper />
         {children}
         <CookieConsent />
         <Analytics />

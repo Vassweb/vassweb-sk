@@ -71,6 +71,8 @@ export interface Translations {
     privacy: string;
     terms: string;
     copyright: string;
+    companyHeading: string;
+    companyLines: string[];
   };
   navbar: {
     links: Array<{ label: string; href: string }>;
@@ -204,6 +206,16 @@ const sk: Translations = {
     privacy: 'Ochrana osobných údajov',
     terms: 'Obchodné podmienky',
     copyright: '© 2026 VVD s.r.o. Všetky práva vyhradené.',
+    companyHeading: 'Prevádzkovateľ',
+    companyLines: [
+      'VVD s.r.o.',
+      'Blatná na Ostrove 281, 930 32',
+      'IČO: 56921021 · DIČ: 2122501524',
+      'IČ DPH: SK2122501524',
+      'OR OS Trnava, oddiel: Sro, vložka č. 59422/T',
+      'Konateľ: Richard Vass',
+      'Dozor: SOI Trnava, Pekárska 23, 917 01 Trnava',
+    ],
   },
   navbar: {
     links: [
@@ -363,6 +375,16 @@ const en: Translations = {
     privacy: 'Privacy Policy',
     terms: 'Terms & Conditions',
     copyright: '© 2026 VVD s.r.o. All rights reserved.',
+    companyHeading: 'Operator',
+    companyLines: [
+      'VVD s.r.o.',
+      'Blatná na Ostrove 281, 930 32, Slovakia',
+      'Reg. No.: 56921021 · Tax ID: 2122501524',
+      'VAT ID: SK2122501524',
+      'Commercial Register of the District Court Trnava, Section: Sro, File No. 59422/T',
+      'Managing Director: Richard Vass',
+      'Supervisory authority: SOI Trnava, Pekárska 23, 917 01 Trnava',
+    ],
   },
   navbar: {
     links: [
@@ -522,6 +544,16 @@ const cs: Translations = {
     privacy: 'Ochrana osobních údajů',
     terms: 'Obchodní podmínky',
     copyright: '© 2026 VVD s.r.o. Všechna práva vyhrazena.',
+    companyHeading: 'Provozovatel',
+    companyLines: [
+      'VVD s.r.o.',
+      'Blatná na Ostrove 281, 930 32, Slovensko',
+      'IČO: 56921021 · DIČ: 2122501524',
+      'IČ DPH: SK2122501524',
+      'OR OS Trnava, oddíl: Sro, vložka č. 59422/T',
+      'Jednatel: Richard Vass',
+      'Dozor: SOI Trnava, Pekárska 23, 917 01 Trnava',
+    ],
   },
   navbar: {
     links: [
@@ -681,6 +713,16 @@ const hu: Translations = {
     privacy: 'Adatvédelmi irányelvek',
     terms: 'Általános szerződési feltételek',
     copyright: '© 2026 VVD s.r.o. Minden jog fenntartva.',
+    companyHeading: 'Üzemeltető',
+    companyLines: [
+      'VVD s.r.o.',
+      'Blatná na Ostrove 281, 930 32, Szlovákia',
+      'Cégjegyzékszám: 56921021 · Adószám: 2122501524',
+      'ÁFA-szám: SK2122501524',
+      'Cégbíróság: Nagyszombati Járásbíróság, Sro szakasz, 59422/T',
+      'Ügyvezető: Richard Vass',
+      'Felügyeleti hatóság: SOI Trnava, Pekárska 23, 917 01 Trnava',
+    ],
   },
   navbar: {
     links: [

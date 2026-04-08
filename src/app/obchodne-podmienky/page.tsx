@@ -43,16 +43,39 @@ export default function ObchodnePodmienky() {
         </p>
 
         <section style={{ marginBottom: '40px' }}>
-          <h2 style={sectionTitle}>1. Základné ustanovenia</h2>
+          <h2 style={sectionTitle}>1. Základné ustanovenia a identifikácia poskytovateľa</h2>
           <p style={paragraph}>
-            Tieto obchodné podmienky upravujú vzťahy medzi spoločnosťou Vassweb (ďalej len &quot;poskytovateľ&quot;)
-            a objednávateľom služieb (ďalej len &quot;klient&quot;) pri poskytovaní digitálnych služieb vrátane
-            tvorby webových stránok, automatizácií a AI riešení.
+            Tieto obchodné podmienky upravujú vzťahy medzi spoločnosťou <strong style={{ color: '#e8e0d0' }}>VVD s.r.o.</strong>,
+            podnikajúcou pod značkou Vassweb (ďalej len &quot;poskytovateľ&quot;) a objednávateľom služieb (ďalej len &quot;klient&quot;)
+            pri poskytovaní digitálnych služieb vrátane tvorby webových stránok, automatizácií a AI riešení.
           </p>
+          <div
+            style={{
+              background: 'rgba(212, 168, 67, 0.05)',
+              border: '1px solid rgba(212, 168, 67, 0.15)',
+              borderRadius: '12px',
+              padding: '20px',
+              marginBottom: '16px',
+            }}
+          >
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Obchodné meno:</strong> VVD s.r.o.</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Sídlo:</strong> Blatná na Ostrove 281, 930 32 Blatná na Ostrove, Slovenská republika</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>IČO:</strong> 56 921 021</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>DIČ:</strong> 2122501524</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>IČ DPH:</strong> SK2122501524</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Zápis:</strong> Obchodný register Okresného súdu Trnava, oddiel Sro, vložka č. 59422/T</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Konateľ:</strong> Richard Vass</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>E-mail:</strong>{' '}
+              <a href="mailto:info@vassweb.sk" style={linkStyle}>info@vassweb.sk</a>
+            </p>
+            <p style={{ ...paragraph, marginBottom: 0 }}><strong style={{ color: '#d4a843' }}>Telefón:</strong>{' '}
+              <a href="tel:+421918668728" style={linkStyle}>+421 918 668 728</a>
+            </p>
+          </div>
           <p style={paragraph}>
-            Kontaktné údaje poskytovateľa: e-mail{' '}
-            <a href="mailto:info@vassweb.sk" style={linkStyle}>info@vassweb.sk</a>, telefón{' '}
-            <a href="tel:+421918668728" style={linkStyle}>+421 918 668 728</a>.
+            <strong style={{ color: '#e8e0d0' }}>Orgán dozoru:</strong> Slovenská obchodná inšpekcia (SOI),
+            Inšpektorát SOI pre Trnavský kraj, Pekárska 23, 917 01 Trnava 1,{' '}
+            <a href="https://www.soi.sk" target="_blank" rel="noopener noreferrer" style={linkStyle}>www.soi.sk</a>.
           </p>
         </section>
 
@@ -135,7 +158,24 @@ export default function ObchodnePodmienky() {
         </section>
 
         <section style={{ marginBottom: '40px' }}>
-          <h2 style={sectionTitle}>9. Záverečné ustanovenia</h2>
+          <h2 style={sectionTitle}>9. Alternatívne riešenie sporov</h2>
+          <p style={paragraph}>
+            V prípade, že klient — spotrebiteľ nie je spokojný so spôsobom, ktorým poskytovateľ vybavil jeho
+            reklamáciu alebo sa domnieva, že poskytovateľ porušil jeho práva, má právo obrátiť sa na poskytovateľa
+            so žiadosťou o nápravu. Ak poskytovateľ na žiadosť odpovie zamietavo alebo neodpovie do 30 dní,
+            spotrebiteľ má právo podať návrh na začatie alternatívneho riešenia sporu subjektu ARS podľa
+            zákona č. 391/2015 Z. z.
+          </p>
+          <p style={paragraph}>
+            Príslušným subjektom ARS je Slovenská obchodná inšpekcia (<a href="https://www.soi.sk/sk/alternativne-riesenie-spotrebitelskych-sporov.soi" target="_blank" rel="noopener noreferrer" style={linkStyle}>www.soi.sk/sk/alternativne-riesenie-spotrebitelskych-sporov.soi</a>),
+            prípadne iná oprávnená právnická osoba zapísaná v zozname subjektov ARS vedenom Ministerstvom hospodárstva SR.
+            Spotrebiteľ môže využiť aj platformu RSO Európskej komisie:{' '}
+            <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer" style={linkStyle}>ec.europa.eu/consumers/odr</a>.
+          </p>
+        </section>
+
+        <section style={{ marginBottom: '40px' }}>
+          <h2 style={sectionTitle}>10. Záverečné ustanovenia</h2>
           <p style={paragraph}>
             Tieto obchodné podmienky sa riadia právnym poriadkom Slovenskej republiky. Akékoľvek spory
             sa strany zaväzujú riešiť prednostne dohodou. Poskytovateľ si vyhradzuje právo tieto podmienky

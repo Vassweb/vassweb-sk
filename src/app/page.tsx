@@ -1247,6 +1247,16 @@ export default function Home({ locale = 'sk' }: { locale?: Locale }) {
             </div>
           </div>
 
+          {/* Company info — povinné údaje podľa § 3a OZ a § 4 ZoEO */}
+          <div style={{ borderTop: '1px solid rgba(255,255,255,0.04)', paddingTop: 24, marginBottom: 16, textAlign: 'center' }}>
+            <h4 style={{ color: 'rgba(212,168,67,0.7)', fontWeight: 600, fontSize: 10, fontFamily: body, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 12 }}>{tr.footer.companyHeading}</h4>
+            <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: 11, fontFamily: body, lineHeight: 1.8 }}>
+              {tr.footer.companyLines.map((line, i) => (
+                <div key={i}>{line}</div>
+              ))}
+            </div>
+          </div>
+
           {/* Bottom bar */}
           <div style={{ borderTop: '1px solid rgba(255,255,255,0.04)', paddingTop: 24, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
             <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: 11, fontFamily: body }}>

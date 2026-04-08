@@ -44,18 +44,38 @@ export default function OchranaUdajov() {
 
         {/* --- Úvod --- */}
         <section style={{ marginBottom: '40px' }}>
-          <h2 style={sectionTitle}>1. Kto sme</h2>
+          <h2 style={sectionTitle}>1. Kto sme — identifikácia prevádzkovateľa</h2>
           <p style={paragraph}>
-            Prevádzkovateľom tejto webovej stránky je Vassweb (ďalej len &quot;my&quot; alebo &quot;prevádzkovateľ&quot;).
-            Kontaktovať nás môžete na e-mailovej adrese{' '}
-            <a href="mailto:info@vassweb.sk" style={linkStyle}>info@vassweb.sk</a> alebo
-            telefonicky na čísle{' '}
-            <a href="tel:+421918668728" style={linkStyle}>+421 918 668 728</a>.
+            Prevádzkovateľom osobných údajov v zmysle čl. 4 ods. 7 GDPR je spoločnosť{' '}
+            <strong style={{ color: '#e8e0d0' }}>VVD s.r.o.</strong>, podnikajúca pod značkou Vassweb
+            (ďalej len &quot;my&quot; alebo &quot;prevádzkovateľ&quot;).
           </p>
+          <div
+            style={{
+              background: 'rgba(212, 168, 67, 0.05)',
+              border: '1px solid rgba(212, 168, 67, 0.15)',
+              borderRadius: '12px',
+              padding: '20px',
+              marginBottom: '16px',
+            }}
+          >
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Obchodné meno:</strong> VVD s.r.o.</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Sídlo:</strong> Blatná na Ostrove 281, 930 32 Blatná na Ostrove</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>IČO:</strong> 56 921 021</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>DIČ:</strong> 2122501524 · <strong style={{ color: '#d4a843' }}>IČ DPH:</strong> SK2122501524</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Zápis:</strong> OR OS Trnava, oddiel Sro, vložka č. 59422/T</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Konateľ:</strong> Richard Vass</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>E-mail:</strong>{' '}
+              <a href="mailto:info@vassweb.sk" style={linkStyle}>info@vassweb.sk</a>
+            </p>
+            <p style={{ ...paragraph, marginBottom: 0 }}><strong style={{ color: '#d4a843' }}>Telefón:</strong>{' '}
+              <a href="tel:+421918668728" style={linkStyle}>+421 918 668 728</a>
+            </p>
+          </div>
           <p style={paragraph}>
             Vaše súkromie berieme vážne. Táto stránka popisuje, aké údaje zbierame, prečo ich
             zbierame a aké máte práva v súvislosti s ich spracovaním v zmysle Nariadenia Európskeho
-            parlamentu a Rady (EÚ) 2016/679 (GDPR).
+            parlamentu a Rady (EÚ) 2016/679 (GDPR) a zákona č. 18/2018 Z. z. o ochrane osobných údajov.
           </p>
         </section>
 

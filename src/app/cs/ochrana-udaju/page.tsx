@@ -17,14 +17,34 @@ export default function OchranaUdaju() {
         </p>
 
         <section style={{ marginBottom: '40px' }}>
-          <h2 style={sectionTitle}>1. Kdo jsme</h2>
+          <h2 style={sectionTitle}>1. Kdo jsme — identifikace správce</h2>
           <p style={paragraph}>
-            Provozovatelem této webové stránky je Vassweb (dále jen &quot;my&quot; nebo &quot;provozovatel&quot;).
-            Kontaktovat nás můžete na e-mailové adrese{' '}
-            <a href="mailto:info@vassweb.sk" style={linkStyle}>info@vassweb.sk</a> nebo
-            telefonicky na čísle{' '}
-            <a href="tel:+421918668728" style={linkStyle}>+421 918 668 728</a>.
+            Správcem osobních údajů ve smyslu čl. 4 odst. 7 GDPR je společnost{' '}
+            <strong style={{ color: '#e8e0d0' }}>VVD s.r.o.</strong>, podnikající pod značkou Vassweb
+            (dále jen &quot;my&quot; nebo &quot;provozovatel&quot;).
           </p>
+          <div
+            style={{
+              background: 'rgba(212, 168, 67, 0.05)',
+              border: '1px solid rgba(212, 168, 67, 0.15)',
+              borderRadius: '12px',
+              padding: '20px',
+              marginBottom: '16px',
+            }}
+          >
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Obchodní jméno:</strong> VVD s.r.o.</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Sídlo:</strong> Blatná na Ostrove 281, 930 32, Slovensko</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>IČO:</strong> 56 921 021</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>DIČ:</strong> 2122501524 · <strong style={{ color: '#d4a843' }}>IČ DPH:</strong> SK2122501524</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Zápis:</strong> OR OS Trnava, oddíl Sro, vložka č. 59422/T</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Jednatel:</strong> Richard Vass</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>E-mail:</strong>{' '}
+              <a href="mailto:info@vassweb.sk" style={linkStyle}>info@vassweb.sk</a>
+            </p>
+            <p style={{ ...paragraph, marginBottom: 0 }}><strong style={{ color: '#d4a843' }}>Telefon:</strong>{' '}
+              <a href="tel:+421918668728" style={linkStyle}>+421 918 668 728</a>
+            </p>
+          </div>
           <p style={paragraph}>
             Vaše soukromí bereme vážně. Tato stránka popisuje, jaké údaje shromažďujeme, proč je
             shromažďujeme a jaká máte práva v souvislosti s jejich zpracováním podle Nařízení Evropského
