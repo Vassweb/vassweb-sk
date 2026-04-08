@@ -39,7 +39,7 @@ export default function OchranaUdajov() {
           Ochrana osobných údajov
         </h1>
         <p style={{ color: 'rgba(232, 224, 208, 0.5)', fontSize: '14px', marginBottom: '48px' }}>
-          Posledná aktualizácia: 15. marca 2026
+          Účinnosť od: 8. apríla 2026 · Posledná aktualizácia: 8. apríla 2026
         </p>
 
         {/* --- Úvod --- */}

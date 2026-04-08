@@ -39,7 +39,7 @@ export default function ObchodnePodmienky() {
           Obchodné podmienky
         </h1>
         <p style={{ color: 'rgba(232, 224, 208, 0.5)', fontSize: '14px', marginBottom: '48px' }}>
-          Posledná aktualizácia: 15. marca 2026
+          Účinnosť od: 8. apríla 2026 · Posledná aktualizácia: 8. apríla 2026
         </p>
 
         <section style={{ marginBottom: '40px' }}>
@@ -140,16 +140,126 @@ export default function ObchodnePodmienky() {
         </section>
 
         <section style={{ marginBottom: '40px' }}>
-          <h2 style={sectionTitle}>7. Odstúpenie od zmluvy</h2>
+          <h2 style={sectionTitle}>7. Odstúpenie od zmluvy — klient podnikateľ (B2B)</h2>
           <p style={paragraph}>
-            Klient môže od zmluvy odstúpiť kedykoľvek písomným oznámením. V takom prípade je povinný
-            uhradiť práce vykonané do momentu odstúpenia. Poskytovateľ môže od zmluvy odstúpiť, ak klient
-            neposkytuje potrebnú súčinnosť ani po opakovanej výzve.
+            Klient (podnikateľ — právnická osoba alebo SZČO konajúca v rámci svojej obchodnej činnosti) môže
+            od zmluvy odstúpiť kedykoľvek písomným oznámením. V takom prípade je povinný uhradiť práce vykonané
+            do momentu odstúpenia. Poskytovateľ môže od zmluvy odstúpiť, ak klient neposkytuje potrebnú súčinnosť
+            ani po opakovanej výzve.
           </p>
         </section>
 
         <section style={{ marginBottom: '40px' }}>
-          <h2 style={sectionTitle}>8. Zodpovednosť</h2>
+          <h2 style={sectionTitle}>8. Odstúpenie od zmluvy — spotrebiteľ (B2C)</h2>
+          <p style={paragraph}>
+            Ak je klient <strong style={{ color: '#e8e0d0' }}>spotrebiteľom</strong> (fyzická osoba, ktorá pri
+            uzatváraní a plnení zmluvy nekoná v rámci predmetu svojej obchodnej činnosti alebo inej podnikateľskej
+            činnosti), má v zmysle zákona č. 102/2014 Z. z. o ochrane spotrebiteľa pri predaji tovaru alebo poskytovaní
+            služieb na základe zmluvy uzavretej na diaľku právo odstúpiť od zmluvy <strong style={{ color: '#d4a843' }}>do 14 dní</strong> od
+            jej uzatvorenia, a to bez uvedenia dôvodu a bez akejkoľvek sankcie.
+          </p>
+          <p style={paragraph}>
+            Spotrebiteľ môže uplatniť právo na odstúpenie od zmluvy písomne na adrese sídla poskytovateľa
+            (Blatná na Ostrove 281, 930 32) alebo e-mailom na{' '}
+            <a href="mailto:info@vassweb.sk" style={linkStyle}>info@vassweb.sk</a>. Spotrebiteľ môže použiť aj
+            vzorový formulár na odstúpenie od zmluvy uvedený nižšie.
+          </p>
+
+          <h3 style={subTitle}>Dôsledky odstúpenia</h3>
+          <p style={paragraph}>
+            Poskytovateľ je povinný bez zbytočného odkladu, najneskôr do 14 dní odo dňa doručenia oznámenia o
+            odstúpení od zmluvy, vrátiť spotrebiteľovi všetky platby, ktoré od neho prijal na základe zmluvy,
+            a to rovnakým spôsobom, akým spotrebiteľ vykonal platbu, pokiaľ sa s ním nedohodne na inom spôsobe
+            vrátenia.
+          </p>
+
+          <h3 style={subTitle}>Začatie poskytovania služby pred uplynutím 14 dní</h3>
+          <p style={paragraph}>
+            Ak spotrebiteľ požiada, aby sa poskytovanie služby začalo <strong style={{ color: '#e8e0d0' }}>pred
+            uplynutím lehoty na odstúpenie od zmluvy</strong>, udelí týmto výslovný súhlas so začatím poskytovania
+            služby a berie na vedomie, že <strong style={{ color: '#e8e0d0' }}>po úplnom poskytnutí služby stráca
+            právo na odstúpenie od zmluvy</strong> (§ 7 ods. 6 písm. a) zák. 102/2014 Z. z.). Ak spotrebiteľ odstúpi
+            od zmluvy v priebehu poskytovania služby, je povinný uhradiť poskytovateľovi cenu za skutočne poskytnuté
+            plnenie do dňa doručenia oznámenia o odstúpení.
+          </p>
+
+          <h3 style={subTitle}>Výnimky z práva na odstúpenie</h3>
+          <p style={paragraph}>
+            Spotrebiteľ nemôže odstúpiť od zmluvy, predmetom ktorej je:
+          </p>
+          <div style={{ paddingLeft: '20px', marginBottom: '16px' }}>
+            <p style={paragraph}>
+              a) poskytnutie služby, ak sa jej poskytovanie začalo s výslovným súhlasom spotrebiteľa a spotrebiteľ
+              vyhlásil, že bol riadne poučený o tom, že vyjadrením tohto súhlasu stráca právo na odstúpenie od zmluvy
+              po úplnom poskytnutí služby, a ak došlo k úplnému poskytnutiu služby;
+            </p>
+            <p style={paragraph}>
+              b) predaj tovaru alebo poskytnutie služby, ktorých cena závisí od pohybu cien na finančnom trhu,
+              ktoré poskytovateľ nemôže ovplyvniť;
+            </p>
+            <p style={paragraph}>
+              c) predaj tovaru zhotoveného podľa osobitných požiadaviek spotrebiteľa, tovaru vyrobeného na mieru
+              alebo tovaru určeného osobitne pre jedného spotrebiteľa (napríklad webstránka vytvorená na mieru podľa
+              zadania klienta, ktorej vývoj sa začal);
+            </p>
+            <p style={paragraph}>
+              d) poskytovanie elektronického obsahu inak ako na hmotnom nosiči, ak sa jeho poskytovanie začalo
+              s výslovným súhlasom spotrebiteľa a spotrebiteľ vyhlásil, že bol riadne poučený o tom, že vyjadrením
+              tohto súhlasu stráca právo na odstúpenie od zmluvy.
+            </p>
+          </div>
+
+          <h3 style={subTitle}>Vzorový formulár na odstúpenie od zmluvy</h3>
+          <div
+            style={{
+              background: 'rgba(212, 168, 67, 0.05)',
+              border: '1px solid rgba(212, 168, 67, 0.15)',
+              borderRadius: '12px',
+              padding: '24px',
+              marginTop: '12px',
+              fontFamily: 'var(--font-inter), Inter, sans-serif',
+              fontSize: '14px',
+              lineHeight: '1.8',
+            }}
+          >
+            <p style={{ ...paragraph, marginBottom: '16px', fontStyle: 'italic', color: 'rgba(232, 224, 208, 0.6)' }}>
+              (vyplňte a zašlite tento formulár len v prípade, že si želáte odstúpiť od zmluvy)
+            </p>
+            <p style={{ ...paragraph, marginBottom: '8px' }}><strong style={{ color: '#d4a843' }}>Komu:</strong></p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}>VVD s.r.o.</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}>Blatná na Ostrove 281, 930 32 Blatná na Ostrove</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}>E-mail: info@vassweb.sk</p>
+            <p style={{ ...paragraph, marginBottom: '16px' }}>IČO: 56 921 021</p>
+
+            <p style={{ ...paragraph, marginBottom: '12px' }}>
+              Týmto oznamujem, že odstupujem od zmluvy o poskytnutí tejto služby: ...........................................
+            </p>
+            <p style={{ ...paragraph, marginBottom: '12px' }}>Dátum objednania / dátum uzatvorenia zmluvy: ...........................................</p>
+            <p style={{ ...paragraph, marginBottom: '12px' }}>Meno a priezvisko spotrebiteľa: ...........................................</p>
+            <p style={{ ...paragraph, marginBottom: '12px' }}>Adresa spotrebiteľa: ...........................................</p>
+            <p style={{ ...paragraph, marginBottom: '12px' }}>E-mail spotrebiteľa: ...........................................</p>
+            <p style={{ ...paragraph, marginBottom: '12px' }}>Podpis spotrebiteľa (ak sa tento formulár podáva v listinnej podobe): ...........................................</p>
+            <p style={{ ...paragraph, marginBottom: 0 }}>Dátum: ...........................................</p>
+          </div>
+        </section>
+
+        <section style={{ marginBottom: '40px' }}>
+          <h2 style={sectionTitle}>9. Reklamácie a reklamačný poriadok</h2>
+          <p style={paragraph}>
+            Spotrebiteľ je oprávnený uplatniť reklamáciu na poskytnutú službu v lehote <strong style={{ color: '#e8e0d0' }}>24 mesiacov</strong> od
+            jej prevzatia. Reklamáciu je možné uplatniť písomne na adrese sídla poskytovateľa alebo e-mailom na{' '}
+            <a href="mailto:info@vassweb.sk" style={linkStyle}>info@vassweb.sk</a>.
+          </p>
+          <p style={paragraph}>
+            Poskytovateľ je povinný vydať spotrebiteľovi potvrdenie o uplatnení reklamácie a o spôsobe jej
+            vybavenia rozhodnúť ihneď, v zložitých prípadoch najneskôr do 3 pracovných dní. Vybavenie reklamácie
+            nesmie trvať dlhšie ako <strong style={{ color: '#e8e0d0' }}>30 dní</strong> od jej uplatnenia.
+            Po uplynutí tejto lehoty má spotrebiteľ právo od zmluvy odstúpiť.
+          </p>
+        </section>
+
+        <section style={{ marginBottom: '40px' }}>
+          <h2 style={sectionTitle}>10. Zodpovednosť a obmedzenie zodpovednosti</h2>
           <p style={paragraph}>
             Poskytovateľ nezodpovedá za škody spôsobené nesprávnym používaním diela, zásahmi tretích
             strán, výpadkami služieb tretích strán (hosting, doménový registrátor) alebo vyššou mocou.
@@ -158,7 +268,7 @@ export default function ObchodnePodmienky() {
         </section>
 
         <section style={{ marginBottom: '40px' }}>
-          <h2 style={sectionTitle}>9. Alternatívne riešenie sporov</h2>
+          <h2 style={sectionTitle}>11. Alternatívne riešenie sporov</h2>
           <p style={paragraph}>
             V prípade, že klient — spotrebiteľ nie je spokojný so spôsobom, ktorým poskytovateľ vybavil jeho
             reklamáciu alebo sa domnieva, že poskytovateľ porušil jeho práva, má právo obrátiť sa na poskytovateľa
@@ -175,11 +285,34 @@ export default function ObchodnePodmienky() {
         </section>
 
         <section style={{ marginBottom: '40px' }}>
-          <h2 style={sectionTitle}>10. Záverečné ustanovenia</h2>
+          <h2 style={sectionTitle}>12. Záverečné ustanovenia</h2>
           <p style={paragraph}>
-            Tieto obchodné podmienky sa riadia právnym poriadkom Slovenskej republiky. Akékoľvek spory
-            sa strany zaväzujú riešiť prednostne dohodou. Poskytovateľ si vyhradzuje právo tieto podmienky
-            zmeniť, pričom o zmenách bude klientov informovať prostredníctvom webovej stránky.
+            Tieto obchodné podmienky a všetky právne vzťahy medzi poskytovateľom a klientom sa riadia právnym
+            poriadkom Slovenskej republiky, najmä zákonom č. 40/1964 Zb. Občiansky zákonník, zákonom č. 513/1991 Zb.
+            Obchodný zákonník, zákonom č. 250/2007 Z. z. o ochrane spotrebiteľa, zákonom č. 102/2014 Z. z. o ochrane
+            spotrebiteľa pri predaji na diaľku, zákonom č. 22/2004 Z. z. o elektronickom obchode, Nariadením (EÚ)
+            2016/679 (GDPR) a zákonom č. 18/2018 Z. z. o ochrane osobných údajov.
+          </p>
+          <p style={paragraph}>
+            Akékoľvek spory sa strany zaväzujú riešiť prednostne dohodou. V prípade, že spor nie je možné vyriešiť
+            dohodou, je príslušný všeobecný súd Slovenskej republiky. Spotrebiteľ má navyše právo obrátiť sa na orgán
+            alternatívneho riešenia sporov (viď sekcia 11) alebo na orgán dozoru — Slovenskú obchodnú inšpekciu,
+            Inšpektorát SOI pre Trnavský kraj, Pekárska 23, 917 01 Trnava 1,{' '}
+            <a href="https://www.soi.sk" target="_blank" rel="noopener noreferrer" style={linkStyle}>www.soi.sk</a>.
+          </p>
+          <p style={paragraph}>
+            Ak sa niektoré ustanovenie týchto obchodných podmienok stane neplatným alebo neúčinným, neovplyvní
+            to platnosť ostatných ustanovení. Neplatné alebo neúčinné ustanovenie sa nahradí ustanovením, ktoré sa
+            svojím obsahom a účelom najviac približuje pôvodnému.
+          </p>
+          <p style={paragraph}>
+            Poskytovateľ si vyhradzuje právo tieto obchodné podmienky jednostranne zmeniť z dôvodu zmeny legislatívy,
+            zmeny podnikateľského prostredia alebo zmeny obchodnej politiky. O zmenách bude klientov informovať
+            prostredníctvom webovej stránky najmenej 14 dní pred nadobudnutím účinnosti zmeny. Ak klient s navrhovanou
+            zmenou nesúhlasí, má právo od zmluvy odstúpiť.
+          </p>
+          <p style={paragraph}>
+            Tieto obchodné podmienky nadobúdajú účinnosť dňa <strong style={{ color: '#e8e0d0' }}>8. apríla 2026</strong>.
           </p>
         </section>
 
@@ -209,6 +342,14 @@ const sectionTitle: React.CSSProperties = {
   color: '#ffeebb',
   marginBottom: '16px',
   marginTop: 0,
+};
+
+const subTitle: React.CSSProperties = {
+  fontSize: '16px',
+  fontWeight: 600,
+  color: '#d4a843',
+  marginBottom: '8px',
+  marginTop: '20px',
 };
 
 const paragraph: React.CSSProperties = {
