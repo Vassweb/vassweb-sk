@@ -1050,6 +1050,134 @@ export default function Home({ locale = 'sk' }: { locale?: Locale }) {
 
       <SectionDivider />
 
+      {/* ══ REALIZÁCIE — skutočné demo stránky (clickable showcase) ══ */}
+      <section id="realizacie" style={section}>
+        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+          <FadeIn>
+            <div style={{ textAlign: 'center', marginBottom: 48 }}>
+              <p style={label}>{locale === 'en' ? 'LIVE DEMOS' : locale === 'cs' ? 'UKÁZKY' : locale === 'hu' ? 'ÉLŐ DEMÓK' : 'UKÁŽKY'}</p>
+              <h2 style={h2Style}>
+                {locale === 'en' ? 'See our ' : locale === 'cs' ? 'Podívejte se na naše ' : locale === 'hu' ? 'Nézze meg ' : 'Pozrite si naše '}
+                <span style={goldGradient}>{locale === 'en' ? 'real work' : locale === 'cs' ? 'reálné weby' : locale === 'hu' ? 'valós munkáinkat' : 'reálne weby'}</span>
+              </h2>
+              <p style={{ color: 'rgba(255,255,255,0.62)', fontSize: 15, fontFamily: body, maxWidth: 540, margin: '12px auto 0' }}>
+                {locale === 'en' ? '10 fully functional demo websites — one for each package tier. Click to open.' : locale === 'cs' ? '10 plně funkčních demo webů — jeden pro každý balíček. Klikněte pro otevření.' : locale === 'hu' ? '10 teljesen működő demó weboldal — minden csomaghoz egy. Kattintson a megnyitáshoz.' : '10 plne funkčných demo webov — jeden pre každý balíček. Kliknite pre otvorenie.'}
+              </p>
+              <div style={{ width: 40, height: 1, background: 'linear-gradient(90deg, transparent, #d4a843, transparent)', margin: '20px auto 0' }} />
+            </div>
+          </FadeIn>
+
+          <div className="grid-realizacie" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}>
+            {[
+              { slug: 'salon-bella', name: 'Kaderníctvo Salón Bella', tier: 'Starter', price: '299€', color: '#ec4899', tpl: 'beauty', pkg: 'starter' },
+              { slug: 'cafe-milano', name: 'Kaviareň Café Milano', tier: 'Starter', price: '299€', color: '#a8754b', tpl: 'restaurant', pkg: 'starter' },
+              { slug: 'foto-studio', name: 'Fotoštúdio Atelier NOIR', tier: 'Basic', price: '590€', color: '#f59e0b', tpl: 'foto', pkg: 'basic' },
+              { slug: 'kvetinarstvo', name: 'Kvety & Radosť', tier: 'Basic', price: '590€', color: '#84cc16', tpl: 'firma', pkg: 'basic' },
+              { slug: 'advokat-kovac', name: 'JUDr. Kováč & Partners', tier: 'Business', price: '990€', color: '#1e3a8a', tpl: 'ucto', pkg: 'business' },
+              { slug: 'dentalna-klinika', name: 'DentCare Klinika', tier: 'Business', price: '990€', color: '#14b8a6', tpl: 'zubar', pkg: 'business' },
+              { slug: 'crm-realitka', name: 'CRM Realitka ProDom', tier: 'Premium', price: '1990€', color: '#3b82f6', tpl: 'realitka', pkg: 'premium' },
+              { slug: 'crm-autoservis', name: 'CRM Autoservis', tier: 'Premium', price: '1990€', color: '#10b981', tpl: 'auto', pkg: 'premium' },
+              { slug: 'eshop-flavour', name: 'E-shop FLAVOUR', tier: 'Premium', price: '1990€', color: '#f87171', tpl: 'eshop', pkg: 'premium' },
+              { slug: 'booking-system', name: 'BookIT Rezervácie', tier: 'Premium', price: '1990€', color: '#6366f1', tpl: 'hotel', pkg: 'premium' },
+            ].map((demo, i) => (
+              <FadeIn key={demo.slug} delay={Math.min(i * 0.05, 0.4)}>
+                <a
+                  href={`/demo/${demo.slug}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${locale === 'en' ? 'Open demo' : 'Otvoriť demo'}: ${demo.name}`}
+                  style={{
+                    display: 'block',
+                    position: 'relative',
+                    borderRadius: 14,
+                    overflow: 'hidden',
+                    border: '1px solid rgba(212,168,67,0.12)',
+                    background: 'rgba(255,255,255,0.02)',
+                    textDecoration: 'none',
+                    transition: 'transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease',
+                    aspectRatio: '4/3',
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.transform = 'translateY(-4px)';
+                    e.currentTarget.style.borderColor = 'rgba(212,168,67,0.35)';
+                    e.currentTarget.style.boxShadow = '0 12px 32px rgba(0,0,0,0.3), 0 0 0 1px rgba(212,168,67,0.1)';
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.borderColor = 'rgba(212,168,67,0.12)';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}
+                >
+                  {/* Color preview stripe */}
+                  <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: `linear-gradient(90deg, ${demo.color}, ${demo.color}88)` }} />
+                  {/* Browser chrome mockup */}
+                  <div style={{ padding: '14px 14px 10px', borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
+                    <div style={{ display: 'flex', gap: 4, marginBottom: 8 }}>
+                      <div style={{ width: 7, height: 7, borderRadius: '50%', background: 'rgba(255,95,87,0.6)' }} />
+                      <div style={{ width: 7, height: 7, borderRadius: '50%', background: 'rgba(254,188,46,0.6)' }} />
+                      <div style={{ width: 7, height: 7, borderRadius: '50%', background: 'rgba(40,200,64,0.6)' }} />
+                    </div>
+                    <div style={{ height: 8, background: 'rgba(255,255,255,0.04)', borderRadius: 2 }} />
+                  </div>
+                  {/* Card content */}
+                  <div style={{ padding: '14px 16px 16px', color: '#fff' }}>
+                    <div style={{
+                      display: 'inline-block',
+                      padding: '3px 8px',
+                      borderRadius: 999,
+                      background: `${demo.color}18`,
+                      border: `1px solid ${demo.color}40`,
+                      color: demo.color,
+                      fontSize: 9,
+                      fontWeight: 700,
+                      textTransform: 'uppercase' as const,
+                      letterSpacing: '0.08em',
+                      marginBottom: 8,
+                    }}>
+                      {demo.tier} · {demo.price}
+                    </div>
+                    <div style={{ fontFamily: heading, fontSize: 14, fontWeight: 500, lineHeight: 1.35, marginBottom: 6 }}>
+                      {demo.name}
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 11, color: 'rgba(212,168,67,0.7)', fontFamily: body, fontWeight: 600 }}>
+                      {locale === 'en' ? 'Open demo' : locale === 'cs' ? 'Otevřít demo' : locale === 'hu' ? 'Megnyitás' : 'Otvoriť demo'}
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="#d4a843" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                    </div>
+                  </div>
+                </a>
+                <a
+                  href={`/vyber-si-web?template=${demo.tpl}&package=${demo.pkg}&step=2`}
+                  aria-label={`${locale === 'en' ? 'Configure similar' : 'Konfigurovať podobný'}: ${demo.name}`}
+                  style={{
+                    display: 'block',
+                    marginTop: 6,
+                    textAlign: 'center',
+                    fontSize: 10,
+                    color: 'rgba(255,255,255,0.35)',
+                    textDecoration: 'none',
+                    fontFamily: body,
+                    letterSpacing: '0.04em',
+                    transition: 'color 0.2s',
+                  }}
+                  onMouseEnter={e => { e.currentTarget.style.color = '#d4a843'; }}
+                  onMouseLeave={e => { e.currentTarget.style.color = 'rgba(255,255,255,0.35)'; }}
+                >
+                  {locale === 'en' ? 'I want a similar one →' : locale === 'cs' ? 'Chci podobný →' : locale === 'hu' ? 'Hasonlót szeretnék →' : 'Chcem podobný →'}
+                </a>
+              </FadeIn>
+            ))}
+          </div>
+
+          <FadeIn delay={0.3}>
+            <p style={{ textAlign: 'center', marginTop: 32, fontSize: 12, color: 'rgba(255,255,255,0.35)', fontFamily: body, fontStyle: 'italic' }}>
+              {locale === 'en' ? 'All data in the demos is anonymized — no real client information.' : locale === 'cs' ? 'Všechna data v demech jsou anonymizovaná — žádné reálné údaje klientů.' : locale === 'hu' ? 'A demókban minden adat anonimizált — nincs valós ügyféladat.' : 'Všetky údaje v demách sú anonymizované — žiadne reálne údaje klientov.'}
+            </p>
+          </FadeIn>
+        </div>
+      </section>
+
+      <SectionDivider />
+
       {/* ══ VYBER SI WEB — namiesto portfólia ══ */}
       <section id="portfolio" style={section}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
@@ -1371,7 +1499,8 @@ export default function Home({ locale = 'sk' }: { locale?: Locale }) {
           .grid-process,
           .grid-pricing,
           .grid-testimonials,
-          .grid-portfolio {
+          .grid-portfolio,
+          .grid-realizacie {
             grid-template-columns: 1fr !important;
           }
           .grid-benefits {
@@ -1398,6 +1527,9 @@ export default function Home({ locale = 'sk' }: { locale?: Locale }) {
             grid-template-columns: repeat(2, 1fr) !important;
           }
           .grid-portfolio {
+            grid-template-columns: 1fr 1fr !important;
+          }
+          .grid-realizacie {
             grid-template-columns: 1fr 1fr !important;
           }
           .grid-footer {

@@ -109,19 +109,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.3,
       alternates: { languages: termsLanguages },
     },
-    // Demo websites
-    ...['/demo', '/demo/restaurant', '/demo/eshop', '/demo/firma', '/demo/portfolio', '/demo/fitness'].map(path => ({
+    // Portfolio demos — live showcase pages for clients (visible but not primary)
+    ...[
+      '/demo/salon-bella',
+      '/demo/cafe-milano',
+      '/demo/foto-studio',
+      '/demo/kvetinarstvo',
+      '/demo/advokat-kovac',
+      '/demo/dentalna-klinika',
+      '/demo/crm-realitka',
+      '/demo/crm-autoservis',
+      '/demo/eshop-flavour',
+      '/demo/booking-system',
+    ].map(path => ({
       url: `${baseUrl}${path}`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
-      priority: 0.6,
+      priority: 0.5,
     })),
-    // Demo apps
-    ...['/demo-app', '/demo-app/booking', '/demo-app/crm', '/demo-app/admin', '/demo-app/ai-automation'].map(path => ({
+    // Interactive demo-app showcases
+    ...['/demo-app/booking', '/demo-app/crm', '/demo-app/admin', '/demo-app/ai-automation'].map(path => ({
       url: `${baseUrl}${path}`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
-      priority: 0.6,
+      priority: 0.5,
     })),
     // Business app
     {

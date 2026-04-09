@@ -429,6 +429,28 @@ export default function VyberSiWeb({ locale = 'sk' }: { locale?: Locale }) {
 
   useEffect(() => { setAnimKey(k => k + 1); }, [step]);
 
+  // ═══ URL parameters — pre-fill template/package on page load ═══
+  // Supports: /vyber-si-web?template=restaurant&package=business&step=2
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const params = new URLSearchParams(window.location.search);
+    const tplParam = params.get('template');
+    const pkgParam = params.get('package');
+    const stepParam = params.get('step');
+    if (tplParam && templates.some(t => t.id === tplParam)) {
+      setSelectedTemplate(tplParam);
+    }
+    if (pkgParam && packages.some(p => p.id === pkgParam)) {
+      setCalcPackage(pkgParam);
+    }
+    if (stepParam) {
+      const s = parseInt(stepParam, 10);
+      if (s === 2 && tplParam) setStep(2);
+      else if (s === 3 && tplParam) setStep(3);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   // ═══ Logo Handler ═══
   const processLogoFile = useCallback((file: File) => {
     setLogoError('');
