@@ -14,6 +14,13 @@ async function upsertLeadToCrm(lead: {
   notes: string;
   source: string;
 }): Promise<{ id: string | null; isNew: boolean; error: string | null }> {
+  console.log('[CRM] env check:', {
+    url: SUPABASE_URL ? `${SUPABASE_URL.slice(0, 30)}...` : 'MISSING',
+    key: SUPABASE_SERVICE_ROLE_KEY ? `${SUPABASE_SERVICE_ROLE_KEY.slice(0, 10)}...` : 'MISSING',
+    user: OWNER_USER_ID ? `${OWNER_USER_ID.slice(0, 8)}...` : 'MISSING',
+    org: DEFAULT_ORGANIZATION_ID ? `${DEFAULT_ORGANIZATION_ID.slice(0, 8)}...` : 'MISSING',
+  });
+
   if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY || !OWNER_USER_ID || !DEFAULT_ORGANIZATION_ID) {
     return { id: null, isNew: false, error: 'CRM not configured' };
   }
@@ -96,7 +103,8 @@ async function upsertLeadToCrm(lead: {
 
     if (!insertRes.ok) {
       const err = await insertRes.text();
-      return { id: null, isNew: false, error: `Insert failed: ${err}` };
+      console.error('[CRM] Insert failed', insertRes.status, err);
+      return { id: null, isNew: false, error: `Insert failed (${insertRes.status}): ${err}` };
     }
     const created = (await insertRes.json()) as Array<{ id: string }>;
     return { id: created[0]?.id || null, isNew: true, error: null };
