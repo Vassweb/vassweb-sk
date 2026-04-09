@@ -1,5 +1,110 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+// ─── Supabase CRM sync ────────────────────────────────────────
+const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
+const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
+const OWNER_USER_ID = process.env.OWNER_USER_ID || '';
+const DEFAULT_ORGANIZATION_ID = process.env.DEFAULT_ORGANIZATION_ID || '';
+
+async function upsertLeadToCrm(lead: {
+  name: string;
+  company: string;
+  email: string;
+  phone: string;
+  notes: string;
+  source: string;
+}): Promise<{ id: string | null; isNew: boolean; error: string | null }> {
+  if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY || !OWNER_USER_ID || !DEFAULT_ORGANIZATION_ID) {
+    return { id: null, isNew: false, error: 'CRM not configured' };
+  }
+
+  const headers = {
+    apikey: SUPABASE_SERVICE_ROLE_KEY,
+    Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
+    'Content-Type': 'application/json',
+    'Accept-Profile': 'public',
+    'Content-Profile': 'public',
+  };
+
+  try {
+    // 1) Check if a client with this email already exists in our org
+    const lookupRes = await fetch(
+      `${SUPABASE_URL}/rest/v1/clients?select=id,tags,notes&email=eq.${encodeURIComponent(lead.email)}&organization_id=eq.${DEFAULT_ORGANIZATION_ID}`,
+      { headers }
+    );
+
+    if (lookupRes.ok) {
+      const existing = (await lookupRes.json()) as Array<{ id: string; tags: string[] | null; notes: string | null }>;
+      if (existing.length > 0) {
+        // Update existing: append new inquiry to notes, set status to "zaujem" (interested) if still prospect
+        const row = existing[0];
+        const prevTags = Array.isArray(row.tags) ? row.tags : [];
+        const statusTags = ['prospect', 'osloveny', 'caka', 'zaujem', 'nezaujem', 'klient'];
+        const hadStatus = prevTags.find((t) => statusTags.includes(t));
+        const newStatus = hadStatus === 'klient' ? 'klient' : 'zaujem';
+        const cleanedTags = prevTags.filter((t) => !statusTags.includes(t));
+        const nextTags = Array.from(
+          new Set([...cleanedTags, newStatus, `src:${lead.source || 'contact'}`])
+        );
+        const timestamp = new Date().toISOString().slice(0, 16).replace('T', ' ');
+        const appendedNotes = [
+          row.notes || '',
+          '',
+          `── Nový dopyt ${timestamp} (${lead.source || 'contact'}) ──`,
+          lead.notes,
+        ]
+          .filter(Boolean)
+          .join('\n');
+
+        const patchRes = await fetch(
+          `${SUPABASE_URL}/rest/v1/clients?id=eq.${row.id}`,
+          {
+            method: 'PATCH',
+            headers: { ...headers, Prefer: 'return=representation' },
+            body: JSON.stringify({
+              tags: nextTags,
+              notes: appendedNotes,
+              ...(lead.phone ? { phone: lead.phone } : {}),
+              ...(lead.name ? { name: lead.name } : {}),
+              ...(lead.company ? { company: lead.company } : {}),
+            }),
+          }
+        );
+        if (!patchRes.ok) {
+          const err = await patchRes.text();
+          return { id: row.id, isNew: false, error: `Update failed: ${err}` };
+        }
+        return { id: row.id, isNew: false, error: null };
+      }
+    }
+
+    // 2) Insert new client
+    const insertRes = await fetch(`${SUPABASE_URL}/rest/v1/clients`, {
+      method: 'POST',
+      headers: { ...headers, Prefer: 'return=representation' },
+      body: JSON.stringify({
+        user_id: OWNER_USER_ID,
+        organization_id: DEFAULT_ORGANIZATION_ID,
+        name: lead.name || lead.company || '',
+        company: lead.company || '',
+        email: lead.email,
+        phone: lead.phone || '',
+        notes: lead.notes || '',
+        tags: ['zaujem', `src:${lead.source || 'contact'}`],
+      }),
+    });
+
+    if (!insertRes.ok) {
+      const err = await insertRes.text();
+      return { id: null, isNew: false, error: `Insert failed: ${err}` };
+    }
+    const created = (await insertRes.json()) as Array<{ id: string }>;
+    return { id: created[0]?.id || null, isNew: true, error: null };
+  } catch (err) {
+    return { id: null, isNew: false, error: err instanceof Error ? err.message : 'CRM error' };
+  }
+}
+
 // Rate limiting: simple in-memory store (resets on cold start, which is fine for Vercel)
 const rateLimit = new Map<string, { count: number; resetAt: number }>();
 const RATE_LIMIT = 3; // max 3 submissions
@@ -142,6 +247,19 @@ export async function POST(request: NextRequest) {
         </div>`;
     }
 
+    // Sync lead to Supabase CRM (parallel with email — non-blocking on failure)
+    const crmPromise = upsertLeadToCrm({
+      name: name || '',
+      company: company || '',
+      email,
+      phone: phone || '',
+      notes: message || '',
+      source: source || 'contact',
+    }).catch((err) => {
+      console.error('CRM sync failed:', err);
+      return { id: null, isNew: false, error: 'sync failed' };
+    });
+
     // Send email via Resend
     const resendResponse = await fetch('https://api.resend.com/emails', {
       method: 'POST',
@@ -179,7 +297,8 @@ export async function POST(request: NextRequest) {
       });
 
       if (fallbackResponse.ok) {
-        return NextResponse.json({ success: true });
+        const crm = await crmPromise;
+        return NextResponse.json({ success: true, crm: { synced: !!crm.id, isNew: crm.isNew } });
       }
 
       const fallbackError = await fallbackResponse.json().catch(() => ({}));
@@ -190,7 +309,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    return NextResponse.json({ success: true });
+    const crm = await crmPromise;
+    if (crm.error) console.error('CRM sync error:', crm.error);
+    return NextResponse.json({ success: true, crm: { synced: !!crm.id, isNew: crm.isNew } });
   } catch (error) {
     console.error('Contact form error:', error);
     return NextResponse.json(
