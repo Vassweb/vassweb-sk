@@ -67,7 +67,7 @@ export default function Navbar() {
   return (
     <>
     {/* Skip to content — a11y */}
-    <a href="#main-content" style={{
+    <a data-vassweb-nav href="#main-content" style={{
       position: 'fixed', top: -100, left: 16, zIndex: 100,
       padding: '12px 24px', background: '#d4a843', color: '#0a0908',
       borderRadius: 8, fontWeight: 600, fontSize: 14, fontFamily: body,
@@ -76,7 +76,7 @@ export default function Navbar() {
        onBlur={e => { e.currentTarget.style.top = '-100px'; }}>
       {locale === 'en' ? 'Skip to content' : locale === 'cs' ? 'Přeskočit na obsah' : locale === 'hu' ? 'Ugrás a tartalomra' : 'Preskočiť na obsah'}
     </a>
-    <nav aria-label={locale === 'en' ? 'Main navigation' : locale === 'cs' ? 'Hlavní navigace' : locale === 'hu' ? 'Fő navigáció' : 'Hlavná navigácia'} style={{
+    <nav data-vassweb-nav aria-label={locale === 'en' ? 'Main navigation' : locale === 'cs' ? 'Hlavní navigace' : locale === 'hu' ? 'Fő navigáció' : 'Hlavná navigácia'} style={{
       position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
       transition: 'all 0.4s ease',
       backgroundColor: isScrolled ? 'rgba(10,9,8,0.95)' : 'transparent',
