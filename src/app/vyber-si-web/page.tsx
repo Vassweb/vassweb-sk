@@ -9,8 +9,8 @@ type Locale = 'sk' | 'en' | 'cs' | 'hu';
 
 const t = {
   sk: {
-    badges: { done: 'Hotové do 14 dní', consult: 'Konzultácia zadarmo', rating: '⭐ 4.9 / 5 hodnotenie' },
-    social: { webs: '7 webov vytvorených tento mesiac', avail: 'Dostupnosť: 2 termíny v apríli' },
+    badges: { done: 'Zvyčajne 14 dní', consult: 'Konzultácia zadarmo', rating: 'Weby na mieru' },
+    social: { webs: 'Každý web staviame od základu', avail: 'Obmedzený počet projektov mesačne' },
     step1: { heading: 'Aký web potrebujete?', sub: 'Vyberte si odvetvie a my pripravíme web na mieru.', next: 'Ďalej — Dizajn' },
     step2: { heading: 'Upravte si dizajn', sub: 'Meňte farby, fonty, zaoblenie — sledujte zmeny naživo.', back: 'Späť', next: 'Ďalej — Kontakt', pkg: 'Balík', addons: 'Doplnky à la carte' },
     step3: {
@@ -35,8 +35,8 @@ const t = {
     previewLink: 'Náhľad',
   },
   en: {
-    badges: { done: 'Ready in 14 days', consult: 'Free consultation', rating: '⭐ 4.9 / 5 rating' },
-    social: { webs: '7 websites built this month', avail: 'Availability: 2 slots in April' },
+    badges: { done: 'Typically 14 days', consult: 'Free consultation', rating: 'Custom-built websites' },
+    social: { webs: 'Every website built from scratch', avail: 'Limited projects per month' },
     step1: { heading: 'What website do you need?', sub: 'Choose your industry and we\'ll prepare a custom website.', next: 'Next — Design' },
     step2: { heading: 'Customize your design', sub: 'Change colors, fonts, rounding — watch changes live.', back: 'Back', next: 'Next — Contact', pkg: 'Package', addons: 'À la carte add-ons' },
     step3: {
@@ -61,8 +61,8 @@ const t = {
     previewLink: 'Preview',
   },
   cs: {
-    badges: { done: 'Hotovo do 14 dní', consult: 'Konzultace zdarma', rating: '⭐ 4.9 / 5 hodnocení' },
-    social: { webs: '7 webů vytvořených tento měsíc', avail: 'Dostupnost: 2 termíny v dubnu' },
+    badges: { done: 'Obvykle 14 dní', consult: 'Konzultace zdarma', rating: 'Weby na míru' },
+    social: { webs: 'Každý web stavíme od základu', avail: 'Omezený počet projektů měsíčně' },
     step1: { heading: 'Jaký web potřebujete?', sub: 'Vyberte si odvětví a my připravíme web na míru.', next: 'Dál — Vzhled' },
     step2: { heading: 'Upravte si vzhled', sub: 'Měňte barvy, fonty, zaoblení — sledujte změny živě.', back: 'Zpět', next: 'Dál — Kontakt', pkg: 'Balíček', addons: 'Doplňky à la carte' },
     step3: {
@@ -87,8 +87,8 @@ const t = {
     previewLink: 'Náhled',
   },
   hu: {
-    badges: { done: '14 napon belül kész', consult: 'Ingyenes konzultáció', rating: '⭐ 4.9 / 5 értékelés' },
-    social: { webs: '7 weboldal készült el ebben a hónapban', avail: 'Elérhetőség: 2 időpont áprilisban' },
+    badges: { done: 'Általában 14 nap', consult: 'Ingyenes konzultáció', rating: 'Egyedi weboldalak' },
+    social: { webs: 'Minden weboldalt alapoktól építünk', avail: 'Korlátozott projektszám havonta' },
     step1: { heading: 'Milyen weboldalt szeretne?', sub: 'Válassza ki az iparágát és mi egyedi weboldalt készítünk.', next: 'Tovább — Dizájn' },
     step2: { heading: 'Testreszabja a dizájnt', sub: 'Módosítsa a színeket, betűtípusokat — kövesse a változásokat élőben.', back: 'Vissza', next: 'Tovább — Kapcsolat', pkg: 'Csomag', addons: 'Kiegészítők' },
     step3: {

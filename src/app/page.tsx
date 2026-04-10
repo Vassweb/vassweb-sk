@@ -817,15 +817,15 @@ export default function Home({ locale = 'sk' }: { locale?: Locale }) {
             <div style={{ display: 'flex', gap: 10, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 32 }}>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '6px 14px', background: 'rgba(34,197,94,0.07)', border: '1px solid rgba(34,197,94,0.15)', borderRadius: 999, fontSize: 12, color: 'rgba(34,197,94,0.85)', fontWeight: 600, fontFamily: body }}>
                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="rgba(34,197,94,0.85)" /></svg>
-                7 webov vytvorených tento mesiac
+                {locale === 'en' ? 'Every website built from scratch' : locale === 'cs' ? 'Každý web stavíme od základu' : locale === 'hu' ? 'Minden weboldal alapoktól épül' : 'Každý web staviame od základu'}
               </div>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '6px 14px', background: 'rgba(251,146,60,0.07)', border: '1px solid rgba(251,146,60,0.15)', borderRadius: 999, fontSize: 12, color: 'rgba(251,146,60,0.9)', fontWeight: 600, fontFamily: body }}>
                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z" fill="rgba(251,146,60,0.9)" /></svg>
-                Dostupnosť: 2 termíny v apríli
+                {locale === 'en' ? 'Limited projects per month' : locale === 'cs' ? 'Omezený počet projektů měsíčně' : locale === 'hu' ? 'Korlátozott projektszám havonta' : 'Obmedzený počet projektov mesačne'}
               </div>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '6px 14px', background: 'rgba(212,168,67,0.07)', border: '1px solid rgba(212,168,67,0.15)', borderRadius: 999, fontSize: 12, color: 'rgba(212,168,67,0.85)', fontWeight: 600, fontFamily: body }}>
                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z" fill="rgba(212,168,67,0.85)" /></svg>
-                Hotové do 14 dní
+                {locale === 'en' ? 'Typically 14 days' : locale === 'cs' ? 'Obvykle 14 dní' : locale === 'hu' ? 'Általában 14 nap' : 'Zvyčajne 14 dní'}
               </div>
             </div>
           </FadeIn>
@@ -999,11 +999,11 @@ export default function Home({ locale = 'sk' }: { locale?: Locale }) {
               <div style={{ display: 'flex', gap: 10, justifyContent: 'center', flexWrap: 'wrap', marginTop: 16 }}>
                 <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '5px 14px', background: 'rgba(251,146,60,0.07)', border: '1px solid rgba(251,146,60,0.15)', borderRadius: 999, fontSize: 12, color: 'rgba(251,146,60,0.9)', fontWeight: 600, fontFamily: body }}>
                   <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z" fill="rgba(251,146,60,0.9)" /></svg>
-                  Dostupnosť: 2 termíny v apríli
+                  {locale === 'en' ? 'Limited projects per month' : locale === 'cs' ? 'Omezený počet projektů měsíčně' : locale === 'hu' ? 'Korlátozott projektszám havonta' : 'Obmedzený počet projektov mesačne'}
                 </div>
                 <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '5px 14px', background: 'rgba(212,168,67,0.07)', border: '1px solid rgba(212,168,67,0.15)', borderRadius: 999, fontSize: 12, color: 'rgba(212,168,67,0.85)', fontWeight: 600, fontFamily: body }}>
                   <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="rgba(212,168,67,0.85)" /></svg>
-                  Hotové do 14 dní
+                  {locale === 'en' ? 'Typically 14 days' : locale === 'cs' ? 'Obvykle 14 dní' : locale === 'hu' ? 'Általában 14 nap' : 'Zvyčajne 14 dní'}
                 </div>
               </div>
             </div>

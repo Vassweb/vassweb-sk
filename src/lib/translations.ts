@@ -166,7 +166,7 @@ const sk: Translations = {
     launchNote: 'Zavádzacia cena — platí do 30. júna 2026',
     saving: 'Ušetríte',
     plans: [
-      { name: 'Web Starter', price: '299', originalPrice: '499', featured: false, features: ['Responzívna webstránka', '1–3 podstránky', 'Kontaktný formulár', 'Google Mapa', 'Mobilný dizajn', 'SSL certifikát', 'Hotové do 5 dní'] },
+      { name: 'Web Starter', price: '299', originalPrice: '499', featured: false, features: ['Responzívna webstránka', '1–3 podstránky', 'Kontaktný formulár', 'Google Mapa', 'Mobilný dizajn', 'SSL certifikát', 'Dodanie zvyčajne 5–10 dní'] },
       { name: 'Web Basic', price: '590', originalPrice: '990', featured: false, features: ['Všetko z Web Starter', 'Až 5 podstránok', 'Galéria / portfólio', 'SEO optimalizácia', 'Google Analytics', 'Hosting (1. rok v cene)', 'Vlastná doména'] },
       { name: 'Business', price: '990', originalPrice: '1 990', featured: true, features: ['Všetko z Web Basic', 'Až 15 podstránok', 'CMS systém', 'AI chatbot integrácia', 'Blog modul', 'E-mail automatizácia', 'Napojenie na soc. siete'] },
       { name: 'Premium', price: '1 990', originalPrice: '3 990', featured: false, features: ['Všetko z Business', 'Vlastná web aplikácia', 'Pokročilá AI integrácia', 'Workflow automatizácia', 'Prioritná podpora', 'Individuálny vývoj', 'Neobmedzený počet stránok'] },
@@ -335,7 +335,7 @@ const en: Translations = {
     launchNote: 'Launch pricing — valid until 30 June 2026',
     saving: 'You save',
     plans: [
-      { name: 'Web Starter', price: '299', originalPrice: '499', featured: false, features: ['Responsive website', '1–3 pages', 'Contact form', 'Google Map', 'Mobile design', 'SSL certificate', 'Ready in 5 days'] },
+      { name: 'Web Starter', price: '299', originalPrice: '499', featured: false, features: ['Responsive website', '1–3 pages', 'Contact form', 'Google Map', 'Mobile design', 'SSL certificate', 'Delivery typically 5–10 days'] },
       { name: 'Web Basic', price: '590', originalPrice: '990', featured: false, features: ['Everything in Web Starter', 'Up to 5 pages', 'Gallery / portfolio', 'SEO optimisation', 'Google Analytics', 'Hosting (1st year included)', 'Custom domain'] },
       { name: 'Business', price: '990', originalPrice: '1 990', featured: true, features: ['Everything in Web Basic', 'Up to 15 pages', 'CMS system', 'AI chatbot integration', 'Blog module', 'Email automation', 'Social media integration'] },
       { name: 'Premium', price: '1 990', originalPrice: '3 990', featured: false, features: ['Everything in Business', 'Custom web application', 'Advanced AI integration', 'Workflow automation', 'Priority support', 'Custom development', 'Unlimited pages'] },
@@ -504,7 +504,7 @@ const cs: Translations = {
     launchNote: 'Zaváděcí cena — platí do 30. června 2026',
     saving: 'Ušetříte',
     plans: [
-      { name: 'Web Starter', price: '299', originalPrice: '499', featured: false, features: ['Responzivní webstránka', '1–3 podstránky', 'Kontaktní formulář', 'Google Mapa', 'Mobilní design', 'SSL certifikát', 'Hotové do 5 dnů'] },
+      { name: 'Web Starter', price: '299', originalPrice: '499', featured: false, features: ['Responzivní webstránka', '1–3 podstránky', 'Kontaktní formulář', 'Google Mapa', 'Mobilní design', 'SSL certifikát', 'Dodání obvykle 5–10 dní'] },
       { name: 'Web Basic', price: '590', originalPrice: '990', featured: false, features: ['Vše z Web Starter', 'Až 5 podstránek', 'Galerie / portfolio', 'SEO optimalizace', 'Google Analytics', 'Hosting (1. rok v ceně)', 'Vlastní doména'] },
       { name: 'Business', price: '990', originalPrice: '1 990', featured: true, features: ['Vše z Web Basic', 'Až 15 podstránek', 'CMS systém', 'AI chatbot integrace', 'Blog modul', 'E-mail automatizace', 'Napojení na soc. sítě'] },
       { name: 'Premium', price: '1 990', originalPrice: '3 990', featured: false, features: ['Vše z Business', 'Vlastní web aplikace', 'Pokročilá AI integrace', 'Workflow automatizace', 'Prioritní podpora', 'Individuální vývoj', 'Neomezený počet stránek'] },
@@ -673,7 +673,7 @@ const hu: Translations = {
     launchNote: 'Bevezető ár — 2026. június 30-ig érvényes',
     saving: 'Megtakarítás',
     plans: [
-      { name: 'Web Starter', price: '299', originalPrice: '499', featured: false, features: ['Reszponzív weboldal', '1–3 aloldal', 'Kapcsolatfelvételi űrlap', 'Google Térkép', 'Mobil dizájn', 'SSL tanúsítvány', 'Kész 5 napon belül'] },
+      { name: 'Web Starter', price: '299', originalPrice: '499', featured: false, features: ['Reszponzív weboldal', '1–3 aloldal', 'Kapcsolatfelvételi űrlap', 'Google Térkép', 'Mobil dizájn', 'SSL tanúsítvány', 'Szállítás általában 5–10 nap'] },
       { name: 'Web Basic', price: '590', originalPrice: '990', featured: false, features: ['Minden a Web Starterből', 'Legfeljebb 5 aloldal', 'Galéria / portfólió', 'SEO optimalizáció', 'Google Analytics', 'Hosting (1. év az árban)', 'Saját domain'] },
       { name: 'Business', price: '990', originalPrice: '1 990', featured: true, features: ['Minden a Web Basicből', 'Legfeljebb 15 aloldal', 'CMS rendszer', 'AI chatbot integráció', 'Blog modul', 'E-mail automatizáció', 'Közösségi média integráció'] },
       { name: 'Premium', price: '1 990', originalPrice: '3 990', featured: false, features: ['Minden a Businessből', 'Egyéni web alkalmazás', 'Fejlett AI integráció', 'Workflow automatizáció', 'Elsőbbségi támogatás', 'Egyedi fejlesztés', 'Korlátlan oldalszám'] },
