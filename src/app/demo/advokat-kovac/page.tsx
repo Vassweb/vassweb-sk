@@ -106,55 +106,55 @@ const practiceAreas = [
   },
 ];
 
-// ─── TEAM DATA ────────────────────────────────────────────────────────────────
+// ─── TEAM DATA (placeholder — real names added by client) ─────────────────────
 const team = [
   {
-    initials: 'MK',
-    name: 'JUDr. M. K.',
+    initials: '—',
+    name: 'Managing Partner',
     role: 'Managing Partner',
     specialization: 'Obchodné právo, M&A',
-    exp: '15 rokov praxe',
+    exp: '15+ rokov praxe',
     color: C.gold,
-    bio: 'Zakladateľ kancelárie s rozsiahlou praxou v oblasti obchodného práva. Špecialista na fúzie a akvizície, corporate governance a medzinárodné obchodné transakcie.',
+    bio: 'Priestor pre krátky profil zakladajúceho partnera — oblasti špecializácie, skúsenosti, významné prípady. Toto miesto vyplníte vlastnými údajmi.',
   },
   {
-    initials: 'KS',
-    name: 'Mgr. K. S.',
-    role: 'Senior Advokátka',
+    initials: '—',
+    name: 'Senior Advokát',
+    role: 'Senior Advokát',
     specialization: 'Obchodné a pracovné právo',
-    exp: '11 rokov praxe',
+    exp: '10+ rokov praxe',
     color: '#8b7cbc',
-    bio: 'Absolventka Právnickej fakulty UK. Dlhoročná odborníčka na pracovnoprávne vzťahy a compliance. Pravidelne prednáša na HR konferenciách.',
+    bio: 'Priestor pre krátky profil seniornej advokátky — špecializácie, prednášková činnosť, odborné publikácie. Vyplníte vlastnými údajmi.',
   },
   {
-    initials: 'TB',
-    name: 'JUDr. T. B.',
+    initials: '—',
+    name: 'Advokát',
     role: 'Advokát',
     specialization: 'Trestné právo, Pohľadávky',
-    exp: '8 rokov praxe',
+    exp: '8+ rokov praxe',
     color: '#4a8fa8',
-    bio: 'Pred advokátskou praxou pôsobil ako prokurátor. Odborník na obhajobu v trestných veciach a zastupovanie klientov v komplexných sporoch.',
+    bio: 'Priestor pre krátky profil advokáta — predchádzajúce pôsobenie, špecializácie, typy zastupovaných klientov. Vyplníte vlastnými údajmi.',
   },
 ];
 
-// ─── TESTIMONIALS ─────────────────────────────────────────────────────────────
+// ─── TESTIMONIALS (placeholder — real reviews added by client) ────────────────
 const testimonials = [
   {
-    text: 'Pomohli nám pri komplexnej akvizícii spoločnosti. Profesionálny prístup, rýchla odozva a výsledok prekonal naše očakávania. Odporúčam každému podnikateľovi.',
-    author: 'M. H.',
-    position: 'Konateľ IT firmy',
+    text: 'Priestor pre recenziu spokojného klienta — napríklad ohľadom komplexnej akvizície, profesionálneho prístupu a výsledku, ktorý prekonal očakávania.',
+    author: 'Spokojný klient',
+    position: 'Konateľ firmy',
     rating: 5,
   },
   {
-    text: 'Po rozvode som riešila majetkové vyporiadanie a opatrovníctvo detí. Pridelená advokátka bola empatická, trpezlivá a zároveň dôsledná. Vďaka nej sme dospeli k férovej dohode.',
-    author: 'K. N.',
-    position: 'Majiteľka e-shopu',
+    text: 'Priestor pre druhú recenziu — môže sa týkať napríklad rodinnoprávnej agendy, empatického prístupu a dosiahnutia férovej dohody v zložitej situácii.',
+    author: 'Spokojná klientka',
+    position: 'Majiteľka podniku',
     rating: 5,
   },
   {
-    text: 'Vymáhanie pohľadávky vo výške 85 000 € od neplatiaceho odberateľa. Do 4 mesiacov mali sme peniaze na účte. Servis na najvyššej úrovni, vrelo odporúčam.',
-    author: 'R. B.',
-    position: 'Výkonný riaditeľ, strojárska firma',
+    text: 'Priestor pre tretiu recenziu — napríklad ohľadom úspešného vymáhania pohľadávky, rýchleho riešenia a kvalitného servisu na najvyššej úrovni.',
+    author: 'Dlhoročný klient',
+    position: 'Výkonný riaditeľ',
     rating: 5,
   },
 ];
@@ -267,7 +267,7 @@ export default function AdvokatKovac() {
               <Icon name="scale" size={20} color={C.navy} strokeWidth={2} />
             </div>
             <div>
-              <div style={{ fontFamily: "'Playfair Display', serif", fontSize: 15, fontWeight: 700, color: C.white, letterSpacing: 0.3, lineHeight: 1.2 }}>JUDr. Kováč</div>
+              <div style={{ fontFamily: "'Playfair Display', serif", fontSize: 15, fontWeight: 700, color: C.white, letterSpacing: 0.3, lineHeight: 1.2 }}>Vaša kancelária</div>
               <div style={{ fontSize: 10, color: C.gold, letterSpacing: 1.5, textTransform: 'uppercase', fontWeight: 500 }}>& Partners</div>
             </div>
           </div>
@@ -361,7 +361,7 @@ export default function AdvokatKovac() {
             fontWeight: 800, color: C.white, lineHeight: 1.15,
             marginBottom: 24, maxWidth: 720,
           }}>
-            JUDr. Kováč<br />
+            Vaša kancelária<br />
             <span style={{ color: C.gold }}>&</span> Partners
           </h1>
 
@@ -377,7 +377,7 @@ export default function AdvokatKovac() {
             fontSize: 14, color: 'rgba(232,228,217,0.6)',
             marginBottom: 44, fontWeight: 400, letterSpacing: 0.3,
           }}>
-            Advokátska kancelária s 15-ročnou praxou · Bratislava
+            Advokátska kancelária s 15-ročnou praxou
           </p>
 
           <div className="hero-btns" style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
@@ -509,7 +509,7 @@ export default function AdvokatKovac() {
                 <span style={{ color: C.gold }}>od roku 2011</span>
               </h2>
               <p style={{ color: 'rgba(232,228,217,0.75)', fontSize: 15, lineHeight: 1.85, marginBottom: 20 }}>
-                Advokátska kancelária JUDr. Kováč & Partners bola založená v roku 2011 s jasným cieľom — poskytovať klientom právne poradenstvo na najvyššej odbornej úrovni.
+                Advokátska kancelária Vaša advokátska kancelária bola založená v roku 2011 s jasným cieľom — poskytovať klientom právne poradenstvo na najvyššej odbornej úrovni.
               </p>
               <p style={{ color: 'rgba(232,228,217,0.75)', fontSize: 15, lineHeight: 1.85, marginBottom: 32 }}>
                 Náš tím šiestich advokátov a právnych poradcov spracoval viac ako 2 000 prípadov v oblasti obchodného, pracovného, rodinného a trestného práva. Sme hrdými členmi Slovenskej advokátskej komory.
@@ -761,9 +761,9 @@ export default function AdvokatKovac() {
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
                 {[
-                  { icon: 'map', title: 'Adresa', lines: ['Štúrova 12, 4. poschodie', '811 02 Bratislava'] },
-                  { icon: 'phone', title: 'Telefón', lines: ['+421 2 5443 1122', '+421 9XX XXX XXX (mobil)'] },
-                  { icon: 'mail', title: 'E-mail', lines: ['office@kovac-partners.sk'] },
+                  { icon: 'map', title: 'Adresa', lines: ['Vaša adresa', 'Vaše mesto, PSČ'] },
+                  { icon: 'phone', title: 'Telefón', lines: ['+421 XXX XXX XXX', '+421 XXX XXX XXX (mobil)'] },
+                  { icon: 'mail', title: 'E-mail', lines: ['office@vasa-firma.sk'] },
                 ].map((item, i) => (
                   <div key={i} style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
                     <div style={{
@@ -989,7 +989,7 @@ export default function AdvokatKovac() {
                 </div>
                 <div>
                   <div style={{ fontFamily: "'Playfair Display', serif", fontSize: 14, fontWeight: 700, color: C.white }}>
-                    JUDr. Kováč & Partners
+                    Vaša advokátska kancelária
                   </div>
                   <div style={{ fontSize: 10, color: C.gold, letterSpacing: 1.5, textTransform: 'uppercase' }}>Advokátska kancelária</div>
                 </div>
@@ -1046,9 +1046,9 @@ export default function AdvokatKovac() {
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                 {[
-                  { icon: 'map', text: 'Štúrova 12, 811 02 Bratislava' },
-                  { icon: 'phone', text: '+421 2 XXXX XXXX' },
-                  { icon: 'mail', text: 'office@kovac-partners.sk' },
+                  { icon: 'map', text: 'Vaša adresa, vaše mesto' },
+                  { icon: 'phone', text: '+421 XXX XXX XXX' },
+                  { icon: 'mail', text: 'office@vasa-firma.sk' },
                 ].map((c, i) => (
                   <div key={i} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
                     <Icon name={c.icon} size={14} color={C.gold} strokeWidth={1.5} />
@@ -1062,7 +1062,7 @@ export default function AdvokatKovac() {
           {/* Footer bottom */}
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
             <div style={{ color: 'rgba(255,255,255,0.25)', fontSize: 12 }}>
-              © 2026 JUDr. Kováč & Partners, s.r.o. · Všetky práva vyhradené
+              © 2026 Vaša advokátska kancelária, s.r.o. · Všetky práva vyhradené
             </div>
             <div style={{ display: 'flex', gap: 20, alignItems: 'center', flexWrap: 'wrap' }}>
               <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: 12 }}>Ochrana osobných údajov</span>

@@ -21,9 +21,9 @@ const services = [
 ]
 
 const testimonials = [
-  { name: 'M. K.', text: 'Výborný salón! Vždy odchádzam spokojná. Stylistka mi urobila krásny melír a poradila s farbou. Vrátim sa určite.', rating: 5 },
-  { name: 'J. S.', text: 'Príjemné prostredie, profesionálny prístup. Strih bol presne taký, ako som chcela. Odporúčam všetkým!', rating: 5 },
-  { name: 'A. N.', text: 'Najlepší salón v okolí. Spoločenský účes na svadbu bol nádherný, dostala som veľa komplimentov.', rating: 5 },
+  { name: 'Spokojná klientka', text: 'Priestor pre recenziu — napríklad ohľadom melíru, poradenstva so stylistkou a celkovej spokojnosti.', rating: 5 },
+  { name: 'Spokojná klientka', text: 'Priestor pre druhú recenziu — napríklad ohľadom príjemného prostredia, profesionálneho prístupu a presného strihu.', rating: 5 },
+  { name: 'Spokojná klientka', text: 'Priestor pre tretiu recenziu — napríklad ohľadom spoločenského účesu na špeciálnu príležitosť.', rating: 5 },
 ]
 
 const galleryItems = [
@@ -218,7 +218,7 @@ export default function SalonBellaPage() {
       <section id="hero" style={{ background: `linear-gradient(135deg, ${cream} 0%, #fceef0 50%, #f9e8ea 100%)`, minHeight: '88vh', display: 'flex', alignItems: 'center', padding: '80px 5%' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto', width: '100%', display: 'flex', alignItems: 'center', gap: 60, flexWrap: 'wrap' }}>
           <div className="animate-up" style={{ flex: '1 1 400px' }}>
-            <p className="section-label">Váš kaderníctvo v Bratislave</p>
+            <p className="section-label">Vaše kaderníctvo</p>
             <h1 style={{ fontFamily: 'Georgia, "Times New Roman", serif', fontSize: 'clamp(42px, 6vw, 72px)', fontWeight: 400, lineHeight: 1.1, color: textDark, marginBottom: 20 }}>
               Salón <span style={{ color: accent, fontStyle: 'italic' }}>Bella</span>
             </h1>
@@ -297,7 +297,7 @@ export default function SalonBellaPage() {
             <p className="section-label">Náš príbeh</p>
             <h2 className="section-title">O salóne Bella</h2>
             <p style={{ fontSize: 16, color: textMid, lineHeight: 1.8, marginBottom: 20 }}>
-              Salón Bella vznikol v roku 2019 s jedným cieľom — poskytnúť klientkám a klientom profesionálnu starostlivosť o vlasy v príjemnom a útulnom prostredí. Sídlime v srdci Bratislavy na Hlavnej ulici.
+              Priestor pre krátky príbeh vášho salónu — kedy vznikol, s akým cieľom, čo vás odlišuje od konkurencie. Ideálne 2–3 vety, ktoré vyjadrujú osobný prístup a hodnoty.
             </p>
             <p style={{ fontSize: 16, color: textMid, lineHeight: 1.8, marginBottom: 32 }}>
               Náš tím skúsených stylistov pravidelne absolvuje odborné školenia a sleduje najnovšie trendy. Pracujeme výhradne s prémiovými produktmi značiek L'Oréal Professionnel a Kérastase, aby sme vám zaručili ten najlepší výsledok.
@@ -378,7 +378,7 @@ export default function SalonBellaPage() {
             <div>
               <h3 style={{ fontFamily: 'Georgia, serif', fontSize: 22, fontWeight: 400, marginBottom: 28, color: textDark }}>Informácie</h3>
               {[
-                { icon: '📍', label: 'Adresa', value: 'Hlavná 42, 811 01 Bratislava' },
+                { icon: '📍', label: 'Adresa', value: 'Vaša adresa, vaše mesto' },
                 { icon: '📞', label: 'Telefón', value: '+421 9XX XXX XXX' },
                 { icon: '✉️', label: 'Email', value: 'info@salonbella.sk' },
               ].map((item) => (

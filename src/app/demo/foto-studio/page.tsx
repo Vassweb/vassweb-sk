@@ -14,7 +14,7 @@ const GRAY_LIGHT = '#555555'
 const categories = ['Všetky', 'Svadby', 'Portréty', 'Produkty', 'Eventy', 'Architektúra', 'Príroda']
 
 const portfolioItems = [
-  { id: 1, category: 'Svadby', ratio: '3/4', label: 'Svadobný moment', sub: 'Bratislava, 2025' },
+  { id: 1, category: 'Svadby', ratio: '3/4', label: 'Svadobný moment', sub: 'Ukážka práce' },
   { id: 2, category: 'Portréty', ratio: '1/1', label: 'Korporátny portrét', sub: 'Štúdio, 2025' },
   { id: 3, category: 'Produkty', ratio: '4/3', label: 'Produktová séria', sub: 'E-commerce, 2024' },
   { id: 4, category: 'Eventy', ratio: '16/9', label: 'Firemný event', sub: 'Hotel Devín, 2025' },
@@ -69,19 +69,19 @@ const packages = [
 
 const testimonials = [
   {
-    initials: 'T. R.',
-    text: 'Svadobné fotografie prekonali naše očakávania. Každý záber je príbeh — emócie, svetlo, kompozícia. Tieto fotky budú v rodine navždy.',
-    occasion: 'Svadba, september 2025',
+    initials: '★',
+    text: 'Priestor pre recenziu od klienta — napríklad zo svadobnej fotografie, o tom, ako každý záber zachytil emóciu a výnimočnosť momentu.',
+    occasion: 'Svadobná fotografia',
   },
   {
-    initials: 'L. M.',
-    text: 'Korporátne portréty dopadli perfektne. Profesionálny prístup, príjemná atmosféra pri fotení. Celý tím bol spokojný.',
-    occasion: 'Firemná fotosession, 2025',
+    initials: '★',
+    text: 'Priestor pre druhú recenziu — napríklad z firemnej fotografie, o profesionálnom prístupe a kvalitných portrétoch.',
+    occasion: 'Firemná fotografia',
   },
   {
-    initials: 'K. S.',
-    text: 'Produktové fotografie zvýšili predaj v e-shope o 40 %. Kvalita je úplne iná liga ako to, čo sme mali pred tým.',
-    occasion: 'Produktová fotografia, 2024',
+    initials: '★',
+    text: 'Priestor pre tretiu recenziu — napríklad z produktovej fotografie, o dopade na predaje a kvalite obrazu.',
+    occasion: 'Produktová fotografia',
   },
 ]
 
@@ -581,7 +581,7 @@ function Contact() {
             {[
               { label: 'Email', val: 'info@ateliernoir.sk' },
               { label: 'Telefón', val: '+421 9XX XXX XXX' },
-              { label: 'Štúdio', val: 'Bratislava, Slovakia' },
+              { label: 'Štúdio', val: 'Vaše mesto' },
               { label: 'Pracovné hodiny', val: 'Po–Pi 9:00–18:00' },
             ].map(item => (
               <div key={item.label}>

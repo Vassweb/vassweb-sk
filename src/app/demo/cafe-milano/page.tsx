@@ -454,21 +454,21 @@ const menuData = [
 
 const reviews = [
   {
-    initials: 'P.M.',
-    name: 'P. M.',
-    text: 'Najlepšia káva v celom Starom Meste! Priateľský personál, útulná atmosféra a tiramisu ako v Ríme. Chodím sem každý týždeň.',
+    initials: '★',
+    name: 'Spokojný zákazník',
+    text: 'Priestor pre recenziu — napríklad ohľadom kvality kávy, atmosféry a personálu. Môžete sem vložiť citácie z Google recenzií.',
     rating: 5,
   },
   {
-    initials: 'K.Š.',
-    name: 'K. Š.',
-    text: 'Objavil som toto miesto náhodou a teraz je to moja pracovná kancelária každé ráno. Flat White je fenomenálny, Wi-Fi spolahlivá.',
+    initials: '★',
+    name: 'Spokojný hosť',
+    text: 'Priestor pre druhú recenziu — napríklad ohľadom kaviarne ako pracovného priestoru, Wi-Fi, flat white a rannej rutiny.',
     rating: 5,
   },
   {
-    initials: 'R.B.',
-    name: 'R. B.',
-    text: 'Nádherný interiér, kvalitné suroviny a obsluha, ktorá si pamätá vašu obľúbenú objednávku. Toto je kaviarenská kultúra v najlepšom.',
+    initials: '★',
+    name: 'Dlhoročný hosť',
+    text: 'Priestor pre tretiu recenziu — napríklad ohľadom interiéru, kvality surovín a osobného prístupu obsluhy.',
     rating: 5,
   },
 ];
@@ -516,7 +516,7 @@ export default function CafeMilano() {
         <div style={styles.heroPattern} />
         <div style={styles.heroOverlay} />
         <div style={styles.heroContent}>
-          <span style={styles.heroPre}>Est. 2021 · Bratislava</span>
+          <span style={styles.heroPre}>Vaša kaviareň</span>
           <h1 style={styles.heroTitle}>Café Milano</h1>
           <div style={styles.heroDivider} />
           <p style={styles.heroSubtitle}>Talianska káva. Slovenská pohostinnosť.</p>
@@ -545,7 +545,7 @@ export default function CafeMilano() {
           <div>
             <p style={styles.aboutText}>
               Café Milano vzniklo v roku 2021 zo sna dvoch priateľov, ktorí strávili roky v toskánskych kaviarňach
-              a chceli priniesť autentickú taliansku kávovú kultúru do srdca Bratislavy.
+              a chceli priniesť autentickú taliansku kávovú kultúru do vášho mesta.
             </p>
             <blockquote style={styles.aboutHighlight}>
               „Každý šálok espresso je malé rituál — moment pre seba, uprostred rušného dňa."
@@ -556,7 +556,7 @@ export default function CafeMilano() {
               croissanty s francúzskym maslom.
             </p>
             <p style={styles.aboutText}>
-              Nájdete nás na Ventúrskej ulici v Starom Meste — kamenná fasáda, drevené stoly,
+              Nájdete nás v srdci vášho mesta — kamenná fasáda, drevené stoly,
               vôňa čerstvej kávy a tichý džez na pozadí.
             </p>
           </div>
@@ -740,7 +740,7 @@ export default function CafeMilano() {
                 {
                   icon: '📍',
                   label: 'Adresa',
-                  value: 'Ventúrska 8\nBratislava – Staré Mesto',
+                  value: 'Vaša adresa\nVaše mesto',
                 },
                 {
                   icon: '📞',
@@ -790,10 +790,10 @@ export default function CafeMilano() {
               <div style={{ textAlign: 'center', zIndex: 1, padding: '2rem' }}>
                 <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>📍</div>
                 <div style={{ color: colors.cream, fontFamily: 'Georgia, serif', fontSize: '1.1rem', marginBottom: '0.5rem' }}>
-                  Ventúrska 8
+                  Vaša adresa
                 </div>
                 <div style={{ color: colors.gold, fontSize: '0.85rem', letterSpacing: '1px' }}>
-                  Bratislava – Staré Mesto
+                  Vaše mesto
                 </div>
                 <div style={{
                   marginTop: '1.5rem',

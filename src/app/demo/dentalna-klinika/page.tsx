@@ -39,10 +39,10 @@ export default function DentKlinika() {
   ];
 
   const team = [
-    { initials: 'MK', name: 'MUDr. M. K.', specialty: 'Primár kliniky, Implantológia', years: 18 },
-    { initials: 'SB', name: 'MUDr. S. B.', specialty: 'Estetická stomatológia', years: 12 },
-    { initials: 'LH', name: 'MUDr. L. H.', specialty: 'Ortodoncia, Detská stomatológia', years: 9 },
-    { initials: 'PV', name: 'MUDr. P. V.', specialty: 'Chirurgia, Protetika', years: 14 },
+    { initials: '—', name: 'Primár kliniky', specialty: 'Implantológia', years: 18 },
+    { initials: '—', name: 'Zubná lekárka', specialty: 'Estetická stomatológia', years: 12 },
+    { initials: '—', name: 'Zubná lekárka', specialty: 'Ortodoncia, Detská stomatológia', years: 9 },
+    { initials: '—', name: 'Zubný lekár', specialty: 'Chirurgia, Protetika', years: 14 },
   ];
 
   const technologies = [
@@ -88,10 +88,10 @@ export default function DentKlinika() {
   ];
 
   const reviews = [
-    { initials: 'MN', name: 'M. N.', rating: 5, text: 'Konečne klinika, kde sa nemusíte báť. Pán doktor MUDr. M. K. je výnimočný — trpezlivý, profesionálny a bez zbytočných nákladov navyše.', date: 'február 2026' },
-    { initials: 'TP', name: 'T. P.', rating: 5, text: 'Implantát som riešil 3 roky. Tu mi celý proces vysvetlili za 20 minút a pred operáciou som bol úplne kľudný. Výsledok je skvelý.', date: 'január 2026' },
-    { initials: 'ZK', name: 'Z. K.', rating: 5, text: 'S deťmi chodíme pravidelne. Prístup k deťom je úžasný — moja 6-ročná dcéra sa na zubára teší. Čo viac chcieť?', date: 'december 2025' },
-    { initials: 'RH', name: 'R. H.', rating: 4, text: 'Bielenie zubov — výsledok preč o 7 odtieňov. Cena zodpovedá kvalite. Jediné minus je čakacia doba, ale stojí to za to.', date: 'november 2025' },
+    { initials: '★', name: 'Spokojný pacient', rating: 5, text: 'Priestor pre recenziu — pacienti môžu zdielať svoju pozitívnu skúsenosť s profesionálnym prístupom a kvalitou ošetrenia.', date: 'nedávno' },
+    { initials: '★', name: 'Spokojný pacient', rating: 5, text: 'Priestor pre druhú recenziu — napríklad ohľadom implantátu, jasného vysvetlenia procesu a kľudnej atmosféry počas ošetrenia.', date: 'nedávno' },
+    { initials: '★', name: 'Spokojná rodina', rating: 5, text: 'Priestor pre tretiu recenziu — napríklad od rodiny s deťmi, ktoré chodia pravidelne. Prístup k deťom, atmosféra, výsledky.', date: 'nedávno' },
+    { initials: '★', name: 'Spokojný pacient', rating: 4, text: 'Priestor pre štvrtú recenziu — napríklad ohľadom bielenia zubov, výsledku a pomeru ceny a kvality.', date: 'nedávno' },
   ];
 
   const navLinks = ['Služby', 'Tím', 'Technológie', 'Blog', 'Cenník', 'Hodnotenia', 'Kontakt'];
@@ -403,7 +403,7 @@ export default function DentKlinika() {
               <div style={{ background: '#fff', borderRadius: 20, padding: 32, marginBottom: 20, border: `1px solid ${BORDER}` }}>
                 <h3 style={{ fontWeight: 700, fontSize: 18, marginBottom: 24 }}>Kontaktné údaje</h3>
                 {[
-                  ['M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z', 'Adresa', 'Kvetná 22, 821 08 Bratislava'],
+                  ['M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z', 'Adresa', 'Vaša adresa, vaše mesto'],
                   ['M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z', 'Telefón', '+421 2 XXXX XXXX'],
                   ['M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z', 'Email', 'info@dentcare.sk'],
                 ].map(([path, label, value]) => (
@@ -431,7 +431,7 @@ export default function DentKlinika() {
               <div style={{ background: '#e2e8f0', borderRadius: 16, height: 180, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 8, border: `1px solid ${BORDER}` }}>
                 <svg width="32" height="32" fill="none" stroke={TEXT_MUTED} strokeWidth="1.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" /></svg>
                 <span style={{ color: TEXT_MUTED, fontSize: 13, fontWeight: 500 }}>Interaktívna mapa (Google Maps)</span>
-                <span style={{ color: TEXT_MUTED, fontSize: 12 }}>Kvetná 22, Bratislava</span>
+                <span style={{ color: TEXT_MUTED, fontSize: 12 }}>Vaša adresa, vaše mesto</span>
               </div>
             </div>
 

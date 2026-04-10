@@ -31,9 +31,9 @@ const categories = [
 ];
 
 const reviews = [
-  { initials: 'M.K.', text: 'Kvalita oblečenia je výnimočná. Šaty Midi sú presne také, ako vyzerajú na fotkách — materiál je luxusný.', stars: 5 },
-  { initials: 'P.H.', text: 'Doprava bola rýchla, balenie krásne. Vrátil som jednu veľkosť a nebbol žiadny problém. Odporúčam!', stars: 5 },
-  { initials: 'L.B.', text: 'Konečne slovenský brand s európskou kvalitou. Bomber bunda je na celú sezónu, kúpim znova.', stars: 4 },
+  { initials: '★', text: 'Priestor pre recenziu od zákazníka — napríklad o kvalite oblečenia, materiálu a zhode s fotkami.', stars: 5 },
+  { initials: '★', text: 'Priestor pre druhú recenziu — napríklad o rýchlej doprave, balení a jednoduchom vrátení.', stars: 5 },
+  { initials: '★', text: 'Priestor pre tretiu recenziu — napríklad o značke, európskej kvalite a dlhovekosti produktov.', stars: 4 },
 ];
 
 export default function FlavourEshop() {

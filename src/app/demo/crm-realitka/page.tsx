@@ -63,48 +63,48 @@ interface ChatMessage {
 // ─── Fake Data ────────────────────────────────────────────────────────────────
 
 const PROPERTIES: Property[] = [
-  { id: 1, type: '3-izbový byt', location: 'Petržalka', district: 'Bratislava V', price: 189000, area: 74, rooms: '3+1', status: 'Aktívna', floor: '4/8', listed: '15.3.2026', agent: 'Agent A' },
-  { id: 2, type: 'Rodinný dom', location: 'Lamač', district: 'Bratislava IV', price: 485000, area: 210, rooms: '5+kk', status: 'Rezervovaná', listed: '2.2.2026', agent: 'Agent B' },
-  { id: 3, type: '2-izbový byt', location: 'Ružinov', district: 'Bratislava II', price: 162000, area: 52, rooms: '2+1', status: 'Aktívna', floor: '2/6', listed: '20.3.2026', agent: 'Agent A' },
-  { id: 4, type: 'Penthouse', location: 'Staré Mesto', district: 'Bratislava I', price: 890000, area: 185, rooms: '4+kk', status: 'Aktívna', floor: '8/8', listed: '10.1.2026', agent: 'Agent C' },
-  { id: 5, type: '1-izbový byt', location: 'Dúbravka', district: 'Bratislava IV', price: 115000, area: 38, rooms: '1+1', status: 'Predaná', floor: '3/9', listed: '5.1.2026', agent: 'Agent D' },
-  { id: 6, type: 'Komerčný priestor', location: 'Nové Mesto', district: 'Bratislava III', price: 320000, area: 95, rooms: 'kancelária', status: 'Aktívna', floor: '1/5', listed: '18.3.2026', agent: 'Agent C' },
+  { id: 1, type: '3-izbový byt', location: 'Lokalita A', district: 'Okres 1', price: 189000, area: 74, rooms: '3+1', status: 'Aktívna', floor: '4/8', listed: '15.3.2026', agent: 'Agent 1' },
+  { id: 2, type: 'Rodinný dom', location: 'Lokalita B', district: 'Okres 2', price: 485000, area: 210, rooms: '5+kk', status: 'Rezervovaná', listed: '2.2.2026', agent: 'Agent 2' },
+  { id: 3, type: '2-izbový byt', location: 'Lokalita C', district: 'Okres 3', price: 162000, area: 52, rooms: '2+1', status: 'Aktívna', floor: '2/6', listed: '20.3.2026', agent: 'Agent 1' },
+  { id: 4, type: 'Penthouse', location: 'Lokalita D', district: 'Okres 4', price: 890000, area: 185, rooms: '4+kk', status: 'Aktívna', floor: '8/8', listed: '10.1.2026', agent: 'Agent 3' },
+  { id: 5, type: '1-izbový byt', location: 'Lokalita E', district: 'Okres 5', price: 115000, area: 38, rooms: '1+1', status: 'Predaná', floor: '3/9', listed: '5.1.2026', agent: 'Agent 4' },
+  { id: 6, type: 'Komerčný priestor', location: 'Lokalita F', district: 'Okres 6', price: 320000, area: 95, rooms: 'kancelária', status: 'Aktívna', floor: '1/5', listed: '18.3.2026', agent: 'Agent 3' },
 ];
 
 const CLIENTS: Client[] = [
-  { id: 1, name: 'Klient #1', email: 'k*****@***.sk', phone: '+421 *** *** ***', interest: '3-izbový byt, Petržalka', budget: '160 000 – 200 000 €', status: 'VIP', since: 'jan 2026', lastContact: 'dnes' },
-  { id: 2, name: 'Klient #2', email: 'k*****@***.sk', phone: '+421 *** *** ***', interest: 'Rodinný dom, okolie BA', budget: '350 000 – 500 000 €', status: 'Aktívny', since: 'feb 2026', lastContact: 'včera' },
-  { id: 3, name: 'Klient #3', email: 'k*****@***.sk', phone: '+421 *** *** ***', interest: '2-izbový byt, Ružinov', budget: '140 000 – 170 000 €', status: 'Aktívny', since: 'mar 2026', lastContact: '3 dni' },
-  { id: 4, name: 'Klient #4', email: 'k*****@***.sk', phone: '+421 *** *** ***', interest: 'Investičný byt, centrum', budget: '200 000 – 350 000 €', status: 'VIP', since: 'nov 2025', lastContact: 'dnes' },
-  { id: 5, name: 'Klient #5', email: 'k*****@***.sk', phone: '+421 *** *** ***', interest: 'Kancelárie, BA III', budget: '280 000 – 400 000 €', status: 'Aktívny', since: 'mar 2026', lastContact: '1 týždeň' },
+  { id: 1, name: 'Klient #1', email: 'k*****@***.sk', phone: '+421 *** *** ***', interest: '3-izbový byt', budget: '160 000 – 200 000 €', status: 'VIP', since: 'jan 2026', lastContact: 'dnes' },
+  { id: 2, name: 'Klient #2', email: 'k*****@***.sk', phone: '+421 *** *** ***', interest: 'Rodinný dom', budget: '350 000 – 500 000 €', status: 'Aktívny', since: 'feb 2026', lastContact: 'včera' },
+  { id: 3, name: 'Klient #3', email: 'k*****@***.sk', phone: '+421 *** *** ***', interest: '2-izbový byt', budget: '140 000 – 170 000 €', status: 'Aktívny', since: 'mar 2026', lastContact: '3 dni' },
+  { id: 4, name: 'Klient #4', email: 'k*****@***.sk', phone: '+421 *** *** ***', interest: 'Investičný byt', budget: '200 000 – 350 000 €', status: 'VIP', since: 'nov 2025', lastContact: 'dnes' },
+  { id: 5, name: 'Klient #5', email: 'k*****@***.sk', phone: '+421 *** *** ***', interest: 'Kancelárie', budget: '280 000 – 400 000 €', status: 'Aktívny', since: 'mar 2026', lastContact: '1 týždeň' },
   { id: 6, name: 'Klient #6', email: 'k*****@***.sk', phone: '+421 *** *** ***', interest: 'Garsonka alebo 1-izbák', budget: '100 000 – 130 000 €', status: 'Pasívny', since: 'jan 2026', lastContact: '2 týždne' },
-  { id: 7, name: 'Klient #7', email: 'k*****@***.sk', phone: '+421 *** *** ***', interest: 'Penthouse, Staré Mesto', budget: '700 000 – 1 000 000 €', status: 'VIP', since: 'dec 2025', lastContact: 'dnes' },
-  { id: 8, name: 'Klient #8', email: 'k*****@***.sk', phone: '+421 *** *** ***', interest: 'Rodinný dom, Záhorská Bystrica', budget: '400 000 – 600 000 €', status: 'Aktívny', since: 'feb 2026', lastContact: '4 dni' },
+  { id: 7, name: 'Klient #7', email: 'k*****@***.sk', phone: '+421 *** *** ***', interest: 'Penthouse', budget: '700 000 – 1 000 000 €', status: 'VIP', since: 'dec 2025', lastContact: 'dnes' },
+  { id: 8, name: 'Klient #8', email: 'k*****@***.sk', phone: '+421 *** *** ***', interest: 'Rodinný dom', budget: '400 000 – 600 000 €', status: 'Aktívny', since: 'feb 2026', lastContact: '4 dni' },
 ];
 
 const VIEWINGS: Viewing[] = [
-  { id: 1, property: '3-izb. byt, Petržalka – Wolkrova 12', client: 'Klient #1', agent: 'Agent A', date: '7.4.2026', time: '10:00', status: 'Potvrdená', note: 'Klient má záujem aj o susednú jednotku' },
-  { id: 2, property: 'Rodinný dom, Lamač – Záhradná 5', client: 'Klient #2', agent: 'Agent B', date: '7.4.2026', time: '14:30', status: 'Potvrdená', note: 'Prísť 10 min skôr, záhrada' },
-  { id: 3, property: 'Penthouse, Staré Mesto – Obchodná 18', client: 'Klient #7', agent: 'Agent C', date: '8.4.2026', time: '11:00', status: 'Čaká sa', note: 'Čaká sa na potvrdenie klienta' },
-  { id: 4, property: '2-izb. byt, Ružinov – Miletičova 3', client: 'Klient #3', agent: 'Agent A', date: '9.4.2026', time: '16:00', status: 'Čaká sa', note: '' },
-  { id: 5, property: 'Komerčný priestor, Nové Mesto – Vajnorská 21', client: 'Klient #5', agent: 'Agent C', date: '5.4.2026', time: '09:00', status: 'Prebehla', note: 'Klient má záujem, rokujeme o cene' },
-  { id: 6, property: '1-izb. byt, Dúbravka – Hanulova 9', client: 'Klient #6', agent: 'Agent D', date: '3.4.2026', time: '13:00', status: 'Zrušená', note: 'Klient zrušil deň vopred' },
+  { id: 1, property: '3-izb. byt, lokalita A', client: 'Klient #1', agent: 'Agent 1', date: '7.4.2026', time: '10:00', status: 'Potvrdená', note: 'Klient má záujem aj o susednú jednotku' },
+  { id: 2, property: 'Rodinný dom, lokalita B', client: 'Klient #2', agent: 'Agent 2', date: '7.4.2026', time: '14:30', status: 'Potvrdená', note: 'Prísť 10 min skôr, záhrada' },
+  { id: 3, property: 'Penthouse, lokalita D', client: 'Klient #7', agent: 'Agent 3', date: '8.4.2026', time: '11:00', status: 'Čaká sa', note: 'Čaká sa na potvrdenie klienta' },
+  { id: 4, property: '2-izb. byt, lokalita C', client: 'Klient #3', agent: 'Agent 1', date: '9.4.2026', time: '16:00', status: 'Čaká sa', note: '' },
+  { id: 5, property: 'Komerčný priestor, lokalita F', client: 'Klient #5', agent: 'Agent 3', date: '5.4.2026', time: '09:00', status: 'Prebehla', note: 'Klient má záujem, rokujeme o cene' },
+  { id: 6, property: '1-izb. byt, lokalita E', client: 'Klient #6', agent: 'Agent 4', date: '3.4.2026', time: '13:00', status: 'Zrušená', note: 'Klient zrušil deň vopred' },
 ];
 
 const CONTRACTS: Contract[] = [
-  { id: 1, property: '1-izb. byt, Dúbravka – Hanulova 9', buyer: 'Klient #6', seller: 'Predávajúci #1', type: 'Kúpna zmluva', value: 115000, date: '1.4.2026', status: 'Podpísaná' },
-  { id: 2, property: 'Rodinný dom, Lamač – Záhradná 5', buyer: 'Klient #2', seller: 'Spoločnosť A s.r.o.', type: 'Rezervačná zmluva', value: 485000, date: '28.3.2026', status: 'Aktívna' },
-  { id: 3, property: 'Kancelárie, Ružinov – Galvaniho 7/B', buyer: 'Spoločnosť B s.r.o.', seller: 'Predávajúci #2', type: 'Nájomná zmluva', value: 2800, date: '15.3.2026', status: 'Aktívna' },
-  { id: 4, property: '4-izb. byt, Karlova Ves – Silvánska 14', buyer: 'Klient #9', seller: 'Predávajúci #3', type: 'Kúpna zmluva', value: 265000, date: '10.2.2026', status: 'Ukončená' },
+  { id: 1, property: '1-izb. byt, lokalita E', buyer: 'Klient #6', seller: 'Predávajúci #1', type: 'Kúpna zmluva', value: 115000, date: '1.4.2026', status: 'Podpísaná' },
+  { id: 2, property: 'Rodinný dom, lokalita B', buyer: 'Klient #2', seller: 'Spoločnosť #1', type: 'Rezervačná zmluva', value: 485000, date: '28.3.2026', status: 'Aktívna' },
+  { id: 3, property: 'Kancelárie, lokalita C', buyer: 'Spoločnosť #2', seller: 'Predávajúci #2', type: 'Nájomná zmluva', value: 2800, date: '15.3.2026', status: 'Aktívna' },
+  { id: 4, property: '4-izb. byt, lokalita A', buyer: 'Klient #9', seller: 'Predávajúci #3', type: 'Kúpna zmluva', value: 265000, date: '10.2.2026', status: 'Ukončená' },
 ];
 
 const ACTIVITY = [
-  { icon: '🏠', text: 'Nová obhliadka potvrdená — Klient #1, Petržalka', time: 'pred 12 min' },
+  { icon: '🏠', text: 'Nová obhliadka potvrdená — Klient #1, lokalita A', time: 'pred 12 min' },
   { icon: '👤', text: 'Nový klient registrovaný — Klient #8', time: 'pred 45 min' },
-  { icon: '📄', text: 'Zmluva podpísaná — Dúbravka 1-izb. byt, 115 000 €', time: 'pred 2 hod' },
-  { icon: '🏠', text: 'Nová nehnuteľnosť pridaná — 3-izb. byt, Petržalka', time: 'dnes 08:14' },
-  { icon: '💬', text: 'Dopyt cez web — záujem o byty v Ružinove', time: 'včera 18:42' },
-  { icon: '✅', text: 'Obhliadka prebehla úspešne — Komerčný priestor, Nové Mesto', time: 'včera 09:05' },
+  { icon: '📄', text: 'Zmluva podpísaná — 1-izb. byt, lokalita E, 115 000 €', time: 'pred 2 hod' },
+  { icon: '🏠', text: 'Nová nehnuteľnosť pridaná — 3-izb. byt, lokalita A', time: 'dnes 08:14' },
+  { icon: '💬', text: 'Dopyt cez web — záujem o byty v lokalite C', time: 'včera 18:42' },
+  { icon: '✅', text: 'Obhliadka prebehla úspešne — Komerčný priestor, lokalita F', time: 'včera 09:05' },
 ];
 
 const MONTHLY_SALES = [
@@ -118,12 +118,12 @@ const MONTHLY_SALES = [
 ];
 
 const DEMO_CHAT: ChatMessage[] = [
-  { role: 'user', text: 'Aké byty máme aktuálne dostupné v Petržalke do 200 000 €?', time: '10:02' },
-  { role: 'ai', text: 'V Petržalke máme momentálne 2 dostupné byty do 200 000 €:\n\n**1. 3-izbový byt – Wolkrova 12** (74 m², 4. poschodie)\n   Cena: **189 000 €** | Agent: Agent A\n\n**2. 2-izbový byt – Haanova 8** (61 m², 2. poschodie)\n   Cena: **168 000 €** | Agent: Agent D\n\nObidva byty sú v stave Aktívna. Chcete, aby som naplánoval obhliadky?', time: '10:02' },
+  { role: 'user', text: 'Aké byty máme aktuálne dostupné v lokalite A do 200 000 €?', time: '10:02' },
+  { role: 'ai', text: 'V lokalite A máme momentálne 2 dostupné byty do 200 000 €:\n\n**1. 3-izbový byt** (74 m², 4. poschodie)\n   Cena: **189 000 €** | Agent: Agent 1\n\n**2. 2-izbový byt** (61 m², 2. poschodie)\n   Cena: **168 000 €** | Agent: Agent 4\n\nObidva byty sú v stave Aktívna. Chcete, aby som naplánoval obhliadky?', time: '10:02' },
   { role: 'user', text: 'Áno, prosím naplánuj obhliadku pre Klienta #1 na najbližší možný termín.', time: '10:03' },
   { role: 'ai', text: 'Skontroloval som kalendár Agenta A aj dostupnosť Klienta #1.\n\nNajbližší voľný spoločný termín:\n**Pondelok 7. apríla 2026 o 10:00**\n\nObhliadka je naplánovaná a potvrdzovací email bol odoslaný klientovi. Udalosť pridaná do kalendára.\n\nChcete tiež poslať pripomienku 24 hodín pred obhliadkou?', time: '10:03' },
   { role: 'user', text: 'Výborne. Aký je celkový obrat za Q1 2026?', time: '10:05' },
-  { role: 'ai', text: 'Za Q1 2026 (január – marec) dosiahla ProDom tieto výsledky:\n\n**Celkový obrat: 285 000 €**\n- Január: 97 000 € (4 transakcie)\n- Február: 74 000 € (3 transakcie)\n- Marec: 114 000 € (5 transakcií)\n\n**Medzikvartálny rast: +18 % oproti Q4 2025**\nPočet predaných nehnuteľností: 12\nPriemerná hodnota transakcie: 23 750 €\n\nNajúspešnejší agent: Agent C (4 predaje, 118 000 €)', time: '10:05' },
+  { role: 'ai', text: 'Za Q1 2026 (január – marec) dosiahla ProDom tieto výsledky:\n\n**Celkový obrat: 285 000 €**\n- Január: 97 000 € (4 transakcie)\n- Február: 74 000 € (3 transakcie)\n- Marec: 114 000 € (5 transakcií)\n\n**Medzikvartálny rast: +18 % oproti Q4 2025**\nPočet predaných nehnuteľností: 12\nPriemerná hodnota transakcie: 23 750 €\n\nNajúspešnejší agent: Agent 3 (4 predaje, 118 000 €)', time: '10:05' },
 ];
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -855,7 +855,7 @@ function Sidebar({ active, onNavigate }: { active: View; onNavigate: (v: View) =
           borderRadius: 8, padding: '6px 10px', display: 'flex', alignItems: 'center', gap: 6,
         }}>
           <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e', flexShrink: 0 }} />
-          <span style={{ color: '#64748b', fontSize: 11 }}>Agent A</span>
+          <span style={{ color: '#64748b', fontSize: 11 }}>Agent 1</span>
         </div>
       </div>
 

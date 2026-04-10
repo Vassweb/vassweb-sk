@@ -32,9 +32,9 @@ const gallery = [
 ]
 
 const testimonials = [
-  { name: 'A. H.', text: 'Úžasný kvetinárstvo! Svadobná kytica bola presne to, čo som si predstavovala. Prišla čerstvá a nádherná. Ďakujem z celého srdca!', rating: 5 },
-  { name: 'M. B.', text: 'Objednala som flower box ako darček k narodeninám. Doručenie v pohode, kvety vydržali celý týždeň. Vrátim sa určite!', rating: 5 },
-  { name: 'T. K.', text: 'Profesionálny prístup, rýchle doručenie po Bratislave. Smútočný veniec bol dôstojný a pekný. Odporúčam s čistým svedomím.', rating: 5 },
+  { name: 'Spokojná nevesta', text: 'Priestor pre recenziu — napríklad ohľadom svadobnej kytice, ako bola krásna, čerstvá a zodpovedala predstavám.', rating: 5 },
+  { name: 'Spokojná zákazníčka', text: 'Priestor pre druhú recenziu — napríklad ohľadom flower boxu ako darčeka, doručenia a trvanlivosti kvetov.', rating: 5 },
+  { name: 'Spokojný zákazník', text: 'Priestor pre tretiu recenziu — napríklad ohľadom smútočného venca, profesionálneho prístupu a rýchleho doručenia.', rating: 5 },
 ]
 
 const hours = [
@@ -111,7 +111,7 @@ export default function KvetinarstvoPage() {
           </p>
 
           <p style={{ fontSize: 16, color: textMid, lineHeight: 1.7, marginBottom: 40, maxWidth: 520, margin: '0 auto 40px' }}>
-            Rodinný kvetinárstvo v srdci Bratislavy. S láskou viažeme každú kyticu, aranžujeme každú svadobnú výzdobu a staráme sa o to, aby vaše kvety priniesli radosť.
+            Rodinný kvetinárstvo vo vašom meste. S láskou viažeme každú kyticu, aranžujeme každú svadobnú výzdobu a staráme sa o to, aby vaše kvety priniesli radosť.
           </p>
 
           <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -189,7 +189,7 @@ export default function KvetinarstvoPage() {
               Rodinné kvetinárstvo so srdcom
             </h2>
             <p style={{ color: textMid, fontSize: 15, lineHeight: 1.75, marginBottom: 16 }}>
-              Kvety & Radosť vzniklo v roku 2018 z jednoduchej myšlienky — priniesť ľuďom radosť prostredníctvom krásnych, čerstvých kvetov. Dnes sme rodinným kvetinárstvom v Bratislave, kde si každý zákazník nájde to pravé.
+              Priestor pre krátky príbeh vášho kvetinárstva — kedy vzniklo, z akej myšlienky, čo prinášate zákazníkom. Ideálne 2–3 vety, ktoré vyjadrujú váš osobný prístup.
             </p>
             <p style={{ color: textMid, fontSize: 15, lineHeight: 1.75, marginBottom: 32 }}>
               Každé ráno dostávame čerstvé kvety priamo od overených pestovateľov. Nič neplánujeme vopred — každá kytica vzniká tu a teraz, s láskou a pozornosťou k detailu.
@@ -245,7 +245,7 @@ export default function KvetinarstvoPage() {
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 24, marginBottom: 48 }}>
             {[
-              { icon: '⚡', title: 'Bratislava do 2 hodín', desc: 'Expresné doručenie po celej Bratislave. Objednajte a dostanete kvety ešte dnes.', badge: 'Expresné', badgeBg: '#fff3cd' },
+              { icon: '⚡', title: 'Doručenie do 2 hodín', desc: 'Expresné doručenie po celom meste. Objednajte a dostanete kvety ešte dnes.', badge: 'Expresné', badgeBg: '#fff3cd' },
               { icon: '🚚', title: 'Celé Slovensko do 24 h', desc: 'Doručujeme do všetkých miest na Slovensku. Kvety bezpečne zabalené, aby dorazili čerstvé.', badge: 'Štandardné', badgeBg: pinkLight },
               { icon: '🌹', title: 'Express doručenie', desc: 'Zabudli ste na výročie? Objednajte do 12:00 a doručíme ešte dnes do 18:00 kamkoľvek v BA.', badge: 'Záchrana dňa', badgeBg: sageLight },
             ].map((item, i) => (
@@ -307,7 +307,7 @@ export default function KvetinarstvoPage() {
               <div style={{ marginBottom: 32 }}>
                 <h3 style={{ fontFamily: 'Georgia, Palatino, serif', fontStyle: 'italic', fontSize: 20, color: sageDark, fontWeight: 700, margin: '0 0 16px' }}>Kde nás nájdete</h3>
                 {[
-                  { icon: '📍', label: 'Adresa', val: 'Obchodná 42, 811 06 Bratislava' },
+                  { icon: '📍', label: 'Adresa', val: 'Vaša adresa, vaše mesto' },
                   { icon: '📞', label: 'Telefón', val: '+421 9XX XXX XXX' },
                   { icon: '✉️', label: 'Email', val: 'info@kvetiny.sk' },
                 ].map(row => (
@@ -398,7 +398,7 @@ export default function KvetinarstvoPage() {
             <span style={{ fontSize: 18 }}>🌸</span>
             <span style={{ fontFamily: 'Georgia, Palatino, serif', fontStyle: 'italic', fontSize: 18, color: cream, fontWeight: 700 }}>Kvety & Radosť</span>
           </div>
-          <p style={{ color: 'rgba(254,252,246,0.5)', fontSize: 13, margin: '0 0 6px' }}>© 2026 Kvety & Radosť · Obchodná 42, Bratislava</p>
+          <p style={{ color: 'rgba(254,252,246,0.5)', fontSize: 13, margin: '0 0 6px' }}>© 2026 Vaše kvetinárstvo · Vaša adresa</p>
           <p style={{ color: 'rgba(254,252,246,0.35)', fontSize: 12, margin: 0 }}>
             Web by{' '}
             <a href="https://vassweb.sk" target="_blank" rel="noopener noreferrer" style={{ color: sageLight, textDecoration: 'none', fontWeight: 600 }}>Vassweb</a>
