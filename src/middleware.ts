@@ -96,11 +96,11 @@ export function middleware(request: NextRequest) {
     return response;
   }
 
-  // Rewrite (not redirect) to locale-prefixed path to keep clean URLs
+  // Redirect to locale-prefixed path so URL matches content
   const url = request.nextUrl.clone();
   url.pathname = `/${locale}${pathname}`;
 
-  const response = NextResponse.rewrite(url);
+  const response = NextResponse.redirect(url);
   response.cookies.set('locale', locale, { path: '/', sameSite: 'lax', maxAge: 365 * 24 * 60 * 60 });
   return response;
 }
