@@ -15,6 +15,11 @@ function getLocaleFromPath(path: string): Locale {
 const body = 'var(--font-inter), Inter, system-ui, sans-serif';
 const localeLabel: Record<Locale, string> = { sk: 'SK', en: 'EN', cs: 'CZ', hu: 'HU' };
 
+function switchLocale(loc: Locale) {
+  document.cookie = `locale=${loc};path=/;max-age=${365 * 24 * 60 * 60};samesite=lax`;
+  window.location.href = loc === 'sk' ? '/' : `/${loc}`;
+}
+
 export default function Navbar() {
   const pathname = usePathname();
   const locale = getLocaleFromPath(pathname);
@@ -162,11 +167,11 @@ export default function Navbar() {
                   boxShadow: '0 12px 40px rgba(0,0,0,0.5)',
                 }}>
                   {locales.map(loc => (
-                    <a key={loc} href={loc === 'sk' ? '/' : `/${loc}`} role="menuitem" aria-current={loc === locale ? 'true' : undefined} style={{
-                      display: 'block', padding: '8px 14px', borderRadius: 6,
+                    <button key={loc} onClick={() => switchLocale(loc)} role="menuitem" aria-current={loc === locale ? 'true' : undefined} style={{
+                      display: 'block', padding: '8px 14px', borderRadius: 6, width: '100%', textAlign: 'left',
                       color: loc === locale ? '#d4a843' : 'rgba(212,168,67,0.4)',
-                      textDecoration: 'none', fontSize: 12, fontWeight: loc === locale ? 600 : 400,
-                      fontFamily: body, letterSpacing: '0.08em',
+                      border: 'none', fontSize: 12, fontWeight: loc === locale ? 600 : 400,
+                      fontFamily: body, letterSpacing: '0.08em', cursor: 'pointer',
                       backgroundColor: loc === locale ? 'rgba(212,168,67,0.06)' : 'transparent',
                       transition: 'all 0.2s',
                     }}
@@ -174,7 +179,7 @@ export default function Navbar() {
                     onMouseLeave={e => { if (loc !== locale) { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = 'rgba(212,168,67,0.4)'; } }}
                     >
                       {localeLabel[loc]}
-                    </a>
+                    </button>
                   ))}
                 </div>
               )}
@@ -229,16 +234,16 @@ export default function Navbar() {
             {/* Mobile language switcher */}
             <div style={{ display: 'flex', gap: 8, paddingTop: 12, borderTop: '1px solid rgba(212,168,67,0.06)' }}>
               {locales.map(loc => (
-                <a key={loc} href={loc === 'sk' ? '/' : `/${loc}`} onClick={() => setIsOpen(false)} style={{
-                  padding: '8px 14px', borderRadius: 8,
+                <button key={loc} onClick={() => { setIsOpen(false); switchLocale(loc); }} style={{
+                  padding: '8px 14px', borderRadius: 8, cursor: 'pointer',
                   border: loc === locale ? '1px solid rgba(212,168,67,0.3)' : '1px solid rgba(212,168,67,0.1)',
                   color: loc === locale ? '#d4a843' : 'rgba(212,168,67,0.35)',
-                  textDecoration: 'none', fontSize: 12, fontWeight: loc === locale ? 600 : 400,
+                  fontSize: 12, fontWeight: loc === locale ? 600 : 400,
                   fontFamily: body, letterSpacing: '0.08em',
                   backgroundColor: loc === locale ? 'rgba(212,168,67,0.06)' : 'transparent',
                 }}>
                   {localeLabel[loc]}
-                </a>
+                </button>
               ))}
             </div>
 

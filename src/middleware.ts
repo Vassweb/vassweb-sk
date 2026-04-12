@@ -4,21 +4,9 @@ import type { Locale } from './lib/translations';
 const SUPPORTED_LOCALES: Locale[] = ['sk', 'en', 'cs', 'hu'];
 const DEFAULT_LOCALE: Locale = 'sk';
 
-const DOMAIN_LOCALE_MAP: Record<string, Locale> = {
-  'vassweb.sk': 'sk',
-  'www.vassweb.sk': 'sk',
-  'vassweb.com': 'en',
-  'www.vassweb.com': 'en',
-  'vassweb.cz': 'cs',
-  'www.vassweb.cz': 'cs',
-  'vassweb.hu': 'hu',
-  'www.vassweb.hu': 'hu',
-  'app.vassweb.sk': 'sk',
-};
-
 function getLocaleFromAcceptLanguage(request: NextRequest): Locale {
   const header = request.headers.get('accept-language');
-  if (!header) return 'en';
+  if (!header) return DEFAULT_LOCALE;
 
   const preferred = header
     .split(',')
@@ -33,24 +21,16 @@ function getLocaleFromAcceptLanguage(request: NextRequest): Locale {
     if (SUPPORTED_LOCALES.includes(short)) return short;
   }
 
-  return 'en';
+  return DEFAULT_LOCALE;
 }
 
-function getLocaleForHost(host: string, request: NextRequest): Locale {
-  // Remove port if present (e.g. localhost:3000)
-  const hostname = host.split(':')[0];
+function getLocaleForRequest(request: NextRequest): Locale {
+  // 1. Cookie (user manually switched language) — highest priority
+  const cookieLocale = request.cookies.get('locale')?.value as Locale | undefined;
+  if (cookieLocale && SUPPORTED_LOCALES.includes(cookieLocale)) return cookieLocale;
 
-  // Direct domain mapping
-  const mapped = DOMAIN_LOCALE_MAP[hostname];
-  if (mapped) return mapped;
-
-  // vassweb.eu — detect from Accept-Language header
-  if (hostname === 'vassweb.eu' || hostname === 'www.vassweb.eu') {
-    return getLocaleFromAcceptLanguage(request);
-  }
-
-  // Localhost / preview deployments — use cookie or default
-  return DEFAULT_LOCALE;
+  // 2. Accept-Language header (browser/country setting)
+  return getLocaleFromAcceptLanguage(request);
 }
 
 export function middleware(request: NextRequest) {
@@ -102,18 +82,17 @@ export function middleware(request: NextRequest) {
   if (pathLocale) {
     // Path already has locale — set cookie and continue
     const response = NextResponse.next();
-    response.cookies.set('locale', pathLocale, { path: '/', sameSite: 'lax' });
+    response.cookies.set('locale', pathLocale, { path: '/', sameSite: 'lax', maxAge: 365 * 24 * 60 * 60 });
     return response;
   }
 
-  // Determine locale from domain
-  const localeHost = request.headers.get('host') || '';
-  const locale = getLocaleForHost(localeHost, request);
+  // Determine locale from cookie or Accept-Language
+  const locale = getLocaleForRequest(request);
 
   // SK routes live at root — no rewrite needed for default locale
   if (locale === DEFAULT_LOCALE) {
     const response = NextResponse.next();
-    response.cookies.set('locale', locale, { path: '/', sameSite: 'lax' });
+    response.cookies.set('locale', locale, { path: '/', sameSite: 'lax', maxAge: 365 * 24 * 60 * 60 });
     return response;
   }
 
@@ -122,7 +101,7 @@ export function middleware(request: NextRequest) {
   url.pathname = `/${locale}${pathname}`;
 
   const response = NextResponse.rewrite(url);
-  response.cookies.set('locale', locale, { path: '/', sameSite: 'lax' });
+  response.cookies.set('locale', locale, { path: '/', sameSite: 'lax', maxAge: 365 * 24 * 60 * 60 });
   return response;
 }
 
