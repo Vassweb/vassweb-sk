@@ -127,19 +127,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 0.5,
     })),
-    // Interactive demo-app showcases
-    ...['/demo-app/booking', '/demo-app/crm', '/demo-app/admin', '/demo-app/ai-automation'].map(path => ({
-      url: `${baseUrl}${path}`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.5,
-    })),
-    // Business app
+    // Configurator — key conversion page
     {
-      url: `${baseUrl}/app`,
+      url: `${baseUrl}/vyber-si-web`,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.5,
+      changeFrequency: 'monthly',
+      priority: 0.8,
     },
+    {
+      url: `${baseUrl}/en/vyber-si-web`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/cs/vyber-si-web`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/hu/vyber-si-web`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    // Note: /app and /demo-app/* are noindex (blocked in robots.ts) and removed from sitemap
   ]
 }

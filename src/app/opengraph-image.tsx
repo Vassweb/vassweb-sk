@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
 
-export const alt = 'Vass & Co. — Premium Web Solutions'
+export const alt = 'Vassweb — Menej práce. Viac výsledkov.'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -71,7 +71,7 @@ export default async function Image() {
             display: 'flex',
           }}
         >
-          Vass & Co.
+          Vassweb
         </div>
 
         {/* Decorative separator */}
@@ -96,7 +96,7 @@ export default async function Image() {
             display: 'flex',
           }}
         >
-          Premium Web Solutions
+          Menej práce · Viac výsledkov
         </div>
 
         {/* Bottom decorative line */}

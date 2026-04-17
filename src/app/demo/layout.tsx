@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Demo · Ukážka | Vassweb',
+  title: 'Demo · Ukážka',
   description: 'Živá ukážka webu vytvoreného Vassweb. Všetok obsah, mená, adresy a údaje sú iba demonštračné — nejde o reálne firmy ani osoby.',
   robots: { index: false, follow: false },
 };

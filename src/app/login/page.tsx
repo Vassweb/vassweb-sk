@@ -164,7 +164,7 @@ export default function LoginPage() {
         </div>
 
         <p style={{ textAlign: 'center', marginTop: 24, fontSize: 11, color: 'rgba(255,255,255,0.25)' }}>
-          © 2026 Vass & Co. s.r.o.
+          © 2026 Vassweb · VVD s.r.o.
         </p>
       </div>
     </div>
