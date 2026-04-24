@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Obchodní podmínky',
-  description: 'Obchodní podmínky společnosti VVD s.r.o. (Vassweb) pro poskytování digitálních služeb.',
+  description: 'Obchodní podmínky společnosti Vassweb s. r. o. (Vassweb) pro poskytování digitálních služeb.',
 };
 
 export default function ObchodniPodminky() {
@@ -50,7 +50,7 @@ export default function ObchodniPodminky() {
           <h2 style={sectionTitle}>1. Základní ustanovení a identifikace poskytovatele</h2>
           <p style={paragraph}>
             Tyto obchodní podmínky upravují vztahy mezi společností{' '}
-            <strong style={{ color: '#e8e0d0' }}>VVD s.r.o.</strong>, podnikající pod značkou Vassweb
+            <strong style={{ color: '#e8e0d0' }}>Vassweb s. r. o.</strong>, podnikající pod značkou Vassweb
             (dále jen &quot;poskytovatel&quot;) a objednatelem služeb (dále jen &quot;klient&quot;) při poskytování
             digitálních služeb včetně tvorby webových stránek, automatizací a AI řešení.
           </p>
@@ -63,15 +63,15 @@ export default function ObchodniPodminky() {
               marginBottom: '16px',
             }}
           >
-            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Obchodní jméno:</strong> VVD s.r.o.</p>
-            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Sídlo:</strong> Blatná na Ostrove 281, 930 32 Blatná na Ostrove, Slovenská republika</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Obchodní jméno:</strong> Vassweb s. r. o.</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Sídlo:</strong> Školská 981/36, 931 01 Šamorín, Slovenská republika</p>
             <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>IČO:</strong> 56 921 021</p>
             <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>DIČ:</strong> 2122501524</p>
             <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>IČ DPH:</strong> SK2122501524</p>
             <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Zápis:</strong> Obchodní rejstřík Okresního soudu Trnava, oddíl Sro, vložka č. 59422/T</p>
             <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Jednatel:</strong> Richard Vass</p>
             <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>E-mail:</strong>{' '}
-              <a href="mailto:info@vassweb.sk" style={linkStyle}>info@vassweb.sk</a>
+              <a href="mailto:info@vassweb.com" style={linkStyle}>info@vassweb.com</a>
             </p>
             <p style={{ ...paragraph, marginBottom: 0 }}><strong style={{ color: '#d4a843' }}>Telefon:</strong>{' '}
               <a href="tel:+421918668728" style={linkStyle}>+421 918 668 728</a>
@@ -164,8 +164,8 @@ export default function ObchodniPodminky() {
           </p>
           <p style={paragraph}>
             Spotřebitel může uplatnit právo na odstoupení od smlouvy písemně na adrese sídla poskytovatele
-            (Blatná na Ostrove 281, 930 32) nebo e-mailem na{' '}
-            <a href="mailto:info@vassweb.sk" style={linkStyle}>info@vassweb.sk</a>. Spotřebitel může použít
+            (Školská 981/36, 931 01 Šamorín) nebo e-mailem na{' '}
+            <a href="mailto:info@vassweb.com" style={linkStyle}>info@vassweb.com</a>. Spotřebitel může použít
             i vzorový formulář na odstoupení od smlouvy uvedený níže.
           </p>
 
@@ -224,9 +224,9 @@ export default function ObchodniPodminky() {
               (vyplňte a zašlete tento formulář pouze v případě, že si přejete odstoupit od smlouvy)
             </p>
             <p style={{ ...paragraph, marginBottom: '8px' }}><strong style={{ color: '#d4a843' }}>Komu:</strong></p>
-            <p style={{ ...paragraph, marginBottom: '4px' }}>VVD s.r.o.</p>
-            <p style={{ ...paragraph, marginBottom: '4px' }}>Blatná na Ostrove 281, 930 32 Blatná na Ostrove, Slovensko</p>
-            <p style={{ ...paragraph, marginBottom: '4px' }}>E-mail: info@vassweb.sk</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}>Vassweb s. r. o.</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}>Školská 981/36, 931 01 Šamorín, Slovensko</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}>E-mail: info@vassweb.com</p>
             <p style={{ ...paragraph, marginBottom: '16px' }}>IČO: 56 921 021</p>
 
             <p style={{ ...paragraph, marginBottom: '12px' }}>
@@ -247,7 +247,7 @@ export default function ObchodniPodminky() {
             Spotřebitel je oprávněn uplatnit reklamaci na poskytnutou službu ve lhůtě{' '}
             <strong style={{ color: '#e8e0d0' }}>24 měsíců</strong> od jejího převzetí. Reklamaci je možné
             uplatnit písemně na adrese sídla poskytovatele nebo e-mailem na{' '}
-            <a href="mailto:info@vassweb.sk" style={linkStyle}>info@vassweb.sk</a>.
+            <a href="mailto:info@vassweb.com" style={linkStyle}>info@vassweb.com</a>.
           </p>
           <p style={paragraph}>
             Poskytovatel je povinen vydat spotřebiteli potvrzení o uplatnění reklamace a o způsobu jejího

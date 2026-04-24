@@ -20,7 +20,7 @@ export default function PrivacyPolicy() {
           <h2 style={sectionTitle}>1. Who We Are — Data Controller Identification</h2>
           <p style={paragraph}>
             The data controller within the meaning of Art. 4(7) GDPR is{' '}
-            <strong style={{ color: '#e8e0d0' }}>VVD s.r.o.</strong>, operating under the Vassweb brand
+            <strong style={{ color: '#e8e0d0' }}>Vassweb s. r. o.</strong>, operating under the Vassweb brand
             (hereinafter &quot;we&quot; or &quot;operator&quot;).
           </p>
           <div
@@ -32,14 +32,14 @@ export default function PrivacyPolicy() {
               marginBottom: '16px',
             }}
           >
-            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Company name:</strong> VVD s.r.o.</p>
-            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Registered office:</strong> Blatná na Ostrove 281, 930 32, Slovakia</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Company name:</strong> Vassweb s. r. o.</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Registered office:</strong> Školská 981/36, 931 01 Šamorín, Slovakia</p>
             <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Reg. No.:</strong> 56 921 021</p>
             <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Tax ID:</strong> 2122501524 · <strong style={{ color: '#d4a843' }}>VAT ID:</strong> SK2122501524</p>
             <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Registration:</strong> Commercial Register of the District Court Trnava, Section: Sro, File No. 59422/T</p>
             <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Managing Director:</strong> Richard Vass</p>
             <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Email:</strong>{' '}
-              <a href="mailto:info@vassweb.sk" style={linkStyle}>info@vassweb.sk</a>
+              <a href="mailto:info@vassweb.com" style={linkStyle}>info@vassweb.com</a>
             </p>
             <p style={{ ...paragraph, marginBottom: 0 }}><strong style={{ color: '#d4a843' }}>Phone:</strong>{' '}
               <a href="tel:+421918668728" style={linkStyle}>+421 918 668 728</a>
@@ -129,7 +129,7 @@ export default function PrivacyPolicy() {
           </div>
           <p style={paragraph}>
             To exercise any of your rights, contact us at{' '}
-            <a href="mailto:info@vassweb.sk" style={linkStyle}>info@vassweb.sk</a>.
+            <a href="mailto:info@vassweb.com" style={linkStyle}>info@vassweb.com</a>.
           </p>
         </section>
 

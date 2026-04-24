@@ -1323,8 +1323,8 @@ export default function Home({ locale = 'sk' }: { locale?: Locale }) {
                 <a href="tel:+421918668728" className="animated-link" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: 'rgba(212,168,67,0.75)', fontSize: 13, textDecoration: 'none', fontFamily: body, transition: 'color 0.3s' }}>
                   <Phone size={14} /> +421 918 668 728
                 </a>
-                <a href="mailto:info@vassweb.sk" className="animated-link" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: 'rgba(212,168,67,0.75)', fontSize: 13, textDecoration: 'none', fontFamily: body, transition: 'color 0.3s' }}>
-                  <Mail size={14} /> info@vassweb.sk
+                <a href="mailto:info@vassweb.com" className="animated-link" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: 'rgba(212,168,67,0.75)', fontSize: 13, textDecoration: 'none', fontFamily: body, transition: 'color 0.3s' }}>
+                  <Mail size={14} /> info@vassweb.com
                 </a>
               </div>
             </div>
@@ -1364,8 +1364,8 @@ export default function Home({ locale = 'sk' }: { locale?: Locale }) {
               <a href="tel:+421918668728" className="footer-link" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, color: 'rgba(255,255,255,0.5)', fontSize: 13, textDecoration: 'none', marginBottom: 10, fontFamily: body, transition: 'color 0.3s' }}>
                 <Phone size={13} color="rgba(212,168,67,0.6)" /> +421 918 668 728
               </a>
-              <a href="mailto:info@vassweb.sk" className="footer-link" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, color: 'rgba(255,255,255,0.5)', fontSize: 13, textDecoration: 'none', marginBottom: 10, fontFamily: body, transition: 'color 0.3s' }}>
-                <Mail size={13} color="rgba(212,168,67,0.6)" /> info@vassweb.sk
+              <a href="mailto:info@vassweb.com" className="footer-link" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, color: 'rgba(255,255,255,0.5)', fontSize: 13, textDecoration: 'none', marginBottom: 10, fontFamily: body, transition: 'color 0.3s' }}>
+                <Mail size={13} color="rgba(212,168,67,0.6)" /> info@vassweb.com
               </a>
             </div>
             <div style={{ textAlign: 'center' }}>

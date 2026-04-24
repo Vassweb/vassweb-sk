@@ -24,7 +24,7 @@ export async function POST(request: Request) {
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
         max_tokens: 1500,
-        system: `Si cenový analytik pre Vassweb (VVD s.r.o.). Generuješ cenové ponuky pre webové projekty.
+        system: `Si cenový analytik pre Vassweb s. r. o.. Generuješ cenové ponuky pre webové projekty.
 Tvoja cenová stratégia:
 - Jednoduchý web (landing page): 500-800€
 - Firemný web (5-10 podstránok): 1000-2000€

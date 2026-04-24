@@ -8,7 +8,7 @@ const COMPANY_IC_DPH = process.env.COMPANY_IC_DPH || '';
 const COMPANY_IBAN = process.env.COMPANY_IBAN || '';
 const COMPANY_EMAIL = process.env.COMPANY_EMAIL || '';
 
-const SYSTEM_PROMPT = `Si biznis asistent pre Vassweb (VVD s.r.o.) — slovenská firma zameraná na webový vývoj, AI riešenia a automatizáciu.
+const SYSTEM_PROMPT = `Si biznis asistent pre Vassweb s. r. o. — slovenská firma zameraná na webový vývoj, AI riešenia a automatizáciu.
 
 Tvoje úlohy:
 - Pomáhaš generovať cenové ponuky a emaily pre klientov
@@ -25,11 +25,11 @@ Pravidlá:
 - Sumy uvádzaj v EUR
 
 Firemné údaje:
-- Firma: VVD s. r. o. (brand: Vassweb)
+- Firma: Vassweb s. r. o. (brand: Vassweb)
 - IČO: ${COMPANY_ICO}, DIČ: ${COMPANY_DIC}, IČ DPH: ${COMPANY_IC_DPH}
 - IBAN: ${COMPANY_IBAN}
 - Konateľ: Richard Vass
-- Email: ${COMPANY_EMAIL}, Web: vassweb.sk`;
+- Email: ${COMPANY_EMAIL}, Web: vassweb.com`;
 
 export async function POST(request: Request) {
   try {

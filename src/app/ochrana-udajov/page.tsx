@@ -47,7 +47,7 @@ export default function OchranaUdajov() {
           <h2 style={sectionTitle}>1. Kto sme — identifikácia prevádzkovateľa</h2>
           <p style={paragraph}>
             Prevádzkovateľom osobných údajov v zmysle čl. 4 ods. 7 GDPR je spoločnosť{' '}
-            <strong style={{ color: '#e8e0d0' }}>VVD s.r.o.</strong>, podnikajúca pod značkou Vassweb
+            <strong style={{ color: '#e8e0d0' }}>Vassweb s. r. o.</strong>, podnikajúca pod značkou Vassweb
             (ďalej len &quot;my&quot; alebo &quot;prevádzkovateľ&quot;).
           </p>
           <div
@@ -59,14 +59,14 @@ export default function OchranaUdajov() {
               marginBottom: '16px',
             }}
           >
-            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Obchodné meno:</strong> VVD s.r.o.</p>
-            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Sídlo:</strong> Blatná na Ostrove 281, 930 32 Blatná na Ostrove</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Obchodné meno:</strong> Vassweb s. r. o.</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Sídlo:</strong> Školská 981/36, 931 01 Šamorín</p>
             <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>IČO:</strong> 56 921 021</p>
             <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>DIČ:</strong> 2122501524 · <strong style={{ color: '#d4a843' }}>IČ DPH:</strong> SK2122501524</p>
             <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Zápis:</strong> OR OS Trnava, oddiel Sro, vložka č. 59422/T</p>
             <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Konateľ:</strong> Richard Vass</p>
             <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>E-mail:</strong>{' '}
-              <a href="mailto:info@vassweb.sk" style={linkStyle}>info@vassweb.sk</a>
+              <a href="mailto:info@vassweb.com" style={linkStyle}>info@vassweb.com</a>
             </p>
             <p style={{ ...paragraph, marginBottom: 0 }}><strong style={{ color: '#d4a843' }}>Telefón:</strong>{' '}
               <a href="tel:+421918668728" style={linkStyle}>+421 918 668 728</a>
@@ -181,7 +181,7 @@ export default function OchranaUdajov() {
           </div>
           <p style={paragraph}>
             Pre uplatnenie akýchkoľvek práv nás kontaktujte na{' '}
-            <a href="mailto:info@vassweb.sk" style={linkStyle}>info@vassweb.sk</a>.
+            <a href="mailto:info@vassweb.com" style={linkStyle}>info@vassweb.com</a>.
           </p>
         </section>
 

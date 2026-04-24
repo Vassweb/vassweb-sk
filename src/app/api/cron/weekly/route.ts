@@ -22,7 +22,7 @@ async function sendEmail(to: string, subject: string, html: string) {
   await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: { 'Authorization': `Bearer ${RESEND_API_KEY}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ from: 'Vassweb <info@vassweb.sk>', to: [to], subject, html, reply_to: 'richard.vass@vassco.sk' }),
+    body: JSON.stringify({ from: 'Vassweb <info@vassweb.com>', to: [to], subject, html, reply_to: 'vass@vassweb.com' }),
   });
 }
 
@@ -124,11 +124,11 @@ export async function GET(request: Request) {
       ` : ''}
 
       <div style="margin-top:40px;padding-top:20px;border-top:1px solid rgba(212,168,67,0.15);text-align:center;">
-        <a href="https://app.vassweb.sk" style="color:#d4a843;text-decoration:none;font-size:13px;">Otvoriť appku →</a>
+        <a href="https://app.vassweb.com" style="color:#d4a843;text-decoration:none;font-size:13px;">Otvoriť appku →</a>
       </div>
     </div>`;
 
-    await sendEmail('richard.vass@vassco.sk', `📊 Týždenný súhrn — ${weekLabel}`, html);
+    await sendEmail('vass@vassweb.com', `📊 Týždenný súhrn — ${weekLabel}`, html);
 
     return NextResponse.json({ success: true, date: today, message: 'Weekly digest sent' });
   } catch (error) {

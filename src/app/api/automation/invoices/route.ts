@@ -26,11 +26,11 @@ async function sendEmail(to: string, subject: string, html: string) {
     method: 'POST',
     headers: { 'Authorization': `Bearer ${RESEND_API_KEY}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      from: 'Vassweb <info@vassweb.sk>',
+      from: 'Vassweb <info@vassweb.com>',
       to: [to],
       subject,
       html,
-      reply_to: 'richard.vass@vassco.sk',
+      reply_to: 'vass@vassweb.com',
     }),
   });
 }
@@ -47,7 +47,7 @@ function emailTemplate(title: string, body: string): string {
     <h2 style="color:#d4a843;font-size:20px;margin-bottom:16px;">${title}</h2>
     ${body}
     <div style="margin-top:40px;padding-top:20px;border-top:1px solid rgba(212,168,67,0.15);text-align:center;">
-      <p style="font-size:12px;color:rgba(232,224,208,0.3);">VVD s.r.o. (Vassweb) · IČO: 56921021 · vassweb.sk</p>
+      <p style="font-size:12px;color:rgba(232,224,208,0.3);">Vassweb s. r. o. · IČO: 56921021 · vassweb.com</p>
     </div>
   </div>`;
 }

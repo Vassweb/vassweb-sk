@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Terms and Conditions',
-  description: 'Terms and Conditions of VVD s.r.o. (Vassweb) for provision of digital services.',
+  description: 'Terms and Conditions of Vassweb s. r. o. (Vassweb) for provision of digital services.',
 };
 
 export default function TermsAndConditions() {
@@ -50,7 +50,7 @@ export default function TermsAndConditions() {
           <h2 style={sectionTitle}>1. General Provisions and Identification of the Provider</h2>
           <p style={paragraph}>
             These Terms and Conditions govern the relationship between the company{' '}
-            <strong style={{ color: '#e8e0d0' }}>VVD s.r.o.</strong>, operating under the Vassweb brand
+            <strong style={{ color: '#e8e0d0' }}>Vassweb s. r. o.</strong>, operating under the Vassweb brand
             (hereinafter the &quot;Provider&quot;), and the customer of services (hereinafter the &quot;Client&quot;) in
             the provision of digital services including website development, automation, and AI solutions.
           </p>
@@ -63,15 +63,15 @@ export default function TermsAndConditions() {
               marginBottom: '16px',
             }}
           >
-            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Company name:</strong> VVD s.r.o.</p>
-            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Registered office:</strong> Blatná na Ostrove 281, 930 32 Blatná na Ostrove, Slovak Republic</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Company name:</strong> Vassweb s. r. o.</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Registered office:</strong> Školská 981/36, 931 01 Šamorín, Slovak Republic</p>
             <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Reg. No.:</strong> 56 921 021</p>
             <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Tax ID:</strong> 2122501524</p>
             <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>VAT ID:</strong> SK2122501524</p>
             <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Registration:</strong> Commercial Register of the District Court Trnava, Section: Sro, File No. 59422/T</p>
             <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Managing Director:</strong> Richard Vass</p>
             <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>E-mail:</strong>{' '}
-              <a href="mailto:info@vassweb.sk" style={linkStyle}>info@vassweb.sk</a>
+              <a href="mailto:info@vassweb.com" style={linkStyle}>info@vassweb.com</a>
             </p>
             <p style={{ ...paragraph, marginBottom: 0 }}><strong style={{ color: '#d4a843' }}>Phone:</strong>{' '}
               <a href="tel:+421918668728" style={linkStyle}>+421 918 668 728</a>
@@ -164,8 +164,8 @@ export default function TermsAndConditions() {
           </p>
           <p style={paragraph}>
             The consumer may exercise the right to withdraw from the contract in writing at the Provider&apos;s
-            registered office (Blatná na Ostrove 281, 930 32) or by e-mail at{' '}
-            <a href="mailto:info@vassweb.sk" style={linkStyle}>info@vassweb.sk</a>. The consumer may also use the
+            registered office (Školská 981/36, 931 01 Šamorín) or by e-mail at{' '}
+            <a href="mailto:info@vassweb.com" style={linkStyle}>info@vassweb.com</a>. The consumer may also use the
             sample withdrawal form provided below.
           </p>
 
@@ -227,9 +227,9 @@ export default function TermsAndConditions() {
               (complete and return this form only if you wish to withdraw from the contract)
             </p>
             <p style={{ ...paragraph, marginBottom: '8px' }}><strong style={{ color: '#d4a843' }}>To:</strong></p>
-            <p style={{ ...paragraph, marginBottom: '4px' }}>VVD s.r.o.</p>
-            <p style={{ ...paragraph, marginBottom: '4px' }}>Blatná na Ostrove 281, 930 32 Blatná na Ostrove, Slovakia</p>
-            <p style={{ ...paragraph, marginBottom: '4px' }}>E-mail: info@vassweb.sk</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}>Vassweb s. r. o.</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}>Školská 981/36, 931 01 Šamorín, Slovakia</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}>E-mail: info@vassweb.com</p>
             <p style={{ ...paragraph, marginBottom: '16px' }}>Reg. No.: 56 921 021</p>
 
             <p style={{ ...paragraph, marginBottom: '12px' }}>
@@ -250,7 +250,7 @@ export default function TermsAndConditions() {
             The consumer is entitled to file a complaint regarding a service provided within a period of{' '}
             <strong style={{ color: '#e8e0d0' }}>24 months</strong> from its acceptance. Complaints may be filed
             in writing at the Provider&apos;s registered office or by e-mail at{' '}
-            <a href="mailto:info@vassweb.sk" style={linkStyle}>info@vassweb.sk</a>.
+            <a href="mailto:info@vassweb.com" style={linkStyle}>info@vassweb.com</a>.
           </p>
           <p style={paragraph}>
             The Provider is obliged to issue the consumer with a confirmation of the complaint and to decide

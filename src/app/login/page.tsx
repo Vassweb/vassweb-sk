@@ -63,7 +63,7 @@ export default function LoginPage() {
     setLoading(true);
     try {
       const result = isSignUp
-        ? await auth.signUp(email, password, 'https://app.vassweb.sk/login')
+        ? await auth.signUp(email, password, 'https://app.vassweb.com/login')
         : await auth.signIn(email, password);
 
       if (result.error) {
@@ -164,7 +164,7 @@ export default function LoginPage() {
         </div>
 
         <p style={{ textAlign: 'center', marginTop: 24, fontSize: 11, color: 'rgba(255,255,255,0.25)' }}>
-          © 2026 Vassweb · VVD s.r.o.
+          © 2026 Vassweb s. r. o.
         </p>
       </div>
     </div>

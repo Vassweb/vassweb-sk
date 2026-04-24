@@ -307,7 +307,7 @@ function LoginScreen({ onLogin }: { onLogin: (email: string) => void }) {
     setError('');
 
     if (!isSupabaseConfigured()) {
-      onLogin(email || 'demo@vassweb.sk');
+      onLogin(email || 'demo@vassweb.com');
       return;
     }
 
@@ -332,7 +332,7 @@ function LoginScreen({ onLogin }: { onLogin: (email: string) => void }) {
   };
 
   if (useDemo) {
-    onLogin('demo@vassweb.sk');
+    onLogin('demo@vassweb.com');
     return null;
   }
 
@@ -433,7 +433,7 @@ export default function VasswebApp() {
     const token = localStorage.getItem('vw-access-token');
     const savedUser = localStorage.getItem('vw-user-email');
     if (hasCookie || token || savedUser) {
-      setUser(savedUser || 'user@vassweb.sk');
+      setUser(savedUser || 'user@vassweb.com');
     } else {
       // No auth — redirect to login
       window.location.href = '/login';
@@ -1623,7 +1623,7 @@ async function emailInvoice(invoice: Invoice, client: Client | undefined) {
       body: JSON.stringify({
         to: client.email,
         subject: `Faktúra ${invoice.number} — Vassweb`,
-        replyTo: 'richard.vass@vassco.sk',
+        replyTo: 'vass@vassweb.com',
         html: `<div style="font-family:system-ui;max-width:600px;margin:0 auto;background:#0a0908;color:#e8e0d0;padding:40px 32px;border-radius:8px;">
           <div style="text-align:center;margin-bottom:24px;"><span style="font-size:22px;font-weight:700;color:#d4a843;">V&Co.</span></div>
           <h2 style="color:#fff;font-size:18px;margin-bottom:16px;">Faktúra ${invoice.number}</h2>
@@ -1639,7 +1639,7 @@ async function emailInvoice(invoice: Invoice, client: Client | undefined) {
             <p style="color:rgba(232,224,208,0.5);font-size:12px;">Splatnosť: <strong style="color:#e8e0d0;">${invoice.due || '—'}</strong></p>
           </div>
           <p style="color:rgba(232,224,208,0.5);font-size:12px;">Ďakujeme za spoluprácu.<br>Richard Vass, Vassweb</p>
-          <div style="margin-top:24px;padding-top:16px;border-top:1px solid rgba(212,168,67,0.1);text-align:center;font-size:11px;color:rgba(232,224,208,0.25);">VVD s. r. o. | IČO: 56921021 | vassweb.sk</div>
+          <div style="margin-top:24px;padding-top:16px;border-top:1px solid rgba(212,168,67,0.1);text-align:center;font-size:11px;color:rgba(232,224,208,0.25);">Vassweb s. r. o. | IČO: 56921021 | vassweb.com</div>
         </div>`,
       }),
     });
@@ -2942,7 +2942,7 @@ function EmailView({ clients, getClient }: { clients: Client[]; getClient: (id: 
   const templates: Record<string, { subject: string; body: string }> = {
     ponuka: {
       subject: 'Cenová ponuka — Vassweb',
-      body: `Dobrý deň [MENO],\n\npripravili sme pre Vás cenovú ponuku na [PROJEKT]. Nižšie nájdete detailný rozpis.\n\n[POLOŽKY]\n\nCelková cena: [SUMA] € bez DPH\n\nPonuka je platná 30 dní. V prípade otázok nás neváhajte kontaktovať.\n\nS pozdravom,\nRichard Vass\nVassweb | vassweb.sk\n+421 918 668 728`,
+      body: `Dobrý deň [MENO],\n\npripravili sme pre Vás cenovú ponuku na [PROJEKT]. Nižšie nájdete detailný rozpis.\n\n[POLOŽKY]\n\nCelková cena: [SUMA] € bez DPH\n\nPonuka je platná 30 dní. V prípade otázok nás neváhajte kontaktovať.\n\nS pozdravom,\nRichard Vass\nVassweb | vassweb.com\n+421 918 668 728`,
     },
     faktura: {
       subject: 'Faktúra [ČÍSLO] — Vassweb',
@@ -2958,11 +2958,11 @@ function EmailView({ clients, getClient }: { clients: Client[]; getClient: (id: 
     },
     welcome: {
       subject: 'Vitajte vo Vassweb — začíname spoluprácu!',
-      body: `Dobrý deň [MENO],\n\nveľmi nás teší, že ste sa rozhodli pre spoluprácu s Vassweb.\n\nV najbližších dňoch Vám zašleme podrobný plán projektu a harmonogram. Medzičasom nás neváhajte kontaktovať s akýmikoľvek otázkami.\n\nKontakt:\nRichard Vass\nrichard.vass@vassco.sk\n+421 918 668 728\n\nTešíme sa na spoluprácu!`,
+      body: `Dobrý deň [MENO],\n\nveľmi nás teší, že ste sa rozhodli pre spoluprácu s Vassweb.\n\nV najbližších dňoch Vám zašleme podrobný plán projektu a harmonogram. Medzičasom nás neváhajte kontaktovať s akýmikoľvek otázkami.\n\nKontakt:\nRichard Vass\nvass@vassweb.com\n+421 918 668 728\n\nTešíme sa na spoluprácu!`,
     },
     upomienka: {
       subject: 'Upomienka — nezaplatená faktúra [ČÍSLO]',
-      body: `Dobrý deň [MENO],\n\ndovoľujeme si Vás zdvorilo upozorniť, že faktúra č. [ČÍSLO] na sumu [SUMA] € je po splatnosti.\n\nPôvodná splatnosť: [DÁTUM]\nIBAN: SK11 0900 0000 0052 3252 7162\nVariabilný symbol: [VS]\n\nAk ste medzičasom platbu uskutočnili, prosím ignorujte túto správu. V opačnom prípade Vás prosíme o uhradenie čo najskôr.\n\nĎakujeme za porozumenie.\n\nS pozdravom,\nRichard Vass\nVassweb | vassweb.sk`,
+      body: `Dobrý deň [MENO],\n\ndovoľujeme si Vás zdvorilo upozorniť, že faktúra č. [ČÍSLO] na sumu [SUMA] € je po splatnosti.\n\nPôvodná splatnosť: [DÁTUM]\nIBAN: SK11 0900 0000 0052 3252 7162\nVariabilný symbol: [VS]\n\nAk ste medzičasom platbu uskutočnili, prosím ignorujte túto správu. V opačnom prípade Vás prosíme o uhradenie čo najskôr.\n\nĎakujeme za porozumenie.\n\nS pozdravom,\nRichard Vass\nVassweb | vassweb.com`,
     },
     status_update: {
       subject: 'Aktualizácia projektu [PROJEKT] — Vassweb',
@@ -3000,12 +3000,12 @@ function EmailView({ clients, getClient }: { clients: Client[]; getClient: (id: 
         </div>
         <div style="white-space:pre-wrap;line-height:1.7;font-size:14px;color:rgba(255,255,255,0.8);">${body}</div>
         <div style="border-top:1px solid rgba(212,168,67,0.15);padding-top:16px;margin-top:32px;font-size:12px;color:rgba(255,255,255,0.3);">
-          VVD s. r. o. (Vassweb) | IČO: 56921021 | vassweb.sk
+          Vassweb s. r. o. | IČO: 56921021 | vassweb.com
         </div>
       </div>`;
       const res = await fetch('/api/email/send', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ to, subject, html: htmlBody, replyTo: 'richard.vass@vassco.sk' }),
+        body: JSON.stringify({ to, subject, html: htmlBody, replyTo: 'vass@vassweb.com' }),
       });
       const data = await res.json();
       if (data.success) {
@@ -3640,7 +3640,7 @@ function VCNastaveniaView() {
         <h3 style={{ fontSize: 16, fontWeight: 600, color: T.gold, marginBottom: 16 }}>Firemné údaje</h3>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, fontSize: 13 }}>
           {([
-            ['Názov', 'VVD s. r. o. (Vass & Co.)'],
+            ['Názov', 'Vassweb s. r. o. (Vass & Co.)'],
             ['IČO', '56921021'],
             ['DIČ', '2122765432'],
             ['Adresa', 'Bratislava, Slovensko'],
@@ -4230,7 +4230,7 @@ function SettingsView({ clients, projects, invoices, setClients, setProjects, se
 }) {
   const [msg, setMsg] = useState('');
   const [company, setCompany] = useState({
-    name: 'VVD s. r. o. (Vassweb)', email: 'info@vassweb.sk', phone: '+421 918 668 728',
+    name: 'Vassweb s. r. o.', email: 'info@vassweb.com', phone: '+421 918 668 728',
     address: 'Bratislava, Slovenská republika', ico: '56921021', dic: '2122501524',
     ic_dph: 'SK2122501524', iban: 'SK11 0900 0000 0052 3252 7162',
     invoice_prefix: 'VW', invoice_next_number: invoices.length + 1,

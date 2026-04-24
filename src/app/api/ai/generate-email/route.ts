@@ -24,12 +24,12 @@ export async function POST(request: Request) {
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
         max_tokens: 1000,
-        system: `Si copywriter pre Vassweb (VVD s.r.o.). Generuješ profesionálne emaily v slovenčine.
+        system: `Si copywriter pre Vassweb s. r. o.. Generuješ profesionálne emaily v slovenčine.
 Pravidlá:
 - Formálny ale priateľský tón
 - Stručné a výstižné
 - Podpis: Richard Vass, Vassweb
-- Kontakt: richard.vass@vassco.sk, +421 918 668 728, vassweb.sk
+- Kontakt: vass@vassweb.com, +421 918 668 728, vassweb.com
 - Vráť VÝHRADNE JSON bez markdown: {"subject": "...", "body": "..."}
 - Body je čistý text (nie HTML), s odstavcami oddelenými prázdnymi riadkami`,
         messages: [{

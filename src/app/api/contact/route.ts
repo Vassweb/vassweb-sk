@@ -111,19 +111,19 @@ async function sendClientConfirmation(lead: {
           Medzičasom si môžete pozrieť ukážky našej práce:
         </p>
         <div style="margin:10px 0 24px">
-          <a href="https://vassweb.sk/#portfolio" style="display:inline-block;padding:12px 24px;background:linear-gradient(135deg,#ffeebb,#d4a843);color:#0a0908;border-radius:999px;font-size:13px;font-weight:700;text-decoration:none;letter-spacing:0.05em">Portfólio →</a>
+          <a href="https://vassweb.com/#portfolio" style="display:inline-block;padding:12px 24px;background:linear-gradient(135deg,#ffeebb,#d4a843);color:#0a0908;border-radius:999px;font-size:13px;font-weight:700;text-decoration:none;letter-spacing:0.05em">Portfólio →</a>
         </div>
         <div style="border-top:1px solid rgba(212,168,67,0.12);padding-top:20px;margin-top:20px">
           <p style="color:rgba(232,224,208,0.6);font-size:13px;margin:0 0 4px">S pozdravom,</p>
           <p style="color:#ffeebb;font-size:15px;font-weight:600;margin:0 0 4px">Richard Vass</p>
-          <p style="color:rgba(232,224,208,0.45);font-size:12px;margin:0">Vassweb — VVD s.r.o.</p>
+          <p style="color:rgba(232,224,208,0.45);font-size:12px;margin:0">Vassweb s. r. o.</p>
         </div>
       </div>
       <div style="background:rgba(0,0,0,0.25);padding:18px 32px;border-top:1px solid rgba(212,168,67,0.1);font-size:11px;color:rgba(232,224,208,0.35);text-align:center;line-height:1.6">
-        <div>VVD s.r.o. · Blatná na Ostrove 281, 930 32 · IČO: 56921021</div>
-        <div style="margin-top:4px"><a href="mailto:info@vassweb.sk" style="color:rgba(212,168,67,0.55);text-decoration:none">info@vassweb.sk</a> · <a href="tel:+421918668728" style="color:rgba(212,168,67,0.55);text-decoration:none">+421 918 668 728</a></div>
+        <div>Vassweb s. r. o. · Školská 981/36, 931 01 Šamorín · IČO: 56 921 021</div>
+        <div style="margin-top:4px"><a href="mailto:info@vassweb.com" style="color:rgba(212,168,67,0.55);text-decoration:none">info@vassweb.com</a> · <a href="tel:+421918668728" style="color:rgba(212,168,67,0.55);text-decoration:none">+421 918 668 728</a></div>
         <div style="margin-top:8px;font-size:10px;color:rgba(232,224,208,0.25)">
-          Tento email ste dostali, pretože ste nás kontaktovali cez formulár na vassweb.sk (${escapeHtml(lead.source || 'kontakt')}).
+          Tento email ste dostali, pretože ste nás kontaktovali cez formulár na vassweb.com (${escapeHtml(lead.source || 'kontakt')}).
         </div>
       </div>
     </div>`;
@@ -136,9 +136,9 @@ async function sendClientConfirmation(lead: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: `${fromName} <info@vassweb.sk>`,
+        from: `${fromName} <info@vassweb.com>`,
         to: [lead.email],
-        reply_to: 'info@vassweb.sk',
+        reply_to: 'info@vassweb.com',
         subject,
         html,
       }),
@@ -216,7 +216,7 @@ export async function POST(request: NextRequest) {
     if (!RESEND_API_KEY) {
       console.error('RESEND_API_KEY is not set');
       return NextResponse.json(
-        { error: 'Služba dočasne nedostupná. Kontaktujte nás na info@vassweb.sk.' },
+        { error: 'Služba dočasne nedostupná. Kontaktujte nás na info@vassweb.com.' },
         { status: 500 }
       );
     }
@@ -289,7 +289,7 @@ export async function POST(request: NextRequest) {
             ${bodyHtml ? `<div style="margin-top:4px">${bodyHtml}</div>` : ''}
           </div>
           <div style="padding:14px 28px;border-top:1px solid rgba(255,255,255,0.06);text-align:center;font-size:11px;color:rgba(255,255,255,0.2)">
-            Odoslané z vassweb.sk · <a href="mailto:${escapeHtml(email)}" style="color:rgba(212,168,67,0.4)">Odpovedať priamo</a>
+            Odoslané z vassweb.com · <a href="mailto:${escapeHtml(email)}" style="color:rgba(212,168,67,0.4)">Odpovedať priamo</a>
           </div>
         </div>`;
     }
@@ -325,8 +325,8 @@ export async function POST(request: NextRequest) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'Vassweb Formulár <formular@vassweb.sk>',
-        to: ['info@vassweb.sk'],
+        from: 'Vassweb Formulár <formular@vassweb.com>',
+        to: ['info@vassweb.com'],
         reply_to: email,
         subject: `${subjectPrefix}: ${displayName}`,
         html: buildEmailHtml(),
@@ -346,7 +346,7 @@ export async function POST(request: NextRequest) {
         },
         body: JSON.stringify({
           from: 'Vassweb <onboarding@resend.dev>',
-          to: ['richard.vass@vassco.sk'],
+          to: ['vass@vassweb.com'],
           reply_to: email,
           subject: `${subjectPrefix}: ${displayName}`,
           html: buildEmailHtml(),
@@ -365,7 +365,7 @@ export async function POST(request: NextRequest) {
       const fallbackError = await fallbackResponse.json().catch(() => ({}));
       console.error('Resend fallback error:', JSON.stringify(fallbackError));
       return NextResponse.json(
-        { error: 'Nepodarilo sa odoslať správu. Skúste to znova alebo nás kontaktujte na info@vassweb.sk.' },
+        { error: 'Nepodarilo sa odoslať správu. Skúste to znova alebo nás kontaktujte na info@vassweb.com.' },
         { status: 500 }
       );
     }

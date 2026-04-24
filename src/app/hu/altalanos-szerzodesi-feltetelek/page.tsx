@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Általános szerződési feltételek',
-  description: 'A VVD s.r.o. (Vassweb) általános szerződési feltételei digitális szolgáltatások nyújtásához.',
+  description: 'A Vassweb s. r. o. (Vassweb) általános szerződési feltételei digitális szolgáltatások nyújtásához.',
 };
 
 export default function ASZF() {
@@ -50,7 +50,7 @@ export default function ASZF() {
           <h2 style={sectionTitle}>1. Általános rendelkezések és a szolgáltató azonosítása</h2>
           <p style={paragraph}>
             Jelen általános szerződési feltételek (ÁSZF) a{' '}
-            <strong style={{ color: '#e8e0d0' }}>VVD s.r.o.</strong> társaság — amely a Vassweb márkanév
+            <strong style={{ color: '#e8e0d0' }}>Vassweb s. r. o.</strong> társaság — amely a Vassweb márkanév
             alatt működik (a továbbiakban: &quot;szolgáltató&quot;) — és a szolgáltatásokat megrendelő
             (a továbbiakban: &quot;ügyfél&quot;) közötti kapcsolatokat szabályozzák a digitális szolgáltatások
             nyújtása során, beleértve a weboldal-fejlesztést, automatizációt és AI megoldásokat.
@@ -64,15 +64,15 @@ export default function ASZF() {
               marginBottom: '16px',
             }}
           >
-            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Cégnév:</strong> VVD s.r.o.</p>
-            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Székhely:</strong> Blatná na Ostrove 281, 930 32 Blatná na Ostrove, Szlovák Köztársaság</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Cégnév:</strong> Vassweb s. r. o.</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Székhely:</strong> Školská 981/36, 931 01 Šamorín, Szlovák Köztársaság</p>
             <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Cégjegyzékszám:</strong> 56 921 021</p>
             <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Adószám:</strong> 2122501524</p>
             <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>ÁFA-szám:</strong> SK2122501524</p>
             <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Cégbíróság:</strong> Nagyszombati Járásbíróság, Sro szakasz, 59422/T</p>
             <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Ügyvezető:</strong> Richard Vass</p>
             <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>E-mail:</strong>{' '}
-              <a href="mailto:info@vassweb.sk" style={linkStyle}>info@vassweb.sk</a>
+              <a href="mailto:info@vassweb.com" style={linkStyle}>info@vassweb.com</a>
             </p>
             <p style={{ ...paragraph, marginBottom: 0 }}><strong style={{ color: '#d4a843' }}>Telefon:</strong>{' '}
               <a href="tel:+421918668728" style={linkStyle}>+421 918 668 728</a>
@@ -165,9 +165,9 @@ export default function ASZF() {
             annak megkötésétől számítva, indoklás és szankció nélkül.
           </p>
           <p style={paragraph}>
-            A fogyasztó az elállási jogát írásban gyakorolhatja a szolgáltató székhelyén (Blatná na Ostrove
+            A fogyasztó az elállási jogát írásban gyakorolhatja a szolgáltató székhelyén (Šamorín
             281, 930 32) vagy e-mailben az{' '}
-            <a href="mailto:info@vassweb.sk" style={linkStyle}>info@vassweb.sk</a> címen. A fogyasztó
+            <a href="mailto:info@vassweb.com" style={linkStyle}>info@vassweb.com</a> címen. A fogyasztó
             használhatja az alábbi mintaformanyomtatványt is.
           </p>
 
@@ -229,9 +229,9 @@ export default function ASZF() {
               (csak akkor töltse ki és küldje vissza ezt a nyomtatványt, ha el kíván állni a szerződéstől)
             </p>
             <p style={{ ...paragraph, marginBottom: '8px' }}><strong style={{ color: '#d4a843' }}>Címzett:</strong></p>
-            <p style={{ ...paragraph, marginBottom: '4px' }}>VVD s.r.o.</p>
-            <p style={{ ...paragraph, marginBottom: '4px' }}>Blatná na Ostrove 281, 930 32 Blatná na Ostrove, Szlovákia</p>
-            <p style={{ ...paragraph, marginBottom: '4px' }}>E-mail: info@vassweb.sk</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}>Vassweb s. r. o.</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}>Školská 981/36, 931 01 Šamorín, Szlovákia</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}>E-mail: info@vassweb.com</p>
             <p style={{ ...paragraph, marginBottom: '16px' }}>Cégjegyzékszám: 56 921 021</p>
 
             <p style={{ ...paragraph, marginBottom: '12px' }}>
@@ -252,7 +252,7 @@ export default function ASZF() {
             A fogyasztó jogosult panaszt tenni a nyújtott szolgáltatásra{' '}
             <strong style={{ color: '#e8e0d0' }}>24 hónapon</strong> belül annak átvételétől. A panaszt
             írásban lehet benyújtani a szolgáltató székhelyén vagy e-mailben az{' '}
-            <a href="mailto:info@vassweb.sk" style={linkStyle}>info@vassweb.sk</a> címen.
+            <a href="mailto:info@vassweb.com" style={linkStyle}>info@vassweb.com</a> címen.
           </p>
           <p style={paragraph}>
             A szolgáltató köteles a fogyasztónak igazolást kiadni a panasz benyújtásáról és annak

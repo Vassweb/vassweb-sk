@@ -22,7 +22,7 @@ const t = {
       gdpr: 'Súhlasím so spracovaním osobných údajov v súlade s', gdprAnd: 'a', gdprEnd: 'spoločnosti Vassweb.', gdprReq: '(povinné)',
       back: 'Späť', submit: 'Odoslať — Chcem web!', submitting: 'Odosielam...',
     },
-    thanks: { heading: 'Ďakujeme!', sub: 'Váš výber sme prijali. Ozveme sa vám do 24 hodín s návrhom a cenovou ponukou.', back: 'Späť na vassweb.sk', pkg: 'Balík', template: 'Šablóna' },
+    thanks: { heading: 'Ďakujeme!', sub: 'Váš výber sme prijali. Ozveme sa vám do 24 hodín s návrhom a cenovou ponukou.', back: 'Späť na vassweb.com', pkg: 'Balík', template: 'Šablóna' },
     smartTip: (name: string, savings: number) => `Balík ${name} obsahuje vybrané doplnky a ušetríte ${savings}€`,
     estPrice: 'odhadovaná cena', maintenance: '/mes', maintenance2: '/mes údržba',
     privacy: 'Ochranou osobných údajov', terms: 'Obchodnými podmienkami',
@@ -48,7 +48,7 @@ const t = {
       gdpr: 'I agree to the processing of personal data in accordance with the', gdprAnd: 'and', gdprEnd: 'of Vassweb.', gdprReq: '(required)',
       back: 'Back', submit: 'Submit — I want a website!', submitting: 'Submitting...',
     },
-    thanks: { heading: 'Thank you!', sub: 'We received your inquiry. We\'ll get back to you within 24 hours with a proposal and quote.', back: 'Back to vassweb.sk', pkg: 'Package', template: 'Template' },
+    thanks: { heading: 'Thank you!', sub: 'We received your inquiry. We\'ll get back to you within 24 hours with a proposal and quote.', back: 'Back to vassweb.com', pkg: 'Package', template: 'Template' },
     smartTip: (name: string, savings: number) => `Package ${name} includes selected add-ons and saves you ${savings}€`,
     estPrice: 'estimated price', maintenance: '/mo', maintenance2: '/mo maintenance',
     privacy: 'Privacy Policy', terms: 'Terms and Conditions',
@@ -74,7 +74,7 @@ const t = {
       gdpr: 'Souhlasím se zpracováním osobních údajů v souladu s', gdprAnd: 'a', gdprEnd: 'společnosti Vassweb.', gdprReq: '(povinné)',
       back: 'Zpět', submit: 'Odeslat — Chci web!', submitting: 'Odesílám...',
     },
-    thanks: { heading: 'Děkujeme!', sub: 'Vaši poptávku jsme přijali. Ozveme se do 24 hodin s návrhem a nabídkou.', back: 'Zpět na vassweb.sk', pkg: 'Balíček', template: 'Šablona' },
+    thanks: { heading: 'Děkujeme!', sub: 'Vaši poptávku jsme přijali. Ozveme se do 24 hodin s návrhem a nabídkou.', back: 'Zpět na vassweb.com', pkg: 'Balíček', template: 'Šablona' },
     smartTip: (name: string, savings: number) => `Balíček ${name} obsahuje vybrané doplňky a ušetříte ${savings}€`,
     estPrice: 'odhadovaná cena', maintenance: '/měs', maintenance2: '/měs údržba',
     privacy: 'Ochranou osobních údajů', terms: 'Obchodními podmínkami',
@@ -100,7 +100,7 @@ const t = {
       gdpr: 'Hozzájárulok a személyes adatok kezeléséhez az', gdprAnd: 'és a', gdprEnd: 'Vassweb szerint.', gdprReq: '(kötelező)',
       back: 'Vissza', submit: 'Küldés — Weboldalt kérek!', submitting: 'Küldés...',
     },
-    thanks: { heading: 'Köszönjük!', sub: 'Megkaptuk a megkeresését. 24 órán belül visszajelzünk ajánlattal.', back: 'Vissza a vassweb.sk-ra', pkg: 'Csomag', template: 'Sablon' },
+    thanks: { heading: 'Köszönjük!', sub: 'Megkaptuk a megkeresését. 24 órán belül visszajelzünk ajánlattal.', back: 'Vissza a vassweb.com-ra', pkg: 'Csomag', template: 'Sablon' },
     smartTip: (name: string, savings: number) => `A ${name} csomag tartalmazza a kiválasztott kiegészítőket és ${savings}€-t takarít meg`,
     estPrice: 'becsült ár', maintenance: '/hó', maintenance2: '/hó karbantartás',
     privacy: 'Adatvédelmi irányelvek', terms: 'Általános szerződési feltételek',
@@ -584,7 +584,7 @@ export default function VyberSiWeb({ locale = 'sk' }: { locale?: Locale }) {
             </div>
             {form.meno && <div style={{ marginTop: 12, fontSize: 13, color: 'rgba(255,255,255,0.4)' }}>Kontakt: {form.meno} / {form.email}</div>}
           </div>
-          <a href="https://vassweb.sk" style={{ color: '#d4a843', textDecoration: 'none', fontSize: 14, fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+          <a href="https://vassweb.com" style={{ color: '#d4a843', textDecoration: 'none', fontSize: 14, fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 6 }}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" fill="#d4a843" /></svg>
             {tr.thanks.back}
           </a>
@@ -635,7 +635,7 @@ export default function VyberSiWeb({ locale = 'sk' }: { locale?: Locale }) {
       <header style={{ textAlign: 'center', padding: '48px 24px 36px', position: 'relative' }}>
         <div style={{ position: 'absolute', inset: 0, background: `radial-gradient(ellipse at 50% 0%, ${selectedColor.primary}12 0%, transparent 55%)`, transition: 'background 0.5s ease' }} />
         <div style={{ position: 'relative', zIndex: 1 }}>
-          <a href="https://vassweb.sk" style={{ color: '#d4a843', textDecoration: 'none', fontSize: 20, fontWeight: 700, letterSpacing: '0.02em' }}>
+          <a href="https://vassweb.com" style={{ color: '#d4a843', textDecoration: 'none', fontSize: 20, fontWeight: 700, letterSpacing: '0.02em' }}>
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" style={{ verticalAlign: 'middle', marginRight: 8 }}>
               <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#d4a843" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
             </svg>
@@ -1562,8 +1562,8 @@ export default function VyberSiWeb({ locale = 'sk' }: { locale?: Locale }) {
 
       {/* ═══ FOOTER ═══ */}
       <footer style={{ textAlign: 'center', padding: '24px', borderTop: '1px solid rgba(255,255,255,0.03)', fontSize: 12, color: 'rgba(255,255,255,0.15)' }}>
-        &copy; 2026 Vassweb — VVD s.r.o. |{' '}
-        <a href="https://vassweb.sk" style={{ color: '#d4a843', textDecoration: 'none', fontWeight: 600 }}>vassweb.sk</a>
+        &copy; 2026 Vassweb s. r. o. |{' '}
+        <a href="https://vassweb.com" style={{ color: '#d4a843', textDecoration: 'none', fontWeight: 600 }}>vassweb.com</a>
       </footer>
     </div>
     </>

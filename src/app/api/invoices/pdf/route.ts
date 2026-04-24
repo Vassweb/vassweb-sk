@@ -10,8 +10,8 @@ export async function POST(request: Request) {
     }
 
     const company = settings || {
-      company_name: 'VVD s. r. o.',
-      company_email: 'info@vassweb.sk',
+      company_name: 'Vassweb s. r. o.',
+      company_email: 'info@vassweb.com',
       company_phone: '+421 918 668 728',
       company_address: 'Bratislava, Slovenská republika',
       company_ico: '56921021',
@@ -398,7 +398,7 @@ export async function POST(request: Request) {
     <!-- Header -->
     <div class="header">
       <div>
-        <div class="logo">V&Co.<small>${company.company_name || 'VVD s. r. o.'}</small></div>
+        <div class="logo">V&Co.<small>${company.company_name || 'Vassweb s. r. o.'}</small></div>
       </div>
       <div class="invoice-badge">
         <h1>FAKTÚRA</h1>
@@ -411,13 +411,13 @@ export async function POST(request: Request) {
     <div class="parties">
       <div>
         <div class="party-label">Dodávateľ</div>
-        <div class="party-name">${company.company_name || 'VVD s. r. o.'}</div>
+        <div class="party-name">${company.company_name || 'Vassweb s. r. o.'}</div>
         <div class="party-detail">
           ${company.company_address || 'Bratislava'}<br>
           IČO: ${company.company_ico || '56921021'}<br>
           DIČ: ${company.company_dic || '2122501524'}<br>
           IČ DPH: ${company.company_ic_dph || 'SK2122501524'}<br>
-          ${company.company_email || 'info@vassweb.sk'}<br>
+          ${company.company_email || 'info@vassweb.com'}<br>
           ${company.company_phone || '+421 918 668 728'}
         </div>
       </div>
@@ -520,9 +520,9 @@ export async function POST(request: Request) {
 
     <!-- Footer -->
     <div class="footer">
-      ${company.company_name || 'VVD s. r. o.'} | IČO: ${company.company_ico || '56921021'} |
+      ${company.company_name || 'Vassweb s. r. o.'} | IČO: ${company.company_ico || '56921021'} |
       DIČ: ${company.company_dic || '2122501524'} |
-      <a href="https://vassweb.sk">vassweb.sk</a>
+      <a href="https://vassweb.com">vassweb.com</a>
     </div>
   </div>
 </body>

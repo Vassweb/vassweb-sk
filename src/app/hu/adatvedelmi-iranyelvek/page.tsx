@@ -20,7 +20,7 @@ export default function AdatvedelmiIranyelvek() {
           <h2 style={sectionTitle}>1. Kik vagyunk — adatkezelő azonosítása</h2>
           <p style={paragraph}>
             Az adatkezelő a GDPR 4. cikk 7. pontja értelmében a{' '}
-            <strong style={{ color: '#e8e0d0' }}>VVD s.r.o.</strong> társaság, amely a Vassweb márkanév alatt működik
+            <strong style={{ color: '#e8e0d0' }}>Vassweb s. r. o.</strong> társaság, amely a Vassweb márkanév alatt működik
             (a továbbiakban &quot;mi&quot; vagy &quot;üzemeltető&quot;).
           </p>
           <div
@@ -32,14 +32,14 @@ export default function AdatvedelmiIranyelvek() {
               marginBottom: '16px',
             }}
           >
-            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Cégnév:</strong> VVD s.r.o.</p>
-            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Székhely:</strong> Blatná na Ostrove 281, 930 32, Szlovákia</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Cégnév:</strong> Vassweb s. r. o.</p>
+            <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Székhely:</strong> Školská 981/36, 931 01 Šamorín, Szlovákia</p>
             <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Cégjegyzékszám:</strong> 56 921 021</p>
             <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Adószám:</strong> 2122501524 · <strong style={{ color: '#d4a843' }}>ÁFA-szám:</strong> SK2122501524</p>
             <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Cégbíróság:</strong> Nagyszombati Járásbíróság, Sro szakasz, 59422/T</p>
             <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>Ügyvezető:</strong> Richard Vass</p>
             <p style={{ ...paragraph, marginBottom: '4px' }}><strong style={{ color: '#d4a843' }}>E-mail:</strong>{' '}
-              <a href="mailto:info@vassweb.sk" style={linkStyle}>info@vassweb.sk</a>
+              <a href="mailto:info@vassweb.com" style={linkStyle}>info@vassweb.com</a>
             </p>
             <p style={{ ...paragraph, marginBottom: 0 }}><strong style={{ color: '#d4a843' }}>Telefon:</strong>{' '}
               <a href="tel:+421918668728" style={linkStyle}>+421 918 668 728</a>
@@ -132,7 +132,7 @@ export default function AdatvedelmiIranyelvek() {
           </div>
           <p style={paragraph}>
             Bármely joga érvényesítéséhez forduljon hozzánk az{' '}
-            <a href="mailto:info@vassweb.sk" style={linkStyle}>info@vassweb.sk</a> címen.
+            <a href="mailto:info@vassweb.com" style={linkStyle}>info@vassweb.com</a> címen.
           </p>
         </section>
 

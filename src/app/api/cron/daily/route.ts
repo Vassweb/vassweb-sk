@@ -28,7 +28,7 @@ async function sendEmail(to: string, subject: string, html: string) {
   await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: { 'Authorization': `Bearer ${RESEND_API_KEY}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ from: 'Vassweb <info@vassweb.sk>', to: [to], subject, html, reply_to: 'richard.vass@vassco.sk' }),
+    body: JSON.stringify({ from: 'Vassweb <info@vassweb.com>', to: [to], subject, html, reply_to: 'vass@vassweb.com' }),
   });
 }
 
@@ -62,7 +62,7 @@ function emailTemplate(content: string): string {
     </div>
     ${content}
     <div style="margin-top:40px;padding-top:20px;border-top:1px solid rgba(212,168,67,0.15);text-align:center;">
-      <a href="https://app.vassweb.sk" style="color:#d4a843;text-decoration:none;font-size:13px;">Otvoriť appku →</a>
+      <a href="https://app.vassweb.com" style="color:#d4a843;text-decoration:none;font-size:13px;">Otvoriť appku →</a>
     </div>
   </div>`;
 }
@@ -151,21 +151,21 @@ export async function GET(request: Request) {
     }
 
     // ── 4. Trigger invoice overdue reminders (7, 14, 21 days) ──
-    await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL || 'https://app.vassweb.sk'}/api/automation/emails`, {
+    await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL || 'https://app.vassweb.com'}/api/automation/emails`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ action: 'invoice-reminders' }),
     }).catch(() => {});
 
     // ── 5. Trigger quote follow-ups ──
-    await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL || 'https://app.vassweb.sk'}/api/automation/emails`, {
+    await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL || 'https://app.vassweb.com'}/api/automation/emails`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ action: 'quote-followup' }),
     }).catch(() => {});
 
     // ── 6. Trigger deadline reminders (7 days) ──
-    await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL || 'https://app.vassweb.sk'}/api/automation/emails`, {
+    await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL || 'https://app.vassweb.com'}/api/automation/emails`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ action: 'deadline-reminder' }),
@@ -197,7 +197,7 @@ export async function GET(request: Request) {
     if (digestSections.length > 0) {
       const dateStr = new Date().toLocaleDateString('sk-SK', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
       await sendEmail(
-        'richard.vass@vassco.sk',
+        'vass@vassweb.com',
         `📋 Denný prehľad — ${dateStr}`,
         emailTemplate(`<h2 style="color:#d4a843;font-size:18px;margin-bottom:24px;">Prehľad na ${dateStr}</h2>${digestSections.join('')}`)
       );

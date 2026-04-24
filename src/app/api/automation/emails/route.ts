@@ -29,11 +29,11 @@ async function sendEmail(to: string, subject: string, html: string) {
     method: 'POST',
     headers: { 'Authorization': `Bearer ${RESEND_API_KEY}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      from: 'Vassweb <info@vassweb.sk>',
+      from: 'Vassweb <info@vassweb.com>',
       to: [to],
       subject,
       html,
-      reply_to: 'richard.vass@vassco.sk',
+      reply_to: 'vass@vassweb.com',
     }),
   });
   return { success: res.ok };
@@ -47,7 +47,7 @@ function emailTemplate(title: string, body: string): string {
     <h2 style="color:#d4a843;font-size:20px;margin-bottom:16px;">${title}</h2>
     ${body}
     <div style="margin-top:40px;padding-top:20px;border-top:1px solid rgba(212,168,67,0.15);text-align:center;">
-      <p style="font-size:12px;color:rgba(232,224,208,0.3);">VVD s.r.o. (Vassweb) · IČO: 56921021 · vassweb.sk</p>
+      <p style="font-size:12px;color:rgba(232,224,208,0.3);">Vassweb s. r. o. · IČO: 56921021 · vassweb.com</p>
     </div>
   </div>`;
 }
@@ -109,8 +109,8 @@ export async function GET(request: Request) {
     const dueTasks = await taskRes.json();
     if (Array.isArray(dueTasks) && dueTasks.length > 0) {
       const taskList = dueTasks.map((t: { title: string }) => `<li>${t.title}</li>`).join('');
-      await sendEmail('richard.vass@vassco.sk', `${dueTasks.length} úloh dnes splatných`,
-        emailTemplate('Dnešné úlohy', `<ul>${taskList}</ul><p><a href="https://app.vassweb.sk/?view=tasks" style="color:#d4a843;">Otvoriť úlohy →</a></p>`)
+      await sendEmail('vass@vassweb.com', `${dueTasks.length} úloh dnes splatných`,
+        emailTemplate('Dnešné úlohy', `<ul>${taskList}</ul><p><a href="https://app.vassweb.com/?view=tasks" style="color:#d4a843;">Otvoriť úlohy →</a></p>`)
       );
       results.push(`Due tasks notification: ${dueTasks.length} tasks`);
     }
@@ -148,8 +148,8 @@ export async function POST(request: Request) {
             <li>Správou a údržbou vašej online prítomnosti</li>
           </ul>
           <p>V najbližších dňoch vás budeme kontaktovať ohľadom ďalších krokov.</p>
-          <p>Ak máte akékoľvek otázky, neváhajte nám napísať na <a href="mailto:richard.vass@vassco.sk" style="color:#d4a843;">richard.vass@vassco.sk</a> alebo zavolať na <a href="tel:+421918668728" style="color:#d4a843;">+421 918 668 728</a>.</p>
-          <p style="margin-top:24px;">S pozdravom,<br><strong style="color:#d4a843;">Richard Vass</strong><br>Vassweb · vassweb.sk</p>
+          <p>Ak máte akékoľvek otázky, neváhajte nám napísať na <a href="mailto:vass@vassweb.com" style="color:#d4a843;">vass@vassweb.com</a> alebo zavolať na <a href="tel:+421918668728" style="color:#d4a843;">+421 918 668 728</a>.</p>
+          <p style="margin-top:24px;">S pozdravom,<br><strong style="color:#d4a843;">Richard Vass</strong><br>Vassweb · vassweb.com</p>
         `)
       );
       await logActivity('note', `Welcome email odoslaný: ${client.name}`, `Uvítací email odoslaný na ${client.email}`, 'client', clientId);
@@ -197,12 +197,12 @@ export async function POST(request: Request) {
       if (Array.isArray(projects)) {
         for (const proj of projects) {
           await sendEmail(
-            'richard.vass@vassco.sk',
+            'vass@vassweb.com',
             `📅 Deadline o 7 dní: ${proj.name}`,
             emailTemplate('Pripomienka deadline', `
               <p>Projekt <strong>${proj.name}</strong> má deadline <strong>${proj.deadline}</strong> (o 7 dní).</p>
               <p>Skontrolujte stav projektu a zabezpečte, že všetko prebieha podľa plánu.</p>
-              <p><a href="https://app.vassweb.sk/?view=projects" style="color:#d4a843;text-decoration:underline;">Otvoriť projekt →</a></p>
+              <p><a href="https://app.vassweb.com/?view=projects" style="color:#d4a843;text-decoration:underline;">Otvoriť projekt →</a></p>
             `)
           );
           await createNotification('deadline', `Deadline o 7 dní`, `Projekt ${proj.name} má deadline ${proj.deadline}.`);
@@ -235,7 +235,7 @@ export async function POST(request: Request) {
             <strong style="color:#d4a843;">Čo ďalej?</strong><br>
             <span style="color:rgba(232,224,208,0.6);">Ak budete potrebovať údržbu, úpravy alebo nové funkcie, sme tu pre vás. Stačí sa ozvať.</span>
           </p>
-          <p>S pozdravom,<br><strong style="color:#d4a843;">Richard Vass</strong><br>Vassweb · vassweb.sk</p>
+          <p>S pozdravom,<br><strong style="color:#d4a843;">Richard Vass</strong><br>Vassweb · vassweb.com</p>
         `)
       );
       await logActivity('note', `Ďakovací email: ${project.name}`, `Ďakovací email odoslaný klientovi ${client.name}`, 'project', projectId);
