@@ -152,6 +152,72 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.7,
     },
+    // /cennik — pricing landing page (referenced by cold emails)
+    {
+      url: `${baseUrl}/cennik`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+      alternates: {
+        languages: {
+          sk: `${baseUrl}/cennik`,
+          en: `${baseUrl}/en/cennik`,
+          cs: `${baseUrl}/cs/cennik`,
+          hu: `${baseUrl}/hu/cennik`,
+        },
+      },
+    },
+    {
+      url: `${baseUrl}/en/cennik`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/cs/cennik`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/hu/cennik`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    // /web-na-mieru — landing page (referenced by TOP 10 cold emails)
+    {
+      url: `${baseUrl}/web-na-mieru`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+      alternates: {
+        languages: {
+          sk: `${baseUrl}/web-na-mieru`,
+          en: `${baseUrl}/en/web-na-mieru`,
+          cs: `${baseUrl}/cs/web-na-mieru`,
+          hu: `${baseUrl}/hu/web-na-mieru`,
+        },
+      },
+    },
+    {
+      url: `${baseUrl}/en/web-na-mieru`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/cs/web-na-mieru`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/hu/web-na-mieru`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
     // Note: /app and /demo-app/* are noindex (blocked in robots.ts) and removed from sitemap
   ]
 }
