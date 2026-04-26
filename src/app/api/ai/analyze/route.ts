@@ -74,7 +74,7 @@ ${overdueInvoices.map((i: { number: string; amount: number; due: string }) => `-
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
+        model: 'claude-sonnet-4-6',
         max_tokens: 1500,
         system: `Si biznis analytik pre Vassweb. Analyzuj dáta a vráť JSON s odporúčaniami. Vždy po slovensky. Vráť VÝHRADNE platný JSON bez markdown formátovania, bez \`\`\`json blokov.
 
