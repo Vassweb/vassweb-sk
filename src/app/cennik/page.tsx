@@ -46,34 +46,28 @@ const jsonLd = [
   },
   ...pricingContent.sk.tiers.map((t) => ({
     '@context': 'https://schema.org',
-    '@type': 'Product',
+    '@type': 'Service',
     name: `Vassweb ${t.name}`,
     description: t.tagline,
-    image: 'https://vassweb.com/images/og-image.webp',
-    brand: { '@type': 'Brand', name: 'Vassweb' },
+    serviceType: 'Web Development',
+    provider: {
+      '@type': 'Organization',
+      name: 'Vassweb s. r. o.',
+      url: 'https://vassweb.com',
+    },
+    areaServed: [
+      { '@type': 'Country', name: 'Slovakia' },
+      { '@type': 'Country', name: 'Czech Republic' },
+      { '@type': 'Country', name: 'Hungary' },
+    ],
     offers: {
       '@type': 'Offer',
       priceCurrency: 'EUR',
       price: t.name === 'Start' ? '990' : t.name === 'Pro' ? '1990' : '3990',
       priceValidUntil: '2026-12-31',
       availability: 'https://schema.org/InStock',
-      url: `https://vassweb.com/cennik`,
+      url: 'https://vassweb.com/cennik',
       seller: { '@type': 'Organization', name: 'Vassweb s. r. o.' },
-      shippingDetails: {
-        '@type': 'OfferShippingDetails',
-        shippingRate: { '@type': 'MonetaryAmount', value: '0', currency: 'EUR' },
-        shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'SK' },
-        deliveryTime: {
-          '@type': 'ShippingDeliveryTime',
-          handlingTime: { '@type': 'QuantitativeValue', minValue: 0, maxValue: 0, unitCode: 'DAY' },
-          transitTime: { '@type': 'QuantitativeValue', minValue: 0, maxValue: 0, unitCode: 'DAY' },
-        },
-      },
-      hasMerchantReturnPolicy: {
-        '@type': 'MerchantReturnPolicy',
-        applicableCountry: 'SK',
-        returnPolicyCategory: 'https://schema.org/MerchantReturnNotPermitted',
-      },
     },
   })),
   {
