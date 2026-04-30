@@ -13,7 +13,7 @@ export default function OchranaUdaju() {
           Ochrana osobních údajů
         </h1>
         <p style={{ color: 'rgba(232, 224, 208, 0.5)', fontSize: '14px', marginBottom: '48px' }}>
-          Poslední aktualizace: 15. března 2026
+          Poslední aktualizace: 24. dubna 2026
         </p>
 
         <section style={{ marginBottom: '40px' }}>

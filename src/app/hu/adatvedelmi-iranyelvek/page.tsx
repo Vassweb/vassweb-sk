@@ -13,7 +13,7 @@ export default function AdatvedelmiIranyelvek() {
           Adatvédelmi irányelvek
         </h1>
         <p style={{ color: 'rgba(232, 224, 208, 0.5)', fontSize: '14px', marginBottom: '48px' }}>
-          Utolsó frissítés: 2026. március 15.
+          Utolsó frissítés: 2026. április 24.
         </p>
 
         <section style={{ marginBottom: '40px' }}>

@@ -48,6 +48,7 @@ const jsonLd = [
     '@type': 'Product',
     name: `Vassweb ${t.name}`,
     description: t.tagline,
+    image: 'https://vassweb.com/images/og-image.webp',
     brand: { '@type': 'Brand', name: 'Vassweb' },
     offers: {
       '@type': 'Offer',
@@ -57,6 +58,21 @@ const jsonLd = [
       availability: 'https://schema.org/InStock',
       url: 'https://vassweb.com/en/cennik',
       seller: { '@type': 'Organization', name: 'Vassweb s. r. o.' },
+      shippingDetails: {
+        '@type': 'OfferShippingDetails',
+        shippingRate: { '@type': 'MonetaryAmount', value: '0', currency: 'EUR' },
+        shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'SK' },
+        deliveryTime: {
+          '@type': 'ShippingDeliveryTime',
+          handlingTime: { '@type': 'QuantitativeValue', minValue: 0, maxValue: 0, unitCode: 'DAY' },
+          transitTime: { '@type': 'QuantitativeValue', minValue: 0, maxValue: 0, unitCode: 'DAY' },
+        },
+      },
+      hasMerchantReturnPolicy: {
+        '@type': 'MerchantReturnPolicy',
+        applicableCountry: 'SK',
+        returnPolicyCategory: 'https://schema.org/MerchantReturnNotPermitted',
+      },
     },
   })),
   {
