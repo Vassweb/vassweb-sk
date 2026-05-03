@@ -20,7 +20,7 @@ const config: Config = {
         dark: '#0a0908',
       },
       fontFamily: {
-        cormorant: ['var(--font-cormorant)', 'serif'],
+        heading: ['var(--font-heading)', 'Playfair Display', 'Georgia', 'serif'],
         inter: ['var(--font-inter)', 'sans-serif'],
       },
       animation: {
