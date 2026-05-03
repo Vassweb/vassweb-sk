@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://vassweb.sk'
+  const baseUrl = 'https://vassweb.com'
 
   const homeLanguages = {
     sk: baseUrl,

@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/', '/app/'],
       },
     ],
-    sitemap: 'https://vassweb.sk/sitemap.xml',
-    host: 'https://vassweb.sk',
+    sitemap: 'https://vassweb.com/sitemap.xml',
+    host: 'https://vassweb.com',
   }
 }
